@@ -1,0 +1,20 @@
+Hitobito CEVI is created by the following people:
+
+Code:
+  Pascal Zumkehr, Puzzle ITC
+  Andreas Maierhofer, Puzzle ITC
+  Mathis Hofer, Puzzle ITC
+
+Design & Style:
+  Roland Studer, Puzzle ITC
+  Pierre Fritsch, Puzzle ITC
+    
+With help from many libraries and frameworks including:
+  Ruby on Rails
+  Wagons
+  Haml
+  CanCan
+  Delayed Job
+  RSpec
+  Dry Crud
+  ...and many others
