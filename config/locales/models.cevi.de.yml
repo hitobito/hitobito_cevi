@@ -1,0 +1,488 @@
+# -*- coding: utf-8 -*-
+
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+
+de:
+  activerecord:
+    models:
+      group/dachverband:
+        one: Dachverband
+        other: Dachverbände
+      group/dachverband_vorstand:
+        one: Vorstand
+        other: Vorstände
+        long: Dachverband Vorstand
+      group/dachverband_geschaeftsstelle:
+        one: Geschäftsstelle
+        other: Geschäftsstellen
+        long: Dachverband Geschäftsstelle
+      group/dachverband_gremium:
+        one: Gremium
+        other: Gremien
+        long: Dachverband Gremium
+      group/dachverband_mitglieder:
+        one: Mitglieder
+        long: Dachverband Mitglieder
+      group/dachverband_externe:
+        one: Externe
+        long: Dachverband Externe
+
+      group/mitgliederorganisation:
+        one: Mitgliederorganisation
+        other: Mitgliederorganisationen
+      group/mitgliederorganisation_vorstand:
+        one: Vorstand
+        other: Vorstände
+        long: Mitgliederorganisation Vorstand
+      group/mitgliederorganisation_geschaeftsstelle:
+        one: Geschäftsstelle
+        other: Geschäftsstellen
+        long: Dachverband Geschäftsstelle
+      group/mitgliederorganisation_gremium:
+        one: Gremium
+        other: Gremien
+        long: Mitgliederorganisation Gremium
+      group/mitgliederorganisation_mitglieder:
+        one: Mitglieder
+        long: Mitgliederorganisation Mitglieder
+      group/mitgliederorganisation_externe:
+        one: Externe
+        long: Mitgliederorganisation Externe
+
+      group/sektion:
+        one: Sektion
+        other: Sektionen
+
+      group/ortsgruppe:
+        one: Ortsgruppe
+        other: Ortsgruppen
+
+      group/verein:
+        one: Verein
+        other: Vereine
+      group/verein_vorstand:
+        one: Vorstand
+        other: Vorstände
+        long: Verein Vorstand
+      group/verein_mitglieder:
+        one: Mitglieder
+        long: Verein Mitglieder
+      group/verein_externe:
+        one: Externe
+        long: Verein Externe
+
+      group/jungschar:
+        one: Jungschar
+        other: Jungscharen
+      group/jungschar_externe:
+        one: Externe
+        long: Jungschar Externe
+      group/froeschli:
+        one: Fröschli
+        other: Fröschlis
+        long: Jungschar Fröschli
+      group/stufe:
+        one: Stufe
+        other: Stufen
+        long: Jungschar Stufe
+      group/gruppe:
+        one: Gruppe
+        other: Gruppen
+        long: Jungschar Gruppe
+      group/jungschar_team:
+        one: Team
+        other: Teams
+        long: Jungschar Team
+
+
+      group/ten_sing:
+        one: Ten-Sing
+        other: Ten-Sings
+      group/ten_sing_team_gruppe:
+        one: Team/Gruppe
+        other: Teams/Gruppen
+        long: Ten-Sing Team/Gruppe
+      group/ten_sing_externe:
+        one: Externe
+        long: Ten-Sing Externe
+
+      group/sport:
+        one: Sport
+      group/sport_team_gruppe:
+        one: Sport Team/Gruppe
+        other: Teams/Gruppen
+        long: Sport Team/Gruppe
+      group/sport_externe:
+        one: Externe
+        long: Sport Externe
+
+      group/weitere_arbeitsgebiete:
+        one: Weiteres Arbeitsgebiet
+        other: Weitere Arbeitsgebiete
+      group/weitere_arbeitsgebiete_team:
+        one: Team
+        other: Teams
+        long: Weiteres Arbeitsgebiet Team
+      group/weitere_arbeitsgebiete_externe:
+        one: Externe
+        long: Weiteres Arbeitsgebiet Externe
+
+      group/dachverband/administrator:
+        one: Administrator/-in
+        description:
+      group/dachverband_vorstand/praesidium:
+        one: Präsidium
+        description:
+      group/dachverband_vorstand/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/dachverband_vorstand/mitglied:
+        one: Mitglied
+        description:
+      group/dachverband_geschaeftsstelle/geschaeftsleiter:
+        one: Geschäftsleiter/-in
+        description:
+      group/dachverband_geschaeftsstelle/angestellter:
+        one: Angestellte/-r
+        description:
+      group/dachverband_geschaeftsstelle/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/dachverband_gremium/leitung:
+        one: Leitung
+        description:
+      group/dachverband_gremium/mitglied:
+        one: Mitglied
+        description:
+      group/dachverband_gremium/aktiver_kursleiter:
+        one: Aktive/-r Kursleiter/-in
+        description:
+      group/dachverband_mitglieder/adressverwalter:
+        one: Adressverwalter/-in
+        description:
+      group/dachverband_mitglieder/mitglied:
+        one: Mitglied
+        description:
+      group/dachverband_externe/adressverwalter:
+        one: Adressverwalter/-in
+        description:
+      group/dachverband_externe/externer:
+        one: Externe/-r
+        description:
+
+      group/mitgliederorganisation/administrator:
+        one: Administrator/-in
+        description:
+      group/mitgliederorganisation_vorstand/praesidium:
+        one: Präsidium
+        description:
+      group/mitgliederorganisation_vorstand/finanzverantwortlicher:
+        one: Finanzverantwortliche-/r
+        description:
+      group/mitgliederorganisation_vorstand/mitglied:
+        one: Mitglied
+        description:
+      group/mitgliederorganisation_geschaeftsstelle/geschaeftsleiter:
+        one: Geschäftsleiter/-in
+        description:
+      group/mitgliederorganisation_geschaeftsstelle/angestellter:
+        one: Angestellte/-r
+        description:
+      group/mitgliederorganisation_geschaeftsstelle/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/mitgliederorganisation_gremium/leitung:
+        one: Leitung
+        description:
+      group/mitgliederorganisation_gremium/mitglied:
+        one: Mitglied
+        description:
+      group/mitgliederorganisation_gremium/aktiver_kursleiter:
+        one: Aktive/-r Kursleiter/-in
+        description:
+      group/mitgliederorganisation_mitglieder/adressverwalter:
+        one: Adressverwalter/-in
+        description:
+      group/mitgliederorganisation_mitglieder/mitglied:
+        one: Mitglied
+        description:
+      group/mitgliederorganisation_externe/adressverwalter:
+        one: Adressverwalter/-in
+        description:
+      group/mitgliederorganisation_externe/externer:
+        one: Externe/-r
+        description:
+
+      group/ortsgruppe/administrator_cevi_db:
+        one: Administrator/-in Cevi DB
+        description:
+
+      group/jungschar/abteilungsleiter:
+        one: Abteilungsleiter/-in
+        description:
+      group/jungschar/coach:
+        one: Coach
+        description:
+      group/jungschar/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/jungschar/adressverwalter:
+        one: Adressverwalter/-in
+        description:
+      group/jungschar/aktuar:
+        one: Aktuar/-in
+        description:
+      group/jungschar/busverwalter:
+        one: Busverwalter/-in
+        description:
+      group/jungschar/freier_mitarbeiter:
+        one: Freie/-r Mitarbeiter/-in
+        description:
+      group/jungschar/hausverantwortlicher:
+        one: Hausverantwortliche/-r
+        description:
+      group/jungschar/input:
+        one: Input
+        description:
+      group/jungschar/laedeliverantwortlicher:
+        one: Lädeliverantwortliche/-r
+        description:
+      group/jungschar/redaktor:
+        one: Redaktor/-in
+        description:
+      group/jungschar/regionaltreffenvertreter:
+        one: Regionaltreffenvertreter/-in
+        description:
+      group/jungschar/webmaster:
+        one: Webmaster/-in
+        description:
+      group/jungschar/werbung:
+        one: Werbung
+        description:
+      group/jungschar/materialverantwortlicher:
+        one: Materialverantwortliche/-r
+        description:
+      group/jungschar/kontakt_regionalzeitschrift:
+        one: Kontakt Regionalzeitschrift
+        description:
+      group/jungschar/verantwortlicher_psa:
+        one: Verantwortliche/-r PSA
+        description:
+      group/jungschar/jugendarbeiter:
+        one: Jugendarbeiter/-in
+        description:
+      group/froeschli/froeschlihauptleiter:
+        one: Fröschlihauptleiter/-in
+        description:
+      group/froeschli/froeschlileiter:
+        one: Fröschlileiter/-in
+        description:
+      group/froeschli/teilnehmer:
+        one: Teilnehmer/-in
+        description:
+      group/jungschar_externe/verantwortlicher:
+        one: Verantwortliche/-r
+        description:
+      group/jungschar_externe/jugendarbeiter:
+        one: Jugendarbeiter/-in
+        description:
+      group/jungschar_externe/externer:
+        one: Externe/-r
+        description:
+      group/jungschar_externe/goetti:
+        one: Gotte/Götti
+        description:
+      group/stufe/stufenleiter:
+        one: Stufenleiter/-in
+        description:
+      group/stufe/mini_chef:
+        one: Mini-Chef
+        description:
+      group/stufe/gruppenleiter:
+        one: Gruppenleiter/-in
+        description:
+      group/stufe/minigruppenleiter:
+        one: Minigruppenleiter/-in
+        description:
+      group/stufe/helfer:
+        one: Helfer/-in
+        description:
+      group/stufe/teilnehmer:
+        one: Teilnehmer/-in
+        description:
+      group/jungschar_team/leitung:
+        one: Leitung
+        description:
+      group/jungschar_team/mitarbeiter:
+        one: Mitarbeiter/-in
+        description:
+
+      group/ten_sing/hauptleiter:
+        one: Hauptleiter/-in
+        description:
+      group/ten_sing/mitglied:
+        one: Mitglied
+        description:
+      group/ten_sing/arrangeur:
+        one: Arrangeur
+        description:
+      group/ten_sing/adressverwalter:
+        one: Adressverwalter/-in
+        description:
+      group/ten_sing/aktuar:
+        one: Aktuar/-in
+        description:
+      group/ten_sing/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/ten_sing/freier_mitarbeiter:
+        one: Freie/-r Mitarbeiter/-in
+        description:
+      group/ten_sing/input_leiter:
+        one: Input Leiter/-in
+        description:
+      group/ten_sing/redaktor:
+        one: Redaktor/-in
+        description:
+      group/ten_sing/regionaltreffenvertreter:
+        one: Regionaltreffenvertreter/-in
+        description:
+      group/ten_sing/webmaster:
+        one: Webmaster/-in
+        description:
+      group/ten_sing/werbeteam_leitender:
+        one: Werbeteam Leitende/-r
+        description:
+      group/ten_sing/dirigent:
+        one: Dirigent/-in
+        description:
+      group/ten_sing/chorleiter:
+        one: Chorleiter/-in
+        description:
+      group/ten_sing/chorsaenger:
+        one: Chorsänger/-in
+        description:
+      group/ten_sing/video_leiter:
+        one: Video Leiter/-in
+        description:
+      group/ten_sing/stagedesign_leiter:
+        one: Stagedesign Leiter/-in
+        description:
+      group/ten_sing/stagedesigner:
+        one: Stagedesigner/-in
+        description:
+      group/ten_sing/dj:
+        one: DJ
+        description:
+      group/ten_sing/verantwortlicher_lager_weekends:
+        one: Verantwortliche/-r Lager Weekends
+        description:
+      group/ten_sing/jugendarbeiter:
+        one: Jugendarbeiter/-in
+        description:
+      group/ten_sing/band_leiter:
+        one: Band Leiter/-in
+        description:
+      group/ten_sing/bandmitglied:
+        one: Bandmitglied
+        description:
+      group/ten_sing/tanz_leiter:
+        one: Tanz Leiter/-in
+        description:
+      group/ten_sing/taenzer:
+        one: Tänzer/-in
+        description:
+      group/ten_sing/technik_leiter:
+        one: Technik Leiter/-in
+        description:
+      group/ten_sing/techniker:
+        one: Techniker/-in
+        description:
+      group/ten_sing/theater_leiter:
+        one: Theater Leiter/-in
+        description:
+      group/ten_sing/schauspieler:
+        one: Schauspieler/-in
+        description:
+      group/ten_sing_team_gruppe/adressverantwortliche:
+        one: Adressverantwortliche/-r
+        description:
+      group/ten_sing_externe/verantwortlicher:
+        one: Verantwortliche/-r
+        description:
+      group/ten_sing_externe/externer:
+        one: Externe/-r
+        description:
+      group/ten_sing_externe/jugendarbeiter:
+        one: Jugendarbeiter/-in
+        description:
+
+      group/sport/adressverantwortlicher:
+        one: Adressverantwortliche-/r
+        description:
+      group/sport/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/sport/hauptleitung:
+        one: Hauptleitung
+        description:
+      group/sport/materialverantwortlicher:
+        one: Materialverantwortliche/-r
+        description:
+      group/sport/leiter:
+        one: Leiter/-in
+        description:
+      group/sport/mitglied:
+        one: Mitglied
+        description:
+      group/sport/freier_mitarbeiter:
+        one: Freie/-r Mitarbeiter/-in
+        description:
+      group/sport_team_gruppe/leiter:
+        one: Leiter
+        description:
+      group/sport_team_gruppe/mitglied:
+        one: Mitglied
+        description:
+      group/sport_externe/verantwortlicher:
+        one: Verantwortliche/-r
+        description:
+      group/sport_externe/externer:
+        one: Externe/-r
+        description:
+
+      group/weitere_arbeitsgebiete/adressverantwortlicher:
+        one: Adressverantwortliche/-r
+        description:
+      group/weitere_arbeitsgebiete/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/weitere_arbeitsgebiete/hauptleitung:
+        one: Hauptleitung
+        description:
+      group/weitere_arbeitsgebiete/materialverantwortlicher:
+        one: Materialverantwortliche/-r
+        description:
+      group/weitere_arbeitsgebiete/leiter:
+        one: Leiter/-in
+        description:
+      group/weitere_arbeitsgebiete/mitglied:
+        one: Mitglied
+        description:
+      group/weitere_arbeitsgebiete/freier_mitarbeiter:
+        one: Freie/-r Mitarbeiter/-in
+        description:
+      group/weitere_arbeitsgebiete_externe/verantwortlicher:
+        one: Verantwortliche/-r
+        description:
+      group/weitere_arbeitsgebiete_externe/externer:
+        one: Externe/-r
+        description:
+      group/weitere_arbeitsgebiete_team/leiter:
+        one: Leiter/-in
+        description:
+      group/weitere_arbeitsgebiete_team/mitglied:
+        one: Mitglied
+        description:
