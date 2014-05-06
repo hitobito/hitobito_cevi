@@ -13,7 +13,7 @@ class Group::JungscharExterne < Group::Externe
     self.permissions = []
   end
 
-  class Externe < ::Role
+  class Externer < ::Role
     self.permissions = []
   end
 
@@ -23,7 +23,7 @@ class Group::JungscharExterne < Group::Externe
 
   roles Verantwortlicher,
         Jugendarbeiter,
-        Externe,
+        Externer,
         Goetti
 
 end

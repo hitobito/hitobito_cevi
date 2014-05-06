@@ -9,9 +9,9 @@ class Group::WeitereArbeitsgebieteExterne < Group::Externe
     self.permissions = [:group_full]
   end
 
-  class Externe < ::Role; end
+  class Externer < ::Role; end
 
   roles Verantwortlicher,
-        Extere
+        Exterer
 
 end

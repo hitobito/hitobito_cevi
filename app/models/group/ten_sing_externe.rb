@@ -9,12 +9,12 @@ class Group::TenSingExterne < Group::Externe
     self.permissions = [:group_full]
   end
 
-  class Externe < ::Role; end
+  class Externer < ::Role; end
 
   class Jugendarbeiter < ::Role; end
 
   roles Verantwortlicher,
-        Extere,
+        Externer,
         Jugendarbeiter
 
 end

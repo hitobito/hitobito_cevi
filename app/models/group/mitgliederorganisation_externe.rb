@@ -9,9 +9,9 @@ class Group::MitgliederorganisationExterne < Group::Externe
     self.permissions = [:group_full]
   end
 
-  class Extern < ::Role; end
+  class Externer < ::Role; end
 
   roles Adressverwalter,
-        Extern
+        Externer
 
 end

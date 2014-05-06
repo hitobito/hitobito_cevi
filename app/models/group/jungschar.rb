@@ -1,4 +1,4 @@
-class Group::Dachverband < Group
+class Group::Jungschar < Group
 
   self.layer = true
 
