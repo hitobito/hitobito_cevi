@@ -10,6 +10,7 @@ de:
       group/dachverband:
         one: Dachverband
         other: Dachverbände
+        long: Dachverband
       group/dachverband_vorstand:
         one: Vorstand
         other: Vorstände
@@ -24,14 +25,17 @@ de:
         long: Dachverband Gremium
       group/dachverband_mitglieder:
         one: Mitglieder
+        other: Mitglieder
         long: Dachverband Mitglieder
       group/dachverband_externe:
         one: Externe
+        other: Externe
         long: Dachverband Externe
 
       group/mitgliederorganisation:
         one: Mitgliederorganisation
         other: Mitgliederorganisationen
+        long: Mitgliederorganisation
       group/mitgliederorganisation_vorstand:
         one: Vorstand
         other: Vorstände
@@ -46,38 +50,47 @@ de:
         long: Mitgliederorganisation Gremium
       group/mitgliederorganisation_mitglieder:
         one: Mitglieder
+        other: Mitglieder
         long: Mitgliederorganisation Mitglieder
       group/mitgliederorganisation_externe:
         one: Externe
+        other: Externe
         long: Mitgliederorganisation Externe
 
       group/sektion:
         one: Sektion
         other: Sektionen
+        long: Sektion
 
       group/ortsgruppe:
         one: Ortsgruppe
         other: Ortsgruppen
+        long: Ortsgruppe
 
       group/verein:
         one: Verein
         other: Vereine
+        long: Verein
       group/verein_vorstand:
         one: Vorstand
         other: Vorstände
         long: Verein Vorstand
       group/verein_mitglieder:
         one: Mitglieder
+        other: Mitglieder
         long: Verein Mitglieder
       group/verein_externe:
         one: Externe
+        other: Externe
         long: Verein Externe
 
       group/jungschar:
         one: Jungschar
         other: Jungscharen
+        long: Jungschar
       group/jungschar_externe:
         one: Externe
+        other: Externe
         long: Jungschar Externe
       group/froeschli:
         one: Fröschli
@@ -100,33 +113,40 @@ de:
       group/ten_sing:
         one: Ten-Sing
         other: Ten-Sings
+        long: Ten-Sing
       group/ten_sing_team_gruppe:
         one: Team/Gruppe
         other: Teams/Gruppen
         long: Ten-Sing Team/Gruppe
       group/ten_sing_externe:
         one: Externe
+        other: Externe
         long: Ten-Sing Externe
 
       group/sport:
         one: Sport
+        other: Sport
+        long: Sport
       group/sport_team_gruppe:
         one: Sport Team/Gruppe
         other: Teams/Gruppen
         long: Sport Team/Gruppe
       group/sport_externe:
         one: Externe
+        other: Externe
         long: Sport Externe
 
       group/weitere_arbeitsgebiete:
         one: Weiteres Arbeitsgebiet
         other: Weitere Arbeitsgebiete
+        long: Weiteres Arbeitsgebiet
       group/weitere_arbeitsgebiete_team:
         one: Team
         other: Teams
         long: Weiteres Arbeitsgebiet Team
       group/weitere_arbeitsgebiete_externe:
         one: Externe
+        other: Externe
         long: Weiteres Arbeitsgebiet Externe
 
       group/dachverband/administrator:
