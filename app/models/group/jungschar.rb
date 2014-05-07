@@ -97,6 +97,7 @@ class Group::Jungschar < Group
 
   children Group::JungscharExterne,
            Group::Froeschli,
-           Group::Stufe
+           Group::Stufe,
+           Group::JungscharTeam
 
 end

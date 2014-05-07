@@ -1,6 +1,6 @@
-class Group::WeitereArbeitsgebieteTeam < Group
+class Group::WeitereArbeitsgebieteTeamGruppe < Group
 
-  children Group::WeitereArbeitsgebieteTeam
+  children Group::WeitereArbeitsgebieteTeamGruppe
 
 
   ### ROLES

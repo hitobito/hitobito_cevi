@@ -140,10 +140,10 @@ de:
         one: Weiteres Arbeitsgebiet
         other: Weitere Arbeitsgebiete
         long: Weiteres Arbeitsgebiet
-      group/weitere_arbeitsgebiete_team:
-        one: Team
-        other: Teams
-        long: Weiteres Arbeitsgebiet Team
+      group/weitere_arbeitsgebiete_teamgruppe:
+        one: Team/Gruppe
+        other: Teams/Gruppen
+        long: Weiteres Arbeitsgebiet Team/Gruppe
       group/weitere_arbeitsgebiete_externe:
         one: Externe
         other: Externe

@@ -26,8 +26,7 @@ class Group::Stufe < Group
     self.permissions = [:group_read]
   end
 
-  children Group::Gruppe,
-           Group::JungscharTeam
+  children Group::Gruppe
 
   roles Stufenleiter,
         MiniChef,
