@@ -1,4 +1,4 @@
-class Group::DachverbandGeschaeftsstelle < Group::Geschaeftsstelle
+class Group::MitgliederorganisationGeschaeftsstelle < Group::Geschaeftsstelle
 
   ### ROLES
 

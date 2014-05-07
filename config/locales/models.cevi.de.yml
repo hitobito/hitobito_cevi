@@ -43,7 +43,7 @@ de:
       group/mitgliederorganisation_geschaeftsstelle:
         one: Geschäftsstelle
         other: Geschäftsstellen
-        long: Dachverband Geschäftsstelle
+        long: Mitgliederorganisation Geschäftsstelle
       group/mitgliederorganisation_gremium:
         one: Gremium
         other: Gremien
