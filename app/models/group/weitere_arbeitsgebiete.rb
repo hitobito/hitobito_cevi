@@ -2,7 +2,7 @@ class Group::WeitereArbeitsgebiete < Group
 
   self.layer = true
 
-  children Group::Leitungsteam,
+  children Group::WeitereArbeitsgebieteExterne,
            Group::WeitereArbeitsgebieteTeam
 
 

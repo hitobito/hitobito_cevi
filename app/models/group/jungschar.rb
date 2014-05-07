@@ -2,11 +2,6 @@ class Group::Jungschar < Group
 
   self.layer = true
 
-  children Group::JungscharExterne,
-           Group::Froeschli,
-           Group::Stufe
-
-
   ### ROLES
 
   class Abteilungsleiter < ::Role
@@ -90,7 +85,7 @@ class Group::Jungschar < Group
         FreierMitarbeiter,
         Hausverantwortlicher,
         Input,
-        Laedeliverantwortliche,
+        Laedeliverantwortlicher,
         Redaktor,
         Regionaltreffenvertreter,
         Webmaster,
@@ -99,5 +94,9 @@ class Group::Jungschar < Group
         KontaktRegionalzeitschrift,
         VerantwortlicherPSA,
         Jugendarbeiter
+
+  children Group::JungscharExterne,
+           Group::Froeschli,
+           Group::Stufe
 
 end

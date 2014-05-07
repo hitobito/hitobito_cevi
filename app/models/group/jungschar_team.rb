@@ -19,7 +19,7 @@ class Group::JungscharTeam < Group
         Group::Jungschar::FreierMitarbeiter,
         Group::Jungschar::Hausverantwortlicher,
         Group::Jungschar::Input,
-        Group::Jungschar::Laedeliverantwortliche,
+        Group::Jungschar::Laedeliverantwortlicher,
         Group::Jungschar::Redaktor,
         Group::Jungschar::Regionaltreffenvertreter,
         Group::Jungschar::Webmaster,

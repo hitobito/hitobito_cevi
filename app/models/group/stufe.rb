@@ -1,9 +1,5 @@
 class Group::Stufe < Group
 
-  children Group::Gruppe,
-           Group::JungscharTeam
-
-
   ### ROLES
 
   class Stufenleiter < ::Role
@@ -29,6 +25,9 @@ class Group::Stufe < Group
   class Teilnehmer < ::Role
     self.permissions = [:group_read]
   end
+
+  children Group::Gruppe,
+           Group::JungscharTeam
 
   roles Stufenleiter,
         MiniChef,

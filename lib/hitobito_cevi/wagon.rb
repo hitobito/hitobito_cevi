@@ -8,7 +8,7 @@
 module HitobitoCevi
   class Wagon < Rails::Engine
     include Wagons::Wagon
-    
+
     # Set the required application version.
     app_requirement '>= 0'
 
@@ -17,7 +17,20 @@ module HitobitoCevi
 
     config.to_prepare do
       # extend application classes here
-    end 
+      Group.send        :include, Cevi::Group
+    end
+
+    initializer 'cevi.add_settings' do |app|
+      Settings.add_source!(File.join(paths['config'].existent, 'settings.yml'))
+      Settings.reload!
+    end
+
+    private
+
+    def seed_fixtures
+      fixtures = root.join('db', 'seeds')
+      ENV['NO_ENV'] ? [fixtures] : [fixtures, File.join(fixtures, Rails.env)]
+    end
 
   end
 end

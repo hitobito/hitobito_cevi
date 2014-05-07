@@ -12,6 +12,6 @@ class Group::SportExterne < Group::Externe
   class Externer < ::Role; end
 
   roles Verantwortlicher,
-        Exterer
+        Externer
 
 end
