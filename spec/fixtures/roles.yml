@@ -1,0 +1,1906 @@
+---
+roles_001:
+  id: 1
+  person_id: 3
+  group_id: 1
+  type: Group::Dachverband::Administrator
+roles_002:
+  id: 2
+  person_id: 4
+  group_id: 7
+  type: Group::Mitgliederorganisation::Administrator
+roles_003:
+  id: 3
+  person_id: 5
+  group_id: 6
+  type: Group::Mitgliederorganisation::Administrator
+roles_004:
+  id: 4
+  person_id: 6
+  group_id: 5
+  type: Group::Mitgliederorganisation::Administrator
+roles_005:
+  id: 5
+  person_id: 7
+  group_id: 10
+  type: Group::MitgliederorganisationGremium::Leitung
+roles_006:
+  id: 6
+  person_id: 8
+  group_id: 10
+  type: Group::MitgliederorganisationGremium::Mitglied
+roles_007:
+  id: 7
+  person_id: 9
+  group_id: 10
+  type: Group::MitgliederorganisationGremium::Mitglied
+roles_008:
+  id: 8
+  person_id: 10
+  group_id: 10
+  type: Group::MitgliederorganisationGremium::Mitglied
+roles_009:
+  id: 9
+  person_id: 11
+  group_id: 10
+  type: Group::MitgliederorganisationGremium::Mitglied
+roles_010:
+  id: 10
+  person_id: 12
+  group_id: 10
+  type: Group::MitgliederorganisationGremium::Mitglied
+roles_011:
+  id: 11
+  person_id: 13
+  group_id: 10
+  type: Group::MitgliederorganisationGremium::AktiverKursleiter
+roles_012:
+  id: 12
+  person_id: 14
+  group_id: 15
+  type: Group::Ortsgruppe::AdministratorCeviDB
+roles_013:
+  id: 13
+  person_id: 15
+  group_id: 9
+  type: Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter
+roles_014:
+  id: 14
+  person_id: 16
+  group_id: 9
+  type: Group::MitgliederorganisationGeschaeftsstelle::Angestellter
+roles_015:
+  id: 15
+  person_id: 17
+  group_id: 9
+  type: Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher
+roles_016:
+  id: 16
+  person_id: 18
+  group_id: 8
+  type: Group::MitgliederorganisationVorstand::Praesidium
+roles_017:
+  id: 17
+  person_id: 19
+  group_id: 8
+  type: Group::MitgliederorganisationVorstand::Finanzverantwortlicher
+roles_018:
+  id: 18
+  person_id: 20
+  group_id: 8
+  type: Group::MitgliederorganisationVorstand::Mitglied
+roles_019:
+  id: 19
+  person_id: 21
+  group_id: 8
+  type: Group::MitgliederorganisationVorstand::Mitglied
+roles_020:
+  id: 20
+  person_id: 22
+  group_id: 8
+  type: Group::MitgliederorganisationVorstand::Mitglied
+roles_021:
+  id: 21
+  person_id: 23
+  group_id: 8
+  type: Group::MitgliederorganisationVorstand::Mitglied
+roles_022:
+  id: 22
+  person_id: 24
+  group_id: 8
+  type: Group::MitgliederorganisationVorstand::Mitglied
+roles_023:
+  id: 23
+  person_id: 25
+  group_id: 14
+  type: Group::Ortsgruppe::AdministratorCeviDB
+roles_024:
+  id: 24
+  person_id: 26
+  group_id: 13
+  type: Group::Ortsgruppe::AdministratorCeviDB
+roles_025:
+  id: 25
+  person_id: 27
+  group_id: 17
+  type: Group::Jungschar::Abteilungsleiter
+roles_026:
+  id: 26
+  person_id: 28
+  group_id: 17
+  type: Group::Jungschar::Coach
+roles_027:
+  id: 27
+  person_id: 29
+  group_id: 17
+  type: Group::Jungschar::Finanzverantwortlicher
+roles_028:
+  id: 28
+  person_id: 30
+  group_id: 17
+  type: Group::Jungschar::Adressverwalter
+roles_029:
+  id: 29
+  person_id: 31
+  group_id: 17
+  type: Group::Jungschar::Aktuar
+roles_030:
+  id: 30
+  person_id: 32
+  group_id: 17
+  type: Group::Jungschar::Busverwalter
+roles_031:
+  id: 31
+  person_id: 33
+  group_id: 17
+  type: Group::Jungschar::FreierMitarbeiter
+roles_032:
+  id: 32
+  person_id: 34
+  group_id: 17
+  type: Group::Jungschar::Hausverantwortlicher
+roles_033:
+  id: 33
+  person_id: 35
+  group_id: 17
+  type: Group::Jungschar::Input
+roles_034:
+  id: 34
+  person_id: 36
+  group_id: 17
+  type: Group::Jungschar::Laedeliverantwortlicher
+roles_035:
+  id: 35
+  person_id: 37
+  group_id: 17
+  type: Group::Jungschar::Redaktor
+roles_036:
+  id: 36
+  person_id: 38
+  group_id: 17
+  type: Group::Jungschar::Regionaltreffenvertreter
+roles_037:
+  id: 37
+  person_id: 39
+  group_id: 17
+  type: Group::Jungschar::Webmaster
+roles_038:
+  id: 38
+  person_id: 40
+  group_id: 17
+  type: Group::Jungschar::Werbung
+roles_039:
+  id: 39
+  person_id: 41
+  group_id: 17
+  type: Group::Jungschar::Materialverantwortlicher
+roles_040:
+  id: 40
+  person_id: 42
+  group_id: 17
+  type: Group::Jungschar::KontaktRegionalzeitschrift
+roles_041:
+  id: 41
+  person_id: 43
+  group_id: 17
+  type: Group::Jungschar::VerantwortlicherPSA
+roles_042:
+  id: 42
+  person_id: 44
+  group_id: 17
+  type: Group::Jungschar::Jugendarbeiter
+roles_043:
+  id: 43
+  person_id: 45
+  group_id: 20
+  type: Group::Stufe::Stufenleiter
+roles_044:
+  id: 44
+  person_id: 46
+  group_id: 20
+  type: Group::Stufe::MiniChef
+roles_045:
+  id: 45
+  person_id: 47
+  group_id: 20
+  type: Group::Stufe::Gruppenleiter
+roles_046:
+  id: 46
+  person_id: 48
+  group_id: 20
+  type: Group::Stufe::Minigruppenleiter
+roles_047:
+  id: 47
+  person_id: 49
+  group_id: 20
+  type: Group::Stufe::Helfer
+roles_048:
+  id: 48
+  person_id: 50
+  group_id: 20
+  type: Group::Stufe::Helfer
+roles_049:
+  id: 49
+  person_id: 51
+  group_id: 20
+  type: Group::Stufe::Helfer
+roles_050:
+  id: 50
+  person_id: 52
+  group_id: 20
+  type: Group::Stufe::Helfer
+roles_051:
+  id: 51
+  person_id: 53
+  group_id: 20
+  type: Group::Stufe::Helfer
+roles_052:
+  id: 52
+  person_id: 54
+  group_id: 20
+  type: Group::Stufe::Teilnehmer
+roles_053:
+  id: 53
+  person_id: 55
+  group_id: 20
+  type: Group::Stufe::Teilnehmer
+roles_054:
+  id: 54
+  person_id: 56
+  group_id: 20
+  type: Group::Stufe::Teilnehmer
+roles_055:
+  id: 55
+  person_id: 57
+  group_id: 20
+  type: Group::Stufe::Teilnehmer
+roles_056:
+  id: 56
+  person_id: 58
+  group_id: 20
+  type: Group::Stufe::Teilnehmer
+roles_057:
+  id: 57
+  person_id: 59
+  group_id: 23
+  type: Group::Stufe::Gruppenleiter
+roles_058:
+  id: 58
+  person_id: 60
+  group_id: 23
+  type: Group::Stufe::Minigruppenleiter
+roles_059:
+  id: 59
+  person_id: 61
+  group_id: 23
+  type: Group::Stufe::Helfer
+roles_060:
+  id: 60
+  person_id: 62
+  group_id: 23
+  type: Group::Stufe::Helfer
+roles_061:
+  id: 61
+  person_id: 63
+  group_id: 23
+  type: Group::Stufe::Helfer
+roles_062:
+  id: 62
+  person_id: 64
+  group_id: 23
+  type: Group::Stufe::Helfer
+roles_063:
+  id: 63
+  person_id: 65
+  group_id: 23
+  type: Group::Stufe::Helfer
+roles_064:
+  id: 64
+  person_id: 66
+  group_id: 23
+  type: Group::Stufe::Teilnehmer
+roles_065:
+  id: 65
+  person_id: 67
+  group_id: 23
+  type: Group::Stufe::Teilnehmer
+roles_066:
+  id: 66
+  person_id: 68
+  group_id: 23
+  type: Group::Stufe::Teilnehmer
+roles_067:
+  id: 67
+  person_id: 69
+  group_id: 23
+  type: Group::Stufe::Teilnehmer
+roles_068:
+  id: 68
+  person_id: 70
+  group_id: 23
+  type: Group::Stufe::Teilnehmer
+roles_069:
+  id: 69
+  person_id: 71
+  group_id: 19
+  type: Group::Stufe::Stufenleiter
+roles_070:
+  id: 70
+  person_id: 72
+  group_id: 19
+  type: Group::Stufe::MiniChef
+roles_071:
+  id: 71
+  person_id: 73
+  group_id: 19
+  type: Group::Stufe::Gruppenleiter
+roles_072:
+  id: 72
+  person_id: 74
+  group_id: 19
+  type: Group::Stufe::Minigruppenleiter
+roles_073:
+  id: 73
+  person_id: 75
+  group_id: 19
+  type: Group::Stufe::Helfer
+roles_074:
+  id: 74
+  person_id: 76
+  group_id: 19
+  type: Group::Stufe::Helfer
+roles_075:
+  id: 75
+  person_id: 77
+  group_id: 19
+  type: Group::Stufe::Helfer
+roles_076:
+  id: 76
+  person_id: 78
+  group_id: 19
+  type: Group::Stufe::Helfer
+roles_077:
+  id: 77
+  person_id: 79
+  group_id: 19
+  type: Group::Stufe::Helfer
+roles_078:
+  id: 78
+  person_id: 80
+  group_id: 19
+  type: Group::Stufe::Teilnehmer
+roles_079:
+  id: 79
+  person_id: 81
+  group_id: 19
+  type: Group::Stufe::Teilnehmer
+roles_080:
+  id: 80
+  person_id: 82
+  group_id: 19
+  type: Group::Stufe::Teilnehmer
+roles_081:
+  id: 81
+  person_id: 83
+  group_id: 19
+  type: Group::Stufe::Teilnehmer
+roles_082:
+  id: 82
+  person_id: 84
+  group_id: 19
+  type: Group::Stufe::Teilnehmer
+roles_083:
+  id: 83
+  person_id: 85
+  group_id: 21
+  type: Group::Stufe::Gruppenleiter
+roles_084:
+  id: 84
+  person_id: 86
+  group_id: 21
+  type: Group::Stufe::Minigruppenleiter
+roles_085:
+  id: 85
+  person_id: 87
+  group_id: 21
+  type: Group::Stufe::Helfer
+roles_086:
+  id: 86
+  person_id: 88
+  group_id: 21
+  type: Group::Stufe::Helfer
+roles_087:
+  id: 87
+  person_id: 89
+  group_id: 21
+  type: Group::Stufe::Helfer
+roles_088:
+  id: 88
+  person_id: 90
+  group_id: 21
+  type: Group::Stufe::Helfer
+roles_089:
+  id: 89
+  person_id: 91
+  group_id: 21
+  type: Group::Stufe::Helfer
+roles_090:
+  id: 90
+  person_id: 92
+  group_id: 21
+  type: Group::Stufe::Teilnehmer
+roles_091:
+  id: 91
+  person_id: 93
+  group_id: 21
+  type: Group::Stufe::Teilnehmer
+roles_092:
+  id: 92
+  person_id: 94
+  group_id: 21
+  type: Group::Stufe::Teilnehmer
+roles_093:
+  id: 93
+  person_id: 95
+  group_id: 21
+  type: Group::Stufe::Teilnehmer
+roles_094:
+  id: 94
+  person_id: 96
+  group_id: 21
+  type: Group::Stufe::Teilnehmer
+roles_095:
+  id: 95
+  person_id: 97
+  group_id: 22
+  type: Group::Stufe::Gruppenleiter
+roles_096:
+  id: 96
+  person_id: 98
+  group_id: 22
+  type: Group::Stufe::Minigruppenleiter
+roles_097:
+  id: 97
+  person_id: 99
+  group_id: 22
+  type: Group::Stufe::Helfer
+roles_098:
+  id: 98
+  person_id: 100
+  group_id: 22
+  type: Group::Stufe::Helfer
+roles_099:
+  id: 99
+  person_id: 101
+  group_id: 22
+  type: Group::Stufe::Helfer
+roles_100:
+  id: 100
+  person_id: 102
+  group_id: 22
+  type: Group::Stufe::Helfer
+roles_101:
+  id: 101
+  person_id: 103
+  group_id: 22
+  type: Group::Stufe::Helfer
+roles_102:
+  id: 102
+  person_id: 104
+  group_id: 22
+  type: Group::Stufe::Teilnehmer
+roles_103:
+  id: 103
+  person_id: 105
+  group_id: 22
+  type: Group::Stufe::Teilnehmer
+roles_104:
+  id: 104
+  person_id: 106
+  group_id: 22
+  type: Group::Stufe::Teilnehmer
+roles_105:
+  id: 105
+  person_id: 107
+  group_id: 22
+  type: Group::Stufe::Teilnehmer
+roles_106:
+  id: 106
+  person_id: 108
+  group_id: 22
+  type: Group::Stufe::Teilnehmer
+roles_107:
+  id: 107
+  person_id: 109
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Adressverantwortlicher
+roles_108:
+  id: 108
+  person_id: 110
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Finanzverantwortlicher
+roles_109:
+  id: 109
+  person_id: 111
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Hauptleitung
+roles_110:
+  id: 110
+  person_id: 112
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Materialverantwortlicher
+roles_111:
+  id: 111
+  person_id: 113
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Leiter
+roles_112:
+  id: 112
+  person_id: 114
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_113:
+  id: 113
+  person_id: 115
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_114:
+  id: 114
+  person_id: 116
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_115:
+  id: 115
+  person_id: 117
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_116:
+  id: 116
+  person_id: 118
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_117:
+  id: 117
+  person_id: 119
+  group_id: 41
+  type: Group::WeitereArbeitsgebiete::FreierMitarbeiter
+roles_118:
+  id: 118
+  person_id: 120
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Adressverantwortlicher
+roles_119:
+  id: 119
+  person_id: 121
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Finanzverantwortlicher
+roles_120:
+  id: 120
+  person_id: 122
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Hauptleitung
+roles_121:
+  id: 121
+  person_id: 123
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Materialverantwortlicher
+roles_122:
+  id: 122
+  person_id: 124
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Leiter
+roles_123:
+  id: 123
+  person_id: 125
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_124:
+  id: 124
+  person_id: 126
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_125:
+  id: 125
+  person_id: 127
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_126:
+  id: 126
+  person_id: 128
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_127:
+  id: 127
+  person_id: 129
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::Mitglied
+roles_128:
+  id: 128
+  person_id: 130
+  group_id: 40
+  type: Group::WeitereArbeitsgebiete::FreierMitarbeiter
+roles_129:
+  id: 129
+  person_id: 131
+  group_id: 42
+  type: Group::WeitereArbeitsgebieteTeamGruppe::Leiter
+roles_130:
+  id: 130
+  person_id: 132
+  group_id: 42
+  type: Group::WeitereArbeitsgebieteTeamGruppe::Mitglied
+roles_131:
+  id: 131
+  person_id: 133
+  group_id: 42
+  type: Group::WeitereArbeitsgebieteTeamGruppe::Mitglied
+roles_132:
+  id: 132
+  person_id: 134
+  group_id: 42
+  type: Group::WeitereArbeitsgebieteTeamGruppe::Mitglied
+roles_133:
+  id: 133
+  person_id: 135
+  group_id: 42
+  type: Group::WeitereArbeitsgebieteTeamGruppe::Mitglied
+roles_134:
+  id: 134
+  person_id: 136
+  group_id: 42
+  type: Group::WeitereArbeitsgebieteTeamGruppe::Mitglied
+roles_135:
+  id: 135
+  person_id: 137
+  group_id: 43
+  type: Group::WeitereArbeitsgebieteExterne::Verantwortlicher
+roles_136:
+  id: 136
+  person_id: 138
+  group_id: 43
+  type: Group::WeitereArbeitsgebieteExterne::Externer
+roles_137:
+  id: 137
+  person_id: 139
+  group_id: 37
+  type: Group::Sport::Adressverantwortlicher
+roles_138:
+  id: 138
+  person_id: 140
+  group_id: 37
+  type: Group::Sport::Finanzverantwortlicher
+roles_139:
+  id: 139
+  person_id: 141
+  group_id: 37
+  type: Group::Sport::Hauptleitung
+roles_140:
+  id: 140
+  person_id: 142
+  group_id: 37
+  type: Group::Sport::Materialverantwortlicher
+roles_141:
+  id: 141
+  person_id: 143
+  group_id: 37
+  type: Group::Sport::Leiter
+roles_142:
+  id: 142
+  person_id: 144
+  group_id: 37
+  type: Group::Sport::Mitglied
+roles_143:
+  id: 143
+  person_id: 145
+  group_id: 37
+  type: Group::Sport::Mitglied
+roles_144:
+  id: 144
+  person_id: 146
+  group_id: 37
+  type: Group::Sport::Mitglied
+roles_145:
+  id: 145
+  person_id: 147
+  group_id: 37
+  type: Group::Sport::Mitglied
+roles_146:
+  id: 146
+  person_id: 148
+  group_id: 37
+  type: Group::Sport::Mitglied
+roles_147:
+  id: 147
+  person_id: 149
+  group_id: 37
+  type: Group::Sport::FreierMitarbeiter
+roles_148:
+  id: 148
+  person_id: 150
+  group_id: 38
+  type: Group::SportTeamGruppe::Leiter
+roles_149:
+  id: 149
+  person_id: 151
+  group_id: 38
+  type: Group::SportTeamGruppe::Mitglied
+roles_150:
+  id: 150
+  person_id: 152
+  group_id: 38
+  type: Group::SportTeamGruppe::Mitglied
+roles_151:
+  id: 151
+  person_id: 153
+  group_id: 38
+  type: Group::SportTeamGruppe::Mitglied
+roles_152:
+  id: 152
+  person_id: 154
+  group_id: 38
+  type: Group::SportTeamGruppe::Mitglied
+roles_153:
+  id: 153
+  person_id: 155
+  group_id: 38
+  type: Group::SportTeamGruppe::Mitglied
+roles_154:
+  id: 154
+  person_id: 156
+  group_id: 39
+  type: Group::SportTeamGruppe::Leiter
+roles_155:
+  id: 155
+  person_id: 157
+  group_id: 39
+  type: Group::SportTeamGruppe::Mitglied
+roles_156:
+  id: 156
+  person_id: 158
+  group_id: 39
+  type: Group::SportTeamGruppe::Mitglied
+roles_157:
+  id: 157
+  person_id: 159
+  group_id: 39
+  type: Group::SportTeamGruppe::Mitglied
+roles_158:
+  id: 158
+  person_id: 160
+  group_id: 39
+  type: Group::SportTeamGruppe::Mitglied
+roles_159:
+  id: 159
+  person_id: 161
+  group_id: 39
+  type: Group::SportTeamGruppe::Mitglied
+roles_160:
+  id: 160
+  person_id: 162
+  group_id: 35
+  type: Group::TenSing::Hauptleiter
+roles_161:
+  id: 161
+  person_id: 163
+  group_id: 35
+  type: Group::TenSing::Mitglied
+roles_162:
+  id: 162
+  person_id: 164
+  group_id: 35
+  type: Group::TenSing::Mitglied
+roles_163:
+  id: 163
+  person_id: 165
+  group_id: 35
+  type: Group::TenSing::Mitglied
+roles_164:
+  id: 164
+  person_id: 166
+  group_id: 35
+  type: Group::TenSing::Mitglied
+roles_165:
+  id: 165
+  person_id: 167
+  group_id: 35
+  type: Group::TenSing::Mitglied
+roles_166:
+  id: 166
+  person_id: 168
+  group_id: 35
+  type: Group::TenSing::Arrangeur
+roles_167:
+  id: 167
+  person_id: 169
+  group_id: 35
+  type: Group::TenSing::Adressverwalter
+roles_168:
+  id: 168
+  person_id: 170
+  group_id: 35
+  type: Group::TenSing::Aktuar
+roles_169:
+  id: 169
+  person_id: 171
+  group_id: 35
+  type: Group::TenSing::Finanzverantwortlicher
+roles_170:
+  id: 170
+  person_id: 172
+  group_id: 35
+  type: Group::TenSing::FreierMitarbeiter
+roles_171:
+  id: 171
+  person_id: 173
+  group_id: 35
+  type: Group::TenSing::InputLeiter
+roles_172:
+  id: 172
+  person_id: 174
+  group_id: 35
+  type: Group::TenSing::Redaktor
+roles_173:
+  id: 173
+  person_id: 175
+  group_id: 35
+  type: Group::TenSing::Regionaltreffenvertreter
+roles_174:
+  id: 174
+  person_id: 176
+  group_id: 35
+  type: Group::TenSing::Webmaster
+roles_175:
+  id: 175
+  person_id: 177
+  group_id: 35
+  type: Group::TenSing::WerbeteamLeitender
+roles_176:
+  id: 176
+  person_id: 178
+  group_id: 35
+  type: Group::TenSing::Dirigent
+roles_177:
+  id: 177
+  person_id: 179
+  group_id: 35
+  type: Group::TenSing::Chorleiter
+roles_178:
+  id: 178
+  person_id: 180
+  group_id: 35
+  type: Group::TenSing::Chorsaenger
+roles_179:
+  id: 179
+  person_id: 181
+  group_id: 35
+  type: Group::TenSing::VideoLeiter
+roles_180:
+  id: 180
+  person_id: 182
+  group_id: 35
+  type: Group::TenSing::StagedesignLeiter
+roles_181:
+  id: 181
+  person_id: 183
+  group_id: 35
+  type: Group::TenSing::Stagedesigner
+roles_182:
+  id: 182
+  person_id: 184
+  group_id: 35
+  type: Group::TenSing::DJ
+roles_183:
+  id: 183
+  person_id: 185
+  group_id: 35
+  type: Group::TenSing::VerantwortlicherLagerWeekends
+roles_184:
+  id: 184
+  person_id: 186
+  group_id: 35
+  type: Group::TenSing::Jugendarbeiter
+roles_185:
+  id: 185
+  person_id: 187
+  group_id: 35
+  type: Group::TenSing::BandLeiter
+roles_186:
+  id: 186
+  person_id: 188
+  group_id: 35
+  type: Group::TenSing::Bandmitglied
+roles_187:
+  id: 187
+  person_id: 189
+  group_id: 35
+  type: Group::TenSing::TanzLeiter
+roles_188:
+  id: 188
+  person_id: 190
+  group_id: 35
+  type: Group::TenSing::Taenzer
+roles_189:
+  id: 189
+  person_id: 191
+  group_id: 35
+  type: Group::TenSing::TechnikLeiter
+roles_190:
+  id: 190
+  person_id: 192
+  group_id: 35
+  type: Group::TenSing::Techniker
+roles_191:
+  id: 191
+  person_id: 193
+  group_id: 35
+  type: Group::TenSing::TheaterLeiter
+roles_192:
+  id: 192
+  person_id: 194
+  group_id: 35
+  type: Group::TenSing::Schauspieler
+roles_193:
+  id: 193
+  person_id: 195
+  group_id: 36
+  type: Group::TenSingTeamGruppe::Adressverantwortliche
+roles_194:
+  id: 194
+  person_id: 196
+  group_id: 18
+  type: Group::Jungschar::Abteilungsleiter
+roles_195:
+  id: 195
+  person_id: 197
+  group_id: 18
+  type: Group::Jungschar::Coach
+roles_196:
+  id: 196
+  person_id: 198
+  group_id: 18
+  type: Group::Jungschar::Finanzverantwortlicher
+roles_197:
+  id: 197
+  person_id: 199
+  group_id: 18
+  type: Group::Jungschar::Adressverwalter
+roles_198:
+  id: 198
+  person_id: 200
+  group_id: 18
+  type: Group::Jungschar::Aktuar
+roles_199:
+  id: 199
+  person_id: 201
+  group_id: 18
+  type: Group::Jungschar::Busverwalter
+roles_200:
+  id: 200
+  person_id: 202
+  group_id: 18
+  type: Group::Jungschar::FreierMitarbeiter
+roles_201:
+  id: 201
+  person_id: 203
+  group_id: 18
+  type: Group::Jungschar::Hausverantwortlicher
+roles_202:
+  id: 202
+  person_id: 204
+  group_id: 18
+  type: Group::Jungschar::Input
+roles_203:
+  id: 203
+  person_id: 205
+  group_id: 18
+  type: Group::Jungschar::Laedeliverantwortlicher
+roles_204:
+  id: 204
+  person_id: 206
+  group_id: 18
+  type: Group::Jungschar::Redaktor
+roles_205:
+  id: 205
+  person_id: 207
+  group_id: 18
+  type: Group::Jungschar::Regionaltreffenvertreter
+roles_206:
+  id: 206
+  person_id: 208
+  group_id: 18
+  type: Group::Jungschar::Webmaster
+roles_207:
+  id: 207
+  person_id: 209
+  group_id: 18
+  type: Group::Jungschar::Werbung
+roles_208:
+  id: 208
+  person_id: 210
+  group_id: 18
+  type: Group::Jungschar::Materialverantwortlicher
+roles_209:
+  id: 209
+  person_id: 211
+  group_id: 18
+  type: Group::Jungschar::KontaktRegionalzeitschrift
+roles_210:
+  id: 210
+  person_id: 212
+  group_id: 18
+  type: Group::Jungschar::VerantwortlicherPSA
+roles_211:
+  id: 211
+  person_id: 213
+  group_id: 18
+  type: Group::Jungschar::Jugendarbeiter
+roles_212:
+  id: 212
+  person_id: 214
+  group_id: 25
+  type: Group::Stufe::Stufenleiter
+roles_213:
+  id: 213
+  person_id: 215
+  group_id: 25
+  type: Group::Stufe::MiniChef
+roles_214:
+  id: 214
+  person_id: 216
+  group_id: 25
+  type: Group::Stufe::Gruppenleiter
+roles_215:
+  id: 215
+  person_id: 217
+  group_id: 25
+  type: Group::Stufe::Minigruppenleiter
+roles_216:
+  id: 216
+  person_id: 218
+  group_id: 25
+  type: Group::Stufe::Helfer
+roles_217:
+  id: 217
+  person_id: 219
+  group_id: 25
+  type: Group::Stufe::Helfer
+roles_218:
+  id: 218
+  person_id: 220
+  group_id: 25
+  type: Group::Stufe::Helfer
+roles_219:
+  id: 219
+  person_id: 221
+  group_id: 25
+  type: Group::Stufe::Helfer
+roles_220:
+  id: 220
+  person_id: 222
+  group_id: 25
+  type: Group::Stufe::Helfer
+roles_221:
+  id: 221
+  person_id: 223
+  group_id: 25
+  type: Group::Stufe::Teilnehmer
+roles_222:
+  id: 222
+  person_id: 224
+  group_id: 25
+  type: Group::Stufe::Teilnehmer
+roles_223:
+  id: 223
+  person_id: 225
+  group_id: 25
+  type: Group::Stufe::Teilnehmer
+roles_224:
+  id: 224
+  person_id: 226
+  group_id: 25
+  type: Group::Stufe::Teilnehmer
+roles_225:
+  id: 225
+  person_id: 227
+  group_id: 25
+  type: Group::Stufe::Teilnehmer
+roles_226:
+  id: 226
+  person_id: 228
+  group_id: 33
+  type: Group::Stufe::Stufenleiter
+roles_227:
+  id: 227
+  person_id: 229
+  group_id: 33
+  type: Group::Stufe::MiniChef
+roles_228:
+  id: 228
+  person_id: 230
+  group_id: 33
+  type: Group::Stufe::Gruppenleiter
+roles_229:
+  id: 229
+  person_id: 231
+  group_id: 33
+  type: Group::Stufe::Minigruppenleiter
+roles_230:
+  id: 230
+  person_id: 232
+  group_id: 33
+  type: Group::Stufe::Helfer
+roles_231:
+  id: 231
+  person_id: 233
+  group_id: 33
+  type: Group::Stufe::Helfer
+roles_232:
+  id: 232
+  person_id: 234
+  group_id: 33
+  type: Group::Stufe::Helfer
+roles_233:
+  id: 233
+  person_id: 235
+  group_id: 33
+  type: Group::Stufe::Helfer
+roles_234:
+  id: 234
+  person_id: 236
+  group_id: 33
+  type: Group::Stufe::Helfer
+roles_235:
+  id: 235
+  person_id: 237
+  group_id: 33
+  type: Group::Stufe::Teilnehmer
+roles_236:
+  id: 236
+  person_id: 238
+  group_id: 33
+  type: Group::Stufe::Teilnehmer
+roles_237:
+  id: 237
+  person_id: 239
+  group_id: 33
+  type: Group::Stufe::Teilnehmer
+roles_238:
+  id: 238
+  person_id: 240
+  group_id: 33
+  type: Group::Stufe::Teilnehmer
+roles_239:
+  id: 239
+  person_id: 241
+  group_id: 33
+  type: Group::Stufe::Teilnehmer
+roles_240:
+  id: 240
+  person_id: 242
+  group_id: 24
+  type: Group::Froeschli::Froeschlihauptleiter
+roles_241:
+  id: 241
+  person_id: 243
+  group_id: 24
+  type: Group::Froeschli::Froeschlileiter
+roles_242:
+  id: 242
+  person_id: 244
+  group_id: 24
+  type: Group::Froeschli::Teilnehmer
+roles_243:
+  id: 243
+  person_id: 245
+  group_id: 24
+  type: Group::Froeschli::Teilnehmer
+roles_244:
+  id: 244
+  person_id: 246
+  group_id: 24
+  type: Group::Froeschli::Teilnehmer
+roles_245:
+  id: 245
+  person_id: 247
+  group_id: 24
+  type: Group::Froeschli::Teilnehmer
+roles_246:
+  id: 246
+  person_id: 248
+  group_id: 24
+  type: Group::Froeschli::Teilnehmer
+roles_247:
+  id: 247
+  person_id: 249
+  group_id: 26
+  type: Group::Stufe::Stufenleiter
+roles_248:
+  id: 248
+  person_id: 250
+  group_id: 26
+  type: Group::Stufe::MiniChef
+roles_249:
+  id: 249
+  person_id: 251
+  group_id: 26
+  type: Group::Stufe::Gruppenleiter
+roles_250:
+  id: 250
+  person_id: 252
+  group_id: 26
+  type: Group::Stufe::Minigruppenleiter
+roles_251:
+  id: 251
+  person_id: 253
+  group_id: 26
+  type: Group::Stufe::Helfer
+roles_252:
+  id: 252
+  person_id: 254
+  group_id: 26
+  type: Group::Stufe::Helfer
+roles_253:
+  id: 253
+  person_id: 255
+  group_id: 26
+  type: Group::Stufe::Helfer
+roles_254:
+  id: 254
+  person_id: 256
+  group_id: 26
+  type: Group::Stufe::Helfer
+roles_255:
+  id: 255
+  person_id: 257
+  group_id: 26
+  type: Group::Stufe::Helfer
+roles_256:
+  id: 256
+  person_id: 258
+  group_id: 26
+  type: Group::Stufe::Teilnehmer
+roles_257:
+  id: 257
+  person_id: 259
+  group_id: 26
+  type: Group::Stufe::Teilnehmer
+roles_258:
+  id: 258
+  person_id: 260
+  group_id: 26
+  type: Group::Stufe::Teilnehmer
+roles_259:
+  id: 259
+  person_id: 261
+  group_id: 26
+  type: Group::Stufe::Teilnehmer
+roles_260:
+  id: 260
+  person_id: 262
+  group_id: 26
+  type: Group::Stufe::Teilnehmer
+roles_261:
+  id: 261
+  person_id: 263
+  group_id: 32
+  type: Group::Stufe::Stufenleiter
+roles_262:
+  id: 262
+  person_id: 264
+  group_id: 32
+  type: Group::Stufe::MiniChef
+roles_263:
+  id: 263
+  person_id: 265
+  group_id: 32
+  type: Group::Stufe::Gruppenleiter
+roles_264:
+  id: 264
+  person_id: 266
+  group_id: 32
+  type: Group::Stufe::Minigruppenleiter
+roles_265:
+  id: 265
+  person_id: 267
+  group_id: 32
+  type: Group::Stufe::Helfer
+roles_266:
+  id: 266
+  person_id: 268
+  group_id: 32
+  type: Group::Stufe::Helfer
+roles_267:
+  id: 267
+  person_id: 269
+  group_id: 32
+  type: Group::Stufe::Helfer
+roles_268:
+  id: 268
+  person_id: 270
+  group_id: 32
+  type: Group::Stufe::Helfer
+roles_269:
+  id: 269
+  person_id: 271
+  group_id: 32
+  type: Group::Stufe::Helfer
+roles_270:
+  id: 270
+  person_id: 272
+  group_id: 32
+  type: Group::Stufe::Teilnehmer
+roles_271:
+  id: 271
+  person_id: 273
+  group_id: 32
+  type: Group::Stufe::Teilnehmer
+roles_272:
+  id: 272
+  person_id: 274
+  group_id: 32
+  type: Group::Stufe::Teilnehmer
+roles_273:
+  id: 273
+  person_id: 275
+  group_id: 32
+  type: Group::Stufe::Teilnehmer
+roles_274:
+  id: 274
+  person_id: 276
+  group_id: 32
+  type: Group::Stufe::Teilnehmer
+roles_275:
+  id: 275
+  person_id: 277
+  group_id: 34
+  type: Group::Stufe::Stufenleiter
+roles_276:
+  id: 276
+  person_id: 278
+  group_id: 34
+  type: Group::Stufe::MiniChef
+roles_277:
+  id: 277
+  person_id: 279
+  group_id: 34
+  type: Group::Stufe::Gruppenleiter
+roles_278:
+  id: 278
+  person_id: 280
+  group_id: 34
+  type: Group::Stufe::Minigruppenleiter
+roles_279:
+  id: 279
+  person_id: 281
+  group_id: 34
+  type: Group::Stufe::Helfer
+roles_280:
+  id: 280
+  person_id: 282
+  group_id: 34
+  type: Group::Stufe::Helfer
+roles_281:
+  id: 281
+  person_id: 283
+  group_id: 34
+  type: Group::Stufe::Helfer
+roles_282:
+  id: 282
+  person_id: 284
+  group_id: 34
+  type: Group::Stufe::Helfer
+roles_283:
+  id: 283
+  person_id: 285
+  group_id: 34
+  type: Group::Stufe::Helfer
+roles_284:
+  id: 284
+  person_id: 286
+  group_id: 34
+  type: Group::Stufe::Teilnehmer
+roles_285:
+  id: 285
+  person_id: 287
+  group_id: 34
+  type: Group::Stufe::Teilnehmer
+roles_286:
+  id: 286
+  person_id: 288
+  group_id: 34
+  type: Group::Stufe::Teilnehmer
+roles_287:
+  id: 287
+  person_id: 289
+  group_id: 34
+  type: Group::Stufe::Teilnehmer
+roles_288:
+  id: 288
+  person_id: 290
+  group_id: 34
+  type: Group::Stufe::Teilnehmer
+roles_289:
+  id: 289
+  person_id: 291
+  group_id: 27
+  type: Group::Stufe::Stufenleiter
+roles_290:
+  id: 290
+  person_id: 292
+  group_id: 27
+  type: Group::Stufe::MiniChef
+roles_291:
+  id: 291
+  person_id: 293
+  group_id: 27
+  type: Group::Stufe::Gruppenleiter
+roles_292:
+  id: 292
+  person_id: 294
+  group_id: 27
+  type: Group::Stufe::Minigruppenleiter
+roles_293:
+  id: 293
+  person_id: 295
+  group_id: 27
+  type: Group::Stufe::Helfer
+roles_294:
+  id: 294
+  person_id: 296
+  group_id: 27
+  type: Group::Stufe::Helfer
+roles_295:
+  id: 295
+  person_id: 297
+  group_id: 27
+  type: Group::Stufe::Helfer
+roles_296:
+  id: 296
+  person_id: 298
+  group_id: 27
+  type: Group::Stufe::Helfer
+roles_297:
+  id: 297
+  person_id: 299
+  group_id: 27
+  type: Group::Stufe::Helfer
+roles_298:
+  id: 298
+  person_id: 300
+  group_id: 27
+  type: Group::Stufe::Teilnehmer
+roles_299:
+  id: 299
+  person_id: 301
+  group_id: 27
+  type: Group::Stufe::Teilnehmer
+roles_300:
+  id: 300
+  person_id: 302
+  group_id: 27
+  type: Group::Stufe::Teilnehmer
+roles_301:
+  id: 301
+  person_id: 303
+  group_id: 27
+  type: Group::Stufe::Teilnehmer
+roles_302:
+  id: 302
+  person_id: 304
+  group_id: 27
+  type: Group::Stufe::Teilnehmer
+roles_303:
+  id: 303
+  person_id: 305
+  group_id: 28
+  type: Group::Stufe::Stufenleiter
+roles_304:
+  id: 304
+  person_id: 306
+  group_id: 28
+  type: Group::Stufe::MiniChef
+roles_305:
+  id: 305
+  person_id: 307
+  group_id: 28
+  type: Group::Stufe::Gruppenleiter
+roles_306:
+  id: 306
+  person_id: 308
+  group_id: 28
+  type: Group::Stufe::Minigruppenleiter
+roles_307:
+  id: 307
+  person_id: 309
+  group_id: 28
+  type: Group::Stufe::Helfer
+roles_308:
+  id: 308
+  person_id: 310
+  group_id: 28
+  type: Group::Stufe::Helfer
+roles_309:
+  id: 309
+  person_id: 311
+  group_id: 28
+  type: Group::Stufe::Helfer
+roles_310:
+  id: 310
+  person_id: 312
+  group_id: 28
+  type: Group::Stufe::Helfer
+roles_311:
+  id: 311
+  person_id: 313
+  group_id: 28
+  type: Group::Stufe::Helfer
+roles_312:
+  id: 312
+  person_id: 314
+  group_id: 28
+  type: Group::Stufe::Teilnehmer
+roles_313:
+  id: 313
+  person_id: 315
+  group_id: 28
+  type: Group::Stufe::Teilnehmer
+roles_314:
+  id: 314
+  person_id: 316
+  group_id: 28
+  type: Group::Stufe::Teilnehmer
+roles_315:
+  id: 315
+  person_id: 317
+  group_id: 28
+  type: Group::Stufe::Teilnehmer
+roles_316:
+  id: 316
+  person_id: 318
+  group_id: 28
+  type: Group::Stufe::Teilnehmer
+roles_317:
+  id: 317
+  person_id: 319
+  group_id: 29
+  type: Group::Stufe::Stufenleiter
+roles_318:
+  id: 318
+  person_id: 320
+  group_id: 29
+  type: Group::Stufe::MiniChef
+roles_319:
+  id: 319
+  person_id: 321
+  group_id: 29
+  type: Group::Stufe::Gruppenleiter
+roles_320:
+  id: 320
+  person_id: 322
+  group_id: 29
+  type: Group::Stufe::Minigruppenleiter
+roles_321:
+  id: 321
+  person_id: 323
+  group_id: 29
+  type: Group::Stufe::Helfer
+roles_322:
+  id: 322
+  person_id: 324
+  group_id: 29
+  type: Group::Stufe::Helfer
+roles_323:
+  id: 323
+  person_id: 325
+  group_id: 29
+  type: Group::Stufe::Helfer
+roles_324:
+  id: 324
+  person_id: 326
+  group_id: 29
+  type: Group::Stufe::Helfer
+roles_325:
+  id: 325
+  person_id: 327
+  group_id: 29
+  type: Group::Stufe::Helfer
+roles_326:
+  id: 326
+  person_id: 328
+  group_id: 29
+  type: Group::Stufe::Teilnehmer
+roles_327:
+  id: 327
+  person_id: 329
+  group_id: 29
+  type: Group::Stufe::Teilnehmer
+roles_328:
+  id: 328
+  person_id: 330
+  group_id: 29
+  type: Group::Stufe::Teilnehmer
+roles_329:
+  id: 329
+  person_id: 331
+  group_id: 29
+  type: Group::Stufe::Teilnehmer
+roles_330:
+  id: 330
+  person_id: 332
+  group_id: 29
+  type: Group::Stufe::Teilnehmer
+roles_331:
+  id: 331
+  person_id: 333
+  group_id: 30
+  type: Group::Stufe::Stufenleiter
+roles_332:
+  id: 332
+  person_id: 334
+  group_id: 30
+  type: Group::Stufe::MiniChef
+roles_333:
+  id: 333
+  person_id: 335
+  group_id: 30
+  type: Group::Stufe::Gruppenleiter
+roles_334:
+  id: 334
+  person_id: 336
+  group_id: 30
+  type: Group::Stufe::Minigruppenleiter
+roles_335:
+  id: 335
+  person_id: 337
+  group_id: 30
+  type: Group::Stufe::Helfer
+roles_336:
+  id: 336
+  person_id: 338
+  group_id: 30
+  type: Group::Stufe::Helfer
+roles_337:
+  id: 337
+  person_id: 339
+  group_id: 30
+  type: Group::Stufe::Helfer
+roles_338:
+  id: 338
+  person_id: 340
+  group_id: 30
+  type: Group::Stufe::Helfer
+roles_339:
+  id: 339
+  person_id: 341
+  group_id: 30
+  type: Group::Stufe::Helfer
+roles_340:
+  id: 340
+  person_id: 342
+  group_id: 30
+  type: Group::Stufe::Teilnehmer
+roles_341:
+  id: 341
+  person_id: 343
+  group_id: 30
+  type: Group::Stufe::Teilnehmer
+roles_342:
+  id: 342
+  person_id: 344
+  group_id: 30
+  type: Group::Stufe::Teilnehmer
+roles_343:
+  id: 343
+  person_id: 345
+  group_id: 30
+  type: Group::Stufe::Teilnehmer
+roles_344:
+  id: 344
+  person_id: 346
+  group_id: 30
+  type: Group::Stufe::Teilnehmer
+roles_345:
+  id: 345
+  person_id: 347
+  group_id: 31
+  type: Group::Stufe::Stufenleiter
+roles_346:
+  id: 346
+  person_id: 348
+  group_id: 31
+  type: Group::Stufe::MiniChef
+roles_347:
+  id: 347
+  person_id: 349
+  group_id: 31
+  type: Group::Stufe::Gruppenleiter
+roles_348:
+  id: 348
+  person_id: 350
+  group_id: 31
+  type: Group::Stufe::Minigruppenleiter
+roles_349:
+  id: 349
+  person_id: 351
+  group_id: 31
+  type: Group::Stufe::Helfer
+roles_350:
+  id: 350
+  person_id: 352
+  group_id: 31
+  type: Group::Stufe::Helfer
+roles_351:
+  id: 351
+  person_id: 353
+  group_id: 31
+  type: Group::Stufe::Helfer
+roles_352:
+  id: 352
+  person_id: 354
+  group_id: 31
+  type: Group::Stufe::Helfer
+roles_353:
+  id: 353
+  person_id: 355
+  group_id: 31
+  type: Group::Stufe::Helfer
+roles_354:
+  id: 354
+  person_id: 356
+  group_id: 31
+  type: Group::Stufe::Teilnehmer
+roles_355:
+  id: 355
+  person_id: 357
+  group_id: 31
+  type: Group::Stufe::Teilnehmer
+roles_356:
+  id: 356
+  person_id: 358
+  group_id: 31
+  type: Group::Stufe::Teilnehmer
+roles_357:
+  id: 357
+  person_id: 359
+  group_id: 31
+  type: Group::Stufe::Teilnehmer
+roles_358:
+  id: 358
+  person_id: 360
+  group_id: 31
+  type: Group::Stufe::Teilnehmer
+roles_359:
+  id: 359
+  person_id: 361
+  group_id: 3
+  type: Group::DachverbandGeschaeftsstelle::Geschaeftsleiter
+roles_360:
+  id: 360
+  person_id: 362
+  group_id: 3
+  type: Group::DachverbandGeschaeftsstelle::Angestellter
+roles_361:
+  id: 361
+  person_id: 363
+  group_id: 3
+  type: Group::DachverbandGeschaeftsstelle::Finanzverantwortlicher
+roles_362:
+  id: 362
+  person_id: 364
+  group_id: 4
+  type: Group::DachverbandGremium::Leitung
+roles_363:
+  id: 363
+  person_id: 365
+  group_id: 4
+  type: Group::DachverbandGremium::Mitglied
+roles_364:
+  id: 364
+  person_id: 366
+  group_id: 4
+  type: Group::DachverbandGremium::Mitglied
+roles_365:
+  id: 365
+  person_id: 367
+  group_id: 4
+  type: Group::DachverbandGremium::Mitglied
+roles_366:
+  id: 366
+  person_id: 368
+  group_id: 4
+  type: Group::DachverbandGremium::Mitglied
+roles_367:
+  id: 367
+  person_id: 369
+  group_id: 4
+  type: Group::DachverbandGremium::Mitglied
+roles_368:
+  id: 368
+  person_id: 370
+  group_id: 4
+  type: Group::DachverbandGremium::AktiverKursleiter
+roles_369:
+  id: 369
+  person_id: 371
+  group_id: 2
+  type: Group::DachverbandVorstand::Praesidium
+roles_370:
+  id: 370
+  person_id: 372
+  group_id: 2
+  type: Group::DachverbandVorstand::Finanzverantwortlicher
+roles_371:
+  id: 371
+  person_id: 373
+  group_id: 2
+  type: Group::DachverbandVorstand::Mitglied
+roles_372:
+  id: 372
+  person_id: 374
+  group_id: 2
+  type: Group::DachverbandVorstand::Mitglied
+roles_373:
+  id: 373
+  person_id: 375
+  group_id: 2
+  type: Group::DachverbandVorstand::Mitglied
+roles_374:
+  id: 374
+  person_id: 376
+  group_id: 2
+  type: Group::DachverbandVorstand::Mitglied
+roles_375:
+  id: 375
+  person_id: 377
+  group_id: 2
+  type: Group::DachverbandVorstand::Mitglied
+roles_376:
+  id: 376
+  person_id: 378
+  group_id: 1
+  type: Group::DachverbandGeschaeftsstelle::Angestellter
+roles_377:
+  id: 377
+  person_id: 379
+  group_id: 1
+  type: Group::DachverbandGeschaeftsstelle::Angestellter
+roles_378:
+  id: 378
+  person_id: 380
+  group_id: 1
+  type: Group::DachverbandGeschaeftsstelle::Angestellter
+roles_379:
+  id: 379
+  person_id: 381
+  group_id: 1
+  type: Group::DachverbandGeschaeftsstelle::Angestellter
+roles_380:
+  id: 380
+  person_id: 382
+  group_id: 1
+  type: Group::DachverbandGeschaeftsstelle::Angestellter
+roles_381:
+  id: 381
+  person_id: 383
+  group_id: 1
+  type: Group::DachverbandGeschaeftsstelle::Angestellter

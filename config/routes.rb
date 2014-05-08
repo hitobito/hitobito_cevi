@@ -6,5 +6,26 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 Rails.application.routes.draw do
-  
+
+  extend LanguageRouteScope
+
+  language_scope do
+
+    resources :censuses, only: [:new, :create]
+    get 'censuses' => 'censuses#new' # route required for language switch
+
+    resources :groups do
+      member do
+        scope module: 'census_evaluation' do
+          get 'census/dachverband' => 'dachverband#index'
+          get 'census/jungschar' => 'jungschar#index'
+        end
+
+        get 'population' => 'population#index'
+      end
+
+      resource :member_counts, only: [:create, :edit, :update, :destroy]
+      get 'member_counts' => 'member_counts#edit' # route required for language switch
+    end
+  end
 end

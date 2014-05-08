@@ -1,0 +1,363 @@
+---
+groups_001:
+  id: 1
+  lft: 1
+  rgt: 86
+  name: CEVI Schweiz
+  short_name: CEVI
+  type: Group::Dachverband
+  layer_group_id: 1
+groups_002:
+  id: 2
+  parent_id: 1
+  lft: 84
+  rgt: 85
+  name: Vorstand
+  type: Group::DachverbandVorstand
+  layer_group_id: 1
+groups_003:
+  id: 3
+  parent_id: 1
+  lft: 80
+  rgt: 81
+  name: Geschäftsstelle
+  type: Group::DachverbandGeschaeftsstelle
+  layer_group_id: 1
+groups_004:
+  id: 4
+  parent_id: 1
+  lft: 82
+  rgt: 83
+  name: Revisionsstelle
+  type: Group::DachverbandGremium
+  layer_group_id: 1
+groups_005:
+  id: 5
+  parent_id: 1
+  lft: 6
+  rgt: 79
+  name: Cevi Regionalverband ZH-SH-GL
+  short_name: RV ZH-SH-GL
+  type: Group::Mitgliederorganisation
+  email: rv-zhshgl@example.com
+  address: Sihlstrasse 33
+  zip_code: 8021
+  town: Zürich
+  country: Schweiz
+  layer_group_id: 5
+groups_006:
+  id: 6
+  parent_id: 1
+  lft: 4
+  rgt: 5
+  name: Cevi Region Bern
+  short_name: RV BE
+  type: Group::Mitgliederorganisation
+  email: rv-bern@example.com
+  address: Rabbentalstrasse 69
+  zip_code: 3013
+  town: Bern
+  country: Schweiz
+  layer_group_id: 6
+groups_007:
+  id: 7
+  parent_id: 1
+  lft: 2
+  rgt: 3
+  name: Cevi Alpin
+  short_name: AG ALP
+  type: Group::Mitgliederorganisation
+  email: alpin@example.com
+  address: Ausser Dorf 2
+  zip_code: 7260
+  town: Davos
+  country: Schweiz
+  layer_group_id: 7
+groups_008:
+  id: 8
+  parent_id: 5
+  lft: 15
+  rgt: 16
+  name: Zentralvorstand
+  type: Group::MitgliederorganisationVorstand
+  layer_group_id: 5
+groups_009:
+  id: 9
+  parent_id: 5
+  lft: 11
+  rgt: 12
+  name: Leitungsteam
+  type: Group::MitgliederorganisationGeschaeftsstelle
+  layer_group_id: 5
+groups_010:
+  id: 10
+  parent_id: 5
+  lft: 7
+  rgt: 8
+  name: Beirat
+  type: Group::MitgliederorganisationGremium
+  layer_group_id: 5
+groups_011:
+  id: 11
+  parent_id: 5
+  lft: 17
+  rgt: 78
+  name: Zürich
+  type: Group::Sektion
+  layer_group_id: 11
+groups_012:
+  id: 12
+  parent_id: 5
+  lft: 13
+  rgt: 14
+  name: Oberland
+  type: Group::Sektion
+  layer_group_id: 12
+groups_013:
+  id: 13
+  parent_id: 11
+  lft: 20
+  rgt: 77
+  name: Stadt Zürich
+  type: Group::Ortsgruppe
+  layer_group_id: 13
+groups_014:
+  id: 14
+  parent_id: 11
+  lft: 18
+  rgt: 19
+  name: Jona
+  type: Group::Ortsgruppe
+  layer_group_id: 14
+groups_015:
+  id: 15
+  parent_id: 5
+  lft: 9
+  rgt: 10
+  name: Hintereffretikon
+  type: Group::Ortsgruppe
+  layer_group_id: 15
+groups_016:
+  id: 16
+  parent_id: 13
+  lft: 51
+  rgt: 52
+  name: Verein Cevi Zürich
+  type: Group::Verein
+  layer_group_id: 16
+groups_017:
+  id: 17
+  parent_id: 13
+  lft: 21
+  rgt: 32
+  name: Altstetten-Albisrieden
+  type: Group::Jungschar
+  layer_group_id: 17
+groups_018:
+  id: 18
+  parent_id: 13
+  lft: 53
+  rgt: 76
+  name: Zürich 10
+  type: Group::Jungschar
+  layer_group_id: 18
+groups_019:
+  id: 19
+  parent_id: 17
+  lft: 26
+  rgt: 31
+  name: Jahrgang 04/05
+  type: Group::Stufe
+  layer_group_id: 17
+groups_020:
+  id: 20
+  parent_id: 17
+  lft: 22
+  rgt: 25
+  name: Jahrgang 02/03
+  type: Group::Stufe
+  layer_group_id: 17
+groups_021:
+  id: 21
+  parent_id: 19
+  lft: 27
+  rgt: 28
+  name: Ammon
+  type: Group::Gruppe
+  layer_group_id: 17
+groups_022:
+  id: 22
+  parent_id: 19
+  lft: 29
+  rgt: 30
+  name: Genesis
+  type: Group::Gruppe
+  layer_group_id: 17
+groups_023:
+  id: 23
+  parent_id: 20
+  lft: 23
+  rgt: 24
+  name: Masada
+  type: Group::Gruppe
+  layer_group_id: 17
+groups_024:
+  id: 24
+  parent_id: 18
+  lft: 58
+  rgt: 59
+  name: Fröschli
+  type: Group::Froeschli
+  layer_group_id: 18
+groups_025:
+  id: 25
+  parent_id: 18
+  lft: 54
+  rgt: 55
+  name: Aranda
+  type: Group::Stufe
+  layer_group_id: 18
+groups_026:
+  id: 26
+  parent_id: 18
+  lft: 60
+  rgt: 61
+  name: Jona
+  type: Group::Stufe
+  layer_group_id: 18
+groups_027:
+  id: 27
+  parent_id: 18
+  lft: 66
+  rgt: 67
+  name: Salomo
+  type: Group::Stufe
+  layer_group_id: 18
+groups_028:
+  id: 28
+  parent_id: 18
+  lft: 68
+  rgt: 69
+  name: Samson
+  type: Group::Stufe
+  layer_group_id: 18
+groups_029:
+  id: 29
+  parent_id: 18
+  lft: 70
+  rgt: 71
+  name: Sinai
+  type: Group::Stufe
+  layer_group_id: 18
+groups_030:
+  id: 30
+  parent_id: 18
+  lft: 72
+  rgt: 73
+  name: Zephanja
+  type: Group::Stufe
+  layer_group_id: 18
+groups_031:
+  id: 31
+  parent_id: 18
+  lft: 74
+  rgt: 75
+  name: Zion
+  type: Group::Stufe
+  layer_group_id: 18
+groups_032:
+  id: 32
+  parent_id: 18
+  lft: 62
+  rgt: 63
+  name: Leitungsteam
+  type: Group::Stufe
+  layer_group_id: 18
+groups_033:
+  id: 33
+  parent_id: 18
+  lft: 56
+  rgt: 57
+  name: Cevi-E
+  type: Group::Stufe
+  layer_group_id: 18
+groups_034:
+  id: 34
+  parent_id: 18
+  lft: 64
+  rgt: 65
+  name: Räumlichkeit
+  type: Group::Stufe
+  layer_group_id: 18
+groups_035:
+  id: 35
+  parent_id: 13
+  lft: 47
+  rgt: 50
+  name: Seebach
+  type: Group::TenSing
+  layer_group_id: 35
+groups_036:
+  id: 36
+  parent_id: 35
+  lft: 48
+  rgt: 49
+  name: Leitungsteam
+  type: Group::TenSingTeamGruppe
+  layer_group_id: 35
+groups_037:
+  id: 37
+  parent_id: 13
+  lft: 41
+  rgt: 46
+  name: Cevi Zürich Sport
+  type: Group::Sport
+  layer_group_id: 37
+groups_038:
+  id: 38
+  parent_id: 37
+  lft: 42
+  rgt: 43
+  name: Mannschaft A
+  type: Group::SportTeamGruppe
+  layer_group_id: 37
+groups_039:
+  id: 39
+  parent_id: 37
+  lft: 44
+  rgt: 45
+  name: Mannschaft B
+  type: Group::SportTeamGruppe
+  layer_group_id: 37
+groups_040:
+  id: 40
+  parent_id: 13
+  lft: 35
+  rgt: 40
+  name: Cevi Lernhilfe
+  type: Group::WeitereArbeitsgebiete
+  layer_group_id: 40
+groups_041:
+  id: 41
+  parent_id: 13
+  lft: 33
+  rgt: 34
+  name: Cevi Kino
+  type: Group::WeitereArbeitsgebiete
+  layer_group_id: 41
+groups_042:
+  id: 42
+  parent_id: 40
+  lft: 36
+  rgt: 37
+  name: Lehrpersonen
+  type: Group::WeitereArbeitsgebieteTeamGruppe
+  layer_group_id: 40
+groups_043:
+  id: 43
+  parent_id: 40
+  lft: 38
+  rgt: 39
+  name: Schüler/-innen
+  type: Group::WeitereArbeitsgebieteExterne
+  layer_group_id: 40

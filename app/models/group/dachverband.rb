@@ -51,4 +51,16 @@ class Group::Dachverband < Group
 
   roles Administrator
 
+  def census_groups(_year)
+    []
+  end
+
+  def census_total(year)
+    MemberCount.total_for_abteilung(year, self)
+  end
+
+  def census_details(year)
+    MemberCount.details_for_abteilung(year, self)
+  end
+
 end
