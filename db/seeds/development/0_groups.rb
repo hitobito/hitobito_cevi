@@ -12,58 +12,52 @@ srand(42)
 
 dachverband = Group::Dachverband.seed_once(:parent_id,
   {name: 'CEVI Schweiz',
-   short_name: 'CEVI'}
+   short_name: 'CEVI'}.merge(seeder.group_attributes)
 )[0]
 
 dv_vorstand = Group::DachverbandVorstand.seed(:name, :parent_id,
   {name: 'Vorstand',
-   parent_id: dachverband.id}
+   parent_id: dachverband.id}.merge(seeder.group_attributes)
 )[0]
 
 dv_geschaeftsst = Group::DachverbandGeschaeftsstelle.seed(:name, :parent_id,
   {name: 'Geschäftsstelle',
-   parent_id: dachverband.id}
+   parent_id: dachverband.id}.merge(seeder.group_attributes)
 )[0]
 
 dv_gremium = Group::DachverbandGremium.seed(:name, :parent_id,
   {name: 'Revisionsstelle',
-   parent_id: dachverband.id}
+   parent_id: dachverband.id}.merge(seeder.group_attributes)
 )[0]
-
-#unless ch.address.present?
-#  ch.update_attributes(seeder.group_attributes)
-#  ch.default_children.each do |child_class|
-#    child_class.first.update_attributes(seeder.group_attributes)
-#  end
-#end
 
 orgs = Group::Mitgliederorganisation.seed(:name, :parent_id,
   {name: 'Cevi Regionalverband ZH-SH-GL',
-   short_name: 'RV ZH-SH-GL',
-   address: 'Sihlstrasse 33',
-   zip_code: 8021,
-   town: 'Zürich',
-   country: 'Schweiz',
-   email: 'rv-zhshgl@example.com',
-   parent_id: dachverband.id},
+   # short_name: 'RV ZH-SH-GL',
+   # address: 'Sihlstrasse 33',
+   # zip_code: 8021,
+   # town: 'Zürich',
+   # country: 'Schweiz',
+   # email: 'rv-zhshgl@example.com',
+   parent_id: dachverband.id}.merge(seeder.group_attributes),
 
   {name: 'Cevi Region Bern',
-   short_name: 'RV BE',
-   address: 'Rabbentalstrasse 69',
-   zip_code: 3013,
-   town: 'Bern',
-   country: 'Schweiz',
-   email: 'rv-bern@example.com',
-   parent_id: dachverband.id},
+   # short_name: 'RV BE',
+   # address: 'Rabbentalstrasse 69',
+   # zip_code: 3013,
+   # town: 'Bern',
+   # country: 'Schweiz',
+   # email: 'rv-bern@example.com',
+   parent_id: dachverband.id}.merge(seeder.group_attributes),
 
   {name: 'Cevi Alpin',
-   short_name: 'AG ALP',
-   address: 'Ausser Dorf 2',
-   zip_code: 7260,
-   town: 'Davos',
-   country: 'Schweiz',
-   email: 'alpin@example.com',
-   parent_id: dachverband.id}
+   # short_name: 'AG ALP',
+   # address: 'Ausser Dorf 2',
+   # zip_code: 7260,
+   # town: 'Davos',
+   # country: 'Schweiz',
+   # email: 'alpin@example.com',
+   parent_id: dachverband.id}.merge(seeder.group_attributes),
+
 )
 
 orgs.each do |s|
@@ -72,17 +66,17 @@ end
 
 mo_vorstand = Group::MitgliederorganisationVorstand.seed(:name, :parent_id,
   {name: 'Zentralvorstand',
-   parent_id: orgs[0].id}
+   parent_id: orgs[0].id}.merge(seeder.group_attributes)
 )[0]
 
 mo_leitungsteam = Group::MitgliederorganisationGeschaeftsstelle.seed(:name, :parent_id,
   {name: 'Leitungsteam',
-   parent_id: orgs[0].id}
+   parent_id: orgs[0].id}.merge(seeder.group_attributes)
 )[0]
 
 mo_beirat = Group::MitgliederorganisationGremium.seed(:name, :parent_id,
   {name: 'Beirat',
-   parent_id: orgs[0].id}
+   parent_id: orgs[0].id}.merge(seeder.group_attributes)
 )[0]
 
 sektionen = Group::Sektion.seed(:name, :parent_id,
@@ -95,29 +89,29 @@ sektionen = Group::Sektion.seed(:name, :parent_id,
 
 ortsgruppen = Group::Ortsgruppe.seed(:name, :parent_id,
   {name: 'Stadt Zürich',
-   parent_id: sektionen[0].id},
+   parent_id: sektionen[0].id}.merge(seeder.group_attributes),
 
   {name: 'Jona',
-   parent_id: sektionen[0].id},
+   parent_id: sektionen[0].id}.merge(seeder.group_attributes),
 
   # Ortsgruppe without Sektion
   {name: 'Hintereffretikon',
-   parent_id: orgs[0].id}
+   parent_id: orgs[0].id}.merge(seeder.group_attributes)
 )
 
 
 vereine = Group::Verein.seed(:name, :parent_id,
   {name: 'Verein Cevi Zürich',
-   parent_id: ortsgruppen[0].id}
+   parent_id: ortsgruppen[0].id}.merge(seeder.group_attributes)
 )
 
 
 jungscharen = Group::Jungschar.seed(:name, :parent_id,
   {name: 'Altstetten-Albisrieden',
-   parent_id: ortsgruppen[0].id},
+   parent_id: ortsgruppen[0].id}.merge(seeder.group_attributes),
 
   {name: 'Zürich 10',
-   parent_id: ortsgruppen[0].id}
+   parent_id: ortsgruppen[0].id}.merge(seeder.group_attributes)
 )
 
 
@@ -181,7 +175,7 @@ externe_zh10 = Group::Stufe.seed(:name, :parent_id,
 
 tensings = Group::TenSing.seed(:name, :parent_id,
   {name: 'Seebach',
-   parent_id: ortsgruppen[0].id}
+   parent_id: ortsgruppen[0].id}.merge(seeder.group_attributes)
 )
 
 gruppen_seebach = Group::TenSingTeamGruppe.seed(:name, :parent_id,
@@ -192,7 +186,7 @@ gruppen_seebach = Group::TenSingTeamGruppe.seed(:name, :parent_id,
 
 sport = Group::Sport.seed(:name, :parent_id,
   {name: 'Cevi Zürich Sport',
-   parent_id: ortsgruppen[0].id}
+   parent_id: ortsgruppen[0].id}.merge(seeder.group_attributes)
 )
 
 gruppen_sport = Group::SportTeamGruppe.seed(:name, :parent_id,
@@ -205,10 +199,10 @@ gruppen_sport = Group::SportTeamGruppe.seed(:name, :parent_id,
 
 wags = Group::WeitereArbeitsgebiete.seed(:name, :parent_id,
   {name: 'Cevi Lernhilfe',
-   parent_id: ortsgruppen[0].id},
+   parent_id: ortsgruppen[0].id}.merge(seeder.group_attributes),
 
   {name: 'Cevi Kino',
-   parent_id: ortsgruppen[0].id}
+   parent_id: ortsgruppen[0].id}.merge(seeder.group_attributes)
 )
 
 teams_lernhilfe = Group::WeitereArbeitsgebieteTeamGruppe.seed(:name, :parent_id,
