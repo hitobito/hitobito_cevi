@@ -31,5 +31,5 @@
 #  deleter_id     :integer
 #
 
-# Abstract Geschäftsstelle
+# Abstract Geschaeftsstelle
 class Group::Geschaeftsstelle < Group; end
