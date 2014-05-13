@@ -7,23 +7,32 @@ class MemberCounter
   # Group::Pio::Pio => counted as :leiter
   #
   #
-  # Roles not appearing here are not counted at all.
+  # Groups not appearing here are not counted at all.
   GROUPS = [
     Group::Sport,
     Group::WeitereArbeitsgebiete,
     Group::WeitereArbeitsgebieteTeamGruppe,
     Group::Jungschar,
+    Group::Froeschli,
+    Group::Stufe,
+    Group::Gruppe,
+    Group::JungscharTeam,
     Group::TenSing,
-    Group::TenSingTeamGruppe,
+    Group::TenSingTeamGruppe
+  ]
+
+  IGNORED_ROLE_NAMES = [
+    'FreierMitarbeiter',
+    'Externer'
   ]
 
   attr_reader :year, :abteilung
 
   class << self
-    def filtered_groups
-      GROUPS.map(&:roles).reject do |role|
+    def filtered_roles
+      GROUPS.map(&:roles).flatten.reject do |role|
         role_name = role.to_s.demodulize.split('::').last
-        role_name =~ /FreierMitarbeiter|Externe/
+        role_name =~ /#{IGNORED_ROLE_NAMES.join('|')}/
       end
 
     end
@@ -46,7 +55,7 @@ class MemberCounter
     end
   end
 
-  ROLE_MAPPING = { person: filtered_groups }
+  ROLE_MAPPING = { person: filtered_roles }
 
   # create a new counter for with the given year and abteilung.
   # beware: the year is only used to store the results and does not
