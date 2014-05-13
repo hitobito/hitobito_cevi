@@ -20,7 +20,7 @@ module HitobitoCevi
       Group.send        :include, Cevi::Group
     end
 
-    initializer 'cevi.add_settings' do |app|
+    initializer 'cevi.add_settings' do |_app|
       Settings.add_source!(File.join(paths['config'].existent, 'settings.yml'))
       Settings.reload!
     end
