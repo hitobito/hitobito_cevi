@@ -147,7 +147,7 @@ stufen_zh10 = Group::Stufe.seed(:name, :parent_id,
   {name: 'Aranda',
    parent_id: jungscharen[1].id},
 
-  {name: 'Jona',
+  {name: 'Jakob',
    parent_id: jungscharen[1].id},
 
   {name: 'Salomo',
@@ -166,12 +166,12 @@ stufen_zh10 = Group::Stufe.seed(:name, :parent_id,
    parent_id: jungscharen[1].id}
 )
 
-teams_zh10 = Group::Stufe.seed(:name, :parent_id,
+teams_zh10 = Group::JungscharTeam.seed(:name, :parent_id,
   {name: 'Leitungsteam',
    parent_id: jungscharen[1].id}
 )
 
-externe_zh10 = Group::Stufe.seed(:name, :parent_id,
+externe_zh10 = Group::JungscharExterne.seed(:name, :parent_id,
   {name: 'Cevi-E',
    parent_id: jungscharen[1].id},
   {name: 'Räumlichkeit',
