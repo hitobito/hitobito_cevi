@@ -17,17 +17,17 @@ class TarantulaTest < ActionDispatch::IntegrationTest
   reset_fixture_path File.expand_path('../../../spec/fixtures', __FILE__)
 
 
-  def test_tarantula_as_bundesleitung
-    crawl_as(people(:bulei))
-  end
+  # def test_tarantula_as_bundesleitung
+  #   crawl_as(people(:bulei))
+  # end
 
-  def test_tarantula_as_abteilungsleiter
-    crawl_as(people(:al_schekka))
-  end
+  # def test_tarantula_as_abteilungsleiter
+  #   crawl_as(people(:al_schekka))
+  # end
 
-  def test_tarantula_as_child
-    crawl_as(people(:child))
-  end
+  # def test_tarantula_as_child
+  #   crawl_as(people(:child))
+  # end
 
   def crawl_as(person)
     person.password = 'foobar'
