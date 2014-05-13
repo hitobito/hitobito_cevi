@@ -1,7 +1,7 @@
 inherit_from: ../hitobito/.rubocop.yml
 
 AllCops:
-  Excludes:
+  Exclude:
     - db/**
     - config/**
     - bin/**
