@@ -1,27 +1,43 @@
+# Original from: https://github.com/thams/db_fixtures_dump/
 namespace :db do
   namespace :fixtures do
-    desc 'Create YAML test fixtures from data in an existing database.'
+    desc 'Dumps some models into fixtures.'
     task :dump => :environment do
-      sql  = "SELECT * FROM %s"
-      skip_tables = ["schema_migrations"]
-      ActiveRecord::Base.establish_connection(Rails.env)
-      %w(groups roles people events).each do |table_name|
-        i = "000"
-        File.open(HitobitoCevi::Wagon.root.join("spec/fixtures/#{table_name}.yml"), 'w') do |file|
-          rows = ActiveRecord::Base.connection.select_all(sql % table_name)
+      models = [Group]
 
-          records = rows.each_with_object({}) { |record, hash|
-            record.reject! do |k|
-              ['contact_id', 'created_at', 'updated_at', 'deleted_at',
-               'creator_id', 'updater_id', 'deleter_id'].include?(k) || 
-              record[k].blank?
+      models.each do |model|
+        next unless model.ancestors.include?(ActiveRecord::Base)
+
+        puts "Dumping model: " + model.class_name
+        entries = model.find(:all, :order => 'id ASC')
+
+        model_file = HitobitoCevi::Wagon.root.join('spec/fixtures/' + model.table_name + '.yml')
+        File.open(model_file, 'w') do |f|
+          entries.each do |a|
+            key = "_#{a.class.table_name}_#{a.id}_"
+            attrs = a.attributes
+
+            if model == Group
+              attrs['parent_id'] = attrs['parent_id'] &&
+                "_#{model.table_name}_#{attrs['parent_id']}_"
+              attrs['layer_group_id'] = attrs['layer_group_id'] &&
+                "<%= ActiveRecord::FixtureSet.identify(" +
+                ":_#{model.table_name}" +
+                "_#{attrs['layer_group_id']}_" +
+                ") %>"
             end
-            hash["#{table_name}_#{i.succ!}"] = record
-          }
-          file.write(records.to_yaml)
+
+            attrs.delete_if do |k, v|
+              ['id', 'contact_id', 'created_at', 'updated_at', 'deleted_at',
+               'creator_id', 'updater_id', 'deleter_id'].include?(k) ||
+              v.nil?
+            end
+
+            output = {key => attrs}
+            f << output.to_yaml.gsub(/^---\s?\n/,'') + "\n"
+          end
         end
       end
     end
   end
 end
-

@@ -1,38 +1,37 @@
 ch:
-  id: 1
   lft: 1
   rgt: 86
   name: CEVI Schweiz
   short_name: CEVI
   type: Group::Dachverband
-  layer_group_id: 1
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+
 dachverband:
-  id: 2
-  parent_id: 1
+  parent_id: ch
   lft: 84
   rgt: 85
   name: Vorstand
   type: Group::DachverbandVorstand
-  layer_group_id: 1
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+
 dachverband_gs:
-  id: 3
-  parent_id: 1
+  parent_id: ch
   lft: 80
   rgt: 81
   name: Geschäftsstelle
   type: Group::DachverbandGeschaeftsstelle
-  layer_group_id: 1
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+
 dachverband_revision:
-  id: 4
-  parent_id: 1
+  parent_id: ch
   lft: 82
   rgt: 83
   name: Revisionsstelle
   type: Group::DachverbandGremium
-  layer_group_id: 1
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+
 zhshgl:
-  id: 5
-  parent_id: 1
+  parent_id: ch
   lft: 6
   rgt: 79
   name: Cevi Regionalverband ZH-SH-GL
@@ -43,10 +42,10 @@ zhshgl:
   zip_code: 8021
   town: Zürich
   country: Schweiz
-  layer_group_id: 5
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
+
 be:
-  id: 6
-  parent_id: 1
+  parent_id: ch
   lft: 4
   rgt: 5
   name: Cevi Region Bern
@@ -57,10 +56,10 @@ be:
   zip_code: 3013
   town: Bern
   country: Schweiz
-  layer_group_id: 6
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:be) %>
+
 alpin:
-  id: 7
-  parent_id: 1
+  parent_id: ch
   lft: 2
   rgt: 3
   name: Cevi Alpin
@@ -71,292 +70,292 @@ alpin:
   zip_code: 7260
   town: Davos
   country: Schweiz
-  layer_group_id: 7
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:alpin) %>
+
 zhshgl_vorstand:
-  id: 8
-  parent_id: 5
+  parent_id: zhshgl
   lft: 15
   rgt: 16
   name: Zentralvorstand
   type: Group::MitgliederorganisationVorstand
-  layer_group_id: 5
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
+
 zhshgl_gs:
-  id: 9
-  parent_id: 5
+  parent_id: zhshgl
   lft: 11
   rgt: 12
   name: Leitungsteam
   type: Group::MitgliederorganisationGeschaeftsstelle
-  layer_group_id: 5
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
+
 zhshgl_beirat:
-  id: 10
-  parent_id: 5
+  parent_id: zhshgl
   lft: 7
   rgt: 8
   name: Beirat
   type: Group::MitgliederorganisationGremium
-  layer_group_id: 5
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
+
 zuerich:
-  id: 11
-  parent_id: 5
+  parent_id: zhshgl
   lft: 17
   rgt: 78
   name: Zürich
   type: Group::Sektion
-  layer_group_id: 11
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zuerich) %>
+
 oberland:
-  id: 12
-  parent_id: 5
+  parent_id: zhshgl
   lft: 13
   rgt: 14
   name: Oberland
   type: Group::Sektion
-  layer_group_id: 12
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:oberland) %>
+
 stadtzh:
-  id: 13
-  parent_id: 11
+  parent_id: zuerich
   lft: 20
   rgt: 77
   name: Stadt Zürich
   type: Group::Ortsgruppe
-  layer_group_id: 13
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:stadtzh) %>
+
 jona:
-  id: 14
-  parent_id: 11
+  parent_id: zuerich
   lft: 18
   rgt: 19
   name: Jona
   type: Group::Ortsgruppe
-  layer_group_id: 14
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jona) %>
+
 hintereff:
-  id: 15
-  parent_id: 5
+  parent_id: zhshgl
   lft: 9
   rgt: 10
   name: Hintereffretikon
   type: Group::Ortsgruppe
-  layer_group_id: 15
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:hintereff) %>
+
 verein_zh:
-  id: 16
-  parent_id: 13
+  parent_id: stadtzh
   lft: 51
   rgt: 52
   name: Verein Cevi Zürich
   type: Group::Verein
-  layer_group_id: 16
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:verein_zh) %>
+
 jungschar_altst:
-  id: 17
-  parent_id: 13
+  parent_id: stadtzh
   lft: 21
   rgt: 32
   name: Altstetten-Albisrieden
   type: Group::Jungschar
-  layer_group_id: 17
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
+
 jungschar_zh10:
-  id: 18
-  parent_id: 13
+  parent_id: stadtzh
   lft: 53
   rgt: 76
   name: Zürich 10
   type: Group::Jungschar
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_altst_0405:
-  id: 19
-  parent_id: 17
+  parent_id: jungschar_altst
   lft: 26
   rgt: 31
   name: Jahrgang 04/05
   type: Group::Stufe
-  layer_group_id: 17
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
+
 jungschar_altst_0203:
-  id: 20
-  parent_id: 17
+  parent_id: jungschar_altst
   lft: 22
   rgt: 25
   name: Jahrgang 02/03
   type: Group::Stufe
-  layer_group_id: 17
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
+
 jungschar_altst_0405_ammon:
-  id: 21
-  parent_id: 19
+  parent_id: jungschar_altst_0405
   lft: 27
   rgt: 28
   name: Ammon
   type: Group::Gruppe
-  layer_group_id: 17
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
+
 jungschar_altst_0405_genesis:
-  id: 22
-  parent_id: 19
+  parent_id: jungschar_altst_0405
   lft: 29
   rgt: 30
   name: Genesis
   type: Group::Gruppe
-  layer_group_id: 17
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
+
 jungschar_altst_0203_masada:
-  id: 23
-  parent_id: 20
+  parent_id: jungschar_altst_0203
   lft: 23
   rgt: 24
   name: Masada
   type: Group::Gruppe
-  layer_group_id: 17
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
+
 jungschar_zh10_froeschli:
-  id: 24
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 58
   rgt: 59
   name: Fröschli
   type: Group::Froeschli
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_aranda:
-  id: 25
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 54
   rgt: 55
   name: Aranda
   type: Group::Stufe
-  layer_group_id: 18
-jungschar_zh10_jona:
-  id: 26
-  parent_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
+jungschar_zh10_jakob:
+  parent_id: jungschar_zh10
   lft: 60
   rgt: 61
   name: Jakob
   type: Group::Stufe
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_salomo:
-  id: 27
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 66
   rgt: 67
   name: Salomo
   type: Group::Stufe
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_samson:
-  id: 28
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 68
   rgt: 69
   name: Samson
   type: Group::Stufe
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_sinai:
-  id: 29
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 70
   rgt: 71
   name: Sinai
   type: Group::Stufe
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_zephanja:
-  id: 30
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 72
   rgt: 73
   name: Zephanja
   type: Group::Stufe
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_zion:
-  id: 31
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 74
   rgt: 75
   name: Zion
   type: Group::Stufe
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_leitungsteam:
-  id: 32
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 62
   rgt: 63
   name: Leitungsteam
   type: Group::JungscharTeam
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_cevi_e:
-  id: 33
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 56
   rgt: 57
   name: Cevi-E
   type: Group::JungscharExterne
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 jungschar_zh10_raeumlichkeit:
-  id: 34
-  parent_id: 18
+  parent_id: jungschar_zh10
   lft: 64
   rgt: 65
   name: Räumlichkeit
   type: Group::JungscharExterne
-  layer_group_id: 18
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
+
 tensing:
-  id: 35
-  parent_id: 13
+  parent_id: stadtzh
   lft: 47
   rgt: 50
   name: Seebach
   type: Group::TenSing
-  layer_group_id: 35
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:tensing) %>
+
 tensing_leitung:
-  id: 36
-  parent_id: 35
+  parent_id: tensing
   lft: 48
   rgt: 49
   name: Leitungsteam
   type: Group::TenSingTeamGruppe
-  layer_group_id: 35
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:tensing) %>
+
 sport:
-  id: 37
-  parent_id: 13
+  parent_id: stadtzh
   lft: 41
   rgt: 46
   name: Cevi Zürich Sport
   type: Group::Sport
-  layer_group_id: 37
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:sport) %>
+
 sport_team_a:
-  id: 38
-  parent_id: 37
+  parent_id: sport
   lft: 42
   rgt: 43
   name: Mannschaft A
   type: Group::SportTeamGruppe
-  layer_group_id: 37
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:sport) %>
+
 sport_team_b:
-  id: 39
-  parent_id: 37
+  parent_id: sport
   lft: 44
   rgt: 45
   name: Mannschaft B
   type: Group::SportTeamGruppe
-  layer_group_id: 37
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:sport) %>
+
 lernhilfe:
-  id: 40
-  parent_id: 13
+  parent_id: stadtzh
   lft: 35
   rgt: 40
   name: Cevi Lernhilfe
   type: Group::WeitereArbeitsgebiete
-  layer_group_id: 40
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:lernhilfe) %>
+
 kino:
-  id: 41
-  parent_id: 13
+  parent_id: stadtzh
   lft: 33
   rgt: 34
   name: Cevi Kino
   type: Group::WeitereArbeitsgebiete
-  layer_group_id: 41
-lernhilfe_lehrpers:
-  id: 42
-  parent_id: 40
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kino) %>
+
+lernhilfe_lehrpersonen:
+  parent_id: lernhilfe
   lft: 36
   rgt: 37
   name: Lehrpersonen
   type: Group::WeitereArbeitsgebieteTeamGruppe
-  layer_group_id: 40
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:lernhilfe) %>
+
 lernhilfe_schueler:
-  id: 43
-  parent_id: 40
+  parent_id: lernhilfe
   lft: 38
   rgt: 39
   name: Schüler/-innen
   type: Group::WeitereArbeitsgebieteExterne
-  layer_group_id: 40
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:lernhilfe) %>
