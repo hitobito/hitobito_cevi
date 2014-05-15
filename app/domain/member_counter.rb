@@ -1,17 +1,19 @@
 class MemberCounter
 
   # Groups not appearing here are not counted at all.
-  GROUPS = [
+  TOP_LEVEL = [
     Group::Sport,
-    Group::SportTeamGruppe,
-    Group::WeitereArbeitsgebiete,
-    Group::WeitereArbeitsgebieteTeamGruppe,
     Group::Jungschar,
+    Group::TenSing,
+    Group::WeitereArbeitsgebiete,
+  ]
+  GROUPS = TOP_LEVEL + [
+    Group::SportTeamGruppe,
+    Group::WeitereArbeitsgebieteTeamGruppe,
     Group::Froeschli,
     Group::Stufe,
     Group::Gruppe,
     Group::JungscharTeam,
-    Group::TenSing,
     Group::TenSingTeamGruppe
   ]
 

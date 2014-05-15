@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       member do
         scope module: 'census_evaluation' do
           get 'census/dachverband' => 'dachverband#index'
+          get 'census/mitgliederorganisation' => 'mitgliederorganisation#index'
           get 'census/jungschar' => 'jungschar#index'
         end
 

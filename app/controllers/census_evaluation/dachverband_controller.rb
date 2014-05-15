@@ -1,35 +1,35 @@
 class CensusEvaluation::DachverbandController < CensusEvaluation::BaseController
 
-  # self.sub_group_type = Group::Mitgliederorganisation
+  self.sub_group_type = Group::Mitgliederorganisation
 
   def index
     super
 
     respond_to do |format|
       format.html do
-        @abteilungen = abteilung_confirmation_ratios if evaluation.current_census_year?
+        @groups = group_confirmation_ratios if evaluation.current_census_year?
       end
     end
   end
 
   private
 
-  def abteilung_confirmation_ratios
-    @sub_groups.inject({}) do |hash, kantonalverband|
-      hash[kantonalverband.id] = { confirmed: number_of_confirmations(kantonalverband),
-                                   total: number_of_abteilungen(kantonalverband) }
+  def group_confirmation_ratios
+    @sub_groups.inject({}) do |hash, mitgliederorganisation|
+      hash[mitgliederorganisation.id] = { confirmed: number_of_confirmations(mitgliederorganisation),
+                                          total: number_of_groups(mitgliederorganisation) }
       hash
     end
   end
 
-  def number_of_confirmations(kantonalverband)
-    MemberCount.where(kantonalverband_id: kantonalverband.id, year: year).
+  def number_of_confirmations(mitgliederorganisation)
+    MemberCount.where(mitgliederorganisation_id: mitgliederorganisation.id, year: year).
                 distinct.
-                count(:abteilung_id)
+                count(:group_id)
   end
 
-  def number_of_abteilungen(kantonalverband)
-    kantonalverband.descendants.without_deleted.where(type: Group::Abteilung.sti_name).count
+  def number_of_groups(mitgliederorganisation)
+    mitgliederorganisation.descendants.without_deleted.where(type: MemberCounter::TOP_LEVEL.map(&:sti_name)).count
   end
 
 end

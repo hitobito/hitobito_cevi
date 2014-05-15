@@ -16,7 +16,7 @@ module Cevi::VariousAbility
 
   def if_mitarbeiter_gs
     user.roles.any? do |r|
-      r.is_a?(Group::Bund::MitarbeiterGs)
+      r.is_a?(Group::Dachverband::Administrator)
     end
   end
 
