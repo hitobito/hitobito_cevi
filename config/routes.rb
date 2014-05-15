@@ -20,6 +20,7 @@ Rails.application.routes.draw do
           get 'census/dachverband' => 'dachverband#index'
           get 'census/mitgliederorganisation' => 'mitgliederorganisation#index'
           get 'census/group' => 'group#index'
+          get 'census/jungschar' => 'group#index'
         end
 
         get 'population' => 'population#index'

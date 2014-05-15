@@ -34,6 +34,8 @@
 class Group::Jungschar < Group
 
   self.layer = true
+  
+  has_many :member_counts, foreign_key: 'group_id'
 
   ### INSTANCE METHODS
 
