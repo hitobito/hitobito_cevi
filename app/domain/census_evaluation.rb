@@ -27,7 +27,7 @@ class CensusEvaluation
   end
 
   def counts_by_sub_group
-    if sub_group_types
+    if sub_group_types.present?
       group.census_groups(year).inject({}) do |hash, count|
         key = single_sub_group_type? ? count.send(:"#{sub_group_type.model_name.element}_id") : count.group_id
         hash[key] = count
