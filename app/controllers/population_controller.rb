@@ -24,7 +24,7 @@ class PopulationController < ApplicationController
   private
 
   def abteilung
-    @group ||= Group::Abteilung.find(params[:id])
+    @group ||= Group.find(params[:id])
   end
 
   def load_groups

@@ -41,6 +41,10 @@ class Group::Jungschar < Group
     ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
   end
 
+  def census_total(year)
+    MemberCount.total_for_group(year, self)
+  end
+
   ### ROLES
 
   class Abteilungsleiter < ::Role

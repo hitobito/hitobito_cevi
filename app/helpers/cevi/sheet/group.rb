@@ -14,14 +14,11 @@ module Cevi::Sheet::Group
       Sheet::Tab.new(:tab_population_label,
                      :population_group_path,
                      if: lambda { |view, group|
-                       [Group::Jungschar, Group::Sport, Group::TenSing,
-                          Group::WeitereArbeitsgebiete].any? do |group_type|
-                         group.kind_of?(group_type)
-                       end && group.population? && view.can?(:show_population, group)
+                       MemberCounter::TOP_LEVEL.any? { |group_type| group.kind_of?(group_type) } && view.can?(:show_population, group)
                      }),
 
       Sheet::Tab.new('groups.tabs.statistic',
-                     :census_dachverband_group_path,
+                     :census_evaluation_path,
                      alt: [:censuses_tab_path, :group_member_counts_path],
                      if: lambda { |view, group|
                        group.census? && view.can?(:evaluate_census, group)

@@ -14,12 +14,12 @@ class MemberCountsController < ApplicationController
 
     year = MemberCounter.create_counts_for(abteilung)
     if year
-      total = MemberCount.total_for_abteilung(year, abteilung).try(:total) || 0
+      total = MemberCount.total_for_group(year, abteilung).try(:total) || 0
       flash[:notice] = translate('.created_data_for_year', total: total, year: year)
     end
 
     year ||= Date.today.year
-    redirect_to census_abteilung_group_path(abteilung, year: year)
+    redirect_to census_group_group_path(abteilung, year: year)
   end
 
   def edit
@@ -31,7 +31,7 @@ class MemberCountsController < ApplicationController
     authorize!(:update_member_counts, abteilung)
 
     if member_count.update_attributes(permitted_params)
-      redirect_to census_abteilung_group_path(abteilung, year: year),
+      redirect_to census_group_group_path(abteilung, year: year),
                   notice: translate('updated_data_for_year', year: year)
     else
       render 'edit'
@@ -53,7 +53,7 @@ class MemberCountsController < ApplicationController
   end
 
   def abteilung
-    @group ||= Group::Abteilung.find(params[:group_id])
+    @group ||= Group.find(params[:group_id])
   end
 
   def year
