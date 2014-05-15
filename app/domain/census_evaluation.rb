@@ -77,7 +77,7 @@ class CensusEvaluation
 
   def current_census_sub_groups
     sub_group_ids = current_sub_groups.pluck(:id)
-    unless group.class == Group::Bund
+    unless group.class == Group::Dachverband
       sub_group_ids -= sub_group_ids_with_other_group_count(sub_group_ids)
     end
     sub_group_ids += sub_groups_with_counts.pluck(:id)

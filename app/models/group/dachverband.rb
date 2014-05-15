@@ -51,8 +51,8 @@ class Group::Dachverband < Group
 
   roles Administrator
 
-  def census_groups(_year)
-    []
+  def census_groups(year)
+    MemberCount.total_by_mitgliederorganisationen(year)
   end
 
   def census_total(year)
