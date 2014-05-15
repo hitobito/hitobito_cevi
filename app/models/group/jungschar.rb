@@ -34,7 +34,6 @@
 class Group::Jungschar < Group
 
   self.layer = true
-  #self.population = true
 
   ### INSTANCE METHODS
 

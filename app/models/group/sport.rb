@@ -34,7 +34,6 @@
 class Group::Sport < Group
 
   self.layer = true
-  #self.population = true
 
   children Group::SportTeamGruppe,
            Group::SportExterne

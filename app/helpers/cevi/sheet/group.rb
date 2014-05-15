@@ -14,7 +14,10 @@ module Cevi::Sheet::Group
       Sheet::Tab.new(:tab_population_label,
                      :population_group_path,
                      if: lambda { |view, group|
-                       group.population? && view.can?(:show_population, group)
+                       [Group::Jungschar, Group::Sport, Group::TenSing,
+                          Group::WeitereArbeitsgebiete].any? do |group_type|
+                         group.kind_of?(group_type)
+                       end && group.population? && view.can?(:show_population, group)
                      }),
 
       Sheet::Tab.new('groups.tabs.statistic',

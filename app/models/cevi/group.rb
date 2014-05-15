@@ -36,15 +36,10 @@ module Cevi::Group
 
   included do
     root_types Group::Dachverband
-    class_attribute :population
   end
 
   def census?
     respond_to?(:census_total)
-  end
-
-  def population?
-    respond_to?(:population) && self.population
   end
 
   # def census_groups(_year)

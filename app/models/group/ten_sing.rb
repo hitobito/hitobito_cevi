@@ -34,7 +34,6 @@
 class Group::TenSing < Group
 
   self.layer = true
-  #self.population = true
 
   children Group::TenSingTeamGruppe,
            Group::TenSingExterne

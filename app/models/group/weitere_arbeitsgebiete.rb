@@ -34,7 +34,6 @@
 class Group::WeitereArbeitsgebiete < Group
 
   self.layer = true
-  #self.population = true
 
   children Group::WeitereArbeitsgebieteExterne,
            Group::WeitereArbeitsgebieteTeamGruppe
