@@ -10,11 +10,13 @@ class CreateCensus < ActiveRecord::Migration
 
     create_table :member_counts do |t|
       t.integer :mitgliederorganisation_id, null: false
+      t.belongs_to :group, polymorphic: true, null: false
       t.integer :year, null: false
       t.integer :person_f
-      t.integer :person_w
+      t.integer :person_m
     end
 
     add_index :member_counts, [:mitgliederorganisation_id, :year]
+    add_index :member_counts, [:group_id, :group_type, :year]
   end
 end

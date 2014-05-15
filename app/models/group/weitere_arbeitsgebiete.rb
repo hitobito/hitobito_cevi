@@ -34,10 +34,16 @@
 class Group::WeitereArbeitsgebiete < Group
 
   self.layer = true
+  #self.population = true
 
   children Group::WeitereArbeitsgebieteExterne,
            Group::WeitereArbeitsgebieteTeamGruppe
 
+  ### INSTANCE METHODS
+
+  def mitgliederorganisation
+    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
+  end
 
   ### ROLES
 

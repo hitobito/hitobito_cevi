@@ -1,14 +1,13 @@
 #
 class MemberCount < ActiveRecord::Base
 
-  COUNT_CATEGORIES = [:leiter, :biber, :woelfe, :pfadis, :pios, :rover, :pta]
+  COUNT_CATEGORIES = [:person]
   COUNT_COLUMNS = COUNT_CATEGORIES.collect { |c| [:"#{c}_f", :"#{c}_m"] }.flatten
 
-  belongs_to :abteilung, class_name: 'Group::Abteilung'
-  belongs_to :region, class_name: 'Group::Region'
-  belongs_to :kantonalverband, class_name: 'Group::Kantonalverband'
+  belongs_to :group, polymorphic: true
+  belongs_to :mitgliederorganisation, class_name: 'Group::Mitgliederorganisation'
 
-  validates :year, uniqueness: { scope: :abteilung_id }
+  validates :year, uniqueness: { scope: :group_id }
   validates(*COUNT_COLUMNS,
             numericality: { greater_than_or_equal_to: 0, allow_nil: true })
 
@@ -41,26 +40,28 @@ class MemberCount < ActiveRecord::Base
 
   class << self
 
-    def total_by_kantonalverbaende(year)
-      totals_by(year, :kantonalverband_id)
+    def total_by_mitgliederorganisationen(year)
+      totals_by(year, :mitgliederorganisation_id)
     end
 
-    def total_by_abteilungen(year, state)
-      totals_by(year, :abteilung_id, kantonalverband_id: state.id)
+    def total_by_groups(year, mitgliederorganisation)
+      # TODO: handle group_id/group_type
+      totals_by(year, :group_id, mitgliederorganisation_id: mitgliederorganisation.id)
     end
 
-    def total_for_bund(year)
+    def total_for_dachverband(year)
       totals_by(year, :year).first
     end
 
-    def total_for_abteilung(year, abteilung)
-      totals_by(year, :abteilung_id, abteilung_id: abteilung.id).first
+    def total_for_group(year, group)
+      # TODO: handle group_id/group_type
+      totals_by(year, :group_id, group: group).first
     end
 
     def totals(year)
-      columns = 'kantonalverband_id, ' \
-                'region_id, ' \
-                'abteilung_id, ' +
+      # TODO: handle group_id/group_type
+      columns = 'mitgliederorganisation_id, ' \
+                'group_id, ' +
                 COUNT_COLUMNS.collect { |c| "SUM(#{c}) AS #{c}" }.join(',')
 
       select(columns).where(year: year)

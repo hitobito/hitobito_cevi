@@ -1,15 +1,9 @@
 class MemberCounter
 
-  # Ordered mapping of which roles count in which field.
-  # If a role from a field appearing first exists, this
-  # one is counted, even if other roles exist as well.
-  # E.g. Person has roles Group::Biber::Mitleitung and
-  # Group::Pio::Pio => counted as :leiter
-  #
-  #
   # Groups not appearing here are not counted at all.
   GROUPS = [
     Group::Sport,
+    Group::SportTeamGruppe,
     Group::WeitereArbeitsgebiete,
     Group::WeitereArbeitsgebieteTeamGruppe,
     Group::Jungschar,
@@ -22,11 +16,10 @@ class MemberCounter
   ]
 
   IGNORED_ROLE_NAMES = [
-    'FreierMitarbeiter',
-    'Externer'
+    'FreierMitarbeiter'
   ]
 
-  attr_reader :year, :abteilung
+  attr_reader :year, :group
 
   class << self
     def filtered_roles
@@ -36,18 +29,18 @@ class MemberCounter
       end
 
     end
-    def create_counts_for(abteilung)
+    def create_counts_for(group)
       census = Census.current
-      if census && !current_counts?(abteilung, census)
-        new(census.year, abteilung).count!
+      if census && !current_counts?(group, census)
+        new(census.year, group).count!
         census.year
       else
         false
       end
     end
 
-    def current_counts?(abteilung, census = Census.current)
-      census && new(census.year, abteilung).exists?
+    def current_counts?(group, census = Census.current)
+      census && new(census.year, group).exists?
     end
 
     def counted_roles
@@ -57,12 +50,12 @@ class MemberCounter
 
   ROLE_MAPPING = { person: filtered_roles }
 
-  # create a new counter for with the given year and abteilung.
+  # create a new counter for with the given year and group.
   # beware: the year is only used to store the results and does not
   # specify which roles to consider - only currently not deleted roles are counted.
-  def initialize(year, abteilung)
+  def initialize(year, group)
     @year = year
-    @abteilung = abteilung
+    @group = group
   end
 
   def count!
@@ -78,20 +71,16 @@ class MemberCounter
   end
 
   def exists?
-    MemberCount.where(abteilung_id: abteilung.id, year: year).exists?
+    MemberCount.where(group: group, year: year).exists?
   end
 
-  def kantonalverband
-    @kantonalverband ||= abteilung.kantonalverband
-  end
-
-  def region
-    @region ||= abteilung.region
+  def mitgliederorganisation
+    @mitgliederorganisation ||= group.mitgliederorganisation
   end
 
   def members
     Person.joins(:roles).
-           where(roles: { group_id: abteilung.self_and_descendants,
+           where(roles: { group_id: group.self_and_descendants,
                           type: self.class.counted_roles.collect(&:sti_name),
                           deleted_at: nil }).
            uniq
@@ -101,9 +90,8 @@ class MemberCounter
 
   def new_member_count
     count = MemberCount.new
-    count.abteilung = abteilung
-    count.kantonalverband = kantonalverband
-    count.region = region
+    count.group = group
+    count.mitgliederorganisation = mitgliederorganisation
     count.year = year
     count
   end

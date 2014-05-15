@@ -34,6 +34,13 @@
 class Group::Jungschar < Group
 
   self.layer = true
+  #self.population = true
+
+  ### INSTANCE METHODS
+
+  def mitgliederorganisation
+    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
+  end
 
   ### ROLES
 

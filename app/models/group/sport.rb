@@ -34,10 +34,16 @@
 class Group::Sport < Group
 
   self.layer = true
+  #self.population = true
 
   children Group::SportTeamGruppe,
            Group::SportExterne
 
+  ### INSTANCE METHODS
+
+  def mitgliederorganisation
+    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
+  end
 
   ### ROLES
 
