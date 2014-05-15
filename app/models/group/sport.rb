@@ -32,17 +32,12 @@
 #
 
 class Group::Sport < Group
+  include CensusGroup
 
   self.layer = true
 
   children Group::SportTeamGruppe,
            Group::SportExterne
-
-  ### INSTANCE METHODS
-
-  def mitgliederorganisation
-    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
-  end
 
   ### ROLES
 

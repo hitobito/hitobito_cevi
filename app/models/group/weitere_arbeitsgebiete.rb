@@ -32,17 +32,12 @@
 #
 
 class Group::WeitereArbeitsgebiete < Group
+  include CensusGroup
 
   self.layer = true
 
   children Group::WeitereArbeitsgebieteExterne,
            Group::WeitereArbeitsgebieteTeamGruppe
-
-  ### INSTANCE METHODS
-
-  def mitgliederorganisation
-    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
-  end
 
   ### ROLES
 

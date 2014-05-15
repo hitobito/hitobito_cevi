@@ -27,10 +27,10 @@ class CensusEvaluation
   end
 
   def counts_by_sub_group
-    if sub_group_type
-      sub_group_field = :"#{sub_group_type.model_name.element}_id"
+    if sub_group_types
       group.census_groups(year).inject({}) do |hash, count|
-        hash[count.send(sub_group_field)] = count
+        key = single_sub_group_type? ? count.send(:"#{sub_group_type.model_name.element}_id") : count.group_id
+        hash[key] = count
         hash
       end
     end
@@ -85,7 +85,7 @@ class CensusEvaluation
   end
 
   def current_sub_groups
-    group.descendants.where(type: sub_group_type.sti_name).without_deleted
+    group.descendants.where(type: sub_group_types.map(&:sti_name)).without_deleted
   end
 
   def sub_group_ids_with_other_group_count(sub_group_ids)
@@ -95,12 +95,20 @@ class CensusEvaluation
                 pluck(sub_group_id_col)
   end
 
+  def sub_group_types
+    Array(sub_group_type)
+  end
+
   def sub_group_id_col
-    "#{sub_group_type.model_name.element}_id"
+    single_sub_group_type? ? "#{sub_group_type.model_name.element}_id" : :group_id
   end
 
   def group_id_col
     "#{group.class.model_name.element}_id"
+  end
+
+  def single_sub_group_type?
+    sub_group_types.size == 1
   end
 
 end

@@ -32,21 +32,10 @@
 #
 
 class Group::Jungschar < Group
+  include CensusGroup
 
   self.layer = true
   
-  has_many :member_counts, foreign_key: 'group_id'
-
-  ### INSTANCE METHODS
-
-  def mitgliederorganisation
-    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
-  end
-
-  def census_total(year)
-    MemberCount.total_for_group(year, self)
-  end
-
   ### ROLES
 
   class Abteilungsleiter < ::Role

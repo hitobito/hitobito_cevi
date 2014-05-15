@@ -21,6 +21,9 @@ Rails.application.routes.draw do
           get 'census/mitgliederorganisation' => 'mitgliederorganisation#index'
           get 'census/group' => 'group#index'
           get 'census/jungschar' => 'group#index'
+          get 'census/weitere_arbeitsgebiete' => 'group#index'
+          get 'census/sport' => 'group#index'
+          get 'census/ten_sing' => 'group#index'
         end
 
         get 'population' => 'population#index'

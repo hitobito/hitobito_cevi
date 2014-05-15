@@ -32,6 +32,7 @@
 #
 
 class Group::TenSing < Group
+  include CensusGroup
 
   self.layer = true
 

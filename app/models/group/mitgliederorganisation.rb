@@ -35,6 +35,8 @@ class Group::Mitgliederorganisation < Group
 
   self.layer = true
 
+  has_many :member_counts
+
   children Group::Sektion,
            Group::Ortsgruppe,
            Group::DachverbandVorstand,
@@ -52,4 +54,11 @@ class Group::Mitgliederorganisation < Group
 
   roles Administrator
 
+  def census_total(year)
+    MemberCount.total_by_mitgliederorganisationen(year).first
+  end
+
+  def census_groups(year)
+    MemberCount.total_by_groups(year, self)
+  end
 end
