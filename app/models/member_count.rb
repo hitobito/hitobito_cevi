@@ -45,7 +45,6 @@ class MemberCount < ActiveRecord::Base
     end
 
     def total_by_groups(year, mitgliederorganisation)
-      # TODO: handle group_id/group_type
       totals_by(year, :group_id, mitgliederorganisation_id: mitgliederorganisation.id)
     end
 
@@ -54,12 +53,10 @@ class MemberCount < ActiveRecord::Base
     end
 
     def total_for_group(year, group)
-      # TODO: handle group_id/group_type
-      totals_by(year, :group_id, group: group).first
+      totals_by(year, :group_id, group_id: group.id).first
     end
 
     def totals(year)
-      # TODO: handle group_id/group_type
       columns = 'mitgliederorganisation_id, ' \
                 'group_id, ' +
                 COUNT_COLUMNS.collect { |c| "SUM(#{c}) AS #{c}" }.join(',')
