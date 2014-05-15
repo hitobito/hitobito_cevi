@@ -4,7 +4,7 @@ class MemberCount < ActiveRecord::Base
   COUNT_CATEGORIES = [:person]
   COUNT_COLUMNS = COUNT_CATEGORIES.collect { |c| [:"#{c}_f", :"#{c}_m"] }.flatten
 
-  belongs_to :group, polymorphic: true
+  belongs_to :group
   belongs_to :mitgliederorganisation, class_name: 'Group::Mitgliederorganisation'
 
   validates :year, uniqueness: { scope: :group_id }

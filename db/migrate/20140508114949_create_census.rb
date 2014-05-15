@@ -9,8 +9,8 @@ class CreateCensus < ActiveRecord::Migration
     add_index :censuses, :year, unique: true
 
     create_table :member_counts do |t|
+      t.integer :group_id, null: false
       t.integer :mitgliederorganisation_id, null: false
-      t.belongs_to :group, polymorphic: true, null: false
       t.integer :year, null: false
       t.integer :person_f
       t.integer :person_m
