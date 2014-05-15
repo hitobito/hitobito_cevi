@@ -42,7 +42,7 @@ class MemberCountsController < ApplicationController
     authorize!(:delete_member_counts, abteilung)
 
     member_count.destroy
-    redirect_to census_abteilung_group_path(abteilung, year: year),
+    redirect_to census_group_group_path(abteilung, year: year),
                 notice: translate('.deleted_data_for_year', year: year)
   end
 
