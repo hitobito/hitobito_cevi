@@ -8,9 +8,7 @@
 require 'spec_helper'
 
 describe 'MemberCounter' do
-
   let(:jungschar_zh10) { groups(:jungschar_zh10) }
-  let(:jungschar_altst) { groups(:jungschar_altst) }
 
   def load_data
     jungschar_zh10_stufe1 = groups(:jungschar_zh10_aranda)
@@ -18,12 +16,7 @@ describe 'MemberCounter' do
     jungschar_zh10_froeschli = groups(:jungschar_zh10_froeschli)
     jungschar_zh10_externe = groups(:jungschar_zh10_raeumlichkeit)
 
-    jungschar_altst_stufe1 = groups(:jungschar_altst_0405)
-    jungschar_altst_stufe1_gruppe1 = groups(:jungschar_altst_0405_ammon)
-    jungschar_altst_stufe1_gruppe2 = groups(:jungschar_altst_0405_genesis)
-    jungschar_altst_stufe2 = groups(:jungschar_altst_0203)
-    jungschar_altst_stufe2_gruppe1 = groups(:jungschar_altst_0203_masada)
-
+    # roles that must be counted
     leader = Fabricate(Group::Jungschar::Abteilungsleiter.name, group: jungschar_zh10,
                        person: Fabricate(:person, gender: 'w', birthday: '1985-01-01'))
 
@@ -36,15 +29,6 @@ describe 'MemberCounter' do
     Fabricate(Group::Froeschli::Teilnehmer.name, group: jungschar_zh10_froeschli,
               person: Fabricate(:person, gender: 'w', birthday: '2002-02-02'))
 
-    Fabricate(Group::Stufe::Stufenleiter.name, group: jungschar_altst_stufe1,
-              person: Fabricate(:person, gender: 'm', birthday: '1988-01-01'))
-    Fabricate(Group::Stufe::Teilnehmer.name, group: jungschar_altst_stufe1_gruppe1,
-              person: Fabricate(:person, gender: 'm', birthday: '1988-01-01'))
-    Fabricate(Group::Stufe::Teilnehmer.name, group: jungschar_altst_stufe1_gruppe2,
-              person: Fabricate(:person, gender: 'm', birthday: '1988-01-01'))
-    Fabricate(Group::Stufe::Teilnehmer.name, group: jungschar_altst_stufe2_gruppe1,
-              person: Fabricate(:person, gender: 'm', birthday: '1988-01-01'))
-
     # roles that must not be counted
     Fabricate(Group::JungscharExterne::Externer.name, group: jungschar_zh10_externe,
               person: Fabricate(:person, gender: 'm', birthday: '1971-01-01'))
@@ -53,20 +37,19 @@ describe 'MemberCounter' do
     Fabricate(Group::Jungschar::FreierMitarbeiter.name, group: jungschar_zh10,
               person: Fabricate(:person, gender: 'w', birthday: '1972-01-01'))
 
-    old = Fabricate(Group::Stufe::Stufenleiter.name, group: jungschar_zh10_stufe2,
-                    person: Fabricate(:person, gender: 'w', birthday: '1977-03-01'),
-                    created_at: 2.years.ago)
-    old.destroy # soft delete role
+    # soft delete role must not be counted
+    Fabricate(Group::Jungschar::Abteilungsleiter.name, group: jungschar_zh10,
+              person: Fabricate(:person, gender: 'w', birthday: '1977-03-01'),
+              created_at: 2.years.ago).destroy
   end
 
-  # FIXME: does not test anything usefull it seems
-  it 'exists passive and deleted people as well' do
+  it 'does not include soft deleted role in group count' do
     load_data
 
     jungschar_zh10.people.count.should eq 2
     Person.joins('INNER JOIN roles ON roles.person_id = people.id').
            where(roles: { group_id: jungschar_zh10.id }).
-           count.should == 2
+           count.should == 3 
   end
 
   context 'instance' do
@@ -113,11 +96,6 @@ describe 'MemberCounter' do
     end
 
     it 'does not create counts with existing ones' do
-      MemberCount.count.should eq 1
-      puts MemberCount.first.inspect
-      require 'pry'
-      binding.pry
-      MemberCount.where(group: jungschar_zh10, year: Census.current.year).should be_exists
       expect { MemberCounter.create_counts_for(jungschar_zh10) }.not_to change { MemberCount.count }
     end
 
@@ -127,23 +105,24 @@ describe 'MemberCounter' do
     end
   end
 
-  # context '.current_counts?' do
-  #   subject { MemberCounter.current_counts?(abteilung) }
+  context '.current_counts?' do
+    before { load_data } 
+    subject { MemberCounter.current_counts?(jungschar_zh10) }
 
-  #   context 'with counts' do
-  #     it { should be_true }
-  #   end
+    context 'with counts' do
+      it { should be_true }
+    end
 
-  #   context 'without counts' do
-  #     before { MemberCount.update_all(year: 2011) }
-  #     it { should be_false }
-  #   end
+    context 'without counts' do
+      before { MemberCount.update_all(year: 2011) }
+      it { should be_false }
+    end
 
-  #   context 'with census' do
-  #     before { Census.destroy_all }
-  #     it { should be_false }
-  #   end
-  # end
+    context 'with census' do
+      before { Census.destroy_all }
+      it { should be_false }
+    end
+  end
 
   def assert_member_counts(fields = {})
     count = MemberCount.where(group: jungschar_zh10, year: 2011).first

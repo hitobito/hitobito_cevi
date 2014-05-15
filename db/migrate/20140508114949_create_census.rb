@@ -17,6 +17,6 @@ class CreateCensus < ActiveRecord::Migration
     end
 
     add_index :member_counts, [:mitgliederorganisation_id, :year]
-    add_index :member_counts, [:group_id, :group_type, :year]
+    add_index :member_counts, [:group_id, :year]
   end
 end
