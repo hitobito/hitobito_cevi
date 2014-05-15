@@ -11,28 +11,28 @@ describe 'MemberCounter' do
   let(:jungschar_zh10) { groups(:jungschar_zh10) }
 
   def load_data
-    jungschar_zh10_stufe1 = groups(:jungschar_zh10_aranda)
-    jungschar_zh10_stufe2 = groups(:jungschar_zh10_salomo)
+    jungschar_zh10_aranda = groups(:jungschar_zh10_aranda)
+    jungschar_zh10_salomo = groups(:jungschar_zh10_salomo)
     jungschar_zh10_froeschli = groups(:jungschar_zh10_froeschli)
-    jungschar_zh10_externe = groups(:jungschar_zh10_raeumlichkeit)
+    jungschar_zh10_raeumlichkeit = groups(:jungschar_zh10_raeumlichkeit)
 
     # roles that must be counted
-    leader = Fabricate(Group::Jungschar::Abteilungsleiter.name, group: jungschar_zh10,
-                       person: Fabricate(:person, gender: 'w', birthday: '1985-01-01'))
+    Fabricate(Group::Jungschar::Abteilungsleiter.name, group: jungschar_zh10,
+              person: Fabricate(:person, gender: 'w', birthday: '1985-01-01'))
 
-    Fabricate(Group::Stufe::Stufenleiter.name, group: jungschar_zh10_stufe1,
+    Fabricate(Group::Stufe::Stufenleiter.name, group: jungschar_zh10_aranda,
               person: Fabricate(:person, gender: 'm', birthday: '1988-01-01'))
-    Fabricate(Group::Stufe::Teilnehmer.name, group: jungschar_zh10_stufe1,
+    Fabricate(Group::Stufe::Teilnehmer.name, group: jungschar_zh10_aranda,
               person: Fabricate(:person, gender: 'w', birthday: '1999-02-02'))
-    Fabricate(Group::Stufe::Teilnehmer.name, group: jungschar_zh10_stufe2,
+    Fabricate(Group::Stufe::Teilnehmer.name, group: jungschar_zh10_salomo,
               person: Fabricate(:person, gender: 'w', birthday: '2002-02-02'))
     Fabricate(Group::Froeschli::Teilnehmer.name, group: jungschar_zh10_froeschli,
               person: Fabricate(:person, gender: 'w', birthday: '2002-02-02'))
 
     # roles that must not be counted
-    Fabricate(Group::JungscharExterne::Externer.name, group: jungschar_zh10_externe,
+    Fabricate(Group::JungscharExterne::Externer.name, group: jungschar_zh10_raeumlichkeit,
               person: Fabricate(:person, gender: 'm', birthday: '1971-01-01'))
-    Fabricate(Group::JungscharExterne::Goetti.name, group: jungschar_zh10_externe,
+    Fabricate(Group::JungscharExterne::Goetti.name, group: jungschar_zh10_raeumlichkeit,
               person: Fabricate(:person, gender: 'w', birthday: '1972-01-01'))
     Fabricate(Group::Jungschar::FreierMitarbeiter.name, group: jungschar_zh10,
               person: Fabricate(:person, gender: 'w', birthday: '1972-01-01'))
@@ -49,7 +49,7 @@ describe 'MemberCounter' do
     jungschar_zh10.people.count.should eq 2
     Person.joins('INNER JOIN roles ON roles.person_id = people.id').
            where(roles: { group_id: jungschar_zh10.id }).
-           count.should == 3 
+           count.should == 3
   end
 
   context 'instance' do
@@ -59,7 +59,7 @@ describe 'MemberCounter' do
     its(:mitgliederorganisation) { should == groups(:zhshgl) }
 
     context 'with loaded data' do
-      before { load_data } 
+      before { load_data }
 
       its(:members) { should have(5).items }
 
@@ -106,7 +106,7 @@ describe 'MemberCounter' do
   end
 
   context '.current_counts?' do
-    before { load_data } 
+    before { load_data }
     subject { MemberCounter.current_counts?(jungschar_zh10) }
 
     context 'with counts' do
