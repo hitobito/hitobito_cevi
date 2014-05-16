@@ -12,4 +12,8 @@ module Group::CensusGroup
   def census_total(year)
     MemberCount.total_for_group(year, self)
   end
+
+  def census_details(year)
+    MemberCount.details_for_group(year, self)
+  end
 end

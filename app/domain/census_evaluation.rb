@@ -40,6 +40,10 @@ class CensusEvaluation
     group.census_total(year)
   end
 
+  def details
+    group.census_details(year)
+  end
+
   def census
     @census ||= Census.where(year: year).first
   end

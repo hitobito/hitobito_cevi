@@ -5,17 +5,21 @@
 
 - title t('.title', year: @year)
 
-= crud_form(@member_count,
-            url: group_member_counts_path(@group),
-            cancel_url: census_group_group_path(@group, year: @year),
-            buttons_bottom: true,
-            method: :put) do |f|
-  - MemberCount::COUNT_CATEGORIES.each do |col|
-    = f.labeled(col) do
-      = f.input_field "#{col}_f", class: 'span1'
-      = f.help_inline t('global.gender.female_short')
-      &nbsp;
-      &nbsp;
-      &nbsp;
-      = f.input_field "#{col}_m", class: 'span1'
-      = f.help_inline t('global.gender.male_short')
+= form_for(@group, url: group_member_counts_path(@group), method: :put) do |f|
+  = hidden_field_tag(:year, @year)
+  = save_form_buttons(f, nil, census_group_group_path(@group, year: @year))
+
+  = render layout: 'member_counts/table_header',
+           locals: { before_columns: %w(Jahrgang), id: 'member_counts_fields'} do
+
+    - @member_counts.each do |count|
+      = fields_for 'member_count[]', count, builder: StandardFormBuilder do |f|
+        %tr
+          %td= count.born_in
+          %td= f.input_field :person_f, class: 'span1'
+          %td= f.input_field :person_m, class: 'span1'
+
+  #member_counts_fields_blueprint{style: 'display: none', data: { blueprint: member_counts_fields_blueprint } }
+  = link_to 'Eintrag hinzufügen', 'javascript:void(0);', class: 'add_nested_fields', data: { association: 'member_counts', 'blueprint-id' => 'member_counts_fields_blueprint' }
+
+  = save_form_buttons(f, nil, census_group_group_path(@group, year: @year))

@@ -60,7 +60,7 @@ class Group::Dachverband < Group
   end
 
   def census_details(year)
-    MemberCount.details_for_abteilung(year, self)
+    MemberCount.details_for_dachverband(year)
   end
 
   def member_counts

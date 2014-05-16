@@ -12,6 +12,7 @@ class CreateCensus < ActiveRecord::Migration
       t.integer :group_id, null: false
       t.integer :mitgliederorganisation_id, null: false
       t.integer :year, null: false
+      t.integer :born_in, null: false
       t.integer :person_f
       t.integer :person_m
     end

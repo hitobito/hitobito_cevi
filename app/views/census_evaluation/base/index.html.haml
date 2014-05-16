@@ -11,8 +11,10 @@
 
 #main.row-fluid
   -if @total
-    %article.span8
+    %article.span6
       = render 'totals'
+    %article.span6
+      = render 'details'
 
   -else
     %p= t('.no_data_for_this_year')

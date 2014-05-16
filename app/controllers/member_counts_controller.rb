@@ -10,49 +10,63 @@ class MemberCountsController < ApplicationController
   decorates :group
 
   def create
-    authorize!(:create_member_counts, abteilung)
+    authorize!(:create_member_counts, group)
 
-    year = MemberCounter.create_counts_for(abteilung)
+    year = MemberCounter.create_counts_for(group)
     if year
-      total = MemberCount.total_for_group(year, abteilung).try(:total) || 0
+      total = MemberCount.total_for_group(year, group).try(:total) || 0
       flash[:notice] = translate('.created_data_for_year', total: total, year: year)
     end
 
     year ||= Date.today.year
-    redirect_to census_group_group_path(abteilung, year: year)
+    redirect_to census_group_group_path(group, year: year)
   end
 
   def edit
-    authorize!(:update_member_counts, abteilung)
-    member_count
+    authorize!(:update_member_counts, group)
+    member_counts
   end
 
   def update
-    authorize!(:update_member_counts, abteilung)
+    authorize!(:update_member_counts, group)
 
-    if member_count.update_attributes(permitted_params)
-      redirect_to census_group_group_path(abteilung, year: year),
-                  notice: translate('updated_data_for_year', year: year)
+    counts = member_counts.update(params[:member_count].keys, params[:member_count].values)
+    with_errors = counts.select { |c| c.errors.present? }
+
+    @additional_member_counts = create_additional_member_counts
+
+    if with_errors.blank?
+      flash[:notice] = "Die Mitgliederzahlen für #{year} wurden erfolgreich gespeichert"
+      redirect_to census_group_group_path(group, year: year)
     else
+      messages = with_errors.collect { |e| "#{e.born_in}: #{e.errors.full_messages.join(", ")}" }.join('; ')
+      flash.now[:alert] = 'Nicht alle Jahrgänge konnten gespeichert werden. ' +
+                          "Bitte überprüfen Sie Ihre Angaben. (#{messages})"
       render 'edit'
     end
   end
 
   def destroy
-    authorize!(:delete_member_counts, abteilung)
+    authorize!(:delete_member_counts, group)
 
-    member_count.destroy
-    redirect_to census_group_group_path(abteilung, year: year),
+    member_counts.destroy
+    redirect_to census_group_group_path(group, year: year),
                 notice: translate('.deleted_data_for_year', year: year)
   end
 
   private
 
-  def member_count
-    @member_count ||= abteilung.member_counts.where(year: year).first!
+  def member_counts
+    @member_counts ||= group.member_counts.where(year: year).order(:born_in)
   end
 
-  def abteilung
+  def create_additional_member_counts
+    params.permit(additional_member_counts: [:born_in, :person_f, :person_m]).map do |attrs|
+      @group.member_counts.create(attrs)
+    end
+  end
+
+  def group
     @group ||= Group.find(params[:group_id])
   end
 
@@ -64,5 +78,6 @@ class MemberCountsController < ApplicationController
   def permitted_params
     params.require(:member_count).permit(MemberCount::COUNT_COLUMNS)
   end
+
 
 end

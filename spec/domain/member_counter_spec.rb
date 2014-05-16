@@ -63,10 +63,14 @@ describe 'MemberCounter' do
 
       its(:members) { should have(5).items }
 
-      it 'creates member counts' do
-        expect { subject.count! }.to change { MemberCount.count }.by(1)
+      it 'creates member counts per age group' do
+        expect { subject.count! }.to change { MemberCount.count }.by(4)
         should be_exists
-        assert_member_counts(person_f: 4, person_m: 1)
+
+        assert_member_count(1985, person_f: 1, person_m: nil)
+        assert_member_count(1988, person_f: nil, person_m: 1)
+        assert_member_count(1999, person_f: 1, person_m: nil)
+        assert_member_count(2002, person_f: 2, person_m: nil)
       end
     end
   end
@@ -90,9 +94,11 @@ describe 'MemberCounter' do
   end
 
   context '.create_count_for' do
-    it 'creates count with current census' do
-      censuses(:two_o_12).destroy
-      expect { MemberCounter.create_counts_for(jungschar_zh10) }.to change { MemberCount.where(year: 2011).count }.by(1)
+    before { load_data }
+
+    it 'creates count with current census if no count exists' do
+      member_counts(:jungschar_zh10_2012).destroy!
+      expect { MemberCounter.create_counts_for(jungschar_zh10) }.to change { MemberCount.count }.by(4)
     end
 
     it 'does not create counts with existing ones' do
@@ -124,9 +130,12 @@ describe 'MemberCounter' do
     end
   end
 
-  def assert_member_counts(fields = {})
-    count = MemberCount.where(group: jungschar_zh10, year: 2011).first
-    MemberCount::COUNT_COLUMNS.each do |c|
+  def assert_member_count(born_in, fields = {})
+    counts = MemberCount.where(group: jungschar_zh10, year: 2011, born_in: born_in)
+    counts.should have(1).item
+    count = counts.first
+
+    %w(person_f person_m).each do |c|
       expected = fields[c.to_sym] || 0
       count.send(c).to_i.should be(expected), "#{c} should be #{expected}, was #{count.send(c).to_i}"
     end

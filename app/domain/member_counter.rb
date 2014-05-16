@@ -31,6 +31,7 @@ class MemberCounter
       end
 
     end
+
     def create_counts_for(group)
       census = Census.current
       if census && !current_counts?(group, census)
@@ -62,14 +63,12 @@ class MemberCounter
 
   def count!
     MemberCount.transaction do
-      count.save!
+      members_by_year.each do |born_in, people|
+        count = new_member_count(born_in)
+        count_members(count, people)
+        count.save!
+      end
     end
-  end
-
-  def count
-    count = new_member_count
-    count_members(count, members.includes(:roles))
-    count
   end
 
   def exists?
@@ -90,11 +89,16 @@ class MemberCounter
 
   private
 
-  def new_member_count
+  def members_by_year
+    members.includes(:roles).group_by { |p| p.birthday.try(:year) }
+  end
+
+  def new_member_count(born_in)
     count = MemberCount.new
     count.group = group
     count.mitgliederorganisation = mitgliederorganisation
     count.year = year
+    count.born_in = born_in
     count
   end
 

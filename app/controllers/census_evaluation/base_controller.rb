@@ -12,6 +12,7 @@ class CensusEvaluation::BaseController < ApplicationController
     @sub_groups = evaluation.sub_groups
     @group_counts = evaluation.counts_by_sub_group
     @total = evaluation.total
+    @details = evaluation.details
   end
 
   private

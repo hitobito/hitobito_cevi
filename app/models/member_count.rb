@@ -1,42 +1,10 @@
-#
 class MemberCount < ActiveRecord::Base
-
-  COUNT_CATEGORIES = [:person]
-  COUNT_COLUMNS = COUNT_CATEGORIES.collect { |c| [:"#{c}_f", :"#{c}_m"] }.flatten
-
   belongs_to :group
   belongs_to :mitgliederorganisation, class_name: 'Group::Mitgliederorganisation'
 
-  validates :year, uniqueness: { scope: :group_id }
-  validates(*COUNT_COLUMNS,
-            numericality: { greater_than_or_equal_to: 0, allow_nil: true })
-
-
-  def total
-    f + m
-  end
-
-  def f
-    sum_columns(COUNT_CATEGORIES, 'f')
-  end
-
-  def m
-    sum_columns(COUNT_CATEGORIES, 'm')
-  end
-
-  COUNT_CATEGORIES.each do |c|
-    define_method c do
-      send("#{c}_f").to_i + send("#{c}_m").to_i
-    end
-  end
-
-  private
-
-  def sum_columns(columns, gender)
-    columns.inject(0) do |sum, c|
-      sum + send("#{c}_#{gender}").to_i
-    end
-  end
+  validates :born_in, uniqueness: { scope: [:group_id, :year] }
+  validates :person_f, :person_m,
+            numericality: { greater_than_or_equal_to: 0, allow_nil: true }
 
   class << self
 
@@ -57,12 +25,26 @@ class MemberCount < ActiveRecord::Base
     end
 
     def totals(year)
-      columns = 'mitgliederorganisation_id, ' \
-                'group_id, ' +
-                COUNT_COLUMNS.collect { |c| "SUM(#{c}) AS #{c}" }.join(',')
-
-      select(columns).where(year: year)
+      select('mitgliederorganisation_id, ' +
+             'group_id, ' +
+             'born_in, ' +
+             'SUM(person_f) AS person_f, ' +
+             'SUM(person_m) AS person_m').
+      where(year: year)
     end
+
+    def details_for_dachverband(year)
+      details(year)
+    end
+
+    def details_for_mitgliederorganisation(year, mitgliederorganisation)
+      details(year).where(mitgliederorganisation_id: mitgliederorganisation.id)
+    end
+
+    def details_for_group(year, group)
+      details(year).where(group_id: group.id)
+    end
+
 
     private
 
@@ -70,6 +52,25 @@ class MemberCount < ActiveRecord::Base
       totals(year).where(conditions).group(group_by)
     end
 
+    def details(year)
+      totals(year).
+        group(:born_in).
+        order(:born_in)
+    end
   end
+
+
+  def total
+    f + m
+  end
+
+  def f
+    person_f.to_i
+  end
+
+  def m
+    person_m.to_i
+  end
+
 
 end

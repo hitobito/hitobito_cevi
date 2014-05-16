@@ -12,8 +12,7 @@
     %tr
       - before_columns.each do |c|
         %th
-      - MemberCount::COUNT_CATEGORIES.each do |c|
-        %th.center{colspan: 2}= t("activerecord.attributes.member_count.#{c}")
+        %th.center{colspan: 2}= t("activerecord.attributes.member_count.person")
       - after_columns.each do |c|
         %th
     %tr
