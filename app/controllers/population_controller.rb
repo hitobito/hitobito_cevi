@@ -18,7 +18,6 @@ class PopulationController < ApplicationController
     @groups = load_groups
     @people_by_group = load_people_by_group
     @people_data_complete = people_data_complete?
-    @total = @member_counter.count
   end
 
   private
