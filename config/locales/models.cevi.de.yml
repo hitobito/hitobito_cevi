@@ -2,7 +2,6 @@
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
-
 # -*- coding: utf-8 -*-
 
 # Sample localization file for English. Add more files in this directory for other locales.
@@ -511,3 +510,47 @@ de:
       group/weitere_arbeitsgebiete_team/mitglied:
         one: Mitglied
         description:
+
+      census:
+        one: Bestandesmeldungsperiode
+        other: Bestandesmeldungsperioden
+
+      salutation:
+        one: Anrede
+        other: Anreden
+        available:
+          lieber_pfadiname:
+            label: Liebe(r) [Pfadiname]
+            value:
+              m: Lieber %{nickname}
+              w: Liebe %{nickname}
+              other: Liebe(r) %{nickname}
+          lieber_vorname:
+            label: Liebe(r) [Vorname]
+            value:
+              m: Lieber %{first_name}
+              w: Liebe %{first_name}
+              other: Liebe(r) %{first_name}
+          lieber_titel_nachname:
+            label: Liebe(r) Frau/Herr [Titel] [Nachname]
+            value:
+              m: Lieber Herr %{title_last_name}
+              w: Liebe Frau %{title_last_name}
+              other: Liebe(r) %{title_last_name}
+          sehr_geehrter_titel_nachname:
+            label: Sehr geehrte(r) Frau/Herr [Titel] [Nachname]
+            value:
+              m: Sehr geehrter Herr %{title_last_name}
+              w: Sehr geehrte Frau %{title_last_name}
+              other: Sehr geehrte(r) %{title_last_name}
+
+    attributes:
+      census:
+        year: Jahr
+        start_at: Ab
+        finish_at: Stichdatum
+
+      member_count:
+        person: Personen
+        person_m: Personen m
+        person_f: Personen w
