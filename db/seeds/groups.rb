@@ -5,3 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
+Group::Dachverband.seed_once(:parent_id,
+  {name: 'CEVI Schweiz',
+   short_name: 'CEVI'}
+)

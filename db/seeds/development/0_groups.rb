@@ -8,12 +8,9 @@
 require Rails.root.join('db', 'seeds', 'support', 'group_seeder')
 
 seeder = GroupSeeder.new
-srand(42)
 
-dachverband = Group::Dachverband.seed_once(:parent_id,
-  {name: 'CEVI Schweiz',
-   short_name: 'CEVI'}.merge(seeder.group_attributes)
-)[0]
+dachverband = Group.roots.first
+srand(42)
 
 dv_vorstand = Group::DachverbandVorstand.seed(:name, :parent_id,
   {name: 'Vorstand',
