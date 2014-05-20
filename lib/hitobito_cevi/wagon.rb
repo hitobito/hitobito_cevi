@@ -20,6 +20,7 @@ module HitobitoCevi
     config.to_prepare do
       # extend application classes here
       Group.send          :include, Cevi::Group
+      Role::Permissions << :financials
 
       GroupAbility.send   :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility

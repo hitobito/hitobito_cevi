@@ -105,9 +105,9 @@ de:
         other: Stufen
         long: Jungschar Stufe
       group/gruppe:
-        one: Gruppe
-        other: Gruppen
-        long: Jungschar Gruppe
+        one: Untergruppe
+        other: Untergruppen
+        long: Jungschar Untergruppe
       group/jungschar_team:
         one: Team
         other: Teams
@@ -144,7 +144,7 @@ de:
         one: Weiteres Arbeitsgebiet
         other: Weitere Arbeitsgebiete
         long: Weiteres Arbeitsgebiet
-      group/weitere_arbeitsgebiete_teamgruppe:
+      group/weitere_arbeitsgebiete_team_gruppe:
         one: Team/Gruppe
         other: Teams/Gruppen
         long: Weiteres Arbeitsgebiet Team/Gruppe
@@ -504,10 +504,10 @@ de:
       group/weitere_arbeitsgebiete_externe/externer:
         one: Externe/-r
         description:
-      group/weitere_arbeitsgebiete_team/leiter:
+      group/weitere_arbeitsgebiete_team_gruppe/leiter:
         one: Leiter/-in
         description:
-      group/weitere_arbeitsgebiete_team/mitglied:
+      group/weitere_arbeitsgebiete_team_gruppe/mitglied:
         one: Mitglied
         description:
 
