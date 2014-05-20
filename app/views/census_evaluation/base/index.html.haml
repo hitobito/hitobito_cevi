@@ -11,8 +11,9 @@
 
 #main.row-fluid
   -if @total
-    %article.span6
-      = render 'totals'
+    -if @sub_groups
+      %article.span6
+        = render 'totals'
     %article.span6
       = render 'details'
 

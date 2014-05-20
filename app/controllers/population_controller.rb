@@ -14,7 +14,7 @@ class PopulationController < ApplicationController
 
 
   def index
-    @member_counter = MemberCounter.new(Time.zone.now.year, abteilung)
+    @member_counter = MemberCounter.new(Time.zone.now.year, group)
     @groups = load_groups
     @people_by_group = load_people_by_group
     @people_data_complete = people_data_complete?
@@ -22,12 +22,12 @@ class PopulationController < ApplicationController
 
   private
 
-  def abteilung
+  def group
     @group ||= Group.find(params[:id])
   end
 
   def load_groups
-    abteilung.self_and_descendants.without_deleted.order_by_type(abteilung)
+    group.self_and_descendants.without_deleted.order_by_type(group)
   end
 
   def load_people_by_group
@@ -39,7 +39,7 @@ class PopulationController < ApplicationController
 
   def people_data_complete?
     @people_by_group.values.flatten.all? do |p|
-      p.gender.present?
+      p.birthday.present? && p.gender.present?
     end
   end
 
@@ -52,7 +52,7 @@ class PopulationController < ApplicationController
   end
 
   def authorize
-    authorize!(:show_population, abteilung)
+    authorize!(:show_population, group)
   end
 
 end

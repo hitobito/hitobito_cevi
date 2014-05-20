@@ -29,8 +29,10 @@ class MemberCountsController < ApplicationController
 
   def update
     authorize!(:update_member_counts, group)
-
-    counts = member_counts.update(params[:member_count].keys, params[:member_count].values)
+    counts = []
+    if params[:member_count]
+      counts = member_counts.update(params[:member_count].keys, params[:member_count].values)
+    end
 
     @additional_member_counts = create_additional_member_counts
     with_errors = counts.select { |c| c.errors.present? }
@@ -49,7 +51,7 @@ class MemberCountsController < ApplicationController
   def destroy
     authorize!(:delete_member_counts, group)
 
-    member_counts.destroy
+    member_counts.destroy_all
     redirect_to census_group_group_path(group, year: year),
                 notice: translate('.deleted_data_for_year', year: year)
   end
@@ -63,7 +65,7 @@ class MemberCountsController < ApplicationController
   def create_additional_member_counts
     additionals = params.permit(additional_member_counts: [:born_in, :person_f, :person_m])[:additional_member_counts] || []
     additionals.map do |attrs|
-      @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation)
+      @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation))
     end
   end
 
