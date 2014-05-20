@@ -20,4 +20,36 @@ jungschar_zh10_2012_1988:
   year: 2012
   born_in: 1988
   person_m: 5
+  person_f: 2
+
+jungschar_altst_2012_1997:
+  group: jungschar_altst
+  mitgliederorganisation: zhshgl
+  year: 2012
+  born_in: 1997
+  person_m: 2
   person_f: 3
+
+jungschar_altst_2012_1998:
+  group: jungschar_altst
+  mitgliederorganisation: zhshgl
+  year: 2012
+  born_in: 1998
+  person_m: 1
+  person_f: 2
+
+jungschar_burgd_2012_1998:
+  group: jungschar_burgd
+  mitgliederorganisation: be
+  year: 2012
+  born_in: 1998
+  person_m: 3
+  person_f: 6
+
+jungschar_burgd_2012_2000:
+  group: jungschar_burgd
+  mitgliederorganisation: be
+  year: 2012
+  born_in: 2000
+  person_m: 2
+  person_f: 1

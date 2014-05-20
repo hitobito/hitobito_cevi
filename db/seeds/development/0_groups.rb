@@ -15,17 +15,17 @@ dachverband = Group::Dachverband.seed_once(:parent_id,
    short_name: 'CEVI'}
 )[0]
 
-dv_vorstand = Group::DachverbandVorstand.seed(:name, :parent_id,
+Group::DachverbandVorstand.seed(:name, :parent_id,
   {name: 'Vorstand',
    parent_id: dachverband.id}
 )[0]
 
-dv_geschaeftsst = Group::DachverbandGeschaeftsstelle.seed(:name, :parent_id,
+Group::DachverbandGeschaeftsstelle.seed(:name, :parent_id,
   {name: 'Geschäftsstelle',
    parent_id: dachverband.id}
 )[0]
 
-dv_gremium = Group::DachverbandGremium.seed(:name, :parent_id,
+Group::DachverbandGremium.seed(:name, :parent_id,
   {name: 'Revisionsstelle',
    parent_id: dachverband.id}
 )[0]
@@ -37,7 +37,7 @@ dv_gremium = Group::DachverbandGremium.seed(:name, :parent_id,
 #  end
 #end
 
-orgs = Group::Mitgliederorganisation.seed(:name, :parent_id,
+zhshgl, be, alpin = Group::Mitgliederorganisation.seed(:name, :parent_id,
   {name: 'Cevi Regionalverband ZH-SH-GL',
    short_name: 'RV ZH-SH-GL',
    address: 'Sihlstrasse 33',
@@ -66,159 +66,187 @@ orgs = Group::Mitgliederorganisation.seed(:name, :parent_id,
    parent_id: dachverband.id}
 )
 
-orgs.each do |s|
+[zhshgl, be, alpin].each do |s|
   seeder.seed_social_accounts(s)
 end
 
-mo_vorstand = Group::MitgliederorganisationVorstand.seed(:name, :parent_id,
+Group::MitgliederorganisationVorstand.seed(:name, :parent_id,
   {name: 'Zentralvorstand',
-   parent_id: orgs[0].id}
+   parent_id: zhshgl.id}
 )[0]
 
-mo_leitungsteam = Group::MitgliederorganisationGeschaeftsstelle.seed(:name, :parent_id,
+Group::MitgliederorganisationGeschaeftsstelle.seed(:name, :parent_id,
   {name: 'Leitungsteam',
-   parent_id: orgs[0].id}
+   parent_id: zhshgl.id}
 )[0]
 
-mo_beirat = Group::MitgliederorganisationGremium.seed(:name, :parent_id,
+Group::MitgliederorganisationGremium.seed(:name, :parent_id,
   {name: 'Beirat',
-   parent_id: orgs[0].id}
+   parent_id: zhshgl.id}
 )[0]
 
-sektionen = Group::Sektion.seed(:name, :parent_id,
+
+zuerich, oberland, emmental = Group::Sektion.seed(:name, :parent_id,
   {name: 'Zürich',
-   parent_id: orgs[0].id},
+   parent_id: zhshgl.id},
 
   {name: 'Oberland',
-   parent_id: orgs[0].id}
+   parent_id: zhshgl.id},
+
+  {name: 'Emmental',
+   parent_id: be.id}
 )
 
-ortsgruppen = Group::Ortsgruppe.seed(:name, :parent_id,
+
+stadtzh, jona, hintereff, burgdorf = Group::Ortsgruppe.seed(:name, :parent_id,
   {name: 'Stadt Zürich',
-   parent_id: sektionen[0].id},
+   parent_id: zuerich.id},
 
   {name: 'Jona',
-   parent_id: sektionen[0].id},
+   parent_id: zuerich.id},
 
   # Ortsgruppe without Sektion
   {name: 'Hintereffretikon',
-   parent_id: orgs[0].id}
+   parent_id: zhshgl.id},
+
+  {name: 'Burgdorf',
+   parent_id: emmental.id}
 )
 
 
 vereine = Group::Verein.seed(:name, :parent_id,
   {name: 'Verein Cevi Zürich',
-   parent_id: ortsgruppen[0].id}
+   parent_id: stadtzh.id}
 )
 
 
-jungscharen = Group::Jungschar.seed(:name, :parent_id,
+jungschar_altst, jungschar_zh10, jungschar_burgd = Group::Jungschar.seed(:name, :parent_id,
   {name: 'Altstetten-Albisrieden',
-   parent_id: ortsgruppen[0].id},
+   parent_id: stadtzh.id},
 
   {name: 'Zürich 10',
-   parent_id: ortsgruppen[0].id}
+   parent_id: stadtzh.id},
+
+  {name: 'Burgdorf',
+   parent_id: burgdorf.id}
+
 )
 
-
-stufen_altalb = Group::Stufe.seed(:name, :parent_id,
+jungschar_altst_0405, jungschar_altst_0203 = Group::Stufe.seed(:name, :parent_id,
   {name: 'Jahrgang 04/05',
-   parent_id: jungscharen[0].id},
+   parent_id: jungschar_altst.id},
   {name: 'Jahrgang 02/03',
-   parent_id: jungscharen[0].id}
+   parent_id: jungschar_altst.id}
 )
 
-gruppen_altalb = Group::Gruppe.seed(:name, :parent_id,
+Group::Gruppe.seed(:name, :parent_id,
   {name: 'Ammon',
-   parent_id: stufen_altalb[0].id},
+   parent_id: jungschar_altst_0405.id},
   {name: 'Genesis',
-   parent_id: stufen_altalb[0].id},
+   parent_id: jungschar_altst_0405.id},
   {name: 'Masada',
-   parent_id: stufen_altalb[1].id}
+   parent_id: jungschar_altst_0203.id}
 )
 
 
-froeschli_zh10 = Group::Froeschli.seed(:name, :parent_id,
+Group::Froeschli.seed(:name, :parent_id,
   {name: 'Fröschli',
-   parent_id: jungscharen[1].id}
+   parent_id: jungschar_zh10.id}
 )
 
-stufen_zh10 = Group::Stufe.seed(:name, :parent_id,
+Group::Stufe.seed(:name, :parent_id,
   {name: 'Aranda',
-   parent_id: jungscharen[1].id},
+   parent_id: jungschar_zh10.id},
 
   {name: 'Jakob',
-   parent_id: jungscharen[1].id},
+   parent_id: jungschar_zh10.id},
 
   {name: 'Salomo',
-   parent_id: jungscharen[1].id},
+   parent_id: jungschar_zh10.id},
 
   {name: 'Samson',
-   parent_id: jungscharen[1].id},
+   parent_id: jungschar_zh10.id},
 
   {name: 'Sinai',
-   parent_id: jungscharen[1].id},
+   parent_id: jungschar_zh10.id},
 
   {name: 'Zephanja',
-   parent_id: jungscharen[1].id},
+   parent_id: jungschar_zh10.id},
 
   {name: 'Zion',
-   parent_id: jungscharen[1].id}
+   parent_id: jungschar_zh10.id}
 )
 
-teams_zh10 = Group::JungscharTeam.seed(:name, :parent_id,
+Group::JungscharTeam.seed(:name, :parent_id,
   {name: 'Leitungsteam',
-   parent_id: jungscharen[1].id}
+   parent_id: jungschar_zh10.id}
 )
 
-externe_zh10 = Group::JungscharExterne.seed(:name, :parent_id,
+Group::JungscharExterne.seed(:name, :parent_id,
   {name: 'Cevi-E',
-   parent_id: jungscharen[1].id},
+   parent_id: jungschar_zh10.id},
   {name: 'Räumlichkeit',
-   parent_id: jungscharen[1].id}
+   parent_id: jungschar_zh10.id}
 )
 
 
-tensings = Group::TenSing.seed(:name, :parent_id,
-  {name: 'Seebach',
-   parent_id: ortsgruppen[0].id}
+Group::Stufe.seed(:name, :parent_id,
+  {name: 'Paprika',
+   parent_id: jungschar_burgd.id},
+
+  {name: 'Wildsau',
+   parent_id: jungschar_burgd.id},
+
+  {name: 'Tiger',
+   parent_id: jungschar_burgd.id}
 )
 
-gruppen_seebach = Group::TenSingTeamGruppe.seed(:name, :parent_id,
+Group::JungscharTeam.seed(:name, :parent_id,
   {name: 'Leitungsteam',
-   parent_id: tensings[0].id}
+   parent_id: jungschar_burgd.id}
+)
+
+
+tensing = Group::TenSing.seed(:name, :parent_id,
+  {name: 'Seebach',
+   parent_id: stadtzh.id}
+)[0]
+
+Group::TenSingTeamGruppe.seed(:name, :parent_id,
+  {name: 'Leitungsteam',
+   parent_id: tensing.id}
 )
 
 
 sport = Group::Sport.seed(:name, :parent_id,
   {name: 'Cevi Zürich Sport',
-   parent_id: ortsgruppen[0].id}
-)
+   parent_id: stadtzh.id}
+)[0]
 
-gruppen_sport = Group::SportTeamGruppe.seed(:name, :parent_id,
+Group::SportTeamGruppe.seed(:name, :parent_id,
   {name: 'Mannschaft A',
-   parent_id: sport[0].id},
+   parent_id: sport.id},
   {name: 'Mannschaft B',
-   parent_id: sport[0].id}
+   parent_id: sport.id}
 )
 
 
-wags = Group::WeitereArbeitsgebiete.seed(:name, :parent_id,
+lernhilfe, kino = Group::WeitereArbeitsgebiete.seed(:name, :parent_id,
   {name: 'Cevi Lernhilfe',
-   parent_id: ortsgruppen[0].id},
+   parent_id: stadtzh.id},
 
   {name: 'Cevi Kino',
-   parent_id: ortsgruppen[0].id}
+   parent_id: stadtzh.id}
 )
 
-teams_lernhilfe = Group::WeitereArbeitsgebieteTeamGruppe.seed(:name, :parent_id,
+Group::WeitereArbeitsgebieteTeamGruppe.seed(:name, :parent_id,
   {name: 'Lehrpersonen',
-   parent_id: wags[0].id}
+   parent_id: lernhilfe.id}
 )
 
-teams_lernhilfe = Group::WeitereArbeitsgebieteExterne.seed(:name, :parent_id,
+Group::WeitereArbeitsgebieteExterne.seed(:name, :parent_id,
   {name: 'Schüler/-innen',
-   parent_id: wags[0].id}
+   parent_id: lernhilfe.id}
 )
 
 Group.rebuild!
