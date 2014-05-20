@@ -1,0 +1,20 @@
+bulei:
+  person: bulei
+  group: dachverband_gs
+  type: Group::Dachverband::Administrator
+#  type: Group::Dachverband::DachverbandGeschaeftsstelle::Angestellter
+
+al_altst:
+  person: al_altst
+  group: jungschar_altst
+  type: Group::Jungschar::Abteilungsleiter
+
+al_zh10:
+  person: al_altst
+  group: jungschar_zh10
+  type: Group::Abteilung::Abteilungsleitung
+
+zh10_froeschli:
+  person: child
+  group: jungschar_zh10_froeschli
+  type: Group::Jungschar::Froeschli::Teilnehmer

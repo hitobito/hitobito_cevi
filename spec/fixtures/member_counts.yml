@@ -1,7 +1,23 @@
-jungschar_zh10_2012:
+jungschar_zh10_2012_1999:
   group: jungschar_zh10
   mitgliederorganisation: zhshgl
   year: 2012
   born_in: 1999
   person_m: 3
   person_f: 2
+
+jungschar_zh10_2012_1997:
+  group: jungschar_zh10
+  mitgliederorganisation: zhshgl
+  year: 2012
+  born_in: 1997
+  person_m: 1
+  person_f: 4
+
+jungschar_zh10_2012_1988:
+  group: jungschar_zh10
+  mitgliederorganisation: zhshgl
+  year: 2012
+  born_in: 1988
+  person_m: 5
+  person_f: 3

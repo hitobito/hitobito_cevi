@@ -97,7 +97,7 @@ describe 'MemberCounter' do
     before { load_data }
 
     it 'creates count with current census if no count exists' do
-      member_counts(:jungschar_zh10_2012).destroy!
+      member_counts(:jungschar_zh10_2012_1999).destroy!
       expect { MemberCounter.create_counts_for(jungschar_zh10) }.to change { MemberCount.count }.by(4)
     end
 
