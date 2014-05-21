@@ -19,30 +19,40 @@ describe MemberCountsController do
 
   describe 'PUT update' do
     context 'as mitarbeiter dachverband' do
-      before do
+
+      it 'updates counts' do
         put :update, group_id: group.id, year: 2012, member_count:
           { member_counts(:jungschar_zh10_2012_1999).id => { person_f: 4, person_m: '1'},
             member_counts(:jungschar_zh10_2012_1997).id => { person_f: 2, person_m: ''},
             member_counts(:jungschar_zh10_2012_1988).id => { person_f: nil, person_m: 0},
           }
-      end
 
-      it { should redirect_to(census_group_group_path(group, year: 2012)) }
-
-      it 'saves counts' do
         assert_member_counts(member_counts(:jungschar_zh10_2012_1999).reload, 4, 1)
         assert_member_counts(member_counts(:jungschar_zh10_2012_1997).reload, 2, nil)
         assert_member_counts(member_counts(:jungschar_zh10_2012_1988).reload, nil, 0)
+
+        should redirect_to(census_group_group_path(group, year: 2012))
       end
 
       it "saves additional member counts" do
-        count = member_counts(:jungschar_zh10_2012_1999)
-        expect { put :update, group_id: group.id, id: count.id,
+        expect { put :update, group_id: group.id,
           additional_member_counts: [ { born_in: 2001,
                                         person_f: 1,
                                         person_m: "" } ] }.
-          to change { group.member_counts }.by(1)
+          to change { group.reload.member_counts.count }.by(1)
+
+        should redirect_to(census_group_group_path(group, year: 2012))
       end
+
+      it "renders flash for invalid additional count" do
+        expect { put :update, group_id: group.id,
+          additional_member_counts: [ { born_in: 'asdf',
+                                        person_f: 1,
+                                        person_m: "" } ] }.
+          not_to change { group.reload.member_counts.count }.by(1)
+        flash[:alert].should be_present
+      end
+
     end
 
     context 'as abteilungsleiter' do

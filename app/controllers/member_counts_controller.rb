@@ -35,7 +35,7 @@ class MemberCountsController < ApplicationController
     end
 
     @additional_member_counts = create_additional_member_counts
-    with_errors = counts.select { |c| c.errors.present? }
+    with_errors = (counts + @additional_member_counts).select { |c| c.errors.present? }
 
     if with_errors.blank?
       flash[:notice] = "Die Mitgliederzahlen für #{year} wurden erfolgreich gespeichert"
@@ -64,9 +64,8 @@ class MemberCountsController < ApplicationController
 
   def create_additional_member_counts
     additionals = params.permit(additional_member_counts: [:born_in, :person_f, :person_m])[:additional_member_counts] || []
-    additionals.map do |attrs|
-      @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation))
-    end
+    additionals.map { |attrs| @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation,
+                                                                      year: year)) }
   end
 
   def group
