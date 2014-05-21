@@ -1,8 +1,7 @@
 bulei:
   person: bulei
-  group: dachverband_gs
+  group: ch
   type: Group::Dachverband::Administrator
-#  type: Group::Dachverband::DachverbandGeschaeftsstelle::Angestellter
 
 al_altst:
   person: al_altst

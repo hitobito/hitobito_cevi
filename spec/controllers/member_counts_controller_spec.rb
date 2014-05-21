@@ -18,7 +18,7 @@ describe MemberCountsController do
   end
 
   describe 'PUT update' do
-    context 'as mitarbeiter dachverband' do
+    context 'as administrator dachverband' do
 
       it 'updates counts' do
         put :update, group_id: group.id, year: 2012, member_count:
@@ -78,6 +78,9 @@ describe MemberCountsController do
     end
 
     it 'should create counts' do
+      censuses(:two_o_12).destroy
+      roles(:al_zh10).destroy
+      roles(:zh10_froeschli).destroy
       Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
                 group: group,
                 person: Fabricate(:person, gender: 'm', birthday: Date.new(1980, 1, 1)))
@@ -87,7 +90,7 @@ describe MemberCountsController do
       Fabricate(Group::Stufe::Teilnehmer.name.to_sym,
                 group: groups(:jungschar_zh10_aranda),
                 person: Fabricate(:person, gender: 'm', birthday: Date.new(2000, 12, 31)))
-      censuses(:two_o_12).destroy
+
       expect { post :create, group_id: group.id }.to change { MemberCount.count }.by(3)
 
       counts = MemberCount.where(group_id: group.id, year: 2011).order(:born_in).to_a

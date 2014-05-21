@@ -11,6 +11,9 @@ describe 'MemberCounter' do
   let(:jungschar_zh10) { groups(:jungschar_zh10) }
 
   def load_data
+    Person.destroy_all
+    Role.destroy_all
+
     jungschar_zh10_aranda = groups(:jungschar_zh10_aranda)
     jungschar_zh10_salomo = groups(:jungschar_zh10_salomo)
     jungschar_zh10_froeschli = groups(:jungschar_zh10_froeschli)
@@ -98,6 +101,8 @@ describe 'MemberCounter' do
 
     it 'creates count with current census if no count exists' do
       member_counts(:jungschar_zh10_2012_1999).destroy!
+      member_counts(:jungschar_zh10_2012_1997).destroy!
+      member_counts(:jungschar_zh10_2012_1988).destroy!
       expect { MemberCounter.create_counts_for(jungschar_zh10) }.to change { MemberCount.count }.by(4)
     end
 
