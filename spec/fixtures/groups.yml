@@ -1,4 +1,4 @@
-ch:
+dachverband:
   lft: 1
   rgt: 100
   name: CEVI Schweiz
@@ -7,7 +7,7 @@ ch:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
 
 dachverband_vorstand:
-  parent_id: ch
+  parent: ch
   lft: 98
   rgt: 99
   name: Vorstand
@@ -15,7 +15,7 @@ dachverband_vorstand:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
 
 dachverband_gs:
-  parent_id: ch
+  parent: ch
   lft: 94
   rgt: 95
   name: Geschäftsstelle
@@ -23,7 +23,7 @@ dachverband_gs:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
 
 dachverband_revision:
-  parent_id: ch
+  parent: ch
   lft: 96
   rgt: 97
   name: Revisionsstelle
@@ -31,7 +31,7 @@ dachverband_revision:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
 
 zhshgl:
-  parent_id: ch
+  parent: ch
   lft: 20
   rgt: 93
   name: Cevi Regionalverband ZH-SH-GL
@@ -45,7 +45,7 @@ zhshgl:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
 
 be:
-  parent_id: ch
+  parent: ch
   lft: 4
   rgt: 19
   name: Cevi Region Bern
@@ -59,7 +59,7 @@ be:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:be) %>
 
 alpin:
-  parent_id: ch
+  parent: ch
   lft: 2
   rgt: 3
   name: Cevi Alpin
@@ -73,7 +73,7 @@ alpin:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:alpin) %>
 
 zhshgl_vorstand:
-  parent_id: zhshgl
+  parent: zhshgl
   lft: 29
   rgt: 30
   name: Zentralvorstand
@@ -81,7 +81,7 @@ zhshgl_vorstand:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
 
 zhshgl_gs:
-  parent_id: zhshgl
+  parent: zhshgl
   lft: 25
   rgt: 26
   name: Leitungsteam
@@ -89,7 +89,7 @@ zhshgl_gs:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
 
 zhshgl_beirat:
-  parent_id: zhshgl
+  parent: zhshgl
   lft: 21
   rgt: 22
   name: Beirat
@@ -97,7 +97,7 @@ zhshgl_beirat:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
 
 zuerich:
-  parent_id: zhshgl
+  parent: zhshgl
   lft: 31
   rgt: 92
   name: Zürich
@@ -105,7 +105,7 @@ zuerich:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zuerich) %>
 
 oberland:
-  parent_id: zhshgl
+  parent: zhshgl
   lft: 27
   rgt: 28
   name: Oberland
@@ -113,7 +113,7 @@ oberland:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:oberland) %>
 
 emmental:
-  parent_id: be
+  parent: be
   lft: 5
   rgt: 18
   name: Emmental
@@ -121,7 +121,7 @@ emmental:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:emmental) %>
 
 stadtzh:
-  parent_id: zuerich
+  parent: zuerich
   lft: 34
   rgt: 91
   name: Stadt Zürich
@@ -129,7 +129,7 @@ stadtzh:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:stadtzh) %>
 
 jona:
-  parent_id: zuerich
+  parent: zuerich
   lft: 32
   rgt: 33
   name: Jona
@@ -137,7 +137,7 @@ jona:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jona) %>
 
 hintereff:
-  parent_id: zhshgl
+  parent: zhshgl
   lft: 23
   rgt: 24
   name: Hintereffretikon
@@ -145,7 +145,7 @@ hintereff:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:hintereff) %>
 
 burgdorf:
-  parent_id: emmental
+  parent: emmental
   lft: 6
   rgt: 17
   name: Burgdorf
@@ -153,7 +153,7 @@ burgdorf:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:burgdorf) %>
 
 verein_zh:
-  parent_id: stadtzh
+  parent: stadtzh
   lft: 65
   rgt: 66
   name: Verein Cevi Zürich
@@ -161,7 +161,7 @@ verein_zh:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:verein_zh) %>
 
 jungschar_altst:
-  parent_id: stadtzh
+  parent: stadtzh
   lft: 35
   rgt: 46
   name: Altstetten-Albisrieden
@@ -169,7 +169,7 @@ jungschar_altst:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
 
 jungschar_zh10:
-  parent_id: stadtzh
+  parent: stadtzh
   lft: 67
   rgt: 90
   name: Zürich 10
@@ -177,7 +177,7 @@ jungschar_zh10:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_burgd:
-  parent_id: burgdorf
+  parent: burgdorf
   lft: 7
   rgt: 16
   name: Burgdorf
@@ -185,7 +185,7 @@ jungschar_burgd:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_burgd) %>
 
 jungschar_altst_0405:
-  parent_id: jungschar_altst
+  parent: jungschar_altst
   lft: 40
   rgt: 45
   name: Jahrgang 04/05
@@ -193,7 +193,7 @@ jungschar_altst_0405:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
 
 jungschar_altst_0203:
-  parent_id: jungschar_altst
+  parent: jungschar_altst
   lft: 36
   rgt: 39
   name: Jahrgang 02/03
@@ -201,7 +201,7 @@ jungschar_altst_0203:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
 
 jungschar_altst_0405_ammon:
-  parent_id: jungschar_altst_0405
+  parent: jungschar_altst_0405
   lft: 41
   rgt: 42
   name: Ammon
@@ -209,7 +209,7 @@ jungschar_altst_0405_ammon:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
 
 jungschar_altst_0405_genesis:
-  parent_id: jungschar_altst_0405
+  parent: jungschar_altst_0405
   lft: 43
   rgt: 44
   name: Genesis
@@ -217,7 +217,7 @@ jungschar_altst_0405_genesis:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
 
 jungschar_altst_0203_masada:
-  parent_id: jungschar_altst_0203
+  parent: jungschar_altst_0203
   lft: 37
   rgt: 38
   name: Masada
@@ -225,7 +225,7 @@ jungschar_altst_0203_masada:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_altst) %>
 
 jungschar_zh10_froeschli:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 72
   rgt: 73
   name: Fröschli
@@ -233,7 +233,7 @@ jungschar_zh10_froeschli:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_aranda:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 68
   rgt: 69
   name: Aranda
@@ -241,7 +241,7 @@ jungschar_zh10_aranda:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_jakob:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 74
   rgt: 75
   name: Jakob
@@ -249,7 +249,7 @@ jungschar_zh10_jakob:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_salomo:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 80
   rgt: 81
   name: Salomo
@@ -257,7 +257,7 @@ jungschar_zh10_salomo:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_samson:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 82
   rgt: 83
   name: Samson
@@ -265,7 +265,7 @@ jungschar_zh10_samson:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_sinai:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 84
   rgt: 85
   name: Sinai
@@ -273,7 +273,7 @@ jungschar_zh10_sinai:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_zephanja:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 86
   rgt: 87
   name: Zephanja
@@ -281,7 +281,7 @@ jungschar_zh10_zephanja:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_zion:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 88
   rgt: 89
   name: Zion
@@ -289,7 +289,7 @@ jungschar_zh10_zion:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_leitungsteam:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 76
   rgt: 77
   name: Leitungsteam
@@ -297,7 +297,7 @@ jungschar_zh10_leitungsteam:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_cevi_e:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 70
   rgt: 71
   name: Cevi-E
@@ -305,7 +305,7 @@ jungschar_zh10_cevi_e:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_zh10_raeumlichkeit:
-  parent_id: jungschar_zh10
+  parent: jungschar_zh10
   lft: 78
   rgt: 79
   name: Räumlichkeit
@@ -313,7 +313,7 @@ jungschar_zh10_raeumlichkeit:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_zh10) %>
 
 jungschar_burgd_paprika:
-  parent_id: jungschar_burgd
+  parent: jungschar_burgd
   lft: 10
   rgt: 11
   name: Paprika
@@ -321,7 +321,7 @@ jungschar_burgd_paprika:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_burgd) %>
 
 jungschar_burgd_wildsau:
-  parent_id: jungschar_burgd
+  parent: jungschar_burgd
   lft: 14
   rgt: 15
   name: Wildsau
@@ -329,7 +329,7 @@ jungschar_burgd_wildsau:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_burgd) %>
 
 jungschar_burgd_tiger:
-  parent_id: jungschar_burgd
+  parent: jungschar_burgd
   lft: 12
   rgt: 13
   name: Tiger
@@ -337,7 +337,7 @@ jungschar_burgd_tiger:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_burgd) %>
 
 jungschar_burgd_leitungsteam:
-  parent_id: jungschar_burgd
+  parent: jungschar_burgd
   lft: 8
   rgt: 9
   name: Leitungsteam
@@ -345,7 +345,7 @@ jungschar_burgd_leitungsteam:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:jungschar_burgd) %>
 
 tensing:
-  parent_id: stadtzh
+  parent: stadtzh
   lft: 61
   rgt: 64
   name: Seebach
@@ -353,7 +353,7 @@ tensing:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:tensing) %>
 
 tensing_leitung:
-  parent_id: tensing
+  parent: tensing
   lft: 62
   rgt: 63
   name: Leitungsteam
@@ -361,7 +361,7 @@ tensing_leitung:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:tensing) %>
 
 sport:
-  parent_id: stadtzh
+  parent: stadtzh
   lft: 55
   rgt: 60
   name: Cevi Zürich Sport
@@ -369,7 +369,7 @@ sport:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:sport) %>
 
 sport_team_a:
-  parent_id: sport
+  parent: sport
   lft: 56
   rgt: 57
   name: Mannschaft A
@@ -377,7 +377,7 @@ sport_team_a:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:sport) %>
 
 sport_team_b:
-  parent_id: sport
+  parent: sport
   lft: 58
   rgt: 59
   name: Mannschaft B
@@ -385,7 +385,7 @@ sport_team_b:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:sport) %>
 
 lernhilfe:
-  parent_id: stadtzh
+  parent: stadtzh
   lft: 49
   rgt: 54
   name: Cevi Lernhilfe
@@ -393,7 +393,7 @@ lernhilfe:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:lernhilfe) %>
 
 kino:
-  parent_id: stadtzh
+  parent: stadtzh
   lft: 47
   rgt: 48
   name: Cevi Kino
@@ -401,7 +401,7 @@ kino:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:kino) %>
 
 lernhilfe_lehrpersonen:
-  parent_id: lernhilfe
+  parent: lernhilfe
   lft: 50
   rgt: 51
   name: Lehrpersonen
@@ -409,7 +409,7 @@ lernhilfe_lehrpersonen:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:lernhilfe) %>
 
 lernhilfe_schueler:
-  parent_id: lernhilfe
+  parent: lernhilfe
   lft: 52
   rgt: 53
   name: Schüler/-innen

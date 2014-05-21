@@ -14,7 +14,7 @@ class CensusesController < CrudController
   decorates :group
 
   def create
-    super(location: census_bund_group_path(Group.root))
+    super(location: census_dachverband_group_path(Group.root))
   end
 
   private

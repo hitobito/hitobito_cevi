@@ -586,5 +586,6 @@ de:
 
       member_count:
         person: Personen
+        born_in: Jahrgang
         person_m: Personen m
         person_f: Personen w

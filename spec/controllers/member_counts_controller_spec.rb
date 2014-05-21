@@ -53,13 +53,22 @@ describe MemberCountsController do
         flash[:alert].should be_present
       end
 
+      it "renders flash for additional count of existing year" do
+        expect { put :update, group_id: group.id,
+          additional_member_counts: [ { born_in: 1999,
+                                        person_f: 1,
+                                        person_m: "" } ] }.
+          not_to change { group.reload.member_counts.count }.by(1)
+        flash[:alert].should be_present
+      end
+
     end
 
     context 'as abteilungsleiter' do
-      it 'restricts access' do
+      it 'allows access' do
         leiter = Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym, group: group).person
         sign_in(leiter)
-        expect { put :update, group_id: group.id, year: 2012, member_count: {} }.to raise_error(CanCan::AccessDenied)
+        expect { put :update, group_id: group.id, year: 2012, member_count: {} }.not_to raise_error(CanCan::AccessDenied)
       end
     end
   end
