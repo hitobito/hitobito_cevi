@@ -27,7 +27,10 @@ class PopulationController < ApplicationController
   end
 
   def load_groups
-    group.self_and_descendants.without_deleted.order_by_type(group)
+    group.self_and_descendants
+      .without_deleted
+      .where(type: MemberCounter::GROUPS.map(&:sti_name))
+      .order_by_type(group)
   end
 
   def load_people_by_group

@@ -10,11 +10,11 @@ al_altst:
   type: Group::Jungschar::Abteilungsleiter
 
 al_zh10:
-  person: al_altst
+  person: al_zh10
   group: jungschar_zh10
-  type: Group::Abteilung::Abteilungsleitung
+  type: Group::Jungschar::Abteilungsleiter
 
 zh10_froeschli:
   person: child
   group: jungschar_zh10_froeschli
-  type: Group::Jungschar::Froeschli::Teilnehmer
+  type: Group::Froeschli::Teilnehmer
