@@ -11,7 +11,7 @@ class CensusEvaluation::BaseController < ApplicationController
   def index
     @sub_groups = evaluation.sub_groups
     @group_counts = evaluation.counts_by_sub_group
-    @total = evaluation.total
+    @total = evaluation.total || empty_count_for_current_census
     @details = evaluation.details
   end
 
@@ -19,6 +19,10 @@ class CensusEvaluation::BaseController < ApplicationController
 
   def evaluation
     @evaluation ||= CensusEvaluation.new(year, group, sub_group_type)
+  end
+
+  def empty_count_for_current_census
+    year == Census.current.try(:year) ? MemberCount.new : nil
   end
 
   def group
