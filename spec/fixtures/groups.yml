@@ -4,34 +4,34 @@ dachverband:
   name: CEVI Schweiz
   short_name: CEVI
   type: Group::Dachverband
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:dachverband) %>
 
 dachverband_vorstand:
-  parent: ch
+  parent: dachverband
   lft: 98
   rgt: 99
   name: Vorstand
   type: Group::DachverbandVorstand
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:dachverband) %>
 
 dachverband_gs:
-  parent: ch
+  parent: dachverband
   lft: 94
   rgt: 95
   name: Geschäftsstelle
   type: Group::DachverbandGeschaeftsstelle
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:dachverband) %>
 
 dachverband_revision:
-  parent: ch
+  parent: dachverband
   lft: 96
   rgt: 97
   name: Revisionsstelle
   type: Group::DachverbandGremium
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:ch) %>
+  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:dachverband) %>
 
 zhshgl:
-  parent: ch
+  parent: dachverband
   lft: 20
   rgt: 93
   name: Cevi Regionalverband ZH-SH-GL
@@ -45,7 +45,7 @@ zhshgl:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
 
 be:
-  parent: ch
+  parent: dachverband
   lft: 4
   rgt: 19
   name: Cevi Region Bern
@@ -59,7 +59,7 @@ be:
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:be) %>
 
 alpin:
-  parent: ch
+  parent: dachverband
   lft: 2
   rgt: 3
   name: Cevi Alpin

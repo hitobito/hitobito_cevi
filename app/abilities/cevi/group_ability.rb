@@ -20,8 +20,12 @@ module Cevi::GroupAbility
 
       permission(:layer_full).
         may(:remind_census, :update_member_counts, :delete_member_counts).
-        in_same_layer_or_below
+        in_upper_layer_hierarchy
     end
 
+  end
+
+  def in_upper_layer_hierarchy
+    group && permission_in_layers?(group.upper_layer_hierarchy.collect(&:id))
   end
 end
