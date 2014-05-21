@@ -55,7 +55,7 @@ class Group::Mitgliederorganisation < Group
   roles Administrator
 
   def census_total(year)
-    MemberCount.total_by_mitgliederorganisationen(year).first
+    MemberCount.total_by_mitgliederorganisationen(year).where(mitgliederorganisation_id: id).first
   end
 
   def census_details(year)
