@@ -31,4 +31,29 @@
 #  deleter_id     :integer
 #
 
-class Group::VereinVorstand < Group::Vorstand; end
+class Group::VereinVorstand < Group::Vorstand
+
+  ### ROLES
+
+  class Praesident < ::Role
+    self.permissions = [:layer_full, :contact_data]
+  end
+
+  class Finanzverantwortlicher < ::Role
+    self.permissions = [:layer_read, :financials]
+  end
+
+  class Aktuar < ::Role
+    self.permissions = [:layer_read]
+  end
+
+  class Mitglied < ::Role
+    self.permissions = [:layer_read]
+  end
+
+  roles Praesident,
+        Finanzverantwortlicher,
+        Aktuar,
+        Mitglied
+
+end

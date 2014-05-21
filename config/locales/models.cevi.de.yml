@@ -243,6 +243,40 @@ de:
         one: Administrator/-in Cevi DB
         description:
 
+      group/verein/adressverantwortlicher:
+        one: Adressverantwortlicher
+        description:
+      group/verein/mitglied:
+        one: Mitglied
+        description:
+      group/verein/freier_mitarbeiter:
+        one: Freie/-r Mitarbeiter/-in
+        description:
+      group/verein_vorstand/praesident:
+        one: Präsident/-in
+        description:
+      group/verein_vorstand/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/verein_vorstand/aktuar:
+        one: Aktuar/-in
+        description:
+      group/verein_vorstand/mitglied:
+        one: Mitglied
+        description:
+      group/verein_mitglieder/leiter:
+        one: Leiter/-in
+        description:
+      group/verein_mitglieder/mitglied:
+        one: Mitglied
+        description:
+      group/verein_externe/verantwortlicher:
+        one: Verantwortliche/-r
+        description:
+      group/verein_externe/externer:
+        one: Externe-/r
+        description:
+
       group/jungschar/abteilungsleiter:
         one: Abteilungsleiter/-in
         description:

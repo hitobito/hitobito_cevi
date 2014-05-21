@@ -39,4 +39,22 @@ class Group::Verein < Group
            Group::VereinMitglieder,
            Group::VereinExterne
 
+  ### ROLES
+
+  class Adressverantwortlicher < ::Role
+    self.permissions = [:layer_full]
+  end
+
+  class Mitglied < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class FreierMitarbeiter < ::Role
+    self.permissions = [:layer_read]
+  end
+
+  roles Adressverantwortlicher,
+        Mitglied,
+        FreierMitarbeiter
+
 end
