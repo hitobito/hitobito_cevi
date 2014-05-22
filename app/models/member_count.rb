@@ -1,3 +1,23 @@
+# encoding: utf-8
+
+#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  hitobito_cevi and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_cevi.
+
+# == Schema Information
+#
+# Table name: member_counts
+#
+#  id                        :integer          not null, primary key
+#  group_id                  :integer          not null
+#  mitgliederorganisation_id :integer          not null
+#  year                      :integer          not null
+#  born_in                   :integer          not null
+#  person_f                  :integer
+#  person_m                  :integer
+#
+
 class MemberCount < ActiveRecord::Base
   belongs_to :group
   belongs_to :mitgliederorganisation, class_name: 'Group::Mitgliederorganisation'
