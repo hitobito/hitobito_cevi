@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 
@@ -41,7 +42,7 @@ shared_examples 'sub_groups' do
 
   context 'when creating new group' do
     let!(:dummy) do
-      d = Fabricate(group_to_delete.class.name.to_sym, parent: group, name: 'Dummy')
+      d = Fabricate(group_to_delete.class.name.to_sym, parent: parent, name: 'Dummy')
       group.reload # because lft, rgt changed
       d
     end
@@ -79,7 +80,7 @@ shared_examples 'sub_groups' do
 
   context 'when merging groups' do
     before do
-      if group_to_delete.is_a?(Group::Kantonalverband)
+      if group_to_delete.is_a?(Group::Mitgliederorganisation)
         [group_to_delete, group_without_count].each { |g| g.events.destroy_all }
       end
 
@@ -99,20 +100,21 @@ end
 
 describe CensusEvaluation do
 
-  let(:ch)   { groups(:bund) }
-  let(:be)   { groups(:be) }
-  let(:vd)   { groups(:vd) }
-  let(:zh)   { groups(:zh) }
-  let(:schekka)   { groups(:schekka) }
+  let(:dachverband)    { groups(:dachverband) }
+  let(:zhshgl)         { groups(:zhshgl) }
+  let(:be)             { groups(:be) }
+  let(:alpin)          { groups(:alpin) }
+  let(:jungschar_zh10) { groups(:jungschar_zh10) }
 
   let(:census) { censuses(:two_o_12) }
   let(:year)   { census.year }
   let(:evaluation) { CensusEvaluation.new(year, group, sub_group_type) }
 
 
-  context 'for bund' do
-    let(:group) { ch }
-    let(:sub_group_type) { Group::Kantonalverband }
+  context 'for dachverband' do
+    let(:group) { dachverband }
+    let(:parent) { dachverband }
+    let(:sub_group_type) { Group::Mitgliederorganisation }
 
     it 'census is current census' do
       evaluation.should be_census_current
@@ -120,9 +122,9 @@ describe CensusEvaluation do
 
     it '#counts_by_sub_group' do
       counts = evaluation.counts_by_sub_group
-      counts.keys.should =~ [be.id, zh.id]
-      counts[be.id].total.should == 19
-      counts[zh.id].total.should == 9
+      counts.keys.should =~ [zhshgl.id, be.id]
+      counts[zhshgl.id].total.should eq 25
+      counts[be.id].total.should eq 12
     end
 
     it '#total' do
@@ -130,65 +132,77 @@ describe CensusEvaluation do
     end
 
     it '#sub_groups' do
-      evaluation.sub_groups.should == [be, vd, zh]
+      evaluation.sub_groups.should eq [alpin, be, zhshgl]
     end
 
     it_behaves_like 'sub_groups' do
-      let(:subgroups)           { [be, vd, zh] }
+      let(:subgroups)           { [zhshgl, be, alpin] }
       let(:group_to_delete)     { be }
-      let(:group_without_count) { vd }
+      let(:group_without_count) { alpin }
     end
   end
 
-  context 'for kantonalverband' do
-    let(:group) { be }
-    let(:sub_group_type) { Group::Abteilung }
-    let(:berchtold) { groups(:berchtold) }
-    let(:patria)    { groups(:patria) }
+  context 'for mitgliederorganisation' do
+    before do
+      groups(:tensing).destroy!
+      groups(:lernhilfe).destroy!
+      groups(:kino).destroy!
+      groups(:sport).destroy!
+    end
+
+    let(:group) { zhshgl }
+    let(:parent) { groups(:stadtzh) }
+    let(:sub_group_type) { MemberCounter::TOP_LEVEL }
+    let(:jungschar_altst) { groups(:jungschar_altst) }
+    let!(:jungschar_zh11)  { Fabricate(Group::Jungschar.name.to_sym, parent: parent, name: 'Zürich1 11') }
 
     it '#counts_by_sub_group' do
       counts = evaluation.counts_by_sub_group
-      counts.keys.should =~ [schekka.id, berchtold.id]
-      counts[schekka.id].total.should == 12
-      counts[berchtold.id].total.should == 7
+      counts.keys.should =~ [jungschar_zh10.id, jungschar_altst.id]
+      counts[jungschar_zh10.id].total.should eq 17
+      counts[jungschar_altst.id].total.should eq 8
     end
 
     it '#sub groups' do
-      evaluation.sub_groups.should == [berchtold, patria, schekka, groups(:schweizerstern)]
+      evaluation.sub_groups.should eq [jungschar_altst, jungschar_zh10, jungschar_zh11]
     end
 
     it_behaves_like 'sub_groups' do
-      let(:subgroups)           { [schekka, patria, berchtold] }
-      let(:group_to_delete)     { schekka }
-      let(:group_without_count) { patria }
-
-      before { groups(:schweizerstern).destroy }
+      let(:subgroups)           { [jungschar_zh10, jungschar_zh11, jungschar_altst] }
+      let(:group_to_delete)     { jungschar_zh10 }
+      let!(:group_without_count) { jungschar_zh11}
 
       context 'when moving group' do
-        let(:target) { be }
-        let(:chaeib) { groups(:chaeib) }
+        let(:target) { zhshgl }
+        let(:jungschar_burgd) { groups(:jungschar_burgd) }
 
         context 'before count' do
           before do
-            Group::Mover.new(chaeib).perform(target).should be_true
+            Group::Mover.new(jungschar_burgd).perform(target).should be_true
             target.reload
           end
 
           context 'in new parent' do
-            before { member_counts(:chaeib).destroy }
+            before do
+              member_counts(:jungschar_burgd_2012_1998).destroy
+              member_counts(:jungschar_burgd_2012_2000).destroy
+            end
 
             include_examples 'sub_groups_examples' do
-              let(:current_census_groups) { subgroups + [chaeib] }
+              let(:current_census_groups) { subgroups + [jungschar_burgd] }
               let(:past_census_groups)    { subgroups - [group_without_count] }
-              let(:future_census_groups)  { subgroups + [chaeib] }
+              let(:future_census_groups)  { subgroups + [jungschar_burgd] }
             end
           end
 
           context 'in old parent' do
-            let(:group) { groups(:zh) }
+            let(:group) { groups(:be) }
 
             context '' do
-              before { member_counts(:chaeib).destroy }
+              before do
+                member_counts(:jungschar_burgd_2012_1998).destroy
+                member_counts(:jungschar_burgd_2012_2000).destroy
+              end
 
               include_examples 'sub_groups_examples' do
                 let(:current_census_groups) { [] }
@@ -203,7 +217,7 @@ describe CensusEvaluation do
               it 'contains moved group' do
                  Census.create!(year: census.year + 1,
                                 start_at: census.start_at + 1.year)
-                 should eq [chaeib].collect(&:name).sort
+                 should eq [jungschar_burgd].collect(&:name).sort
               end
             end
           end
@@ -212,7 +226,7 @@ describe CensusEvaluation do
 
         context 'after count' do
           before do
-            Group::Mover.new(chaeib).perform(target).should be_true
+            Group::Mover.new(jungschar_burgd).perform(target).should be_true
             target.reload
           end
 
@@ -220,16 +234,16 @@ describe CensusEvaluation do
             include_examples 'sub_groups_examples' do
               let(:current_census_groups) { subgroups }
               let(:past_census_groups)    { subgroups - [group_without_count] }
-              let(:future_census_groups)  { subgroups + [chaeib] }
+              let(:future_census_groups)  { subgroups + [jungschar_burgd] }
             end
           end
 
           context 'in old parent' do
-            let(:group) { groups(:zh) }
+            let(:group) { groups(:be) }
 
             include_examples 'sub_groups_examples' do
-              let(:current_census_groups) { [chaeib] }
-              let(:past_census_groups)    { [chaeib] }
+              let(:current_census_groups) { [jungschar_burgd] }
+              let(:past_census_groups)    { [jungschar_burgd] }
               let(:future_census_groups)  { [] }
             end
           end
@@ -238,8 +252,8 @@ describe CensusEvaluation do
     end
   end
 
-  context 'for abteilung' do
-    let(:group) { schekka }
+  context 'for group' do
+    let(:group) { jungschar_zh10 }
     let(:sub_group_type) { nil }
 
     it '#counts_by_sub_group' do
@@ -249,7 +263,7 @@ describe CensusEvaluation do
     it '#total' do
       total = evaluation.total
       total.should be_kind_of(MemberCount)
-      total.total.should == 12
+      total.total.should eq 17
     end
 
     it '#sub_groups' do
@@ -261,6 +275,9 @@ end
 
 def delete_group_member_counts
   field = "#{group_to_delete.class.model_name.element}_id"
+  if MemberCounter::TOP_LEVEL.include?(group_to_delete.class)
+    field = 'group_id'
+  end
   MemberCount.destroy_all(field => group_to_delete.id)
 end
 
