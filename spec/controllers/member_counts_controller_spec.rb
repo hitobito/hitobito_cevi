@@ -65,10 +65,10 @@ describe MemberCountsController do
     end
 
     context 'as abteilungsleiter' do
-      it 'allows access' do
+      it 'denies access' do
         leiter = Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym, group: group).person
         sign_in(leiter)
-        expect { put :update, group_id: group.id, year: 2012, member_count: {} }.not_to raise_error(CanCan::AccessDenied)
+        expect { put :update, group_id: group.id, year: 2012, member_count: {} }.to raise_error(CanCan::AccessDenied)
       end
     end
   end
