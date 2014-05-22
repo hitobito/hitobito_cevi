@@ -13,16 +13,18 @@ module Cevi::Sheet::Group
       -2,
       Sheet::Tab.new(:tab_population_label,
                      :population_group_path,
-                     if: lambda { |view, group|
-                       MemberCounter::TOP_LEVEL.any? { |group_type| group.kind_of?(group_type) } && view.can?(:show_population, group)
-                     }),
+                     if: lambda do |view, group|
+                       MemberCounter::TOP_LEVEL.any? do |group_type|
+                         group.kind_of?(group_type)
+                       end && view.can?(:show_population, group)
+                     end),
 
       Sheet::Tab.new('groups.tabs.statistic',
                      :census_evaluation_path,
                      alt: [:censuses_tab_path, :group_member_counts_path],
-                     if: lambda { |view, group|
+                     if: lambda do |view, group|
                        group.census? && view.can?(:evaluate_census, group)
-                     }))
+                     end))
   end
 
 end

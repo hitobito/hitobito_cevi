@@ -41,8 +41,10 @@ class MemberCountsController < ApplicationController
       flash[:notice] = "Die Mitgliederzahlen für #{year} wurden erfolgreich gespeichert"
       redirect_to census_group_group_path(group, year: year)
     else
-      messages = with_errors.collect { |e| "#{e.born_in}: #{e.errors.full_messages.join(", ")}" }.join('; ')
-      flash.now[:alert] = 'Nicht alle Jahrgänge konnten gespeichert werden. ' +
+      messages = with_errors.collect do |e|
+        "#{e.born_in}: #{e.errors.full_messages.join(', ')}"
+      end.join('; ')
+      flash.now[:alert] = 'Nicht alle Jahrgänge konnten gespeichert werden. ' \
                           "Bitte überprüfen Sie Ihre Angaben. (#{messages})"
       render 'edit'
     end
@@ -63,9 +65,12 @@ class MemberCountsController < ApplicationController
   end
 
   def create_additional_member_counts
-    additionals = params.permit(additional_member_counts: [:born_in, :person_f, :person_m])[:additional_member_counts] || []
-    additionals.map { |attrs| @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation,
-                                                                      year: year)) }
+    additionals = params.permit(additional_member_counts:
+                                [:born_in, :person_f, :person_m])[:additional_member_counts] || []
+    additionals.map do |attrs|
+      @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation,
+                                              year: year))
+    end
   end
 
   def group
