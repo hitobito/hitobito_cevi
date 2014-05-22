@@ -32,9 +32,10 @@
 #
 
 class Group::Jungschar < Group
+  include CensusGroup
 
   self.layer = true
-
+  
   ### ROLES
 
   class Abteilungsleiter < ::Role

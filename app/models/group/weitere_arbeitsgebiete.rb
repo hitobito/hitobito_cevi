@@ -32,12 +32,12 @@
 #
 
 class Group::WeitereArbeitsgebiete < Group
+  include CensusGroup
 
   self.layer = true
 
   children Group::WeitereArbeitsgebieteExterne,
            Group::WeitereArbeitsgebieteTeamGruppe
-
 
   ### ROLES
 

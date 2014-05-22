@@ -1,0 +1,38 @@
+#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  hitobito_cevi and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_cevi.
+
+bulei:
+  first_name: Bundes
+  last_name: Leiter
+  email: bulei@hitobito.example.com
+  contact_data_visible: true
+  gender: m
+  birthday: 1988-01-01
+
+al_altst:
+  first_name: AL
+  last_name: Altstetten-Albisrieden
+  email: al.altst@hitobito.example.com
+  contact_data_visible: true
+  birthday: 1999-01-01
+
+al_zh10:
+  first_name: AL
+  last_name: ZH10
+  email: al.zh10@hitobito.example.com
+  contact_data_visible: true
+  birthday: 1997-01-01
+
+child:
+  first_name: My
+  last_name: Child
+  email: child1@hitobito.example.com
+  birthday: 1997-01-01
+
+root:
+  company_name: 'Puzzle ITC'
+  company: true
+  email: <%= Settings.root_email %>
+  birthday: 1999-01-01

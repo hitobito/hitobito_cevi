@@ -13,16 +13,30 @@ module HitobitoCevi
     app_requirement '>= 0'
 
     # Add a load path for this specific wagon
-    # config.autoload_paths += %W( #{config.root}/lib )
+    config.autoload_paths += %W( #{config.root}/app/abilities
+                                 #{config.root}/app/domain )
+
 
     config.to_prepare do
       # extend application classes here
-      Group.send        :include, Cevi::Group
+      Group.send          :include, Cevi::Group
+      Role::Permissions << :financials
+
+      GroupAbility.send   :include, Cevi::GroupAbility
+      VariousAbility.send :include, Cevi::VariousAbility
+
+      Sheet::Group.send   :include, Cevi::Sheet::Group
     end
 
     initializer 'cevi.add_settings' do |_app|
       Settings.add_source!(File.join(paths['config'].existent, 'settings.yml'))
       Settings.reload!
+    end
+
+    initializer 'jubla.add_inflections' do |_app|
+      ActiveSupport::Inflector.inflections do |inflect|
+        inflect.irregular 'census', 'censuses'
+      end
     end
 
     private

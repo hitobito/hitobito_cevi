@@ -32,12 +32,12 @@
 #
 
 class Group::Sport < Group
+  include CensusGroup
 
   self.layer = true
 
   children Group::SportTeamGruppe,
            Group::SportExterne
-
 
   ### ROLES
 

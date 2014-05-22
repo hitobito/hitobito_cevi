@@ -35,4 +35,17 @@ class Group::VereinMitglieder < Group::Mitglieder
 
   children Group::VereinMitglieder
 
+   ### ROLES
+
+  class Leiter < ::Role
+    self.permissions = [:group_full]
+  end
+
+  class Mitglied < ::Role
+    self.permissions = [:group_read]
+  end
+
+  roles Leiter,
+        Mitglied
+
 end

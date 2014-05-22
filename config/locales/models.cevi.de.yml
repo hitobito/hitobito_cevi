@@ -2,7 +2,6 @@
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
-
 # -*- coding: utf-8 -*-
 
 # Sample localization file for English. Add more files in this directory for other locales.
@@ -106,9 +105,9 @@ de:
         other: Stufen
         long: Jungschar Stufe
       group/gruppe:
-        one: Gruppe
-        other: Gruppen
-        long: Jungschar Gruppe
+        one: Untergruppe
+        other: Untergruppen
+        long: Jungschar Untergruppe
       group/jungschar_team:
         one: Team
         other: Teams
@@ -145,7 +144,7 @@ de:
         one: Weiteres Arbeitsgebiet
         other: Weitere Arbeitsgebiete
         long: Weiteres Arbeitsgebiet
-      group/weitere_arbeitsgebiete_teamgruppe:
+      group/weitere_arbeitsgebiete_team_gruppe:
         one: Team/Gruppe
         other: Teams/Gruppen
         long: Weiteres Arbeitsgebiet Team/Gruppe
@@ -242,6 +241,40 @@ de:
 
       group/ortsgruppe/administrator_cevi_db:
         one: Administrator/-in Cevi DB
+        description:
+
+      group/verein/adressverantwortlicher:
+        one: Adressverantwortlicher
+        description:
+      group/verein/mitglied:
+        one: Mitglied
+        description:
+      group/verein/freier_mitarbeiter:
+        one: Freie/-r Mitarbeiter/-in
+        description:
+      group/verein_vorstand/praesident:
+        one: Präsident/-in
+        description:
+      group/verein_vorstand/finanzverantwortlicher:
+        one: Finanzverantwortliche/-r
+        description:
+      group/verein_vorstand/aktuar:
+        one: Aktuar/-in
+        description:
+      group/verein_vorstand/mitglied:
+        one: Mitglied
+        description:
+      group/verein_mitglieder/leiter:
+        one: Leiter/-in
+        description:
+      group/verein_mitglieder/mitglied:
+        one: Mitglied
+        description:
+      group/verein_externe/verantwortlicher:
+        one: Verantwortliche/-r
+        description:
+      group/verein_externe/externer:
+        one: Externe-/r
         description:
 
       group/jungschar/abteilungsleiter:
@@ -505,9 +538,54 @@ de:
       group/weitere_arbeitsgebiete_externe/externer:
         one: Externe/-r
         description:
-      group/weitere_arbeitsgebiete_team/leiter:
+      group/weitere_arbeitsgebiete_team_gruppe/leiter:
         one: Leiter/-in
         description:
-      group/weitere_arbeitsgebiete_team/mitglied:
+      group/weitere_arbeitsgebiete_team_gruppe/mitglied:
         one: Mitglied
         description:
+
+      census:
+        one: Bestandesmeldungsperiode
+        other: Bestandesmeldungsperioden
+
+      salutation:
+        one: Anrede
+        other: Anreden
+        available:
+          lieber_pfadiname:
+            label: Liebe(r) [Pfadiname]
+            value:
+              m: Lieber %{nickname}
+              w: Liebe %{nickname}
+              other: Liebe(r) %{nickname}
+          lieber_vorname:
+            label: Liebe(r) [Vorname]
+            value:
+              m: Lieber %{first_name}
+              w: Liebe %{first_name}
+              other: Liebe(r) %{first_name}
+          lieber_titel_nachname:
+            label: Liebe(r) Frau/Herr [Titel] [Nachname]
+            value:
+              m: Lieber Herr %{title_last_name}
+              w: Liebe Frau %{title_last_name}
+              other: Liebe(r) %{title_last_name}
+          sehr_geehrter_titel_nachname:
+            label: Sehr geehrte(r) Frau/Herr [Titel] [Nachname]
+            value:
+              m: Sehr geehrter Herr %{title_last_name}
+              w: Sehr geehrte Frau %{title_last_name}
+              other: Sehr geehrte(r) %{title_last_name}
+
+    attributes:
+      census:
+        year: Jahr
+        start_at: Ab
+        finish_at: Stichdatum
+
+      member_count:
+        person: Personen
+        born_in: Jahrgang
+        person_m: Personen m
+        person_f: Personen w

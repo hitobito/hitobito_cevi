@@ -32,12 +32,18 @@
 #
 
 class Group::TenSing < Group
+  include CensusGroup
 
   self.layer = true
 
   children Group::TenSingTeamGruppe,
            Group::TenSingExterne
 
+  ### INSTANCE METHODS
+
+  def mitgliederorganisation
+    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
+  end
 
   ### ROLES
 
