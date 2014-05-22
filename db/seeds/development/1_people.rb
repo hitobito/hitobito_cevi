@@ -23,7 +23,8 @@ puzzlers = ['Pascal Zumkehr',
             'Andreas Maierhofer',
             'Andre Kunz',
             'Roland Studer',
-            'Mathis Hofer']
+            'Mathis Hofer',
+            'Juerg Reusser']
 
 devs = {}
 puzzlers.each do |puz|
@@ -37,4 +38,28 @@ seeder.seed_all_roles
 root = Group.root
 devs.each do |name, email|
   seeder.seed_developer(name, email, root, Group::Dachverband::Administrator)
+end
+
+cevi_emails = %w(zora@cevi.ch
+  simba.uster@cevi.ch
+  lb@blattertech.ch
+  carbon@cevi.ch
+  adler@cevi-dinhard.ch
+  ursina.gubler@cevi.ch
+  christian.rahm@cevi.ch
+  calvin.h@cevi.ws
+  leu@cevi.ws
+  lanu.rl@cevi.ws
+  tuemi@cevi.ch
+  info@thomashaefliger.ch)
+
+cevi_password = BCrypt::Password.create("cevi14cevi", cost: 1)
+cevi_emails.each do |email|
+  role_type = Group::Dachverband::Administrator
+  attrs = seeder.person_attributes(role_type).merge(email: email,
+                                                     encrypted_password: cevi_password )
+  Person.seed_once(:email, attrs)
+  person = Person.find_by_email(attrs[:email])
+  role_attrs = { person_id: person.id, group_id: root.id, type: role_type.sti_name }
+  Role.seed_once(*role_attrs.keys, role_attrs)
 end
