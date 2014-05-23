@@ -59,8 +59,9 @@ class Group::Mitgliederorganisation < Group
   end
 
   def census_details(year)
-    MemberCount.details_for_mitgliederorganisation(year,self)
+    MemberCount.details_for_mitgliederorganisation(year, self)
   end
+
   def census_groups(year)
     MemberCount.total_by_groups(year, self)
   end

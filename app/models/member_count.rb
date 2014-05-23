@@ -45,10 +45,10 @@ class MemberCount < ActiveRecord::Base
     end
 
     def totals(year)
-      select('mitgliederorganisation_id, ' +
-             'group_id, ' +
-             'born_in, ' +
-             'SUM(person_f) AS person_f, ' +
+      select('mitgliederorganisation_id, ' \
+             'group_id, ' \
+             'born_in, ' \
+             'SUM(person_f) AS person_f, ' \
              'SUM(person_m) AS person_m').
       where(year: year)
     end

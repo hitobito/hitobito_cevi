@@ -22,21 +22,20 @@ class CensusEvaluation::DachverbandController < CensusEvaluation::BaseController
   private
 
   def group_confirmation_ratios
-    @sub_groups.inject({}) do |hash, mitgliederorganisation|
-      hash[mitgliederorganisation.id] = { confirmed: number_of_confirmations(mitgliederorganisation),
-                                          total: number_of_groups(mitgliederorganisation) }
-      hash
+    @sub_groups.each_with_object({}) do |morg, hash|
+      hash[morg.id] = { confirmed: number_of_confirmations(morg),
+                        total: number_of_groups(morg) }
     end
   end
 
-  def number_of_confirmations(mitgliederorganisation)
-    MemberCount.where(mitgliederorganisation_id: mitgliederorganisation.id, year: year).
+  def number_of_confirmations(morg)
+    MemberCount.where(mitgliederorganisation_id: morg.id, year: year).
                 distinct.
                 count(:group_id)
   end
 
-  def number_of_groups(mitgliederorganisation)
-    mitgliederorganisation.descendants.without_deleted.where(type: MemberCounter::TOP_LEVEL.map(&:sti_name)).count
+  def number_of_groups(morg)
+    morg.descendants.without_deleted.where(type: MemberCounter::TOP_LEVEL.map(&:sti_name)).count
   end
 
 end

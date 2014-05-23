@@ -22,9 +22,11 @@ module PeopleCeviHelper
 
   # http://stackoverflow.com/questions/819263/get-persons-age-in-ruby
   def format_age(person)
-    if dob = person.birthday
+    dob = person.birthday
+    if dob
       now = Time.now.utc.to_date
-      now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+      extra = ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+      now.year - dob.year - extra
     end
   end
 

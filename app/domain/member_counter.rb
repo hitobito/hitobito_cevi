@@ -12,7 +12,7 @@ class MemberCounter
     Group::Sport,
     Group::Jungschar,
     Group::TenSing,
-    Group::WeitereArbeitsgebiete,
+    Group::WeitereArbeitsgebiete
   ]
   GROUPS = TOP_LEVEL + [
     Group::SportTeamGruppe,
