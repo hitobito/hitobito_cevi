@@ -65,9 +65,9 @@ class MemberCountsController < ApplicationController
   end
 
   def faulty_counts_message(with_errors)
-    messages = with_errors.collect {|e| "#{e.born_in}: #{e.errors.full_messages.join(', ')}" }
+    messages = with_errors.collect { |e| "#{e.born_in}: #{e.errors.full_messages.join(', ')}" }
 
-    "Nicht alle Jahrgänge konnten gespeichert werden. " \
+    'Nicht alle Jahrgänge konnten gespeichert werden. ' \
     "Bitte überprüfen Sie Ihre Angaben. (#{messages.join('; ')})"
   end
 
