@@ -25,6 +25,12 @@ module HitobitoCevi
       GroupAbility.send   :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
 
+      PeopleController.permitted_attrs +=
+        [:title, :profession, :j_s_number, :joined, :ahv_number,
+         :ahv_number_old, :nationality, :salutation_parents, :name_parents,
+         :member_card_number, :salutation, :canton, :confession,
+         :correspondence_language]
+
       Sheet::Group.send   :include, Cevi::Sheet::Group
     end
 

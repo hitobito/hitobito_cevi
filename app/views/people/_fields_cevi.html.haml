@@ -1,0 +1,38 @@
+-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+-#  hitobito_cevi and licensed under the Affero General Public License version 3
+-#  or later. See the COPYING file at the top-level directory or at
+-#  https://github.com/hitobito/hitobito_cevi.
+
+= field_set_tag do
+  = f.labeled_input_fields :title, :profession, :j_s_number, :joined, :ahv_number, :ahv_number_old, :salutation_parents, :name_parents, :member_card_number
+
+  = f.labeled_input_field :nationality,
+                          placeholder: 'CH',
+                          data: { provide: :typeahead, source: Person.pluck(:nationality).uniq }
+
+
+  = f.labeled_collection_select :salutation, %w(Sie Du), :to_s, :to_s, { prompt: true }, class: 'span6'
+  = f.labeled_collection_select(:correspondence_language,
+                                Settings.application.correspondence_languages.to_hash,
+                                :first,
+                                :last,
+                                { prompt: true },
+                                class: 'span6')
+
+  = f.labeled_collection_select(:canton,
+                                Settings.application.cantons.to_hash,
+                                :first,
+                                :last,
+                                { prompt: true },
+                                class: 'span6')
+
+  = f.labeled_collection_select(:confession,
+                                Settings.application.confessions.to_hash,
+                                :first,
+                                :last,
+                                { prompt: true },
+                                class: 'span6')
+
+
+:coffee
+  $('[data-provide]').each(() -> $(this).removeAttr('autocomplete'))

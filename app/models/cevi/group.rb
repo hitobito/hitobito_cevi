@@ -35,24 +35,13 @@ module Cevi::Group
   extend ActiveSupport::Concern
 
   included do
+    self.used_attributes += [:founding_date]
     root_types Group::Dachverband
   end
 
   def census?
     respond_to?(:census_total)
   end
-
-  # def census_groups(_year)
-  #   []
-  # end
-
-  # def census_total(year)
-  #   MemberCount.total_for_abteilung(year, self)
-  # end
-
-  # def census_details(year)
-  #   MemberCount.details_for_abteilung(year, self)
-  # end
 
   def population_approveable?
     current_census = Census.current
