@@ -68,7 +68,12 @@ describe Group do
          Group::DachverbandGeschaeftsstelle,
          Group::DachverbandGremium,
          Group::DachverbandMitglieder,
-         Group::DachverbandExterne
+         Group::DachverbandExterne,
+         Group::MitgliederorganisationVorstand,
+         Group::MitgliederorganisationGeschaeftsstelle,
+         Group::MitgliederorganisationGremium,
+         Group::MitgliederorganisationMitglieder,
+         Group::MitgliederorganisationExterne
         ].collect(&:name))
     end
   end
