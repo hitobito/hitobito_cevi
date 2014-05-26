@@ -36,11 +36,11 @@ class Group::Dachverband < Group
   self.layer = true
 
   children Group::Mitgliederorganisation,
-           Group::DachverbandVorstand,
-           Group::DachverbandGeschaeftsstelle,
-           Group::DachverbandGremium,
-           Group::DachverbandMitglieder,
-           Group::DachverbandExterne
+           Group::MitgliederorganisationVorstand,
+           Group::MitgliederorganisationGeschaeftsstelle,
+           Group::MitgliederorganisationGremium,
+           Group::MitgliederorganisationMitglieder,
+           Group::MitgliederorganisationExterne
 
 
   ### ROLES
