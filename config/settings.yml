@@ -3,7 +3,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-# Settings relevant for the jubla wagon
+# Settings relevant for the cevi wagon
 # Overrides settings from the main application
 application:
   #name: Cevi

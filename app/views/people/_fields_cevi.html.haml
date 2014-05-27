@@ -7,8 +7,8 @@
   = f.labeled_input_fields :title, :profession, :j_s_number, :joined, :ahv_number, :ahv_number_old, :salutation_parents, :name_parents, :member_card_number
 
   = f.labeled_input_field :nationality,
-                          placeholder: 'CH',
-                          data: { provide: :typeahead, source: Person.pluck(:nationality).uniq }
+                          placeholder: t('.nationality.placeholder'),
+                          data: { provide: :typeahead, source: Person.where('nationality IS NOT NULL').pluck(:nationality).uniq }
 
 
   = f.labeled_collection_select :salutation, %w(Sie Du), :to_s, :to_s, { prompt: true }, class: 'span6'
