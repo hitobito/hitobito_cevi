@@ -7,13 +7,13 @@
 
 require Rails.root.join('db', 'seeds', 'support', 'group_seeder')
 
-$seeder = GroupSeeder.new
+@seeder = GroupSeeder.new
 
 dachverband = Group.roots.first
 srand(42)
 
 def seed_group(group, *attrs)
-  with_group_attributes = attrs.map { |attr| attr.merge($seeder.group_attributes) }
+  with_group_attributes = attrs.map { |attr| attr.merge(@seeder.group_attributes) }
   group.seed(:name, :parent_id, *with_group_attributes)
 end
 
@@ -31,13 +31,6 @@ seed_group(Group::DachverbandGremium, {
   name: 'Revisionsstelle',
   parent_id: dachverband.id
 })
-
-#unless ch.address.present?
-#  ch.update_attributes(seeder.group_attributes)
-#  ch.default_children.each do |child_class|
-#    child_class.first.update_attributes(seeder.group_attributes)
-#  end
-#end
 
 zhshgl, be, alpin = seed_group(Group::Mitgliederorganisation,
   {name: 'Cevi Regionalverband ZH-SH-GL',
@@ -68,7 +61,7 @@ zhshgl, be, alpin = seed_group(Group::Mitgliederorganisation,
   parent_id: dachverband.id})
 
 [zhshgl, be, alpin].each do |s|
-  $seeder.seed_social_accounts(s)
+  @seeder.seed_social_accounts(s)
 end
 
 seed_group(Group::MitgliederorganisationVorstand, {
