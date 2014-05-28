@@ -35,13 +35,13 @@ class Group::Dachverband < Group
 
   self.layer = true
 
-  children Group::Mitgliederorganisation,
-           Group::MitgliederorganisationVorstand,
-           Group::MitgliederorganisationGeschaeftsstelle,
-           Group::MitgliederorganisationGremium,
-           Group::MitgliederorganisationMitglieder,
-           Group::MitgliederorganisationExterne
 
+  children Group::DachverbandVorstand,
+           Group::DachverbandGeschaeftsstelle,
+           Group::DachverbandGremium,
+           Group::DachverbandMitglieder,
+           Group::DachverbandExterne,
+           Group::Mitgliederorganisation
 
   ### ROLES
 
@@ -53,7 +53,7 @@ class Group::Dachverband < Group
 
   def census_groups(year)
     MemberCount.total_by_mitgliederorganisationen(year)
-  end
+end
 
   def census_total(year)
     MemberCount.total_for_dachverband(year)

@@ -39,11 +39,11 @@ class Group::Mitgliederorganisation < Group
 
   children Group::Sektion,
            Group::Ortsgruppe,
-           Group::DachverbandVorstand,
-           Group::DachverbandGeschaeftsstelle,
-           Group::DachverbandGremium,
-           Group::DachverbandMitglieder,
-           Group::DachverbandExterne
+           Group::MitgliederorganisationVorstand,
+           Group::MitgliederorganisationGeschaeftsstelle,
+           Group::MitgliederorganisationGremium,
+           Group::MitgliederorganisationMitglieder,
+           Group::MitgliederorganisationExterne
 
 
   ### ROLES
@@ -54,6 +54,10 @@ class Group::Mitgliederorganisation < Group
 
   roles Administrator
 
+  def census_groups(year)
+    MemberCount.total_by_groups(year, self)
+  end
+
   def census_total(year)
     MemberCount.total_by_mitgliederorganisationen(year).where(mitgliederorganisation_id: id).first
   end
@@ -62,7 +66,4 @@ class Group::Mitgliederorganisation < Group
     MemberCount.details_for_mitgliederorganisation(year, self)
   end
 
-  def census_groups(year)
-    MemberCount.total_by_groups(year, self)
-  end
 end
