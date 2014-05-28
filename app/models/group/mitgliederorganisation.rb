@@ -37,13 +37,13 @@ class Group::Mitgliederorganisation < Group
 
   has_many :member_counts
 
-  children Group::Sektion,
-           Group::Ortsgruppe,
-           Group::MitgliederorganisationVorstand,
+  children Group::MitgliederorganisationVorstand,
            Group::MitgliederorganisationGeschaeftsstelle,
            Group::MitgliederorganisationGremium,
            Group::MitgliederorganisationMitglieder,
-           Group::MitgliederorganisationExterne
+           Group::MitgliederorganisationExterne,
+           Group::Sektion,
+           Group::Ortsgruppe
 
 
   ### ROLES

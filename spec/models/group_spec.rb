@@ -42,7 +42,17 @@ describe Group do
     it 'is in hierarchical order' do
       expect(subject.collect(&:name)).to eq(
         [Group::Dachverband,
+         Group::DachverbandVorstand,
+         Group::DachverbandGeschaeftsstelle,
+         Group::DachverbandGremium,
+         Group::DachverbandMitglieder,
+         Group::DachverbandExterne,
          Group::Mitgliederorganisation,
+         Group::MitgliederorganisationVorstand,
+         Group::MitgliederorganisationGeschaeftsstelle,
+         Group::MitgliederorganisationGremium,
+         Group::MitgliederorganisationMitglieder,
+         Group::MitgliederorganisationExterne,
          Group::Sektion,
          Group::Ortsgruppe,
          Group::Jungschar,
@@ -63,17 +73,7 @@ describe Group do
          Group::SportExterne,
          Group::WeitereArbeitsgebiete,
          Group::WeitereArbeitsgebieteExterne,
-         Group::WeitereArbeitsgebieteTeamGruppe,
-         Group::DachverbandVorstand,
-         Group::DachverbandGeschaeftsstelle,
-         Group::DachverbandGremium,
-         Group::DachverbandMitglieder,
-         Group::DachverbandExterne,
-         Group::MitgliederorganisationVorstand,
-         Group::MitgliederorganisationGeschaeftsstelle,
-         Group::MitgliederorganisationGremium,
-         Group::MitgliederorganisationMitglieder,
-         Group::MitgliederorganisationExterne
+         Group::WeitereArbeitsgebieteTeamGruppe
         ].collect(&:name))
     end
   end
