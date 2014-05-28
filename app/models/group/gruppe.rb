@@ -33,9 +33,14 @@
 
 class Group::Gruppe < Group
 
-  roles Group::Stufe::Gruppenleiter,
-        Group::Stufe::Minigruppenleiter,
-        Group::Stufe::Helfer,
-        Group::Stufe::Teilnehmer
+  class Gruppenleiter < Group::Stufe::Gruppenleiter; end
+  class Minigruppenleiter < Group::Stufe::Minigruppenleiter; end
+  class Helfer < Group::Stufe::Helfer; end
+  class Teilnehmer < Group::Stufe::Teilnehmer; end
+
+  roles Gruppenleiter,
+        Minigruppenleiter,
+        Helfer,
+        Teilnehmer
 
 end

@@ -43,24 +43,43 @@ class Group::JungscharTeam < Group
     self.permissions = [:group_read]
   end
 
-  roles Group::Jungschar::Abteilungsleiter,
-        Group::Jungschar::Coach,
-        Group::Jungschar::Finanzverantwortlicher,
-        Group::Jungschar::Adressverwalter,
-        Group::Jungschar::Aktuar,
-        Group::Jungschar::Busverwalter,
-        Group::Jungschar::FreierMitarbeiter,
-        Group::Jungschar::Hausverantwortlicher,
-        Group::Jungschar::Input,
-        Group::Jungschar::Laedeliverantwortlicher,
-        Group::Jungschar::Redaktor,
-        Group::Jungschar::Regionaltreffenvertreter,
-        Group::Jungschar::Webmaster,
-        Group::Jungschar::Werbung,
-        Group::Jungschar::Materialverantwortlicher,
-        Group::Jungschar::KontaktRegionalzeitschrift,
-        Group::Jungschar::VerantwortlicherPSA,
-        Group::Jungschar::Jugendarbeiter,
+  class Abteilungsleiter < Group::Jungschar::Abteilungsleiter; end
+  class Coach < Group::Jungschar::Coach;  end
+  class Finanzverantwortlicher < Group::Jungschar::Finanzverantwortlicher; end
+  class Adressverwalter < Group::Jungschar::Adressverwalter; end
+  class Aktuar < Group::Jungschar::Aktuar; end
+  class Busverwalter < Group::Jungschar::Busverwalter; end
+  class FreierMitarbeiter < Group::Jungschar::FreierMitarbeiter; end
+  class Hausverantwortlicher < Group::Jungschar::Hausverantwortlicher; end
+  class Input < Group::Jungschar::Input; end
+  class Laedeliverantwortlicher < Group::Jungschar::Laedeliverantwortlicher; end
+  class Redaktor < Group::Jungschar::Redaktor; end
+  class Regionaltreffenvertreter < Group::Jungschar::Regionaltreffenvertreter; end
+  class Webmaster < Group::Jungschar::Webmaster; end
+  class Werbung < Group::Jungschar::Werbung; end
+  class Materialverantwortlicher < Group::Jungschar::Materialverantwortlicher; end
+  class KontaktRegionalzeitschrift < Group::Jungschar::KontaktRegionalzeitschrift; end
+  class VerantwortlicherPSA < Group::Jungschar::VerantwortlicherPSA; end
+  class Jugendarbeiter < Group::Jungschar::Jugendarbeiter; end
+
+  roles Abteilungsleiter,
+        Coach,
+        Finanzverantwortlicher,
+        Adressverwalter,
+        Aktuar,
+        Busverwalter,
+        FreierMitarbeiter,
+        Hausverantwortlicher,
+        Input,
+        Laedeliverantwortlicher,
+        Redaktor,
+        Regionaltreffenvertreter,
+        Webmaster,
+        Werbung,
+        Materialverantwortlicher,
+        KontaktRegionalzeitschrift,
+        VerantwortlicherPSA,
+        Jugendarbeiter,
         Leitung,
         Mitarbeiter
 
