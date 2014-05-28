@@ -19,4 +19,4 @@
   - if @people_data_complete
     = action_button(t('.confirm_census_data'), group_member_counts_path(@group), nil, method: :post)
   - else
-    %p.alert= t('.missing_gender_information')
+    %p.alert= t('.missing_information')

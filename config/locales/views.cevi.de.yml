@@ -63,4 +63,4 @@ de:
       current_census_data: Aktueller Bestand
       no_census_data_requested: Momentan ist keine Bestandesmeldung ausstehend.
       please_confirm_census_data: 'Bitte ergänze das Geschlecht aller Mitglieder und bestätige den Bestand deiner Gruppe mit "Bestand bestätigen".'
-      missing_gender_information: Um den Bestand bestätigen zu können, muss bei allen Mitgliedern das Geschlecht ausgefüllt sein.
+      missing_information: Um den Bestand bestätigen zu können, muss bei allen Mitgliedern das Geburtsdatum und das Geschlecht ausgefüllt sein.
