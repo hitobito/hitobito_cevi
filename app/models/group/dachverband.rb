@@ -53,7 +53,7 @@ class Group::Dachverband < Group
 
   def census_groups(year)
     MemberCount.total_by_mitgliederorganisationen(year)
-end
+  end
 
   def census_total(year)
     MemberCount.total_for_dachverband(year)

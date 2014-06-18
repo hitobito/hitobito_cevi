@@ -41,9 +41,9 @@ module PeopleCeviHelper
 
   private
 
-  def candidates_from_i18n(key)
-    t("activerecord.attributes.person.#{key}").map do |key, value|
-      Struct.new(:id, :to_s).new(key,value)
+  def candidates_from_i18n(collection_attr)
+    t("activerecord.attributes.person.#{collection_attr}").map do |key, value|
+      Struct.new(:id, :to_s).new(key, value)
     end
   end
 
