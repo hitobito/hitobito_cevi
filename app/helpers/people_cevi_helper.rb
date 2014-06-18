@@ -20,16 +20,6 @@ module PeopleCeviHelper
     format_from_settings_hash(:confessions, person.confession) || 'Keine Angabe'
   end
 
-  # http://stackoverflow.com/questions/819263/get-persons-age-in-ruby
-  def format_age(person)
-    dob = person.birthday
-    if dob
-      now = Time.now.utc.to_date
-      extra = ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
-      now.year - dob.year - extra
-    end
-  end
-
   private
 
   def format_from_settings_hash(value, key)
