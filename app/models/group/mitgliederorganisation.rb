@@ -34,6 +34,9 @@
 class Group::Mitgliederorganisation < Group
 
   self.layer = true
+  self.event_types = [Event, Event::Course]
+  self.contact_group_type = Group::MitgliederorganisationGeschaeftsstelle
+
 
   has_many :member_counts
 

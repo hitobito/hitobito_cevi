@@ -558,6 +558,24 @@ de:
         start_at: Ab
         finish_at: Stichdatum
 
+      event:
+        application_contact: Anmeldung an
+        application_contact_id: Anmeldung an
+
+      event/course:
+        states:
+          created: Erstellt
+          confirmed: Bestätigt
+          application_open: Offen zur Anmeldung
+          application_closed: Anmeldung abgeschlossen
+          assignment_closed: Zuteilung abgeschlossen
+          canceled: Abgesagt
+          completed: Qualifikationen erfasst
+          closed: Abgeschlossen
+
+      event/kind:
+        j_s_label: J+S Bezeichnung
+
       member_count:
         person: Personen
         born_in: Jahrgang

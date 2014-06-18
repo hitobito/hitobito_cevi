@@ -42,6 +42,10 @@ de:
   census_evaluation/mitgliederorganisation:
     email_sent: Erinnerungsemail an %{group} geschickt
 
+  events:
+    form:
+      caption_requires_approval: 'Der Coach wird informiert und muss die Anmeldung bestätigen'
+
   member_counts:
     created_data_for_year: Die Zahlen von Total %{total} Mitgliedern wurden für %{year} erfolgreich erzeugt.
     updated_data_for_year: Die Mitgliederzahlen für %{year} wurden erfolgreich gespeichert.

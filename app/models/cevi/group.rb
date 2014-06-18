@@ -4,6 +4,7 @@
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
+
 # == Schema Information
 #
 # Table name: groups
@@ -35,7 +36,10 @@ module Cevi::Group
   extend ActiveSupport::Concern
 
   included do
+    class_attribute :contact_group_type
+
     self.used_attributes += [:founding_date]
+
     root_types Group::Dachverband
   end
 

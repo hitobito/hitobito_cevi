@@ -1,18 +1,14 @@
+# encoding: utf-8
+
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-top_event:
-  name: Top Event
-  groups: dachverband
+module Cevi::Event::Kind
+  extend ActiveSupport::Concern
 
-top_course:
-  name: Top Course
-  groups: zhshgl
-  type: Event::Course
-  kind: flock
-  priorization: true
-  requires_approval: true
-  external_applications: true
-
+  included do
+    translates :j_s_label
+  end
+end

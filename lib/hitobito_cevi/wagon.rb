@@ -23,16 +23,22 @@ module HitobitoCevi
       Person.send         :include, Cevi::Person
       Role.send           :include, Cevi::Role
 
+      Event::Kind.send    :include, Cevi::Event::Kind
+      Event::Course.send  :include, Cevi::Event::Course
+
       Role::Permissions << :financials
 
       GroupAbility.send   :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
 
+      EventsController.send :include, Cevi::EventsController
       PeopleController.permitted_attrs +=
         [:title, :profession, :j_s_number, :joined, :ahv_number,
          :ahv_number_old, :nationality, :salutation_parents, :name_parents,
          :member_card_number, :salutation, :canton, :confession,
          :correspondence_language]
+
+
 
       Sheet::Group.send        :include, Cevi::Sheet::Group
 

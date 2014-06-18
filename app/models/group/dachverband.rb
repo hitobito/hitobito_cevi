@@ -34,6 +34,8 @@
 class Group::Dachverband < Group
 
   self.layer = true
+  self.event_types = [Event, Event::Course]
+  self.contact_group_type = Group::DachverbandGeschaeftsstelle
 
 
   children Group::DachverbandVorstand,
