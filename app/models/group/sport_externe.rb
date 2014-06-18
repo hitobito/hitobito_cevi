@@ -42,7 +42,7 @@ class Group::SportExterne < Group::Externe
     self.permissions = [:group_full]
   end
 
-  class Externer < ::Role; end
+  class Externer < Cevi::Role::Externer; end
 
   roles Verantwortlicher,
         Externer

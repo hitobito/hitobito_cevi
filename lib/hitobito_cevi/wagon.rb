@@ -21,6 +21,8 @@ module HitobitoCevi
       # extend application classes here
       Group.send          :include, Cevi::Group
       Person.send         :include, Cevi::Person
+      Role.send           :include, Cevi::Role
+
       Role::Permissions << :financials
 
       GroupAbility.send   :include, Cevi::GroupAbility

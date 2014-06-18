@@ -46,7 +46,7 @@ class Group::JungscharExterne < Group::Externe
     self.permissions = []
   end
 
-  class Externer < ::Role
+  class Externer < Cevi::Role::Externer
     self.permissions = []
   end
 
