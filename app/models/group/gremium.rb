@@ -4,7 +4,6 @@
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
-
 # == Schema Information
 #
 # Table name: groups
@@ -29,6 +28,7 @@
 #  creator_id     :integer
 #  updater_id     :integer
 #  deleter_id     :integer
+#  founding_date  :date
 #
 
 # Abstract Gremium
