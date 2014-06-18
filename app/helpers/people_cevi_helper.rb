@@ -7,20 +7,45 @@
 
 module PeopleCeviHelper
 
-  def format_correspondence_language(person)
-    format_from_settings_hash(:correspondence_languages,
-                              person.correspondence_language)
+  def format_person_canton(person)
+    person.canton_value
   end
 
-  def format_canton(person)
-    format_from_settings_hash(:cantons, person.canton)
+  def possible_person_cantons
+    candidates_from_i18n(:cantons)
   end
 
-  def format_confession(person)
-    format_from_settings_hash(:confessions, person.confession) || 'Keine Angabe'
+  def format_person_confession(person)
+    person.confession_value
+  end
+
+  def possible_person_confessions
+    candidates_from_i18n(:confessions)
+  end
+
+  def format_person_correspondence_language(person)
+    person.correspondence_language_value
+  end
+
+  def possible_person_correspondence_languages
+    candidates_from_i18n(:correspondence_languages)
+  end
+
+  def format_person_salutation(person)
+    person.salutation_value
+  end
+
+  def possible_person_salutations
+    candidates_from_i18n(:salutations)
   end
 
   private
+
+  def candidates_from_i18n(key)
+    t("activerecord.attributes.person.#{key}").map do |key, value|
+      Struct.new(:id, :to_s).new(key,value)
+    end
+  end
 
   def format_from_settings_hash(value, key)
     if value

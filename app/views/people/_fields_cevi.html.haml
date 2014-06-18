@@ -10,25 +10,29 @@
                           placeholder: t('.nationality.placeholder'),
                           data: { provide: :typeahead, source: Person.where('nationality IS NOT NULL').pluck(:nationality).uniq }
 
+  = f.labeled_collection_select :salutation, possible_person_salutations,
+                                :id,
+                                :to_s,
+                                { prompt: true },
+                                class: 'span6'
 
-  = f.labeled_collection_select :salutation, %w(Sie Du), :to_s, :to_s, { prompt: true }, class: 'span6'
   = f.labeled_collection_select(:correspondence_language,
-                                Settings.application.correspondence_languages.to_hash,
-                                :first,
-                                :last,
+                                possible_person_correspondence_languages,
+                                :id,
+                                :to_s,
                                 { prompt: true },
                                 class: 'span6')
 
   = f.labeled_collection_select(:canton,
-                                Settings.application.cantons.to_hash,
-                                :first,
-                                :last,
+                                possible_person_cantons,
+                                :id,
+                                :to_s,
                                 { prompt: true },
                                 class: 'span6')
 
   = f.labeled_collection_select(:confession,
-                                Settings.application.confessions.to_hash,
-                                :first,
-                                :last,
+                                possible_person_confessions,
+                                :id,
+                                :to_s,
                                 { prompt: true },
                                 class: 'span6')

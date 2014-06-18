@@ -20,6 +20,7 @@ module HitobitoCevi
     config.to_prepare do
       # extend application classes here
       Group.send          :include, Cevi::Group
+      Person.send         :include, Cevi::Person
       Role::Permissions << :financials
 
       GroupAbility.send   :include, Cevi::GroupAbility
@@ -31,7 +32,9 @@ module HitobitoCevi
          :member_card_number, :salutation, :canton, :confession,
          :correspondence_language]
 
-      Sheet::Group.send   :include, Cevi::Sheet::Group
+      Sheet::Group.send        :include, Cevi::Sheet::Group
+
+      Export::Csv::People::PersonRow.send     :include, Cevi::Export::Csv::People::PersonRow
     end
 
     initializer 'cevi.add_settings' do |_app|
