@@ -40,9 +40,13 @@ class Group::WeitereArbeitsgebieteExterne < Group::Externe
 
   class Verantwortlicher < ::Role
     self.permissions = [:group_full]
+
+    self.visible_from_above = false
   end
 
-  class Externer < Cevi::Role::Externer; end
+  class Externer < ::Role
+    self.visible_from_above  = false
+  end
 
   roles Verantwortlicher,
         Externer

@@ -43,16 +43,17 @@ class Group::JungscharExterne < Group::Externe
   end
 
   class Jugendarbeiter < ::Role
-    self.permissions = []
+    self.visible_from_above  = false
   end
 
-  class Externer < Cevi::Role::Externer
-    self.permissions = []
+  class Externer < ::Role
+    self.visible_from_above  = false
   end
 
   class Goetti < ::Role
-    self.permissions = []
+    self.visible_from_above  = false
   end
+
 
   roles Verantwortlicher,
         Jugendarbeiter,

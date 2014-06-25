@@ -42,7 +42,9 @@ class Group::SportExterne < Group::Externe
     self.permissions = [:group_full]
   end
 
-  class Externer < Cevi::Role::Externer; end
+  class Externer < ::Role
+    self.visible_from_above  = false
+  end
 
   roles Verantwortlicher,
         Externer

@@ -21,7 +21,6 @@ module HitobitoCevi
       # extend application classes here
       Group.send          :include, Cevi::Group
       Person.send         :include, Cevi::Person
-      Role.send           :include, Cevi::Role
 
       Event::Kind.send    :include, Cevi::Event::Kind
       Event::Course.send  :include, Cevi::Event::Course
