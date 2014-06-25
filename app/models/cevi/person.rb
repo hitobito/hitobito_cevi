@@ -84,7 +84,7 @@ module Cevi::Person
   def value_from_i18n(key)
     value = send(key)
 
-    if value
+    if value.present?
       I18n.t("activerecord.attributes.person.#{key.to_s.pluralize}.#{value}")
     end
   end

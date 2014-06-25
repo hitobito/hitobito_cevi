@@ -8,7 +8,11 @@
 
   = f.labeled_input_field :nationality,
                           placeholder: t('.nationality.placeholder'),
-                          data: { provide: :typeahead, source: Person.where('nationality IS NOT NULL').pluck(:nationality).uniq }
+                          data: { provide: :typeahead, source: existing_person_nationalities }
+
+  = f.labeled_input_field :correspondence_language,
+                          placeholder: t('.correspondence_language.placeholder'),
+                          data: { provide: :typeahead, source: existing_person_correspondence_languages }
 
   = f.labeled_collection_select :salutation, possible_person_salutations,
                                 :id,
@@ -16,23 +20,17 @@
                                 { prompt: true },
                                 class: 'span6'
 
-  = f.labeled_collection_select(:correspondence_language,
-                                possible_person_correspondence_languages,
-                                :id,
-                                :to_s,
-                                { prompt: true },
-                                class: 'span6')
 
-  = f.labeled_collection_select(:canton,
+  = f.labeled_collection_select :canton,
                                 possible_person_cantons,
                                 :id,
                                 :to_s,
                                 { prompt: true },
-                                class: 'span6')
+                                class: 'span6'
 
-  = f.labeled_collection_select(:confession,
+  = f.labeled_collection_select :confession,
                                 possible_person_confessions,
                                 :id,
                                 :to_s,
                                 { prompt: true },
-                                class: 'span6')
+                                class: 'span6'

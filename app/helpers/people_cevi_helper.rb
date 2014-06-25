@@ -23,20 +23,20 @@ module PeopleCeviHelper
     candidates_from_i18n(:confessions)
   end
 
-  def format_person_correspondence_language(person)
-    person.correspondence_language_value
-  end
-
-  def possible_person_correspondence_languages
-    candidates_from_i18n(:correspondence_languages)
-  end
-
   def format_person_salutation(person)
     person.salutation_value
   end
 
   def possible_person_salutations
     candidates_from_i18n(:salutations)
+  end
+
+  def existing_person_correspondence_languages
+    Person.where('correspondence_language IS NOT NULL').pluck(:correspondence_language).uniq
+  end
+
+  def existing_person_nationalities
+    Person.where('nationality IS NOT NULL').pluck(:nationality).uniq
   end
 
   private
