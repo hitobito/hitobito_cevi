@@ -43,7 +43,7 @@ class Group::Jungschar < Group
   end
 
   class Coach < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_read, :approve_applications]
   end
 
   class Finanzverantwortlicher < ::Role
