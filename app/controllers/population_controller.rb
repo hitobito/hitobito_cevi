@@ -51,8 +51,7 @@ class PopulationController < ApplicationController
                     where(roles: { group_id: group }).
                     preload_groups.
                     order_by_role.
-                    order_by_name.
-                    includes(:groups)
+                    order_by_name
   end
 
   def authorize
