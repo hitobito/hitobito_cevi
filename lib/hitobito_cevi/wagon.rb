@@ -37,7 +37,7 @@ module HitobitoCevi
          :member_card_number, :salutation, :canton, :confession,
          :correspondence_language]
 
-
+      Event::ParticipationsController.send :include, Cevi::Event::ParticipationsController
 
       Sheet::Group.send        :include, Cevi::Sheet::Group
 

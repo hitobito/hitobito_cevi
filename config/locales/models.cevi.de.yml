@@ -573,6 +573,11 @@ de:
           completed: Qualifikationen erfasst
           closed: Abgeschlossen
 
+
+      event/participation:
+        internal_comment: Interne Bemerkung
+        payed: Bezahlt
+
       event/kind:
         j_s_label: J+S Bezeichnung
 

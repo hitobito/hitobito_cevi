@@ -1,0 +1,3 @@
+- if can?(:update, @event)
+  -  table.col(Event::Participation.human_attribute_name(:internal_comment)) { |p| p.internal_comment }
+  -  table.col(Event::Participation.human_attribute_name(:payed)) { |p| format_payed(p) }

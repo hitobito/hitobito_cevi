@@ -35,11 +35,12 @@ describe Event::ParticipationsController do
 
   let(:user) { people(:bulei) }
 
-  before { sign_in(user); other_course }
 
   context 'GET index' do
-
     before do
+      sign_in(user)
+      other_course
+
       @leader, @participant = *create(Event::Role::Leader, course.participant_type)
     end
 
@@ -58,6 +59,123 @@ describe Event::ParticipationsController do
         role = Fabricate(:event_role, type: role_class.name)
         Fabricate(:event_participation, event: course, roles: [role], active: true)
       end
+    end
+  end
+
+
+  context 'custom attributes' do
+    let(:csv) { CSV.parse(response.body, headers: true, col_sep: ';') }
+    let(:custom_attrs) { { internal_comment: 'test', payed: '1' } }
+    let(:participation) { Fabricate(:event_participation, event: course, person: person) }
+
+    before do
+      course.update_attribute(:state, :application_open)
+      sign_in(person)
+    end
+
+    def activate_participation
+      participation.roles << Fabricate(:event_role, type: course.participant_type.name)
+      participation.update_attributes(active: true, internal_comment: 'test', payed: true)
+    end
+
+
+    context 'with update permission' do
+      let(:person) { people(:bulei) }
+
+      it "updates attributes on create" do
+        post :create, group_id: group.id, event_id: course.id, event_participation: custom_attrs
+        assigns(:participation).should be_payed
+        assigns(:participation).internal_comment.should eq 'test'
+      end
+
+      it "updates attributes on update" do
+        patch :update, group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs
+        participation.reload.should be_payed
+        participation.reload.internal_comment.should eq 'test'
+      end
+
+      it "includes attributes in csv" do
+        activate_participation
+        get :index, group_id: group.id, event_id: course.id, filter: :participants, format: :csv
+
+        csv['Bezahlt'].should eq %w(ja)
+        csv['Interne Bemerkung'].should eq %w(test)
+      end
+
+      context 'rendered pages' do
+        render_views
+        before { activate_participation }
+
+        it "includes columns in index page" do
+          get :index, group_id: group.id, event_id: course.id, filter: :participants
+        end
+
+        it "includes attributes on show" do
+          get :show, group_id: group.id, event_id: course.id, id: participation.id
+        end
+
+        it "includes attributes on edit" do
+          get :edit, group_id: group.id, event_id: course.id, id: participation.id
+        end
+
+        after do
+          html = Capybara::Node::Simple.new(response.body)
+          html.should have_content 'Bezahlt'
+          html.should have_content 'Interne Bemerkung'
+        end
+      end
+
+    end
+
+
+    context 'without update permission' do
+      let(:person) { people(:al_altst) }
+
+      it "ignores attributes on create" do
+        post :create, group_id: group.id, event_id: course.id, event_participation: custom_attrs
+        assigns(:participation).should_not be_payed
+        assigns(:participation).internal_comment.should be_blank
+      end
+
+      it "not allowed to update" do
+        expect do
+          patch :update, group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs
+        end.to raise_error CanCan::AccessDenied
+      end
+
+      it "does not include attributes in csv" do
+        activate_participation
+        get :index, group_id: group.id, event_id: course.id, filter: :participants, format: :csv
+
+        csv.headers.should_not include 'Bezahlt'
+        csv.headers.should_not include 'Interne Bemerkung'
+      end
+
+      context 'rendered pages' do
+        render_views
+        before { activate_participation }
+
+        it "does not include columns on index page" do
+          get :index, group_id: group.id, event_id: course.id, filter: :participants
+        end
+
+        it "does not include attributes on show" do
+          get :show, group_id: group.id, event_id: course.id, id: participation.id
+        end
+
+        it "does not render edit page" do
+          expect do
+            get :edit, group_id: group.id, event_id: course.id, id: participation.id
+          end.to raise_error CanCan::AccessDenied
+        end
+
+        after do
+          html = Capybara::Node::Simple.new(response.body)
+          html.should_not have_content 'Bezahlt'
+          html.should_not have_content 'Interne Bemerkung'
+        end
+      end
+
     end
   end
 
