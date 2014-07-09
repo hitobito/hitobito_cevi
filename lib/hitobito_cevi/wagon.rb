@@ -14,7 +14,8 @@ module HitobitoCevi
 
     # Add a load path for this specific wagon
     config.autoload_paths += %W( #{config.root}/app/abilities
-                                 #{config.root}/app/domain )
+                                 #{config.root}/app/domain
+                                 #{config.root}/app/serializers )
 
 
     config.to_prepare do
@@ -30,14 +31,17 @@ module HitobitoCevi
       GroupAbility.send   :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
 
+      PersonSerializer.send :include, Cevi::PersonSerializer
+      GroupSerializer.send  :include, Cevi::GroupSerializer
+
       EventsController.send :include, Cevi::EventsController
+      Event::ParticipationsController.send :include, Cevi::Event::ParticipationsController
+
       PeopleController.permitted_attrs +=
         [:title, :profession, :j_s_number, :joined, :ahv_number,
          :ahv_number_old, :nationality, :salutation_parents, :name_parents,
          :member_card_number, :salutation, :canton, :confession,
          :correspondence_language]
-
-      Event::ParticipationsController.send :include, Cevi::Event::ParticipationsController
 
       Sheet::Group.send        :include, Cevi::Sheet::Group
 
