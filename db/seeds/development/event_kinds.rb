@@ -41,12 +41,10 @@ event_kinds = Event::Kind.seed(:id,
  {id: 4},
 
  # Gruppenleiter/-innen-Kurs 3
- {id: 5,
-  qualification_kind_ids: [quali_kinds[0].id]},
+ {id: 5},
 
  # Lagerleiter/-innen-Modul
- {id: 6,
-  qualification_kind_ids: [quali_kinds[1].id]},
+ {id: 6},
 
  # Stufenleiter/-innen-Kurs
  {id: 7}
@@ -88,3 +86,17 @@ Event::Kind::Translation.seed(:short_name,
   label: 'Stufenleiter/-innen-Kurs',
   short_name: 'SLK'}
 )
+
+Event::KindQualificationKind.seed(:id,
+  {id: 1,
+   event_kind_id: event_kinds[4].id,
+   qualification_kind_id: quali_kinds[0].id,
+   category: :qualification,
+   role: :participant},
+
+  {id: 2,
+   event_kind_id: event_kinds[5].id,
+   qualification_kind_id: quali_kinds[1].id,
+   category: :qualification,
+   role: :participant}
+}
