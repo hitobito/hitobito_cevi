@@ -99,4 +99,4 @@ Event::KindQualificationKind.seed(:id,
    qualification_kind_id: quali_kinds[1].id,
    category: :qualification,
    role: :participant}
-}
+)
