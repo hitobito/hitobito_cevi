@@ -7,6 +7,7 @@
   %td
     %strong= link_to_if(can?(:show, person), person.to_s, group_person_path(group, person))
   %td= person.roles_short(group)
+  %td= person.complete_address
   %td= person_birthday_with_check(person)
   %td= person_gender_with_check(person)
   %td
