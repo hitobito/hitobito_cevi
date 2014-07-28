@@ -1,3 +1,4 @@
+
 # encoding: utf-8
 
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
@@ -31,43 +32,21 @@
 #  founding_date  :date
 #
 
-class Group::Mitgliederorganisation < Group
+class Group::JungscharSpender < Group::Spender
 
-  self.layer = true
-  self.event_types = [Event, Event::Course]
-  self.contact_group_type = Group::MitgliederorganisationGeschaeftsstelle
-
-
-  has_many :member_counts
-
-  children Group::MitgliederorganisationVorstand,
-           Group::MitgliederorganisationGeschaeftsstelle,
-           Group::MitgliederorganisationGremium,
-           Group::MitgliederorganisationMitglieder,
-           Group::MitgliederorganisationExterne,
-           Group::MitgliederorganisationSpender,
-           Group::Sektion,
-           Group::Ortsgruppe
-
+  children Group::JungscharSpender
 
   ### ROLES
 
-  class Administrator < ::Role
-    self.permissions = [:admin, :layer_full]
+  class Spender < ::Role
   end
 
-  roles Administrator
-
-  def census_groups(year)
-    MemberCount.total_by_groups(year, self)
+  class SpendenVerwalter < ::Role
+    self.permissions = [:group_full]
   end
 
-  def census_total(year)
-    MemberCount.total_by_mitgliederorganisationen(year).where(mitgliederorganisation_id: id).first
-  end
-
-  def census_details(year)
-    MemberCount.details_for_mitgliederorganisation(year, self)
-  end
+  roles Spender,
+        SpendenVerwalter
 
 end
+

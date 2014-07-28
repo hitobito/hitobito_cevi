@@ -35,6 +35,10 @@ de:
         one: Externe
         other: Externe
         long: Dachverband Externe
+      group/dachverband_spender:
+        one: Spender
+        other: Spender
+        long: Dachverband Spender
 
       group/mitgliederorganisation:
         one: Mitgliederorganisation
@@ -60,6 +64,10 @@ de:
         one: Externe
         other: Externe
         long: Mitgliederorganisation Externe
+      group/mitgliederorganisation_spender:
+        one: Spender
+        other: Spender
+        long: Mitgliederorganisation Spender
 
       group/sektion:
         one: Sektion
@@ -112,7 +120,10 @@ de:
         one: Team
         other: Teams
         long: Jungschar Team
-
+      group/jungschar_spender:
+        one: Spender
+        other: Spender
+        long: Jungschar Spender
 
       group/ten_sing:
         one: Ten-Sing
@@ -126,6 +137,10 @@ de:
         one: Externe
         other: Externe
         long: Ten-Sing Externe
+      group/ten_sing_spender:
+        one: Spender
+        other: Spender
+        long: TenSing Spender
 
       group/sport:
         one: Sport
@@ -139,6 +154,10 @@ de:
         one: Externe
         other: Externe
         long: Sport Externe
+      group/sport_spender:
+        one: Spender
+        other: Spender
+        long: Sport Spender
 
       group/weitere_arbeitsgebiete:
         one: Weiteres Arbeitsgebiet
@@ -152,6 +171,11 @@ de:
         one: Externe
         other: Externe
         long: Weiteres Arbeitsgebiet Externe
+      group/weitere_arbeitsgebiete_spender:
+        one: Spender
+        other: Spender
+        long: WeitereArbeitsgebiete Spender
+
 
       group/dachverband/administrator:
         one: Administrator/-in
@@ -194,6 +218,12 @@ de:
         description:
       group/dachverband_externe/externer:
         one: Externe/-r
+        description:
+      group/dachverband_spender/spender:
+        one: Spender/-in
+        description:
+      group/dachverband_spender/spenden_verwalter:
+        one: Spendenverwalter/-in
         description:
 
       group/mitgliederorganisation/administrator:
@@ -238,6 +268,13 @@ de:
       group/mitgliederorganisation_externe/externer:
         one: Externe/-r
         description:
+      group/mitgliederorganisation_spender/spender:
+        one: Spender/-in
+        description:
+      group/mitgliederorganisation_spender/spenden_verwalter:
+        one: Spendenverwalter/-in
+        description:
+
 
       group/ortsgruppe/administrator_cevi_db:
         one: Administrator/-in Cevi DB
@@ -376,6 +413,12 @@ de:
       group/jungschar_team/mitarbeiter:
         one: Mitarbeiter/-in
         description:
+      group/jungschar_spender/spender:
+        one: Spender/-in
+        description:
+      group/jungschar_spender/spenden_verwalter:
+        one: Spendenverwalter/-in
+        description:
 
       group/ten_sing/hauptleiter:
         one: Hauptleiter/-in
@@ -476,6 +519,12 @@ de:
       group/ten_sing_externe/jugendarbeiter:
         one: Jugendarbeiter/-in
         description:
+      group/ten_sing_spender/spender:
+        one: Spender/-in
+        description:
+      group/ten_sing_spender/spenden_verwalter:
+        one: Spendenverwalter/-in
+        description:
 
       group/sport/adressverantwortlicher:
         one: Adressverantwortliche-/r
@@ -510,6 +559,12 @@ de:
       group/sport_externe/externer:
         one: Externe/-r
         description:
+      group/sport_spender/spender:
+        one: Spender/-in
+        description:
+      group/sport_spender/spenden_verwalter:
+        one: Spendenverwalter/-in
+        description:
 
       group/weitere_arbeitsgebiete/adressverantwortlicher:
         one: Adressverantwortliche/-r
@@ -543,6 +598,12 @@ de:
         description:
       group/weitere_arbeitsgebiete_team_gruppe/mitglied:
         one: Mitglied
+        description:
+      group/weitere_arbeitsgebiete_spender/spender:
+        one: Spender/-in
+        description:
+      group/weitere_arbeitsgebiete_spender/spenden_verwalter:
+        one: Spendenverwalter/-in
         description:
 
       census:

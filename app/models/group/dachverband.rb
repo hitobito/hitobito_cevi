@@ -43,6 +43,7 @@ class Group::Dachverband < Group
            Group::DachverbandGremium,
            Group::DachverbandMitglieder,
            Group::DachverbandExterne,
+           Group::DachverbandSpender,
            Group::Mitgliederorganisation
 
   ### ROLES

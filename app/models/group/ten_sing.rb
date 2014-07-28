@@ -37,7 +37,8 @@ class Group::TenSing < Group
   self.layer = true
 
   children Group::TenSingTeamGruppe,
-           Group::TenSingExterne
+           Group::TenSingExterne,
+           Group::TenSingSpender
 
   ### INSTANCE METHODS
 

@@ -1,6 +1,6 @@
 module Export::Csv::People
   class ParticipationRowComplete < ParticipationRow
-    include EventParticipationsHelper
+    include EventParticipationsCeviHelper
     include ActionView::Helpers::TranslationHelper
 
     def payed

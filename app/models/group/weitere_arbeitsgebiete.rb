@@ -37,7 +37,8 @@ class Group::WeitereArbeitsgebiete < Group
   self.layer = true
 
   children Group::WeitereArbeitsgebieteExterne,
-           Group::WeitereArbeitsgebieteTeamGruppe
+           Group::WeitereArbeitsgebieteTeamGruppe,
+           Group::WeitereArbeitsgebieteSpender
 
   ### ROLES
 

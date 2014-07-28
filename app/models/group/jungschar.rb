@@ -34,6 +34,8 @@
 class Group::Jungschar < Group
   include CensusGroup
 
+  children JungscharSpender
+
   self.layer = true
 
   ### ROLES
