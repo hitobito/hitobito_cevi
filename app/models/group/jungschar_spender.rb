@@ -39,6 +39,7 @@ class Group::JungscharSpender < Group::Spender
   ### ROLES
 
   class Spender < ::Role
+    self.visible_from_above = false
   end
 
   class SpendenVerwalter < ::Role
