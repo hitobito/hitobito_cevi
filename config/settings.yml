@@ -6,7 +6,10 @@
 # Settings relevant for the cevi wagon
 # Overrides settings from the main application
 application:
-  #name: Cevi
+  name: cevi.db
+  footer:
+    logo_image: logo_footer.png
+    logo_url: http://www.cevi.ch
 
   languages:
     de: Deutsch

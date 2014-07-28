@@ -35,6 +35,7 @@ module HitobitoCevi
       GroupSerializer.send  :include, Cevi::GroupSerializer
 
       EventsController.send :include, Cevi::EventsController
+      Event::KindsController.permitted_attrs += [:j_s_label]
       Event::ParticipationsController.send :include, Cevi::Event::ParticipationsController
 
       PeopleController.permitted_attrs +=
