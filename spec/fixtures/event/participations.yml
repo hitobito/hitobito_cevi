@@ -5,10 +5,10 @@
 
 top_leader:
   event: top_course
-  person: top_leader
+  person: bulei
   active: true
 
 top_participant:
   event: top_course
-  person: flock_leader_bern
+  person: al_zh10
   active: true
