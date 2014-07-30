@@ -9,9 +9,9 @@
                    classes: 'table-condensed'} do
   - @details.each do |c|
     %tr
-      %td.right= c.born_in
-      %td.right= count_value(c.person_f)
-      %td.right= count_value(c.person_m)
-      %td.right= count_value(c.total)
+      %td.right= format_member_count_born_in(c)
+      %td.center= count_value(c.person_f)
+      %td.center= count_value(c.person_m)
+      %td.center= count_value(c.total)
       %td= render 'detail_actions', member_count: c
   = render 'total_row'

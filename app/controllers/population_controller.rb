@@ -42,7 +42,7 @@ class PopulationController < ApplicationController
 
   def people_data_complete?
     @people_by_group.values.flatten.all? do |p|
-      p.birthday.present? && p.gender.present?
+      p.gender.present?
     end
   end
 

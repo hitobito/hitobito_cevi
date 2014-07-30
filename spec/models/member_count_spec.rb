@@ -29,6 +29,11 @@ describe MemberCount do
   let(:jungschar_altst) { groups(:jungschar_altst) }
   let(:jungschar_burgd) { groups(:jungschar_burgd) }
 
+  it 'allows membercounts without born_in' do
+    MemberCount.new(person_m: 1, person_f: 1, year: 2012,
+                    group: jungschar_zh10, mitgliederorganisation: zhshgl).should be_valid
+  end
+
   describe '.total_by_groups' do
 
     subject { MemberCount.total_by_groups(2012, zhshgl).to_a }

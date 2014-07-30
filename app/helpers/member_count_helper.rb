@@ -18,4 +18,8 @@ module MemberCountHelper
     end
   end
 
+  def format_member_count_born_in(member_count)
+    member_count.born_in || 'unbekannt'
+  end
+
 end

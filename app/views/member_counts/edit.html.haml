@@ -1,7 +1,7 @@
--#  Copyright (c) 2013-2014, Pfadibewegung Schweiz. This file is part of
--#  hitobito_pbs and licensed under the Affero General Public License version 3
+-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+-#  hitobito_cevi and licensed under the Affero General Public License version 3
 -#  or later. See the COPYING file at the top-level directory or at
--#  https://github.com/hitobito/hitobito_pbs.
+-#  https://github.com/hitobito/hitobito_cevi.
 
 - title t('.title', year: @year)
 
@@ -15,7 +15,8 @@
     - @member_counts.each do |count|
       = fields_for 'member_count[]', count, builder: StandardFormBuilder do |f|
         %tr
-          %td= count.born_in
+          %td
+            %span{style: 'padding-right: 5px;'}= format_member_count_born_in(count)
           %td= f.input_field :person_f, class: 'span1'
           %td= f.input_field :person_m, class: 'span1'
 

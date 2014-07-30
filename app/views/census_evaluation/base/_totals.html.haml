@@ -1,7 +1,7 @@
--#  Copyright (c) 2012-2014, Pfadibewegung Schweiz. This file is part of
--#  hitobito_pbs and licensed under the Affero General Public License version 3
+-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+-#  hitobito_cevi and licensed under the Affero General Public License version 3
 -#  or later. See the COPYING file at the top-level directory or at
--#  https://github.com/hitobito/hitobito_pbs.
+-#  https://github.com/hitobito/hitobito_cevi.
 
 = render layout: 'table_header',
          locals: { before_columns: [''], after_columns: [t('census_evaluation.total'), '']} do
@@ -9,7 +9,7 @@
     %tr
       %td= link_to(g.to_s, census_evaluation_path(g, year: @year))
       - %w(person_f person_m).each do |col|
-        %td.right= count_field(g, col)
-      %td.right= count_field(g, :total)
-      %td.right= render 'total_actions', group: g
+        %td.center= count_field(g, col)
+      %td.center= count_field(g, :total)
+      %td.center= render 'total_actions', group: g
   = render 'total_row'

@@ -18,9 +18,7 @@ module PopulationHelper
   end
 
   def person_birthday_with_check(person)
-    if person.birthday.blank?
-      BADGE_INVALID
-    else
+    if person.birthday.present?
       l(person.birthday)
     end
   end
