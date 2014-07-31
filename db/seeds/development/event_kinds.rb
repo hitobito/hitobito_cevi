@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-
 quali_kinds = QualificationKind.seed(:id,
  # J+S-Leiter/-in im Sportfach Lagersport/Trekking
  {id: 1,
