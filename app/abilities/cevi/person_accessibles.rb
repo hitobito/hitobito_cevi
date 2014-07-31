@@ -35,9 +35,11 @@ module Cevi::PersonAccessibles
   end
 
   def scope_for_spender_group
-    financial_layers_ids.include?(group.layer_group_id) ?
-      group.people.only_public_data { |_| true } :
+    if financial_layers_ids.include?(group.layer_group_id)
+      group.people.only_public_data { |_| true }
+    else
       group.people.only_public_data.visible_from_above(group) { |_| true }
+    end
   end
 
   def in_same_layer_condition_with_spender(layer_groups)
