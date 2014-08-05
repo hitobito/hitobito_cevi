@@ -86,6 +86,13 @@ describe CensusEvaluation::DachverbandController do
         assigns(:total).should be_nil
       end
     end
+
+    context 'csv export' do
+      it 'exports data to csv' do
+        get :index, id: ch.id, format: :csv
+        CSV.parse(response.body, headers: true).should have(3).rows
+      end
+    end
   end
 
 end

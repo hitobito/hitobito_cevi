@@ -19,9 +19,9 @@
       - before_columns.each do |c|
         %th= c
       - 1.times do
-        %th.right= t('global.gender.female_short')
-        %th.right= t('global.gender.male_short')
+        %th.center= t('global.gender.female_short')
+        %th.center= t('global.gender.male_short')
       - after_columns.each do |c|
-        %th.right= c
+        %th.center= c
   %tbody
     = yield

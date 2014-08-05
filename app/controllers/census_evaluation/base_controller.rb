@@ -24,6 +24,14 @@ class CensusEvaluation::BaseController < ApplicationController
 
   private
 
+  def csv_export(conditions = {})
+    counts = MemberCount.
+      includes(:group, :mitgliederorganisation).
+      where(conditions.merge(year: year))
+
+    Export::Csv::MemberCount.export(counts)
+  end
+
   def evaluation
     @evaluation ||= CensusEvaluation.new(year, group, sub_group_type)
   end

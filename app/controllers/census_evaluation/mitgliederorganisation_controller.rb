@@ -9,4 +9,12 @@ class CensusEvaluation::MitgliederorganisationController < CensusEvaluation::Bas
 
   self.sub_group_type = MemberCounter::TOP_LEVEL
 
+  def index
+    super
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data(csv_export(mitgliederorganisation: group), type: :csv) }
+    end
+  end
 end

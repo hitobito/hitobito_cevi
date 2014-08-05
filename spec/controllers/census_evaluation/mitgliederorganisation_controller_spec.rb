@@ -50,4 +50,11 @@ describe CensusEvaluation::MitgliederorganisationController do
     end
   end
 
+  context 'csv export' do
+    it 'exports data to csv' do
+      get :index, id: zhshgl.id, format: :csv
+      CSV.parse(response.body, headers: true).should have(2).rows
+    end
+  end
+
 end

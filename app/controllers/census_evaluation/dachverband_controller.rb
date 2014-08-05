@@ -16,6 +16,7 @@ class CensusEvaluation::DachverbandController < CensusEvaluation::BaseController
       format.html do
         @groups = group_confirmation_ratios if evaluation.current_census_year?
       end
+      format.csv { send_data(csv_export, type: :csv) }
     end
   end
 

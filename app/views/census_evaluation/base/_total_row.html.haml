@@ -6,6 +6,6 @@
 %tr
   %th.right= t('census_evaluation.total')
   - %w(person_f person_m).each do |col|
-    %th.right= count_value(@total.send(col))
-  %th.right= count_value(@total.total)
+    %th.center= count_value(@total.send(col))
+  %th.center= count_value(@total.total)
   %th

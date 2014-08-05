@@ -30,11 +30,14 @@ de:
     dachverband:
       actions_index:
         request_population_data: Neue Bestandesmeldungen einfordern
+        export: Export
       total_actions:
         groups_confirmed: Abteilungen bestätigt
     mitgliederorganisation:
       total_actions:
         remind: Erinnern
+      actions_index:
+        export: Export
     group:
       actions_index:
         create_population_data: Aktuellen Bestand erzeugen
