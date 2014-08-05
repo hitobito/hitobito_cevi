@@ -40,6 +40,7 @@ describe Group do
          Group::VereinVorstand,
          Group::VereinMitglieder,
          Group::VereinExterne,
+         Group::VereinSpender,
          Group::TenSing,
          Group::TenSingTeamGruppe,
          Group::TenSingExterne,

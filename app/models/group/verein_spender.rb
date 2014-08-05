@@ -31,31 +31,21 @@
 #  founding_date  :date
 #
 
-class Group::Verein < Group
+class Group::VereinSpender < Group::Spender
 
-  self.layer = true
-
-  children Group::VereinVorstand,
-           Group::VereinMitglieder,
-           Group::VereinExterne,
-           Group::VereinSpender
+  children Group::VereinSpender
 
   ### ROLES
 
-  class Adressverantwortlicher < ::Role
-    self.permissions = [:layer_full]
+  class Spender < ::Role
+    self.visible_from_above = false
   end
 
-  class Mitglied < ::Role
-    self.permissions = [:group_read]
+  class SpendenVerwalter < ::Role
+    self.permissions = [:group_full]
   end
 
-  class FreierMitarbeiter < ::Role
-    self.permissions = [:layer_read]
-  end
-
-  roles Adressverantwortlicher,
-        Mitglied,
-        FreierMitarbeiter
+  roles Spender,
+        SpendenVerwalter
 
 end

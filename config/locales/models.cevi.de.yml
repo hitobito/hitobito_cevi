@@ -95,6 +95,10 @@ de:
         one: Externe
         other: Externe
         long: Verein Externe
+      group/verein_spender:
+        one: Spender
+        other: Spender
+        long: Verein Spender
 
       group/jungschar:
         one: Jungschar
@@ -312,6 +316,12 @@ de:
         description:
       group/verein_externe/externer:
         one: Externe-/r
+        description:
+      group/verein_spender/spender:
+        one: Spender/-in
+        description:
+      group/verein_spender/spenden_verwalter:
+        one: Spendenverwalter/-in
         description:
 
       group/jungschar/abteilungsleiter:
