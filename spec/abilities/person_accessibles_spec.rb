@@ -61,6 +61,19 @@ describe PersonAccessibles do
           end
         end
       end
+
+      describe 'group full in same group' do
+        let(:role) { Fabricate(Group::MitgliederorganisationSpender::SpendenVerwalter.name, group: group) }
+
+        context 'lower spender group' do
+          let(:group) { Fabricate(Group::Mitgliederorganisation::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+          it 'may get spender people' do
+            other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+            should include(other.person)
+          end
+        end
+      end
     end
   end
 end
