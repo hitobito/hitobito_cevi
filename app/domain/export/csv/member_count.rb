@@ -17,7 +17,8 @@ module Export::Csv
     end
 
     def attributes
-      attributes = [:year, :name, :address, :town, :zip_code, :mitgliederorganisation, :m_total, :f_total]
+      attributes = [:year, :name, :address, :town, :zip_code, :mitgliederorganisation,
+                    :m_total, :f_total]
 
       years.each_with_object(attributes) do |year|
         attributes << "m_#{year}".to_sym
@@ -30,7 +31,7 @@ module Export::Csv
     def grouped(list)
       list.
         group_by(&:group_id).
-        map do |group_id, member_counts|
+        map do |_group_id, member_counts|
           common_attrs = build_common_attrs(member_counts.first)
           OpenStruct.new(add_counts(common_attrs, member_counts))
         end
