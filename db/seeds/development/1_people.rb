@@ -24,7 +24,7 @@ puzzlers = ['Pascal Zumkehr',
             'Andre Kunz',
             'Roland Studer',
             'Mathis Hofer',
-            'Juerg Reusser']
+            'Bruno Santschi']
 
 devs = {}
 puzzlers.each do |puz|
