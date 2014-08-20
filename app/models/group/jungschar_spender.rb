@@ -1,4 +1,3 @@
-
 # encoding: utf-8
 
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
