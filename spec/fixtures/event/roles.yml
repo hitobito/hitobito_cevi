@@ -10,11 +10,3 @@ top_leader:
 top_tn:
   participation: top_participant
   type: Event::Course::Role::Participant
-
-camp_leader:
-  participation: camp_leader
-  type: Event::Role::Leader
-
-camp_tn:
-  participation: camp_child
-  type: Event::Role::Participant
