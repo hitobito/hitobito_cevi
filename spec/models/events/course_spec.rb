@@ -78,7 +78,7 @@ describe Event::Course do
     end
 
     it 'has one possible contact groups if the other is deleted' do
-      @be_gs.destroy!
+      @be_gs.really_destroy!
       event = Fabricate(:cevi_course, groups: [groups(:zhshgl), groups(:be)])
       event.possible_contact_groups.count.should eq 1
       event.valid?.should be true

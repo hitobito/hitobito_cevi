@@ -150,13 +150,13 @@ describe CensusEvaluation do
 
   context 'for mitgliederorganisation' do
     before do
-      # NOTE: using group.destroy! had weird behaviour
+      # NOTE: using group.really_destroy! had weird behaviour
       #  - group itself has hard deleted (removed from table)
       #  - subgroups was soft deleted (delted_at was present)
       %w(tensing lernhilfe kino sport).each do |name|
         group = groups(name.to_sym)
         Group.where(id: group.descendants.pluck(:id)).delete_all
-        group.destroy!
+        group.really_destroy!
       end
     end
 
