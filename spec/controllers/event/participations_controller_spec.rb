@@ -41,7 +41,7 @@ describe Event::ParticipationsController do
       sign_in(user)
       other_course
 
-      @leader, @participant = *create(Event::Role::Leader, course.participant_type)
+      @leader, @participant = *create(Event::Role::Leader, course.participant_types.first)
     end
 
     it 'lists only leader_group' do
@@ -74,7 +74,7 @@ describe Event::ParticipationsController do
     end
 
     def activate_participation
-      participation.roles << Fabricate(:event_role, type: course.participant_type.name)
+      participation.roles << Fabricate(:event_role, type: course.participant_types.first.name)
       participation.update_attributes(active: true, internal_comment: 'test', payed: true)
     end
 
