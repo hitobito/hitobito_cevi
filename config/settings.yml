@@ -10,6 +10,9 @@ application:
   footer:
     logo_image: logo_footer.png
     logo_url: http://www.cevi.ch
+    links: 
+      Hilfe: http://www.cevi.ch/dbsupport
+
 
   languages:
     de: Deutsch
