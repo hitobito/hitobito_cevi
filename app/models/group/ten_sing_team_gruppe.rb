@@ -42,6 +42,35 @@ class Group::TenSingTeamGruppe < Group
     self.permissions = [:group_full]
   end
 
-  roles Adressverantwortliche
+  roles Adressverantwortliche,
+        Group::TenSing::Hauptleiter,
+        Group::TenSing::Mitglied,
+        Group::TenSing::Arrangeur,
+        Group::TenSing::Adressverwalter,
+        Group::TenSing::Aktuar,
+        Group::TenSing::Finanzverantwortlicher,
+        Group::TenSing::FreierMitarbeiter,
+        Group::TenSing::InputLeiter,
+        Group::TenSing::Redaktor,
+        Group::TenSing::Regionaltreffenvertreter,
+        Group::TenSing::Webmaster,
+        Group::TenSing::WerbeteamLeitender,
+        Group::TenSing::Dirigent,
+        Group::TenSing::Chorleiter,
+        Group::TenSing::Chorsaenger,
+        Group::TenSing::VideoLeiter,
+        Group::TenSing::StagedesignLeiter,
+        Group::TenSing::Stagedesigner,
+        Group::TenSing::DJ,
+        Group::TenSing::VerantwortlicherLagerWeekends,
+        Group::TenSing::Jugendarbeiter,
+        Group::TenSing::BandLeiter,
+        Group::TenSing::Bandmitglied,
+        Group::TenSing::TanzLeiter,
+        Group::TenSing::Taenzer,
+        Group::TenSing::TechnikLeiter,
+        Group::TenSing::Techniker,
+        Group::TenSing::TheaterLeiter,
+        Group::TenSing::Schauspieler
 
 end

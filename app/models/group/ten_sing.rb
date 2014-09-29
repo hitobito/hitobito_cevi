@@ -36,10 +36,6 @@ class Group::TenSing < Group
 
   self.layer = true
 
-  children Group::TenSingTeamGruppe,
-           Group::TenSingExterne,
-           Group::TenSingSpender
-
   ### INSTANCE METHODS
 
   def mitgliederorganisation
@@ -97,7 +93,7 @@ class Group::TenSing < Group
   end
 
   class Dirigent < ::Role
-    self.permissions = [:layer_read]
+  self.permissions = [:layer_read]
   end
 
   class Chorleiter < ::Role
@@ -194,4 +190,10 @@ class Group::TenSing < Group
         TheaterLeiter,
         Schauspieler
 
+
+  # TenSingTeamGruppe has TenSing roles
+  # need to place children after roles are defined
+  children Group::TenSingTeamGruppe,
+           Group::TenSingExterne,
+           Group::TenSingSpender
 end
