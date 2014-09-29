@@ -724,3 +724,8 @@ de:
         
         salutation_parents: Anrede Eltern
         title: Titel
+
+    errors:
+      models:
+        event/course:
+          geschaeftsstelle_missing: Geschäftsstelle muss vorhanden sein da Anmeldungen an diese Adresse erfolgen.

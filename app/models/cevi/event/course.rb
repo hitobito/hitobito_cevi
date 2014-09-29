@@ -64,7 +64,7 @@ module Cevi::Event::Course
 
   def validate_application_contact
     unless possible_contact_groups.include?(application_contact)
-      errors.add(:application_contact_id, 'muss definiert sein')
+      errors.add(:base, :geschaeftsstelle_missing)
     end
   end
 
