@@ -36,19 +36,19 @@ class Group::VereinVorstand < Group::Vorstand
   ### ROLES
 
   class Praesident < ::Role
-    self.permissions = [:layer_full, :contact_data]
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_read, :financials]
+    self.permissions = [:layer_and_below_read, :financials]
   end
 
   class Aktuar < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   roles Praesident,

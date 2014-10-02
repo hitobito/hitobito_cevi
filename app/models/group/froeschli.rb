@@ -39,11 +39,11 @@ class Group::Froeschli < Group
   ### ROLES
 
   class Froeschlihauptleiter < ::Role
-    self.permissions = [:layer_read, :group_full]
+    self.permissions = [:layer_and_below_read, :group_full]
   end
 
   class Froeschlileiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Teilnehmer < ::Role

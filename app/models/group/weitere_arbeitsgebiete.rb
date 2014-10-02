@@ -43,19 +43,19 @@ class Group::WeitereArbeitsgebiete < Group
   ### ROLES
 
   class Adressverantwortlicher < ::Role
-    self.permissions = [:layer_full]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_read, :financials]
+    self.permissions = [:layer_and_below_read, :financials]
   end
 
   class Hauptleitung < ::Role
-    self.permissions = [:layer_full, :public]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Materialverantwortlicher < ::Role
-    self.permissions = [:layer_read, :public]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Leiter < ::Role
@@ -67,7 +67,7 @@ class Group::WeitereArbeitsgebiete < Group
   end
 
   class FreierMitarbeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   roles Adressverantwortlicher,

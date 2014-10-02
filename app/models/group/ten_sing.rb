@@ -45,7 +45,7 @@ class Group::TenSing < Group
   ### ROLES
 
   class Hauptleiter < ::Role
-    self.permissions = [:layer_full, :public]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Mitglied < ::Role
@@ -53,51 +53,51 @@ class Group::TenSing < Group
   end
 
   class Arrangeur < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Adressverwalter < ::Role
-    self.permissions = [:layer_full]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Aktuar < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_read, :financials]
+    self.permissions = [:layer_and_below_read, :financials]
   end
 
   class FreierMitarbeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class InputLeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Redaktor < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Regionaltreffenvertreter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Webmaster < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class WerbeteamLeitender < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Dirigent < ::Role
-  self.permissions = [:layer_read]
+  self.permissions = [:layer_and_below_read]
   end
 
   class Chorleiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Chorsaenger < ::Role
@@ -105,11 +105,11 @@ class Group::TenSing < Group
   end
 
   class VideoLeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class StagedesignLeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Stagedesigner < ::Role
@@ -117,19 +117,19 @@ class Group::TenSing < Group
   end
 
   class DJ < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class VerantwortlicherLagerWeekends < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Jugendarbeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class BandLeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Bandmitglied < ::Role
@@ -137,7 +137,7 @@ class Group::TenSing < Group
   end
 
   class TanzLeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Taenzer < ::Role
@@ -145,7 +145,7 @@ class Group::TenSing < Group
   end
 
   class TechnikLeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Techniker < ::Role
@@ -153,7 +153,7 @@ class Group::TenSing < Group
   end
 
   class TheaterLeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Schauspieler < ::Role

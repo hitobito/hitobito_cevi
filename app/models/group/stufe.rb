@@ -36,23 +36,23 @@ class Group::Stufe < Group
   ### ROLES
 
   class Stufenleiter < ::Role
-    self.permissions = [:layer_read, :group_full]
+    self.permissions = [:layer_and_below_read, :group_full]
   end
 
   class MiniChef < ::Role
-    self.permissions = [:layer_read, :group_full]
+    self.permissions = [:layer_and_below_read, :group_full]
   end
 
   class Gruppenleiter < ::Role
-    self.permissions = [:layer_read, :group_full]
+    self.permissions = [:layer_and_below_read, :group_full]
   end
 
   class Minigruppenleiter < ::Role
-    self.permissions = [:layer_read, :group_full]
+    self.permissions = [:layer_and_below_read, :group_full]
   end
 
   class Helfer < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Teilnehmer < ::Role

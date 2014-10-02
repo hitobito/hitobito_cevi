@@ -10,7 +10,7 @@ module Cevi::PersonAccessibles
 
   included do
     alias_method_chain :group_accessible_people, :spender
-    alias_method_chain :layer_read_in_same_layer?, :spender
+    alias_method_chain :layer_and_below_read_in_same_layer?, :spender
 
     alias_method_chain :in_same_layer_condition, :spender
     alias_method_chain :accessible_conditions, :spender
@@ -55,8 +55,8 @@ module Cevi::PersonAccessibles
     Role.all_types.reject { |type| type.name =~ /Spender$/ }
   end
 
-  def layer_read_in_same_layer_with_spender?
-    spender_group? ? false : layer_read_in_same_layer_without_spender?
+  def layer_and_below_read_in_same_layer_with_spender?
+    spender_group? ? false : layer_and_below_read_in_same_layer_without_spender?
   end
 
   def spender_group?

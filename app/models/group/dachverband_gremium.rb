@@ -39,15 +39,15 @@ class Group::DachverbandGremium < Group::Gremium
   ### ROLES
 
   class Leitung < ::Role
-    self.permissions = [:layer_read, :group_full, :public]
+    self.permissions = [:layer_and_below_read, :group_full]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class AktiverKursleiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   roles Leitung,

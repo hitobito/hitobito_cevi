@@ -41,75 +41,75 @@ class Group::Jungschar < Group
   ### ROLES
 
   class Abteilungsleiter < ::Role
-    self.permissions = [:layer_full, :public]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Coach < ::Role
-    self.permissions = [:layer_read, :approve_applications]
+    self.permissions = [:layer_and_below_read, :approve_applications]
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_read, :financials]
+    self.permissions = [:layer_and_below_read, :financials]
   end
 
   class Adressverwalter < ::Role
-    self.permissions = [:layer_full]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Aktuar < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Busverwalter < ::Role
-    self.permissions = [:layer_read, :public]
+    self.permissions = [:layer_and_below_read]
   end
 
   class FreierMitarbeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Hausverantwortlicher < ::Role
-    self.permissions = [:layer_read, :public]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Input < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Laedeliverantwortlicher < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Redaktor < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Regionaltreffenvertreter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Webmaster < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Werbung < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Materialverantwortlicher < ::Role
-    self.permissions = [:layer_read, :public]
+    self.permissions = [:layer_and_below_read]
   end
 
   class KontaktRegionalzeitschrift < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class VerantwortlicherPSA < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Jugendarbeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   roles Abteilungsleiter,

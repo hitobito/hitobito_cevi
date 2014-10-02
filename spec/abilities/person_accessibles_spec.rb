@@ -18,11 +18,11 @@ describe PersonAccessibles do
 
       subject { all_accessibles }
 
-      describe 'layer_full on upper layer' do
+      describe 'layer_and_below_full on upper layer' do
         let(:role) { Fabricate(Group::Dachverband::Administrator.name, group: groups(:dachverband)) }
 
         it 'has layer full permission' do
-          role.permissions.should include(:layer_full)
+          role.permissions.should include(:layer_and_below_full)
         end
 
         context 'lower spender group' do
@@ -35,7 +35,7 @@ describe PersonAccessibles do
         end
       end
 
-      describe 'layer_full on same layer' do
+      describe 'layer_and_below_full on same layer' do
         let(:role) { Fabricate(Group::Mitgliederorganisation::Administrator.name, group: groups(:zhshgl)) }
 
 

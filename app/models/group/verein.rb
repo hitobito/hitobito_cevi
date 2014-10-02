@@ -43,7 +43,7 @@ class Group::Verein < Group
   ### ROLES
 
   class Adressverantwortlicher < ::Role
-    self.permissions = [:layer_full]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Mitglied < ::Role
@@ -51,7 +51,7 @@ class Group::Verein < Group
   end
 
   class FreierMitarbeiter < ::Role
-    self.permissions = [:layer_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   roles Adressverantwortlicher,

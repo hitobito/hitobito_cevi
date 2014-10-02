@@ -10,15 +10,15 @@ module Cevi::GroupAbility
 
   included do
     on(Group) do
-      permission(:layer_full).
+      permission(:layer_and_below_full).
         may(:evaluate_census).
         in_same_layer_or_below
 
-      permission(:layer_full).
+      permission(:layer_and_below_full).
         may(:show_population, :create_member_counts).
         in_same_layer_or_below
 
-      permission(:layer_full).
+      permission(:layer_and_below_full).
         may(:remind_census, :update_member_counts, :delete_member_counts).
         in_upper_layer_hierarchy
     end
