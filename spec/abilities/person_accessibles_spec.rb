@@ -21,7 +21,7 @@ describe PersonAccessibles do
       describe 'layer_and_below_full on upper layer' do
         let(:role) { Fabricate(Group::Dachverband::Administrator.name, group: groups(:dachverband)) }
 
-        it 'has layer full permission' do
+        it 'has layer and below full permission' do
           role.permissions.should include(:layer_and_below_full)
         end
 
