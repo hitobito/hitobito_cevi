@@ -28,8 +28,8 @@ module Cevi::PersonAccessibles
     condition
   end
 
-  def group_accessible_people_with_spender(user)
-    return group_accessible_people_without_spender(user) unless spender_group?
+  def group_accessible_people_with_spender
+    return group_accessible_people_without_spender unless spender_group?
 
     can(:index, Person, scope_for_spender_group)
   end
