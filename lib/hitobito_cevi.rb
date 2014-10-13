@@ -11,4 +11,3 @@ require 'hitobito_cevi/wagon'
 
 module HitobitoCevi
 end
-

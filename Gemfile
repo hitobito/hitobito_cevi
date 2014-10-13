@@ -16,6 +16,7 @@ source 'https://rubygems.org'
 gemspec
 
 # Load application Gemfile for all application dependencies.
+# rubocop:disable Eval
 eval File.read(File.expand_path('Gemfile', ENV['APP_ROOT']))
 
 group :development, :test do

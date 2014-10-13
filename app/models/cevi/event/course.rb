@@ -53,7 +53,8 @@ module Cevi::Event::Course
 
   def possible_contact_groups
     groups.each_with_object([]) do |g, contact_groups|
-      if type = g.class.contact_group_type
+      type = g.class.contact_group_type
+      if type
         children = g.children.where(type: type.sti_name).without_deleted
         contact_groups.concat(children)
       end
@@ -71,7 +72,9 @@ module Cevi::Event::Course
   module ClassMethods
     def application_possible
       where(state: 'application_open').
-      where('events.application_opening_at IS NULL OR events.application_opening_at <= ?', ::Date.today)
+      where('events.application_opening_at IS NULL OR ' \
+            'events.application_opening_at <= ?',
+            ::Date.today)
     end
   end
 

@@ -72,7 +72,8 @@ module Export::Csv
       when :name, :address, :town, :zip_code then Group.human_attribute_name(attr)
       when :mitgliederorganisation then Group::Mitgliederorganisation.model_name.human
       when :year then Census.human_attribute_name(:year)
-      when /(m|f)_(\w+)/ then [translate_prefix($2), $1.gsub('f', 'w')].join(' ')
+      when /(m|f)_(\w+)/
+        [translate_prefix(Regexp.last_match[2]), Regexp.last_match[1].gsub('f', 'w')].join(' ')
       else fail "unknown attr: #{attr}"
       end
     end
@@ -87,4 +88,3 @@ module Export::Csv
   end
 
 end
-

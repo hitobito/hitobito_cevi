@@ -65,15 +65,17 @@ class MemberCountsController < ApplicationController
   end
 
   def faulty_counts_message(with_errors)
-    messages = with_errors.collect { |e| "#{e.born_in || 'unbekannt'}: #{e.errors.full_messages.join(', ')}" }
+    messages = with_errors.collect do |e|
+      "#{e.born_in || 'unbekannt'}: #{e.errors.full_messages.join(', ')}"
+    end
 
     'Nicht alle Jahrgänge konnten gespeichert werden. ' \
     "Bitte überprüfen Sie Ihre Angaben. (#{messages.join('; ')})"
   end
 
   def create_additional_member_counts
-    additionals = params.permit(additional_member_counts:
-                                [:born_in, :person_f, :person_m])[:additional_member_counts] || []
+    permitted = params.permit(additional_member_counts: [:born_in, :person_f, :person_m])
+    additionals = permitted[:additional_member_counts] || []
     additionals.map do |attrs|
       @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation,
                                               year: year))

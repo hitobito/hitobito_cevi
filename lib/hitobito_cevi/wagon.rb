@@ -20,21 +20,21 @@ module HitobitoCevi
 
     config.to_prepare do
       # extend application classes here
-      Group.send          :include, Cevi::Group
-      Person.send         :include, Cevi::Person
+      Group.send :include, Cevi::Group
+      Person.send :include, Cevi::Person
 
-      Event::Kind.send    :include, Cevi::Event::Kind
-      Event::Course.send  :include, Cevi::Event::Course
+      Event::Kind.send :include, Cevi::Event::Kind
+      Event::Course.send :include, Cevi::Event::Course
 
       Role::Permissions << :financials
 
       PersonAbility.send :include, Cevi::PersonAbility
-      GroupAbility.send   :include, Cevi::GroupAbility
+      GroupAbility.send :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
       PersonAccessibles.send :include, Cevi::PersonAccessibles
 
       PersonSerializer.send :include, Cevi::PersonSerializer
-      GroupSerializer.send  :include, Cevi::GroupSerializer
+      GroupSerializer.send :include, Cevi::GroupSerializer
 
       EventsController.send :include, Cevi::EventsController
       Event::KindsController.permitted_attrs += [:j_s_label]
@@ -46,9 +46,9 @@ module HitobitoCevi
          :member_card_number, :salutation, :canton, :confession,
          :correspondence_language]
 
-      Sheet::Group.send        :include, Cevi::Sheet::Group
+      Sheet::Group.send :include, Cevi::Sheet::Group
 
-      Export::Csv::People::PersonRow.send     :include, Cevi::Export::Csv::People::PersonRow
+      Export::Csv::People::PersonRow.send :include, Cevi::Export::Csv::People::PersonRow
     end
 
     initializer 'cevi.add_settings' do |_app|

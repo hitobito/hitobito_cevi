@@ -15,7 +15,7 @@ module Cevi::Sheet::Group
                      :population_group_path,
                      if: lambda do |view, group|
                        MemberCounter::TOP_LEVEL.any? do |group_type|
-                         group.kind_of?(group_type)
+                         group.is_a?(group_type)
                        end && view.can?(:show_population, group)
                      end),
 

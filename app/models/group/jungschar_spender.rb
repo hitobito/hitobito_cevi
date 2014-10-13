@@ -49,4 +49,3 @@ class Group::JungscharSpender < Group::Spender
         SpendenVerwalter
 
 end
-

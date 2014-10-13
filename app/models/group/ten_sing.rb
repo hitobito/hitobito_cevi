@@ -93,7 +93,7 @@ class Group::TenSing < Group
   end
 
   class Dirigent < ::Role
-  self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Chorleiter < ::Role
