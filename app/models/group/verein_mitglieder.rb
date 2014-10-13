@@ -43,6 +43,8 @@ class Group::VereinMitglieder < Group::Mitglieder
 
   class Mitglied < ::Role
     self.permissions = [:group_read]
+
+    self.visible_from_above = false
   end
 
   roles Leiter,

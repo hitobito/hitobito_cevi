@@ -57,6 +57,8 @@ class Group::Stufe < Group
 
   class Teilnehmer < ::Role
     self.permissions = [:group_read]
+
+    self.visible_from_above = false
   end
 
   children Group::Gruppe

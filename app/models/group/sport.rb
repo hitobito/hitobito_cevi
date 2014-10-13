@@ -64,6 +64,8 @@ class Group::Sport < Group
 
   class Mitglied < ::Role
     self.permissions = [:group_read]
+
+    self.visible_from_above = false
   end
 
   class FreierMitarbeiter < ::Role
