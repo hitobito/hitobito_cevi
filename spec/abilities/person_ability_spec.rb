@@ -18,32 +18,32 @@ describe PersonAbility do
 
     context 'upper layer' do
       it 'layer admin may not update spender' do
-        ability(groups(:dachverband),
-                Group::Dachverband::Administrator).should_not be_able_to(:update, @spender)
+        expect(ability(groups(:dachverband),
+                Group::Dachverband::Administrator)).not_to be_able_to(:update, @spender)
       end
 
       it 'layer finance may not update spender' do
-        ability(groups(:dachverband_gs),
-                Group::DachverbandGeschaeftsstelle::Finanzverantwortlicher).should_not be_able_to(:update, @spender)
+        expect(ability(groups(:dachverband_gs),
+                Group::DachverbandGeschaeftsstelle::Finanzverantwortlicher)).not_to be_able_to(:update, @spender)
       end
     end
 
 
     context 'same layer' do
       it 'layer admin may not update spender' do
-        ability(groups(:zhshgl),
-                Group::Mitgliederorganisation::Administrator).should_not be_able_to(:update, @spender)
+        expect(ability(groups(:zhshgl),
+                Group::Mitgliederorganisation::Administrator)).not_to be_able_to(:update, @spender)
       end
 
       it 'layer finance may update spender' do
-        ability(groups(:zhshgl_gs),
-                Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher).should be_able_to(:update, @spender)
+        expect(ability(groups(:zhshgl_gs),
+                Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher)).to be_able_to(:update, @spender)
       end
     end
 
     it 'group full may update spender' do
-      ability(@group,
-              Group::MitgliederorganisationSpender::SpendenVerwalter).should be_able_to(:update, @spender)
+      expect(ability(@group,
+              Group::MitgliederorganisationSpender::SpendenVerwalter)).to be_able_to(:update, @spender)
     end
 
 

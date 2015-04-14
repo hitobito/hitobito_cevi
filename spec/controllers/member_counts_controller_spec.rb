@@ -18,8 +18,8 @@ describe MemberCountsController do
       before { get :edit, group_id: group.id }
 
       it 'assigns counts' do
-       assigns(:member_counts).should have(3).items
-       assigns(:group).should eq group
+       expect(assigns(:member_counts)).to have(3).items
+       expect(assigns(:group)).to eq group
       end
     end
   end
@@ -38,35 +38,41 @@ describe MemberCountsController do
         assert_member_counts(member_counts(:jungschar_zh10_2012_1997).reload, 2, nil)
         assert_member_counts(member_counts(:jungschar_zh10_2012_1988).reload, nil, 0)
 
-        should redirect_to(census_group_group_path(group, year: 2012))
+        is_expected.to redirect_to(census_group_group_path(group, year: 2012))
       end
 
       it "saves additional member counts" do
-        expect { put :update, group_id: group.id,
-          additional_member_counts: [ { born_in: 2001,
-                                        person_f: 1,
-                                        person_m: "" } ] }.
-          to change { group.reload.member_counts.count }.by(1)
+        expect do
+           put :update,
+               group_id: group.id,
+               additional_member_counts: [ { born_in: 2001,
+                                             person_f: 1,
+                                             person_m: "" } ]
+        end.to change { group.reload.member_counts.count }.by(1)
 
-        should redirect_to(census_group_group_path(group, year: 2012))
+        is_expected.to redirect_to(census_group_group_path(group, year: 2012))
       end
 
       it "renders flash for invalid additional count" do
-        expect { put :update, group_id: group.id,
-          additional_member_counts: [ { born_in: 'asdf',
-                                        person_f: 1,
-                                        person_m: "" } ] }.
-          not_to change { group.reload.member_counts.count }.by(1)
-        flash[:alert].should be_present
+        expect do
+          put :update,
+              group_id: group.id,
+              additional_member_counts: [ { born_in: 'asdf',
+                                            person_f: 1,
+                                            person_m: "" } ]
+        end.not_to change { group.reload.member_counts.count }
+        expect(flash[:alert]).to be_present
       end
 
       it "renders flash for additional count of existing year" do
-        expect { put :update, group_id: group.id,
-          additional_member_counts: [ { born_in: 1999,
-                                        person_f: 1,
-                                        person_m: "" } ] }.
-          not_to change { group.reload.member_counts.count }.by(1)
-        flash[:alert].should be_present
+        expect do
+           put :update,
+               group_id: group.id,
+               additional_member_counts: [ { born_in: 1999,
+                                             person_f: 1,
+                                             person_m: "" } ]
+        end.not_to change { group.reload.member_counts.count }
+        expect(flash[:alert]).to be_present
       end
 
     end
@@ -85,8 +91,8 @@ describe MemberCountsController do
       censuses(:two_o_12).destroy
       post :create, group_id: group.id
 
-      should redirect_to(census_group_group_path(group, year: 2011))
-      flash[:notice].should be_present
+      is_expected.to redirect_to(census_group_group_path(group, year: 2011))
+      expect(flash[:notice]).to be_present
     end
 
     it 'should not change anything if counts exist' do
@@ -110,7 +116,7 @@ describe MemberCountsController do
       expect { post :create, group_id: group.id }.to change { MemberCount.count }.by(3)
 
       counts = MemberCount.where(group_id: group.id, year: 2011).order(:born_in).to_a
-      counts.should have(3).items
+      expect(counts).to have(3).items
 
       assert_member_counts(counts[0], nil, 1)
       assert_member_counts(counts[1], 1, nil)
@@ -127,8 +133,8 @@ describe MemberCountsController do
         sign_in(leader)
         post :create, group_id: group.id
 
-        should redirect_to(census_group_group_path(group, year: 2011))
-        flash[:notice].should be_present
+        is_expected.to redirect_to(census_group_group_path(group, year: 2011))
+        expect(flash[:notice]).to be_present
       end
     end
 
@@ -150,14 +156,14 @@ describe MemberCountsController do
     it 'handles request with redirect' do
       delete :destroy, group_id: group.id
 
-      should redirect_to(census_group_group_path(group, year: 2012))
-      flash[:notice].should be_present
+      is_expected.to redirect_to(census_group_group_path(group, year: 2012))
+      expect(flash[:notice]).to be_present
     end
   end
 
   def assert_member_counts(count, person_f, person_m)
-    count.person_f.should eq person_f
-    count.person_m.should eq person_m
+    expect(count.person_f).to eq person_f
+    expect(count.person_m).to eq person_m
   end
 
 end

@@ -30,8 +30,8 @@ describe MemberCount do
   let(:jungschar_burgd) { groups(:jungschar_burgd) }
 
   it 'allows membercounts without born_in' do
-    MemberCount.new(person_m: 1, person_f: 1, year: 2012,
-                    group: jungschar_zh10, mitgliederorganisation: zhshgl).should be_valid
+    expect(MemberCount.new(person_m: 1, person_f: 1, year: 2012,
+                    group: jungschar_zh10, mitgliederorganisation: zhshgl)).to be_valid
   end
 
   describe '.total_by_groups' do
@@ -39,7 +39,7 @@ describe MemberCount do
     subject { MemberCount.total_by_groups(2012, zhshgl).to_a }
 
     it 'counts totals' do
-      should have(2).items
+      is_expected.to have(2).items
 
       zh10_count = subject.detect { |c| c.group_id == jungschar_zh10.id }
       assert_member_counts(zh10_count, 8, 9)
@@ -70,7 +70,7 @@ describe MemberCount do
     subject { MemberCount.total_by_mitgliederorganisationen(2012).to_a }
 
     it 'counts totals' do
-      should have(2).items
+      is_expected.to have(2).items
 
       be_count = subject.detect { |c| c.mitgliederorganisation_id == zhshgl.id }
       assert_member_counts(be_count, 13, 12)
@@ -84,7 +84,7 @@ describe MemberCount do
     subject { MemberCount.details_for_group(2012, jungschar_zh10).to_a }
 
     it 'lists all years' do
-      subject.collect(&:born_in).should eq [1988, 1997, 1999]
+      expect(subject.collect(&:born_in)).to eq [1988, 1997, 1999]
 
       assert_member_counts(subject[0], 2, 5) # 1988
       assert_member_counts(subject[1], 4, 1) # 1997
@@ -97,7 +97,7 @@ describe MemberCount do
     subject { MemberCount.details_for_mitgliederorganisation(2012, zhshgl).to_a }
 
     it 'lists all years' do
-      subject.collect(&:born_in).should == [1988, 1997, 1998, 1999]
+      expect(subject.collect(&:born_in)).to eq([1988, 1997, 1998, 1999])
 
       assert_member_counts(subject[0], 2, 5) # 1988
       assert_member_counts(subject[1], 7, 3) # 1997
@@ -110,7 +110,7 @@ describe MemberCount do
     subject { MemberCount.details_for_dachverband(2012).to_a }
 
     it 'lists all years' do
-      subject.collect(&:born_in).should == [1988, 1997, 1998, 1999, 2000]
+      expect(subject.collect(&:born_in)).to eq([1988, 1997, 1998, 1999, 2000])
 
       assert_member_counts(subject[0], 2, 5) # 1988
       assert_member_counts(subject[1], 7, 3) # 1997
@@ -121,8 +121,8 @@ describe MemberCount do
   end
 
   def assert_member_counts(count, person_f, person_m)
-    count.person_f.should eq person_f
-    count.person_m.should eq person_m
+    expect(count.person_f).to eq person_f
+    expect(count.person_m).to eq person_m
   end
 
 end

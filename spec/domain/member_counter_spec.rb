@@ -49,16 +49,16 @@ describe 'MemberCounter' do
   it 'does not include soft deleted role in group count' do
     load_data
 
-    jungschar_zh10.people.count.should eq 2
-    Person.joins('INNER JOIN roles ON roles.person_id = people.id').
+    expect(jungschar_zh10.people.count).to eq 2
+    expect(Person.joins('INNER JOIN roles ON roles.person_id = people.id').
            where(roles: { group_id: jungschar_zh10.id }).
-           count.should == 3
+           count).to eq(3)
   end
 
   context 'instance' do
     subject { MemberCounter.new(2011, jungschar_zh10) }
 
-    it { should_not be_exists }
+    it { is_expected.not_to be_exists }
     its(:mitgliederorganisation) { should == groups(:zhshgl) }
 
     context 'with loaded data' do
@@ -68,7 +68,7 @@ describe 'MemberCounter' do
 
       it 'creates member counts per age group' do
         expect { subject.count! }.to change { MemberCount.count }.by(4)
-        should be_exists
+        is_expected.to be_exists
 
         assert_member_count(1985, person_f: 1, person_m: nil)
         assert_member_count(1988, person_f: nil, person_m: 1)
@@ -82,17 +82,17 @@ describe 'MemberCounter' do
     subject { MemberCounter.filtered_roles }
 
     it 'should include desired roles of desired groups' do
-      should include(Group::Stufe::Teilnehmer,
+      is_expected.to include(Group::Stufe::Teilnehmer,
                      Group::Jungschar::Abteilungsleiter)
     end
 
     it 'should exclude ignored roles of desired groups' do
-      should_not include(Group::Sport::FreierMitarbeiter,
+      is_expected.not_to include(Group::Sport::FreierMitarbeiter,
                          Group::JungscharExterne::Externer)
     end
 
     it 'should exclude roles from ignored groups' do
-      should_not include(Group::DachverbandVorstand::Mitglied)
+      is_expected.not_to include(Group::DachverbandVorstand::Mitglied)
     end
   end
 
@@ -121,28 +121,28 @@ describe 'MemberCounter' do
     subject { MemberCounter.current_counts?(jungschar_zh10) }
 
     context 'with counts' do
-      it { should be_true }
+      it { is_expected.to be_truthy }
     end
 
     context 'without counts' do
       before { MemberCount.update_all(year: 2011) }
-      it { should be_false }
+      it { is_expected.to be_falsey }
     end
 
     context 'with census' do
       before { Census.destroy_all }
-      it { should be_false }
+      it { is_expected.to be_falsey }
     end
   end
 
   def assert_member_count(born_in, fields = {})
     counts = MemberCount.where(group: jungschar_zh10, year: 2011, born_in: born_in)
-    counts.should have(1).item
+    expect(counts).to have(1).item
     count = counts.first
 
     %w(person_f person_m).each do |c|
       expected = fields[c.to_sym] || 0
-      count.send(c).to_i.should be(expected), "#{c} should be #{expected}, was #{count.send(c).to_i}"
+      expect(count.send(c).to_i).to be(expected), "#{c} should be #{expected}, was #{count.send(c).to_i}"
     end
   end
 

@@ -34,12 +34,12 @@ describe EventsController do
 
         event = assigns(:event)
 
-        should redirect_to(group_event_path(group, event))
+        is_expected.to redirect_to(group_event_path(group, event))
 
-        event.should be_persisted
-        event.dates.should have(1).item
-        event.dates.first.should be_persisted
-        event.contact.should eq contact
+        expect(event).to be_persisted
+        expect(event.dates).to have(1).item
+        expect(event.dates.first).to be_persisted
+        expect(event.contact).to eq contact
       end
 
       it 'creates new event course without contact' do
@@ -53,8 +53,8 @@ describe EventsController do
 
         event = assigns(:event)
 
-        should redirect_to(group_event_path(group, event))
-        event.should be_persisted
+        is_expected.to redirect_to(group_event_path(group, event))
+        expect(event).to be_persisted
       end
 
 
@@ -69,8 +69,8 @@ describe EventsController do
 
         event = assigns(:event)
 
-        event.application_contact.should eq event.possible_contact_groups.first
-        event.should be_persisted
+        expect(event.application_contact).to eq event.possible_contact_groups.first
+        expect(event).to be_persisted
       end
 
     end
@@ -89,12 +89,12 @@ describe EventsController do
 
       it 'lists events' do
         get :index, group_id: group.id, year: 2012
-        assigns(:events).should eq [event, events(:top_event)]
+        expect(assigns(:events)).to eq [event, events(:top_event)]
       end
 
       it 'lists courses' do
         get :index, group_id: group.id, year: 2012, type: Event::Course.sti_name
-        assigns(:events).should eq [course]
+        expect(assigns(:events)).to eq [course]
       end
     end
 
@@ -104,7 +104,7 @@ describe EventsController do
 
       it 'lists event' do
         get :index, group_id: group.id, year: 2012
-        assigns(:events).should eq [event]
+        expect(assigns(:events)).to eq [event]
       end
     end
   end

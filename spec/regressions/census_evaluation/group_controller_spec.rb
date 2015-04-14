@@ -17,7 +17,7 @@ describe CensusEvaluation::GroupController, type: :controller do
     before { get :index, id: groups(:jungschar_zh10).id }
 
     it 'renders correct templates' do
-      should render_template('index')
+      is_expected.to render_template('index')
     end
   end
 

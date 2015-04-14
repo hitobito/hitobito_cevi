@@ -29,7 +29,7 @@ describe PopulationController do
     describe 'groups' do
       subject { assigns(:groups) }
 
-      it { should == [jungschar, froeschli] + valid_sub_groups }
+      it { is_expected.to eq([jungschar, froeschli] + valid_sub_groups) }
 
       def valid_sub_groups
         %w(aranda jakob salomo samson sinai zephanja zion leitungsteam).map do |name|
@@ -41,15 +41,15 @@ describe PopulationController do
     describe 'people by group' do
       subject { assigns(:people_by_group) }
 
-      it { subject[jungschar].collect(&:to_s).should =~ [leader, people(:al_zh10), werbung].collect(&:to_s) }
-      it { subject[froeschli].collect(&:to_s).should =~ [group_leader, child, people(:child)].collect(&:to_s) }
-      it { subject[aranda].should be_nil }
+      it { expect(subject[jungschar].collect(&:to_s)).to match_array([leader, people(:al_zh10), werbung].collect(&:to_s)) }
+      it { expect(subject[froeschli].collect(&:to_s)).to match_array([group_leader, child, people(:child)].collect(&:to_s)) }
+      it { expect(subject[aranda]).to be_nil }
     end
 
     describe 'complete' do
       subject { assigns(:people_data_complete) }
 
-      it { should be_false }
+      it { is_expected.to be_falsey }
     end
   end
 
@@ -61,6 +61,6 @@ describe PopulationController do
 
     subject { assigns(:groups) }
 
-    it { should_not include aranda }
+    it { is_expected.not_to include aranda }
   end
 end

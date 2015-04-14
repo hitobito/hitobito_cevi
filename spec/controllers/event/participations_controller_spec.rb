@@ -46,12 +46,12 @@ describe Event::ParticipationsController do
 
     it 'lists only leader_group' do
       get :index, group_id: group.id, event_id: course.id, filter: :teamers
-      assigns(:participations).should eq [@leader]
+      expect(assigns(:participations)).to eq [@leader]
     end
 
     it 'lists only participant_group' do
       get :index, group_id: group.id, event_id: course.id, filter: :participants
-      assigns(:participations).should eq [@participant]
+      expect(assigns(:participations)).to eq [@participant]
     end
 
     def create(*roles)
@@ -84,22 +84,22 @@ describe Event::ParticipationsController do
 
       it "updates attributes on create" do
         post :create, group_id: group.id, event_id: course.id, event_participation: custom_attrs
-        assigns(:participation).should be_payed
-        assigns(:participation).internal_comment.should eq 'test'
+        expect(assigns(:participation)).to be_payed
+        expect(assigns(:participation).internal_comment).to eq 'test'
       end
 
       it "updates attributes on update" do
         patch :update, group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs
-        participation.reload.should be_payed
-        participation.reload.internal_comment.should eq 'test'
+        expect(participation.reload).to be_payed
+        expect(participation.reload.internal_comment).to eq 'test'
       end
 
       it "includes attributes in csv" do
         activate_participation
         get :index, group_id: group.id, event_id: course.id, filter: :participants, format: :csv
 
-        csv['Bezahlt'].should eq %w(ja)
-        csv['Interne Bemerkung'].should eq %w(test)
+        expect(csv['Bezahlt']).to eq %w(ja)
+        expect(csv['Interne Bemerkung']).to eq %w(test)
       end
 
       context 'rendered pages' do
@@ -120,8 +120,8 @@ describe Event::ParticipationsController do
 
         after do
           html = Capybara::Node::Simple.new(response.body)
-          html.should have_content 'Bezahlt'
-          html.should have_content 'Interne Bemerkung'
+          expect(html).to have_content 'Bezahlt'
+          expect(html).to have_content 'Interne Bemerkung'
         end
       end
 
@@ -133,8 +133,8 @@ describe Event::ParticipationsController do
 
       it "ignores attributes on create" do
         post :create, group_id: group.id, event_id: course.id, event_participation: custom_attrs
-        assigns(:participation).should_not be_payed
-        assigns(:participation).internal_comment.should be_blank
+        expect(assigns(:participation)).not_to be_payed
+        expect(assigns(:participation).internal_comment).to be_blank
       end
 
       it "not allowed to update" do
@@ -147,8 +147,8 @@ describe Event::ParticipationsController do
         activate_participation
         get :index, group_id: group.id, event_id: course.id, filter: :participants, format: :csv
 
-        csv.headers.should_not include 'Bezahlt'
-        csv.headers.should_not include 'Interne Bemerkung'
+        expect(csv.headers).not_to include 'Bezahlt'
+        expect(csv.headers).not_to include 'Interne Bemerkung'
       end
 
       context 'rendered pages' do
@@ -171,8 +171,8 @@ describe Event::ParticipationsController do
 
         after do
           html = Capybara::Node::Simple.new(response.body)
-          html.should_not have_content 'Bezahlt'
-          html.should_not have_content 'Interne Bemerkung'
+          expect(html).not_to have_content 'Bezahlt'
+          expect(html).not_to have_content 'Interne Bemerkung'
         end
       end
 

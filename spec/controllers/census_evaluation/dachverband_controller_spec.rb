@@ -26,48 +26,48 @@ describe CensusEvaluation::DachverbandController do
 
     context 'defaults' do
       before do
-        Date.stub(today: censuses(:two_o_12).finish_at)
+        allow(Date).to receive_messages(today: censuses(:two_o_12).finish_at)
         get :index, id: ch.id
       end
 
 
       it 'assigns counts' do
         counts = assigns(:group_counts)
-        counts.keys.should =~ [zhshgl.id, be.id]
-        counts[zhshgl.id].total.should == 25
-        counts[be.id].total.should == 12
+        expect(counts.keys).to match_array([zhshgl.id, be.id])
+        expect(counts[zhshgl.id].total).to eq(25)
+        expect(counts[be.id].total).to eq(12)
       end
 
       it 'assigns total' do
-        assigns(:total).should be_kind_of(MemberCount)
+        expect(assigns(:total)).to be_kind_of(MemberCount)
       end
 
       it 'assigns sub groups' do
-        assigns(:sub_groups).should eq [alpin, be, zhshgl, zh]
+        expect(assigns(:sub_groups)).to eq [alpin, be, zhshgl, zh]
       end
 
       it 'assigns groups' do
-        assigns(:groups).should == {
+        expect(assigns(:groups)).to eq({
           alpin.id => { confirmed: 0, total: 0 },
           be.id => { confirmed: 1, total: 1 },
           zhshgl.id => { confirmed: 2, total: 6 },
           zh.id => { confirmed: 0, total: 0 },
-        }
+        })
       end
 
       it 'assigns details' do
         details = assigns(:details).to_a
-        details.should have(5).items
+        expect(details).to have(5).items
 
-        details[0].born_in.should == 1988
-        details[1].born_in.should == 1997
-        details[2].born_in.should == 1998
-        details[3].born_in.should == 1999
-        details[4].born_in.should == 2000
+        expect(details[0].born_in).to eq(1988)
+        expect(details[1].born_in).to eq(1997)
+        expect(details[2].born_in).to eq(1998)
+        expect(details[3].born_in).to eq(1999)
+        expect(details[4].born_in).to eq(2000)
       end
 
       it 'assigns year' do
-        assigns(:year).should == Census.last.year
+        expect(assigns(:year)).to eq(Census.last.year)
       end
     end
 
@@ -77,20 +77,20 @@ describe CensusEvaluation::DachverbandController do
         MemberCount.where(year: 2012).delete_all
         get :index, id: ch.id, year: 2012
 
-        assigns(:total).attributes.should eq MemberCount.new.attributes
+        expect(assigns(:total).attributes).to eq MemberCount.new.attributes
       end
 
       it 'is nil when viewing census which has not been created yet' do
         get :index, id: ch.id, year: 2014
 
-        assigns(:total).should be_nil
+        expect(assigns(:total)).to be_nil
       end
     end
 
     context 'csv export' do
       it 'exports data to csv' do
         get :index, id: ch.id, format: :csv
-        CSV.parse(response.body, headers: true).should have(3).rows
+        expect(CSV.parse(response.body, headers: true)).to have(3).rows
       end
     end
   end

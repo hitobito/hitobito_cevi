@@ -14,7 +14,7 @@ shared_examples 'sub_groups' do
   shared_examples 'sub_groups_examples' do
 
     context 'for current census' do
-      it { should eq current_census_groups.collect(&:name).sort }
+      it { is_expected.to eq current_census_groups.collect(&:name).sort }
     end
 
     context 'for past census' do
@@ -24,7 +24,7 @@ shared_examples 'sub_groups' do
                        start_at: census.start_at + 1.year)
       end
 
-      it { should eq past_census_groups.collect(&:name).sort }
+      it { is_expected.to eq past_census_groups.collect(&:name).sort }
     end
 
     context 'for future census' do
@@ -34,7 +34,7 @@ shared_examples 'sub_groups' do
                        start_at: Date.new(2100, 1, 1))
       end
 
-      it { should eq future_census_groups.collect(&:name).sort }
+      it { is_expected.to eq future_census_groups.collect(&:name).sort }
     end
   end
 
@@ -91,7 +91,7 @@ shared_examples 'sub_groups' do
       end
 
       merger = Group::Merger.new(group_to_delete, group_without_count, 'Dummy')
-      merger.merge!.should be_true
+      expect(merger.merge!).to be_truthy
       @dummy = merger.new_group
     end
 
@@ -123,22 +123,22 @@ describe CensusEvaluation do
     let(:sub_group_type) { Group::Mitgliederorganisation }
 
     it 'census is current census' do
-      evaluation.should be_census_current
+      expect(evaluation).to be_census_current
     end
 
     it '#counts_by_sub_group' do
       counts = evaluation.counts_by_sub_group
-      counts.keys.should =~ [zhshgl.id, be.id]
-      counts[zhshgl.id].total.should eq 25
-      counts[be.id].total.should eq 12
+      expect(counts.keys).to match_array([zhshgl.id, be.id])
+      expect(counts[zhshgl.id].total).to eq 25
+      expect(counts[be.id].total).to eq 12
     end
 
     it '#total' do
-      evaluation.total.should be_kind_of(MemberCount)
+      expect(evaluation.total).to be_kind_of(MemberCount)
     end
 
     it '#sub_groups' do
-      evaluation.sub_groups.should eq [alpin, be, zhshgl]
+      expect(evaluation.sub_groups).to eq [alpin, be, zhshgl]
     end
 
     it_behaves_like 'sub_groups' do
@@ -168,13 +168,13 @@ describe CensusEvaluation do
 
     it '#counts_by_sub_group' do
       counts = evaluation.counts_by_sub_group
-      counts.keys.should =~ [jungschar_zh10.id, jungschar_altst.id]
-      counts[jungschar_zh10.id].total.should eq 17
-      counts[jungschar_altst.id].total.should eq 8
+      expect(counts.keys).to match_array([jungschar_zh10.id, jungschar_altst.id])
+      expect(counts[jungschar_zh10.id].total).to eq 17
+      expect(counts[jungschar_altst.id].total).to eq 8
     end
 
     it '#sub groups' do
-      evaluation.sub_groups.should eq [jungschar_altst, jungschar_zh10, jungschar_zh11]
+      expect(evaluation.sub_groups).to eq [jungschar_altst, jungschar_zh10, jungschar_zh11]
     end
 
     it_behaves_like 'sub_groups' do
@@ -188,7 +188,7 @@ describe CensusEvaluation do
 
         context 'before count' do
           before do
-            Group::Mover.new(jungschar_burgd).perform(target).should be_true
+            expect(Group::Mover.new(jungschar_burgd).perform(target)).to be_truthy
             target.reload
           end
 
@@ -227,7 +227,7 @@ describe CensusEvaluation do
               it 'contains moved group' do
                  Census.create!(year: census.year + 1,
                                 start_at: census.start_at + 1.year)
-                 should eq [jungschar_burgd].collect(&:name).sort
+                 is_expected.to eq [jungschar_burgd].collect(&:name).sort
               end
             end
           end
@@ -236,7 +236,7 @@ describe CensusEvaluation do
 
         context 'after count' do
           before do
-            Group::Mover.new(jungschar_burgd).perform(target).should be_true
+            expect(Group::Mover.new(jungschar_burgd).perform(target)).to be_truthy
             target.reload
           end
 
@@ -267,17 +267,17 @@ describe CensusEvaluation do
     let(:sub_group_type) { nil }
 
     it '#counts_by_sub_group' do
-      evaluation.counts_by_sub_group.should be_blank
+      expect(evaluation.counts_by_sub_group).to be_blank
     end
 
     it '#total' do
       total = evaluation.total
-      total.should be_kind_of(MemberCount)
-      total.total.should eq 17
+      expect(total).to be_kind_of(MemberCount)
+      expect(total.total).to eq 17
     end
 
     it '#sub_groups' do
-      evaluation.sub_groups.should be_blank
+      expect(evaluation.sub_groups).to be_blank
     end
   end
 end
@@ -295,5 +295,5 @@ end
 # we first delete children, then group and validate return values
 def delete_group_and_children(deleted_at = Time.zone.now)
   group_to_delete.update_column(:deleted_at, deleted_at)
-  group_to_delete.should be_destroyed
+  expect(group_to_delete).to be_destroyed
 end

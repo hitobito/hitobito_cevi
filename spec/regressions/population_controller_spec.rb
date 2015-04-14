@@ -23,11 +23,11 @@ describe PopulationController, type: :controller do
       let(:group) { groups(:jungschar_zh10) }
 
       it 'does not show any approveable content if there is no current census' do
-        dom.all('#content h2').count.should eq 2
-        dom.should have_no_selector('a', text: 'Bestand bestätigen')
-        dom.should have_no_selector('.alert.alert-info.approveable')
-        dom.should have_no_selector('.alert.alert-alert.approveable')
-        dom.find('a', text: 'Bestand').should have_no_selector('span', text: '!')
+        expect(dom.all('#content h2').count).to eq 2
+        expect(dom).to have_no_selector('a', text: 'Bestand bestätigen')
+        expect(dom).to have_no_selector('.alert.alert-info.approveable')
+        expect(dom).to have_no_selector('.alert.alert-alert.approveable')
+        expect(dom.find('a', text: 'Bestand')).to have_no_selector('span', text: '!')
       end
     end
 
@@ -35,10 +35,10 @@ describe PopulationController, type: :controller do
       let(:group) { groups(:tensing) }
 
       it 'does show all approveable content if there is a current census' do
-        dom.all('#content h2').count.should eq 0
-        dom.should have_selector('a', text: 'Bestand bestätigen')
-        dom.should have_content('Bitte ergänze')
-        dom.all('a', text: 'Bestand').first.should have_selector('span', text: '!')
+        expect(dom.all('#content h2').count).to eq 0
+        expect(dom).to have_selector('a', text: 'Bestand bestätigen')
+        expect(dom).to have_content('Bitte ergänze')
+        expect(dom.all('a', text: 'Bestand').first).to have_selector('span', text: '!')
       end
     end
   end

@@ -12,15 +12,15 @@ describe GroupAbility do
 
   %w(remind_census update_member_counts delete_member_counts).each do |action|
     it "may #{action} on layer below" do
-      ability(groups(:dachverband),
-              Group::Dachverband::Administrator).
-              should be_able_to(action.to_sym, groups(:jungschar_zh10))
+      expect(ability(groups(:dachverband),
+              Group::Dachverband::Administrator)).
+              to be_able_to(action.to_sym, groups(:jungschar_zh10))
     end
 
     it "may not #{action} on same layer" do
-      ability(groups(:jungschar_zh10),
-              Group::Jungschar::Abteilungsleiter).
-              should_not be_able_to(action.to_sym, groups(:jungschar_zh10))
+      expect(ability(groups(:jungschar_zh10),
+              Group::Jungschar::Abteilungsleiter)).
+              not_to be_able_to(action.to_sym, groups(:jungschar_zh10))
     end
   end
 

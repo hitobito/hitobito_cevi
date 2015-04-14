@@ -22,7 +22,7 @@ describe PersonAccessibles do
         let(:role) { Fabricate(Group::Dachverband::Administrator.name, group: groups(:dachverband)) }
 
         it 'has layer and below full permission' do
-          role.permissions.should include(:layer_and_below_full)
+          expect(role.permissions).to include(:layer_and_below_full)
         end
 
         context 'lower spender group' do
@@ -30,7 +30,7 @@ describe PersonAccessibles do
 
           it 'may not get spender people' do
             other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-            should_not include(other.person)
+            is_expected.not_to include(other.person)
           end
         end
       end
@@ -44,7 +44,7 @@ describe PersonAccessibles do
 
           it 'may not get spender people' do
             other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-            should_not include(other.person)
+            is_expected.not_to include(other.person)
           end
         end
       end
@@ -57,7 +57,7 @@ describe PersonAccessibles do
 
           it 'may get spender people' do
             other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-            should include(other.person)
+            is_expected.to include(other.person)
           end
         end
       end
@@ -70,7 +70,7 @@ describe PersonAccessibles do
 
           it 'may get spender people' do
             other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-            should include(other.person)
+            is_expected.to include(other.person)
           end
         end
       end

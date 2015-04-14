@@ -21,39 +21,39 @@ describe CensusEvaluation::MitgliederorganisationController do
 
     it 'assigns counts' do
       counts = assigns(:group_counts)
-      counts.keys.should =~ [jungschar_zh10.id, jungschar_altst.id]
-      counts[jungschar_zh10.id].total.should == 17
-      counts[jungschar_altst.id].total.should == 8
+      expect(counts.keys).to match_array([jungschar_zh10.id, jungschar_altst.id])
+      expect(counts[jungschar_zh10.id].total).to eq(17)
+      expect(counts[jungschar_altst.id].total).to eq(8)
     end
 
     it 'assigns total' do
-      assigns(:total).should be_kind_of(MemberCount)
+      expect(assigns(:total)).to be_kind_of(MemberCount)
     end
 
     it 'assigns sub groups' do
-      assigns(:sub_groups).should == [jungschar_altst,
+      expect(assigns(:sub_groups)).to eq([jungschar_altst,
                                       groups(:kino),
                                       groups(:lernhilfe),
                                       groups(:sport),
                                       groups(:tensing),
-                                      jungschar_zh10]
+                                      jungschar_zh10])
     end
 
     it 'assigns details' do
       details = assigns(:details).to_a
-      details.should have(4).items
+      expect(details).to have(4).items
 
-      details[0].born_in.should == 1988
-      details[1].born_in.should == 1997
-      details[2].born_in.should == 1998
-      details[3].born_in.should == 1999
+      expect(details[0].born_in).to eq(1988)
+      expect(details[1].born_in).to eq(1997)
+      expect(details[2].born_in).to eq(1998)
+      expect(details[3].born_in).to eq(1999)
     end
   end
 
   context 'csv export' do
     it 'exports data to csv' do
       get :index, id: zhshgl.id, format: :csv
-      CSV.parse(response.body, headers: true).should have(2).rows
+      expect(CSV.parse(response.body, headers: true)).to have(2).rows
     end
   end
 

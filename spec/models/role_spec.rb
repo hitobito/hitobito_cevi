@@ -27,36 +27,36 @@ describe Role do
 
   describe Group::DachverbandExterne::Externer do
     subject {  Group::DachverbandExterne::Externer }
-    it { should_not be_visible_from_above }
+    it { is_expected.not_to be_visible_from_above }
   end
 
   describe Group::JungscharExterne::Externer do
     subject {  Group::JungscharExterne::Externer }
-    it { should_not be_visible_from_above }
+    it { is_expected.not_to be_visible_from_above }
   end
 
   describe Group::MitgliederorganisationExterne::Externer do
     subject {  Group::MitgliederorganisationExterne::Externer }
-    it { should_not be_visible_from_above }
+    it { is_expected.not_to be_visible_from_above }
   end
 
   describe Group::SportExterne::Externer do
     subject {  Group::SportExterne::Externer }
-    it { should_not be_visible_from_above }
+    it { is_expected.not_to be_visible_from_above }
   end
 
   describe Group::TenSingExterne::Externer do
     subject {  Group::TenSingExterne::Externer }
-    it { should_not be_visible_from_above }
+    it { is_expected.not_to be_visible_from_above }
   end
 
   describe Group::VereinExterne::Externer do
     subject {  Group::VereinExterne::Externer }
-    it { should_not be_visible_from_above }
+    it { is_expected.not_to be_visible_from_above }
   end
 
   describe Group::WeitereArbeitsgebieteExterne::Externer do
     subject {  Group::WeitereArbeitsgebieteExterne::Externer }
-    it { should_not be_visible_from_above }
+    it { is_expected.not_to be_visible_from_above }
   end
 end

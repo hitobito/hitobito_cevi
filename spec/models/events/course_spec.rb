@@ -22,45 +22,45 @@ describe Event::Course do
   describe '.role_types' do
     subject { Event::Course.role_types }
 
-    it { should include(Event::Course::Role::Participant) }
-    it { should_not include(Event::Role::Participant) }
+    it { is_expected.to include(Event::Course::Role::Participant) }
+    it { is_expected.not_to include(Event::Role::Participant) }
   end
 
   context '#application_possible?' do
     before { subject.state = 'application_open' }
 
     context 'without opening date' do
-      it { should be_application_possible }
+      it { is_expected.to be_application_possible }
     end
 
     context 'with opening date in the past' do
       before { subject.application_opening_at = Date.today - 1 }
-      it { should be_application_possible }
+      it { is_expected.to be_application_possible }
 
       context 'in other state' do
         before { subject.state = 'application_closed' }
-        it { should_not be_application_possible }
+        it { is_expected.not_to be_application_possible }
       end
     end
 
     context 'with ng date today' do
       before { subject.application_opening_at = Date.today }
-      it { should be_application_possible }
+      it { is_expected.to be_application_possible }
     end
 
     context 'with opening date in the future' do
       before { subject.application_opening_at = Date.today + 1 }
-      it { should_not be_application_possible }
+      it { is_expected.not_to be_application_possible }
     end
 
     context 'with closing date in the past' do
       before { subject.application_closing_at = Date.today - 1 }
-      it { should be_application_possible } # yep, we do not care about the closing date
+      it { is_expected.to be_application_possible } # yep, we do not care about the closing date
     end
 
     context 'in other state' do
       before { subject.state = 'created' }
-      it { should_not be_application_possible }
+      it { is_expected.not_to be_application_possible }
     end
 
   end
@@ -73,32 +73,32 @@ describe Event::Course do
 
     it 'has two possible contact groups' do
       event = Fabricate(:cevi_course, groups: [groups(:zhshgl), groups(:be)])
-      event.possible_contact_groups.count.should eq 2
-      event.valid?.should be true
+      expect(event.possible_contact_groups.count).to eq 2
+      expect(event.valid?).to be true
     end
 
     it 'has one possible contact groups if the other is deleted' do
       @be_gs.really_destroy!
       event = Fabricate(:cevi_course, groups: [groups(:zhshgl), groups(:be)])
-      event.possible_contact_groups.count.should eq 1
-      event.valid?.should be true
+      expect(event.possible_contact_groups.count).to eq 1
+      expect(event.valid?).to be true
     end
 
     it 'has two possible contact groups' do
       event = Fabricate(:cevi_course, groups: [groups(:be)])
-      event.possible_contact_groups.count.should eq 1
+      expect(event.possible_contact_groups.count).to eq 1
     end
 
     it 'validation fails if no contact group is assigned' do
       event = Fabricate(:cevi_course, groups: [groups(:be)])
       event.application_contact_id = nil
-      event.valid?.should be false
+      expect(event.valid?).to be false
     end
 
     it 'validation fails if an invalid contact group is assigned' do
       event = Fabricate(:cevi_course, groups: [groups(:be)])
       event.application_contact_id = groups(:zhshgl).id
-      event.valid?.should be false
+      expect(event.valid?).to be false
     end
 
   end
