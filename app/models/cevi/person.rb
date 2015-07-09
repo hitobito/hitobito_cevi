@@ -63,6 +63,10 @@
 module Cevi::Person
   extend ActiveSupport::Concern
 
+  def canton
+    self[:canton] || super
+  end
+
   def canton_value
     value_from_i18n(:canton)
   end
