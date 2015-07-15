@@ -64,7 +64,7 @@ module Cevi::Person
   extend ActiveSupport::Concern
 
   def canton
-    self[:canton] || super
+    self[:canton]
   end
 
   def canton_value
