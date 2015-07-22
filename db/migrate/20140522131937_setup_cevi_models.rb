@@ -10,11 +10,8 @@ class SetupCeviModels < ActiveRecord::Migration
     add_column :people, :title, :string
 
     add_column :people, :profession, :string
-    add_column :people, :j_s_number, :integer
     add_column :people, :joined, :date
-    add_column :people, :ahv_number, :string
     add_column :people, :ahv_number_old, :string
-    add_column :people, :nationality, :string
 
     add_column :people, :salutation_parents, :string
     add_column :people, :name_parents, :string
