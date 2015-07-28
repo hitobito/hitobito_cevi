@@ -22,7 +22,7 @@ module Cevi::PersonAccessibles
     return accessible_conditions_without_spender unless financial_layers_ids.present?
 
     condition = accessible_conditions_without_spender
-    additional_layer_ids = read_layer_groups.collect(&:id) & financial_layers_ids
+    additional_layer_ids = layer_groups_same_layer.collect(&:id) & financial_layers_ids
     query = layer_group_query(additional_layer_ids, Role.all_types)
     condition.or(*query)
     condition
@@ -42,8 +42,10 @@ module Cevi::PersonAccessibles
     end
   end
 
-  def in_same_layer_condition_with_spender(layer_groups)
-    layer_group_query(layer_groups.collect(&:id), without_spender_types)
+  def in_same_layer_condition_with_spender(condition)
+    if layer_groups_same_layer.present?
+      condition.or(*layer_group_query(layer_groups_same_layer.collect(&:id), without_spender_types))
+    end
   end
 
   def layer_group_query(layer_group_ids, role_types)

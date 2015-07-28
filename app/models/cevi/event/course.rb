@@ -14,6 +14,8 @@ module Cevi::Event::Course
     self.possible_states = %w(created confirmed application_open application_closed
                               assignment_closed canceled completed closed)
 
+    self.tentative_states = %w(created confirmed)
+
     self.used_attributes += [:application_contact_id]
 
     ### ASSOCIATIONS
