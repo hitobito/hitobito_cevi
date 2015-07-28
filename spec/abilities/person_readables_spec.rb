@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe PersonAccessibles do
+describe PersonReadables do
   [:index, :layer_search, :deep_search, :global].each do |action|
     context action do
       let(:user)   { role.person.reload }
-      let(:ability) { PersonAccessibles.new(user, action == :index ? group : nil) }
+      let(:ability) { PersonReadables.new(user, action == :index ? group : nil) }
 
       let(:all_accessibles) do
         people = Person.accessible_by(ability)

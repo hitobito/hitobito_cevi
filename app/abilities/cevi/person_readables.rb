@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-module Cevi::PersonAccessibles
+module Cevi::PersonReadables
   extend ActiveSupport::Concern
 
   included do

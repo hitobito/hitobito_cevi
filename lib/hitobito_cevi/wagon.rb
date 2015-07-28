@@ -31,7 +31,7 @@ module HitobitoCevi
       PersonAbility.send :include, Cevi::PersonAbility
       GroupAbility.send :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
-      PersonAccessibles.send :include, Cevi::PersonAccessibles
+      PersonReadables.send :include, Cevi::PersonReadables
 
       PersonSerializer.send :include, Cevi::PersonSerializer
       GroupSerializer.send :include, Cevi::GroupSerializer
