@@ -9,13 +9,6 @@ module Cevi::Event::Course
   extend ActiveSupport::Concern
 
   included do
-    # states are used for workflow
-    # translations in config/locales
-    self.possible_states = %w(created confirmed application_open application_closed
-                              assignment_closed canceled completed closed)
-
-    self.tentative_states = %w(created confirmed)
-
     self.used_attributes += [:application_contact_id]
 
     ### ASSOCIATIONS
@@ -23,34 +16,7 @@ module Cevi::Event::Course
     belongs_to :application_contact, class_name: 'Group'
     belongs_to :condition, class_name: 'Condition'
 
-    ### VALIDATIONS
-
-    validates :state, inclusion: possible_states
-
     validate :validate_application_contact
-
-    # Define methods to query if a course is in the given state.
-    # eg course.canceled?
-    possible_states.each do |state|
-      define_method "#{state}?" do
-        self.state == state
-      end
-    end
-
-  end
-
-  # may participants apply now?
-  def application_possible?
-    application_open? &&
-    (!application_opening_at || application_opening_at <= ::Date.today)
-  end
-
-  def qualification_possible?
-    !completed? && !closed?
-  end
-
-  def state
-    super || possible_states.first
   end
 
   def possible_contact_groups
@@ -68,15 +34,6 @@ module Cevi::Event::Course
   def validate_application_contact
     unless possible_contact_groups.include?(application_contact)
       errors.add(:base, :geschaeftsstelle_missing)
-    end
-  end
-
-  module ClassMethods
-    def application_possible
-      where(state: 'application_open').
-      where('events.application_opening_at IS NULL OR ' \
-            'events.application_opening_at <= ?',
-            ::Date.today)
     end
   end
 
