@@ -633,18 +633,6 @@ de:
         application_contact: Anmeldung an
         application_contact_id: Anmeldung an
 
-      event/course:
-        states:
-          created: Erstellt
-          confirmed: Bestätigt
-          application_open: Offen zur Anmeldung
-          application_closed: Anmeldung abgeschlossen
-          assignment_closed: Zuteilung abgeschlossen
-          canceled: Abgesagt
-          completed: Qualifikationen erfasst
-          closed: Abgeschlossen
-
-
       event/participation:
         internal_comment: Interne Bemerkung
         payed: Bezahlt
