@@ -68,7 +68,7 @@ module Cevi::Person
   end
 
   def canton_value
-    value_from_i18n(:canton)
+    Cantons.full_name(canton)
   end
 
   def confession_value

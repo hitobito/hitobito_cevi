@@ -33,6 +33,8 @@ module HitobitoCevi
       VariousAbility.send :include, Cevi::VariousAbility
       PersonReadables.send :include, Cevi::PersonReadables
 
+      Export::Csv::People::ParticipationNdbjsRow.send :include, Cevi::Export::Csv::People::ParticipationNdbjsRow
+
       PersonSerializer.send :include, Cevi::PersonSerializer
       GroupSerializer.send :include, Cevi::GroupSerializer
 

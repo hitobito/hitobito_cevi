@@ -7,12 +7,16 @@
 
 module PeopleCeviHelper
 
+  IdLabel = Struct.new(:id, :to_s)
+
   def format_person_canton(person)
     person.canton_value
   end
 
   def possible_person_cantons
-    candidates_from_i18n(:cantons)
+    Cantons.labels.map do |key, value|
+      IdLabel.new(key, value)
+    end
   end
 
   def format_person_confession(person)
@@ -43,7 +47,7 @@ module PeopleCeviHelper
 
   def candidates_from_i18n(collection_attr)
     t("activerecord.attributes.person.#{collection_attr}").map do |key, value|
-      Struct.new(:id, :to_s).new(key, value)
+      IdLabel.new(key, value)
     end
   end
 
