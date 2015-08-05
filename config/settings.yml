@@ -10,15 +10,11 @@ application:
   footer:
     logo_image: logo_footer.png
     logo_url: http://www.cevi.ch
-    links: 
+    links:
       Hilfe: http://www.cevi.ch/dbsupport
-
 
   languages:
     de: Deutsch
-
-
-
 
 
 # The person with this email has root access to everything
