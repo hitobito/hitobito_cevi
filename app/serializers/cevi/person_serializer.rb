@@ -12,9 +12,7 @@ module Cevi::PersonSerializer
     extension(:details) do |_|
       map_properties :title,
                      :profession,
-                     :j_s_number,
                      :joined,
-                     :ahv_number,
                      :ahv_number_old,
                      :salutation_parents,
                      :name_parents,

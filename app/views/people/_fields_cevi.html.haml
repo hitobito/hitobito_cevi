@@ -6,6 +6,10 @@
 = field_set_tag do
   = f.labeled_input_fields :title, :profession, :joined, :ahv_number_old, :salutation_parents, :name_parents, :member_card_number
 
+  = f.labeled_input_field :nationality,
+                          placeholder: t('.nationality.placeholder'),
+                          data: { provide: :typeahead, source: existing_person_nationalities }
+
   = f.labeled_input_field :correspondence_language,
                           placeholder: t('.correspondence_language.placeholder'),
                           data: { provide: :typeahead, source: existing_person_correspondence_languages }

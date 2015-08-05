@@ -13,6 +13,10 @@ class SetupCeviModels < ActiveRecord::Migration
     add_column :people, :joined, :date
     add_column :people, :ahv_number_old, :string
 
+    unless column_exists?(:people, :nationality)
+      add_column :people, :nationality, :string
+    end
+
     add_column :people, :salutation_parents, :string
     add_column :people, :name_parents, :string
     add_column :people, :member_card_number, :integer
