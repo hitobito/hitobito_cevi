@@ -73,7 +73,7 @@ module Export::Csv
       when :mitgliederorganisation then Group::Mitgliederorganisation.model_name.human
       when :year then Census.human_attribute_name(:year)
       when /(m|f)_(\w+)/
-        [translate_prefix(Regexp.last_match[2]), Regexp.last_match[1].gsub('f', 'w')].join(' ')
+        [translate_prefix(Regexp.last_match[2]), Regexp.last_match[1].tr('f', 'w')].join(' ')
       else fail "unknown attr: #{attr}"
       end
     end

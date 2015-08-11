@@ -62,3 +62,6 @@ llm = seed_course({
   application_opening_at: Date.new(2014,6,7),
   application_closing_at: Date.new(2014,7,7)
 })
+
+
+Event::Participation.update_all(state: 'assigned', active: true)

@@ -19,9 +19,11 @@
 #
 
 class MemberCount < ActiveRecord::Base
+
   belongs_to :group
   belongs_to :mitgliederorganisation, class_name: 'Group::Mitgliederorganisation'
 
+  validates_by_schema
   validates :born_in, uniqueness: { scope: [:group_id, :year] }
   validates :person_f, :person_m,
             numericality: { greater_than_or_equal_to: 0, allow_nil: true }
