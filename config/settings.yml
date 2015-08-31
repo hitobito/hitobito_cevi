@@ -22,6 +22,11 @@ application:
 # Initially, a password reset token may be mailed from the application to this address to set a password.
 root_email: hitobito-cevi@puzzle.ch
 
+
+<% mail_domain = ENV['RAILS_MAIL_DOMAIN'].presence ||
+                 ENV['RAILS_HOST_NAME'].presence ||
+                 'localhost' %>
+
 email:
   # Sender for all emails sent by the application
   sender: <%= "<noreply@#{mail_domain}>" %>
