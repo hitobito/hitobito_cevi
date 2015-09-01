@@ -40,6 +40,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Geschäftsleiter/-in: [:layer_and_below_full, :admin]
     * Angestellte/-r: [:layer_and_below_full, :admin]
     * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :admin]
+    * Administrator/-in Ortsgruppen: [:layer_and_below_full, :unconfined_below]
   * Gremium
     * Leitung: [:layer_and_below_read, :group_full]
     * Mitglied: [:layer_and_below_read]
@@ -53,9 +54,10 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
   * Spender
     * Spender/-in: []
     * Spendenverwalter/-in: [:group_full]
+* Sektion
 * Ortsgruppe
   * Ortsgruppe
-    * Administrator/-in Cevi DB: [:layer_and_below_full]
+    * Administrator/-in Cevi DB: [:layer_and_below_full, :unconfined_below]
 * Jungschar
   * Jungschar
     * Abteilungsleiter/-in: [:layer_and_below_full]
@@ -88,6 +90,11 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
   * Stufe
     * Stufenleiter/-in: [:layer_and_below_read, :group_full]
     * Mini-Chef: [:layer_and_below_read, :group_full]
+    * Gruppenleiter/-in: [:layer_and_below_read, :group_full]
+    * Minigruppenleiter/-in: [:layer_and_below_read, :group_full]
+    * Helfer/-in: [:layer_and_below_read]
+    * Teilnehmer/-in: [:group_read]
+  * Untergruppe
     * Gruppenleiter/-in: [:layer_and_below_read, :group_full]
     * Minigruppenleiter/-in: [:layer_and_below_read, :group_full]
     * Helfer/-in: [:layer_and_below_read]
