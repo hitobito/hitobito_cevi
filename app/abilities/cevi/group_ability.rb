@@ -21,8 +21,9 @@ module Cevi::GroupAbility
       permission(:layer_and_below_full).
         may(:remind_census, :update_member_counts, :delete_member_counts).
         in_upper_layer_hierarchy
-    end
 
+      permission(:unconfined_below).may(:index_local_people).in_same_layer_or_below
+    end
   end
 
   def in_upper_layer_hierarchy

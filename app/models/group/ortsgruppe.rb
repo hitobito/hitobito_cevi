@@ -45,7 +45,7 @@ class Group::Ortsgruppe < Group
   ### ROLES
 
   class AdministratorCeviDB < ::Role
-    self.permissions = [:layer_and_below_full]
+    self.permissions = [:layer_and_below_full, :unconfined_below]
   end
 
   roles AdministratorCeviDB

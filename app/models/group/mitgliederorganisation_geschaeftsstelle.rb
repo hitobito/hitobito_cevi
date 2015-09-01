@@ -47,8 +47,13 @@ class Group::MitgliederorganisationGeschaeftsstelle < Group::Geschaeftsstelle
     self.permissions = [:layer_and_below_full, :financials, :admin]
   end
 
+  class AdminOrtsgruppen < ::Role
+    self.permissions = [:layer_and_below_full, :unconfined_below]
+  end
+
   roles Geschaeftsleiter,
         Angestellter,
-        Finanzverantwortlicher
+        Finanzverantwortlicher,
+        AdminOrtsgruppen
 
 end

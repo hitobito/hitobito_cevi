@@ -14,31 +14,34 @@ module Cevi::PersonReadables
 
     alias_method_chain :in_same_layer_condition, :spender
     alias_method_chain :accessible_conditions, :spender
+
+    alias_method_chain :read_permission_for_this_group?, :unconfined_below
   end
 
   private
 
   def accessible_conditions_with_spender
-    return accessible_conditions_without_spender unless financial_layers_ids.present?
-
-    condition = accessible_conditions_without_spender
-    additional_layer_ids = layer_groups_same_layer.collect(&:id) & financial_layers_ids
-    query = layer_group_query(additional_layer_ids, Role.all_types)
-    condition.or(*query)
-    condition
+    accessible_conditions_without_spender.tap do |condition|
+      financials_condition(condition)
+      unconfined_from_above_condition(condition)
+    end
   end
 
   def group_accessible_people_with_spender
-    return group_accessible_people_without_spender unless spender_group?
-
-    can(:index, Person, scope_for_spender_group)
+    if spender_group?
+      can(:index, Person, scope_for_spender_group) { |_| true }
+    else
+      group_accessible_people_without_spender
+    end
   end
 
   def scope_for_spender_group
-    if group_read_in_this_group? || financial_layers_ids.include?(group.layer_group_id)
-      group.people.only_public_data { |_| true }
+    if group_read_in_this_group? ||
+       financial_layers_ids.include?(group.layer_group_id) ||
+       unconfined_below_in_above_layer?
+      group.people.only_public_data
     else
-      group.people.only_public_data.visible_from_above(group) { |_| true }
+      group.people.only_public_data.visible_from_above(group)
     end
   end
 
@@ -51,6 +54,46 @@ module Cevi::PersonReadables
   def layer_group_query(layer_group_ids, role_types)
     ['groups.layer_group_id IN (?) AND roles.type IN (?)',
      layer_group_ids, role_types.map(&:sti_name)]
+  end
+
+  def financials_condition(condition)
+    return if financial_layers_ids.blank?
+
+    additional_layer_ids = layer_groups_same_layer.collect(&:id) & financial_layers_ids
+    query = layer_group_query(additional_layer_ids, Role.all_types)
+    condition.or(*query)
+  end
+
+  def unconfined_from_above_condition(condition)
+    return if layer_groups_unconfined_below.blank?
+
+    unconfined_from_above_groups = OrCondition.new
+    collapse_groups_to_highest(layer_groups_unconfined_below) do |layer_group|
+      unconfined_from_above_groups.or('groups.lft >= ? AND groups.rgt <= ?',
+                                   layer_group.left,
+                                   layer_group.rgt)
+    end
+
+    condition.or(*unconfined_from_above_groups.to_a)
+  end
+
+  def read_permission_for_this_group_with_unconfined_below?
+    read_permission_for_this_group_without_unconfined_below? ||
+    unconfined_below_in_above_layer?
+  end
+
+  def unconfined_below_in_above_layer?
+    layers_unconfined_below.present? &&
+    (layers_unconfined_below & group.layer_hierarchy.collect(&:id)).present?
+  end
+
+  def layers_unconfined_below
+    @layers_unconfined_below ||=
+      user_context.layer_ids(user.groups_with_permission(:unconfined_below).to_a)
+  end
+
+  def layer_groups_unconfined_below
+    @layer_groups_unconfined_below ||= layer_groups_with_permissions(:unconfined_below)
   end
 
   def without_spender_types

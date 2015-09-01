@@ -13,6 +13,11 @@ module Cevi::PersonAbility
 
     on(Person) do
       permission(:financials).may(:update).financials_in_same_layer
+
+      permission(:unconfined_below).
+        may(:show, :show_full, :show_details, :history, :update,
+            :primary_group, :send_password_instructions, :log).
+        in_same_layer_or_below
     end
   end
 
@@ -22,6 +27,10 @@ module Cevi::PersonAbility
 
   def non_restricted_in_same_layer_or_visible_below_with_spender
     not_only_spender_roles? && non_restricted_in_same_layer_or_visible_below_without_spender
+  end
+
+  def in_same_layer_or_below
+    permission_in_layers?(subject.groups_hierarchy_ids)
   end
 
   private

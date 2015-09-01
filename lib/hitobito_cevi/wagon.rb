@@ -26,12 +26,17 @@ module HitobitoCevi
       Event::Kind.send :include, Cevi::Event::Kind
       Event::Course.send :include, Cevi::Event::Course
 
-      Role::Permissions << :financials
+      # :financials may edit all people in a Group::Spender group.
+      # :unconfined_below may edit below people even when they have visible_from_above = false.
+      #   This only makes sense with :layer_and_below_full.
+      Role::Permissions << :financials << :unconfined_below
 
       PersonAbility.send :include, Cevi::PersonAbility
+      RoleAbility.send :include, Cevi::RoleAbility
       GroupAbility.send :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
       PersonReadables.send :include, Cevi::PersonReadables
+      AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
 
       Export::Csv::People::ParticipationNdbjsRow.send :include, Cevi::Export::Csv::People::ParticipationNdbjsRow
 

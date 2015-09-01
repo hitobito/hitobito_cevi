@@ -251,6 +251,9 @@ de:
       group/mitgliederorganisation_geschaeftsstelle/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
         description:
+      group/mitgliederorganisation_geschaeftsstelle/admin_ortsgruppen:
+        one: Administrator/-in Ortsgruppen
+        description:
       group/mitgliederorganisation_gremium/leitung:
         one: Leitung
         description:
@@ -683,6 +686,13 @@ de:
 
         salutation_parents: Anrede Eltern
         title: Titel
+
+      role:
+        class:
+          permission:
+            description:
+              financials: Bearbeiten von Personen in Spender Gruppen.
+              unconfined_below: Sieht zusätzlich Personen, welche sonst von höheren Ebenen nicht eingesehen werden dürfen.
 
     errors:
       models:
