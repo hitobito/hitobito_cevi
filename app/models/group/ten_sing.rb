@@ -39,7 +39,7 @@ class Group::TenSing < Group
   ### INSTANCE METHODS
 
   def mitgliederorganisation
-    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
+    ancestors.find_by(type: Group::Mitgliederorganisation.sti_name)
   end
 
   ### ROLES

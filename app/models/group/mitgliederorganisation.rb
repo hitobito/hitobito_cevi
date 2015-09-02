@@ -63,7 +63,7 @@ class Group::Mitgliederorganisation < Group
   end
 
   def census_total(year)
-    MemberCount.total_by_mitgliederorganisationen(year).where(mitgliederorganisation_id: id).first
+    MemberCount.total_by_mitgliederorganisationen(year).find_by(mitgliederorganisation_id: id)
   end
 
   def census_details(year)

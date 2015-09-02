@@ -70,8 +70,8 @@ module Cevi::PersonReadables
     unconfined_from_above_groups = OrCondition.new
     collapse_groups_to_highest(layer_groups_unconfined_below) do |layer_group|
       unconfined_from_above_groups.or('groups.lft >= ? AND groups.rgt <= ?',
-                                   layer_group.left,
-                                   layer_group.rgt)
+                                      layer_group.left,
+                                      layer_group.rgt)
     end
 
     condition.or(*unconfined_from_above_groups.to_a)

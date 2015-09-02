@@ -36,7 +36,6 @@ class MemberCounter
         role_name = role.to_s.demodulize.split('::').last
         role_name =~ /#{IGNORED_ROLE_NAMES.join('|')}/
       end
-
     end
 
     def create_counts_for(group)

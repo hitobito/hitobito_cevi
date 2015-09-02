@@ -45,7 +45,7 @@ class Group::WeitereArbeitsgebieteExterne < Group::Externe
   end
 
   class Externer < ::Role
-    self.visible_from_above  = false
+    self.visible_from_above = false
   end
 
   roles Verantwortlicher,

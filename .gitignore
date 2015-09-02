@@ -7,6 +7,9 @@ db/*.sqlite3
 zeus.json
 .sass-cache
 .project
+*.iml
+.generators
+.idea
 
 # ignore Gemfile.lock for wagons
 Gemfile.lock

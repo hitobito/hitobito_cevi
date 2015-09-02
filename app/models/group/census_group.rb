@@ -13,7 +13,7 @@ module Group::CensusGroup
   end
 
   def mitgliederorganisation
-    ancestors.where(type: Group::Mitgliederorganisation.sti_name).first
+    ancestors.find_by(type: Group::Mitgliederorganisation.sti_name)
   end
 
   def census_total(year)

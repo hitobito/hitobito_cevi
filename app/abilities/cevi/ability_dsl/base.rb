@@ -16,16 +16,20 @@ module Cevi::AbilityDsl::Base
   def user_groups_with_unconfined_below
     @user_groups ||=
         case permission
-        when :unconfined_below then user.groups_with_permission(:unconfined_below).to_a.collect(&:id)
-        else user_groups_without_unconfined_below
+        when :unconfined_below
+          user.groups_with_permission(:unconfined_below).to_a.collect(&:id)
+        else
+          user_groups_without_unconfined_below
         end
   end
 
   def user_layers_with_unconfined_below
     @user_layers ||=
         case permission
-        when :unconfined_below then user_context.layer_ids(user.groups_with_permission(:unconfined_below).to_a)
-        else user_layers_without_unconfined_below
+        when :unconfined_below
+          user_context.layer_ids(user.groups_with_permission(:unconfined_below).to_a)
+        else
+          user_layers_without_unconfined_below
         end
   end
 end

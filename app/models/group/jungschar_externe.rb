@@ -43,15 +43,15 @@ class Group::JungscharExterne < Group::Externe
   end
 
   class Jugendarbeiter < ::Role
-    self.visible_from_above  = false
+    self.visible_from_above = false
   end
 
   class Externer < ::Role
-    self.visible_from_above  = false
+    self.visible_from_above = false
   end
 
   class Goetti < ::Role
-    self.visible_from_above  = false
+    self.visible_from_above = false
   end
 
 

@@ -44,7 +44,7 @@ class Group::JungscharTeam < Group
   end
 
   class Abteilungsleiter < Group::Jungschar::Abteilungsleiter; end
-  class Coach < Group::Jungschar::Coach;  end
+  class Coach < Group::Jungschar::Coach; end
   class Finanzverantwortlicher < Group::Jungschar::Finanzverantwortlicher; end
   class Adressverwalter < Group::Jungschar::Adressverwalter; end
   class Aktuar < Group::Jungschar::Aktuar; end
