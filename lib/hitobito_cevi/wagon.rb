@@ -38,6 +38,7 @@ module HitobitoCevi
       PersonReadables.send :include, Cevi::PersonReadables
       AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
 
+      Export::Csv::People::PeopleAddress.send :include, Cevi::Export::Csv::People::PeopleAddress
       Export::Csv::People::ParticipationNdbjsRow.send(
         :include, Cevi::Export::Csv::People::ParticipationNdbjsRow)
 
