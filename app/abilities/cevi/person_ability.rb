@@ -18,6 +18,16 @@ module Cevi::PersonAbility
         may(:show, :show_full, :show_details, :history, :update,
             :primary_group, :send_password_instructions, :log).
         in_same_layer_or_below
+
+      permission(:group_full).may(:update).
+        non_restricted_in_same_group_or_event_organizer
+      permission(:group_and_below_full).may(:update).
+        non_restricted_in_same_group_or_below_or_event_organizer
+      permission(:layer_full).may(:update).
+        non_restricted_in_same_layer_or_event_organizer
+      permission(:layer_and_below_full).may(:update).
+        non_restricted_in_same_layer_or_visible_below_or_event_organizer
+      permission(:any).may(:update).herself_or_for_leaded_events
     end
   end
 
@@ -31,6 +41,26 @@ module Cevi::PersonAbility
 
   def in_same_layer_or_below
     permission_in_layers?(subject.groups_hierarchy_ids)
+  end
+
+  def non_restricted_in_same_group_or_event_organizer
+    non_restricted_in_same_group || event_organizer
+  end
+
+  def non_restricted_in_same_group_or_below_or_event_organizer
+    non_restricted_in_same_group_or_below || event_organizer
+  end
+
+  def non_restricted_in_same_layer_or_event_organizer
+    non_restricted_in_same_layer || event_organizer
+  end
+
+  def non_restricted_in_same_layer_or_visible_below_or_event_organizer
+    non_restricted_in_same_layer_or_visible_below || event_organizer
+  end
+
+  def herself_or_for_leaded_events
+    herself || event_leader
   end
 
   private
@@ -47,6 +77,21 @@ module Cevi::PersonAbility
 
   def financial_layers_ids
     @financal_layer_ids ||= user.groups_with_permission(:financials).map(&:layer_group_id)
+  end
+
+  def event_organizer
+    permission_in_groups?(event_group_ids)
+  end
+
+  def event_leader
+    (user_context.events_with_permission(:event_full) & subject.events.pluck(:id)).present?
+  end
+
+  def event_group_ids
+    @event_group_ids ||= Group.joins(:events).
+                               where(events: { id: subject.events.select(:id) }).
+                               uniq.
+                               pluck(:id)
   end
 
 end

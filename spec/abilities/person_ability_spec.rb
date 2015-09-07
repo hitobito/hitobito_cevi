@@ -15,44 +15,121 @@ describe PersonAbility do
 
 
   context :update do
-    before do
-      @group = Fabricate(Group::Mitgliederorganisation::MitgliederorganisationSpender.name, parent: groups(:zhshgl))
-      @spender = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: @group).person
-    end
+    let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+    let(:spender) { Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group).person }
 
     context 'upper layer' do
-      it 'layer admin may not update spender' do
-        expect(ability(groups(:dachverband),
-                Group::Dachverband::Administrator)).not_to be_able_to(:update, @spender)
+      context 'layer admin' do
+        let(:role) { Fabricate(Group::Dachverband::Administrator.name, group: groups(:dachverband)) }
+
+        it 'may not update spender' do
+          is_expected.not_to be_able_to(:update, spender)
+        end
       end
 
-      it 'layer finance may not update spender' do
-        expect(ability(groups(:dachverband_gs),
-                Group::DachverbandGeschaeftsstelle::Finanzverantwortlicher)).not_to be_able_to(:update, @spender)
+      context 'layer finance' do
+        let(:role) { Fabricate(Group::DachverbandGeschaeftsstelle::Finanzverantwortlicher.name, group: groups(:dachverband_gs)) }
+
+        it 'may not update spender' do
+          is_expected.not_to be_able_to(:update, spender)
+        end
       end
     end
-
 
     context 'same layer' do
-      it 'layer admin may not update spender' do
-        expect(ability(groups(:zhshgl),
-                Group::Mitgliederorganisation::Administrator)).not_to be_able_to(:update, @spender)
+      context 'layer admin' do
+        let(:role) { Fabricate(Group::Mitgliederorganisation::Administrator.name, group: groups(:zhshgl)) }
+
+        it 'may not update spender' do
+          is_expected.not_to be_able_to(:update, spender)
+        end
       end
 
-      it 'layer finance may update spender' do
-        expect(ability(groups(:zhshgl_gs),
-                Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher)).to be_able_to(:update, @spender)
+      context 'layer finance' do
+        let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher.name, group: groups(:zhshgl_gs)) }
+
+        it 'may update spender' do
+          is_expected.to be_able_to(:update, spender)
+        end
       end
     end
 
-    it 'group full may update spender' do
-      expect(ability(@group,
-              Group::MitgliederorganisationSpender::SpendenVerwalter)).to be_able_to(:update, @spender)
+    context 'group full' do
+      let(:role) { Fabricate(Group::MitgliederorganisationSpender::SpendenVerwalter.name, group: group) }
+
+      it 'group full may update spender' do
+        is_expected.to be_able_to(:update, spender)
+      end
     end
 
-    def ability(group, role_type)
-      role = Fabricate(role_type.name.to_sym, group: group)
-      Ability.new(role.person.reload)
+    context 'event organizer' do
+      context 'layer_and_below_full' do
+        let(:role) { Fabricate(Group::Jungschar::Abteilungsleiter.name, group: groups(:jungschar_altst)) }
+
+        it 'may update people participating in organized events' do
+          event = Fabricate(:event, groups: [role.group])
+          person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+
+          is_expected.not_to be_able_to(:update, person.reload)
+
+          Fabricate(:event_participation, event: event, person: person)
+          is_expected.to be_able_to(:update, person.reload)
+        end
+      end
+
+      context 'group_and_below_full' do
+        let(:role) { Fabricate(Group::Stufe::Stufenleiter.name, group: groups(:jungschar_zh10_aranda)) }
+
+        it 'may update people participating in organized events' do
+          event = Fabricate(:event, groups: [role.group, groups(:jungschar_burgd_paprika)])
+          person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+
+          is_expected.not_to be_able_to(:update, person.reload)
+
+          Fabricate(:event_participation, event: event, person: person)
+          is_expected.to be_able_to(:update, person.reload)
+        end
+
+        it 'may not update people participating in other events' do
+          event = Fabricate(:event, groups: [groups(:jungschar_burgd_paprika)])
+          person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+          Fabricate(:event_participation, event: event, person: person)
+          # user also has a non-permitting role in organizing group
+          Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika), person: role.person)
+
+          expect(Ability.new(role.person.reload)).not_to be_able_to(:update, person.reload)
+        end
+      end
+    end
+
+    context 'event leader' do
+      let(:role) { Fabricate(Group::Jungschar::Abteilungsleiter.name, group: groups(:jungschar_altst)) }
+
+      it 'may update people participating in leaded events' do
+        event = Fabricate(:event, groups: [groups(:zuerich)])
+        person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+        Fabricate(:event_participation, event: event, person: person)
+
+        is_expected.not_to be_able_to(:update, person.reload)
+
+        participation = Fabricate(:event_participation, event: event, person: role.person)
+        Fabricate(Event::Role::Leader.name, participation: participation)
+
+        expect(Ability.new(role.person.reload)).to be_able_to(:update, person.reload)
+      end
+
+      it 'may not update people participating in other events' do
+        event1 = Fabricate(:event, groups: [groups(:zuerich)])
+        event2 = Fabricate(:event, groups: [groups(:zuerich)])
+        person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+        Fabricate(:event_participation, event: event1, person: person)
+
+        participation = Fabricate(:event_participation, event: event2, person: role.person)
+        Fabricate(Event::Role::Leader.name, participation: participation)
+        role.person.reload
+
+        expect(Ability.new(role.person.reload)).not_to be_able_to(:update, person.reload)
+      end
     end
   end
 
