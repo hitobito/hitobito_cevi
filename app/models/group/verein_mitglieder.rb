@@ -38,7 +38,7 @@ class Group::VereinMitglieder < Group::Mitglieder
   ### ROLES
 
   class Leiter < ::Role
-    self.permissions = [:group_full]
+    self.permissions = [:group_and_below_full]
   end
 
   class Mitglied < ::Role

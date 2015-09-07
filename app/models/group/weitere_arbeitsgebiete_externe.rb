@@ -39,7 +39,7 @@ class Group::WeitereArbeitsgebieteExterne < Group::Externe
   ### ROLES
 
   class Verantwortlicher < ::Role
-    self.permissions = [:group_full]
+    self.permissions = [:group_and_below_full]
 
     self.visible_from_above = false
   end

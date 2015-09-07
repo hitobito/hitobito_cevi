@@ -39,7 +39,7 @@ class Group::MitgliederorganisationGremium < Group::Gremium
   ### ROLES
 
   class Leitung < ::Role
-    self.permissions = [:layer_and_below_read, :group_full]
+    self.permissions = [:layer_and_below_read, :group_and_below_full]
   end
 
   class Mitglied < ::Role

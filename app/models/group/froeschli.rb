@@ -39,7 +39,7 @@ class Group::Froeschli < Group
   ### ROLES
 
   class Froeschlihauptleiter < ::Role
-    self.permissions = [:layer_and_below_read, :group_full]
+    self.permissions = [:layer_and_below_read, :group_and_below_full]
   end
 
   class Froeschlileiter < ::Role

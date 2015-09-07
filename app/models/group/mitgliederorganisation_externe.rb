@@ -39,7 +39,7 @@ class Group::MitgliederorganisationExterne < Group::Externe
   ### ROLES
 
   class Adressverwalter < ::Role
-    self.permissions = [:group_full]
+    self.permissions = [:group_and_below_full]
   end
 
   class Externer < ::Role

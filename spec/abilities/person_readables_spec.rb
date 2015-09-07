@@ -102,7 +102,7 @@ describe PersonReadables do
         let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher.name, group: groups(:zhshgl_gs)) }
 
         context 'lower spender group' do
-          let(:group) { Fabricate(Group::Mitgliederorganisation::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+          let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
 
           it 'may get spender people' do
             other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
@@ -111,11 +111,11 @@ describe PersonReadables do
         end
       end
 
-      describe 'group full in same group' do
+      describe 'group and below full in same group' do
         let(:role) { Fabricate(Group::MitgliederorganisationSpender::SpendenVerwalter.name, group: group) }
 
         context 'lower spender group' do
-          let(:group) { Fabricate(Group::Mitgliederorganisation::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+          let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
 
           it 'may get spender people' do
             other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)

@@ -36,7 +36,7 @@ class Group::JungscharTeam < Group
   ### ROLES
 
   class Leitung < ::Role
-    self.permissions = [:group_full]
+    self.permissions = [:group_and_below_full]
   end
 
   class Mitarbeiter < ::Role

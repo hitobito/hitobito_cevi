@@ -9,27 +9,25 @@ module Cevi::AbilityDsl::Base
   extend ActiveSupport::Concern
 
   included do
-    alias_method_chain :user_layers, :unconfined_below
-    alias_method_chain :user_groups, :unconfined_below
+    alias_method_chain :user_layer_ids, :unconfined_below
+    alias_method_chain :user_group_ids, :unconfined_below
   end
 
-  def user_groups_with_unconfined_below
-    @user_groups ||=
-        case permission
-        when :unconfined_below
-          user.groups_with_permission(:unconfined_below).to_a.collect(&:id)
-        else
-          user_groups_without_unconfined_below
-        end
+  def user_group_ids_with_unconfined_below
+    case permission
+    when :unconfined_below
+      user.groups_with_permission(:unconfined_below).to_a.collect(&:id)
+    else
+      user_group_ids_without_unconfined_below
+    end
   end
 
-  def user_layers_with_unconfined_below
-    @user_layers ||=
-        case permission
-        when :unconfined_below
-          user_context.layer_ids(user.groups_with_permission(:unconfined_below).to_a)
-        else
-          user_layers_without_unconfined_below
-        end
+  def user_layer_ids_with_unconfined_below
+    case permission
+    when :unconfined_below
+      user_context.layer_ids(user.groups_with_permission(:unconfined_below).to_a)
+    else
+      user_layer_ids_without_unconfined_below
+    end
   end
 end

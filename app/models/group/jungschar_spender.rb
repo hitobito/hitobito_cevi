@@ -42,7 +42,7 @@ class Group::JungscharSpender < Group::Spender
   end
 
   class SpendenVerwalter < ::Role
-    self.permissions = [:group_full]
+    self.permissions = [:group_and_below_full]
   end
 
   roles Spender,
