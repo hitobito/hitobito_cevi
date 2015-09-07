@@ -58,10 +58,12 @@
 #  correspondence_language :string(255)
 #
 
-
-
 module Cevi::Person
   extend ActiveSupport::Concern
+
+  included do
+    Person::PUBLIC_ATTRS.push(:salutation_parents, :name_parents)
+  end
 
   def canton
     self[:canton]

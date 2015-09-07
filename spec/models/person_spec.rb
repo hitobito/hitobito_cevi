@@ -9,6 +9,13 @@ require 'spec_helper'
 
 describe Person do
 
+  context 'PUBLIC ATTRS' do
+    it 'contains parent fields' do
+      expect(Person::PUBLIC_ATTRS).to include(:salutation_parents)
+      expect(Person::PUBLIC_ATTRS).to include(:name_parents)
+    end
+  end
+
   context 'canton_value' do
 
     it 'is blank for nil value' do
