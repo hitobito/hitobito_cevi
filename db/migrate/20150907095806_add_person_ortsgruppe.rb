@@ -19,9 +19,9 @@ class AddPersonOrtsgruppe < ActiveRecord::Migration
   private
 
   def update_persons_ortsgruppe
-    Person.all.each do |person|
+    Person.find_each do |person|
       ortsgruppen = person.possible_ortsgruppen
-      if ortsgruppen.length == 1
+      if ortsgruppen.size == 1
         person.update_column(:ortsgruppe_id, ortsgruppen.first.id)
       end
     end
