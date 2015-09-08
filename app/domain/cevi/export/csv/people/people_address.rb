@@ -9,12 +9,12 @@ module Cevi::Export::Csv::People::PeopleAddress
   extend ActiveSupport::Concern
 
   included do
-    alias_method_chain :person_attributes, :parent_fields
+    alias_method_chain :person_attributes, :cevi_fields
   end
 
   private
 
-  def person_attributes_with_parent_fields
-    person_attributes_without_parent_fields + [:salutation_parents, :name_parents]
+  def person_attributes_with_cevi_fields
+    person_attributes_without_cevi_fields + [:salutation_parents, :name_parents, :ortsgruppe_id]
   end
 end

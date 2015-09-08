@@ -21,7 +21,8 @@ module Cevi::PersonSerializer
                      :salutation,
                      :correspondence_language,
                      :canton,
-                     :confession
+                     :confession,
+                     :ortsgruppe
     end
   end
 

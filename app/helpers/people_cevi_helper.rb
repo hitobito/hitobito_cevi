@@ -43,6 +43,10 @@ module PeopleCeviHelper
     Person.where('nationality IS NOT NULL').pluck(:nationality).uniq
   end
 
+  def format_person_ortsgruppe(person)
+    person.ortsgruppe_value
+  end
+
   private
 
   def candidates_from_i18n(collection_attr)

@@ -22,6 +22,7 @@ module HitobitoCevi
       # extend application classes here
       Group.send :include, Cevi::Group
       Person.send :include, Cevi::Person
+      Role.send :include, Cevi::Role
 
       Event::Kind.send :include, Cevi::Event::Kind
       Event::Course.send :include, Cevi::Event::Course
@@ -38,9 +39,11 @@ module HitobitoCevi
       PersonReadables.send :include, Cevi::PersonReadables
       AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
 
+      Export::Csv::People::PersonRow.send :include, Cevi::Export::Csv::People::PersonRow
       Export::Csv::People::PeopleAddress.send :include, Cevi::Export::Csv::People::PeopleAddress
       Export::Csv::People::ParticipationNdbjsRow.send(
         :include, Cevi::Export::Csv::People::ParticipationNdbjsRow)
+      Import::Person.send :include, Cevi::Import::Person
 
       PersonSerializer.send :include, Cevi::PersonSerializer
       GroupSerializer.send :include, Cevi::GroupSerializer
@@ -56,8 +59,6 @@ module HitobitoCevi
          :correspondence_language]
 
       Sheet::Group.send :include, Cevi::Sheet::Group
-
-      Export::Csv::People::PersonRow.send :include, Cevi::Export::Csv::People::PersonRow
     end
 
     initializer 'cevi.add_settings' do |_app|

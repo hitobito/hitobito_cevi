@@ -13,7 +13,7 @@
   = f.labeled_collection_select :salutation, possible_person_salutations,
                                 :id,
                                 :to_s,
-                                { prompt: true },
+                                { include_blank: true },
                                 class: 'span6'
 
   = f.labeled_input_field :correspondence_language,
@@ -24,12 +24,19 @@
                                 possible_person_cantons,
                                 :id,
                                 :to_s,
-                                { prompt: true },
+                                { include_blank: true },
                                 class: 'span6'
 
   = f.labeled_collection_select :confession,
                                 possible_person_confessions,
                                 :id,
                                 :to_s,
-                                { prompt: true },
+                                { include_blank: true },
+                                class: 'span6'
+
+  = f.labeled_collection_select :ortsgruppe_id,
+                                entry.possible_ortsgruppen,
+                                :id,
+                                :to_s,
+                                { include_blank: true },
                                 class: 'span6'

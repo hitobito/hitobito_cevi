@@ -59,4 +59,36 @@ describe Role do
     subject {  Group::WeitereArbeitsgebieteExterne::Externer }
     it { is_expected.not_to be_visible_from_above }
   end
+
+  context '#reset_person_ortsgruppe!' do
+    let(:person) { Fabricate(:person) }
+
+    it 'updates the person\'s ortsgruppe if available' do
+      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
+                group: groups(:jungschar_zh10), person: person)
+      expect(person.ortsgruppe_id).to eq(groups(:stadtzh).id)
+    end
+
+    it 'leaves person\'s ortsgruppe nil if no ortsgruppe is in hierarchy' do
+      Fabricate(Group::Dachverband::Administrator.name.to_sym,
+                group: groups(:dachverband), person: person)
+      expect(person.ortsgruppe_id).to be_nil
+    end
+
+    it 'does not touch person\'s ortsgruppe if it already has groups' do
+      Fabricate(Group::Dachverband::Administrator.name.to_sym,
+                group: groups(:dachverband), person: person)
+      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
+                group: groups(:jungschar_zh10), person: person.reload)
+      expect(person.ortsgruppe_id).to be_nil
+    end
+
+    it 'updates ortsgruppe in same transaction' do
+      person = Person.new(first_name: 'John')
+      person.roles.new(group: groups(:jungschar_zh10),
+                       type: Group::Jungschar::Abteilungsleiter.sti_name)
+      person.save!
+      expect(person.reload.ortsgruppe_id).to eq(groups(:stadtzh).id)
+    end
+  end
 end

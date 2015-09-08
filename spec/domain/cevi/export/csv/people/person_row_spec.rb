@@ -13,7 +13,8 @@ describe Export::Csv::People do
   let(:person) { people(:bulei) }
   let(:simple_headers) do
     ['Vorname', 'Nachname', 'Ceviname', 'Firmenname', 'Firma', 'Haupt-E-Mail', 'Adresse', 'PLZ',
-     'Ort', 'Land', 'Geschlecht', 'Geburtstag', 'Rollen', 'Anrede Eltern', 'Name Eltern']
+     'Ort', 'Land', 'Geschlecht', 'Geburtstag', 'Rollen', 'Anrede Eltern', 'Name Eltern',
+     'Ortsgruppe']
   end
 
   describe Export::Csv::People do
@@ -28,7 +29,9 @@ describe Export::Csv::People do
       its(:headers) { should eq simple_headers }
 
       before do
-        person.update_attributes(salutation_parents: 'Herr & Frau', name_parents: 'Meier')
+        person.update_attributes(salutation_parents: 'Herr & Frau',
+                                 name_parents: 'Meier',
+                                 ortsgruppe_id: groups(:stadtzh).id)
       end
 
       context 'first row' do
@@ -42,6 +45,7 @@ describe Export::Csv::People do
         its(['Rollen']) { should eq 'Administrator/-in CEVI Schweiz' }
         its(['Anrede Eltern']) { should eq 'Herr & Frau' }
         its(['Name Eltern']) { should eq 'Meier' }
+        its(['Ortsgruppe']) { should eq 'StZH' }
       end
     end
 

@@ -130,6 +130,7 @@ stadtzh:
   lft: 34
   rgt: 91
   name: Stadt Zürich
+  short_name: StZH
   type: Group::Ortsgruppe
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:stadtzh) %>
 

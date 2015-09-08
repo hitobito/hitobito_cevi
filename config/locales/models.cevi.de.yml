@@ -686,6 +686,8 @@ de:
 
         salutation_parents: Anrede Eltern
         title: Titel
+        ortsgruppe: Ortsgruppe
+        ortsgruppe_id: Ortsgruppe
 
       role:
         class:

@@ -7,6 +7,10 @@
 
 module EventParticipationsCeviHelper
 
+  def format_ortsgruppe(participation)
+    participation.person.ortsgruppe_value
+  end
+
   def format_payed(participation)
     participation.payed? ? t('global.yes') : t('global.no')
   end

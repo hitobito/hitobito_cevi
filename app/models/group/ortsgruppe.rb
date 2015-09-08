@@ -41,7 +41,6 @@ class Group::Ortsgruppe < Group
            Group::Sport,
            Group::WeitereArbeitsgebiete
 
-
   ### ROLES
 
   class AdministratorCeviDB < ::Role

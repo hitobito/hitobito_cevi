@@ -28,6 +28,9 @@ module Cevi
             entry.salutation_value
           end
 
+          def ortsgruppe_id
+            entry.ortsgruppe_value
+          end
         end
       end
     end

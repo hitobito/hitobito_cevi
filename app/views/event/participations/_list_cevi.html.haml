@@ -4,5 +4,6 @@
 -#  https://github.com/hitobito/hitobito_cevi.
 
 - if can?(:update, @event)
+  -  table.col(Person.human_attribute_name(:ortsgruppe)) { |p| format_ortsgruppe(p) }
   -  table.col(Event::Participation.human_attribute_name(:internal_comment)) { |p| p.internal_comment }
   -  table.col(Event::Participation.human_attribute_name(:payed)) { |p| format_payed(p) }

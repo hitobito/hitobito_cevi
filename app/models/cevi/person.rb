@@ -63,6 +63,8 @@ module Cevi::Person
 
   included do
     Person::PUBLIC_ATTRS.push(:salutation_parents, :name_parents)
+
+    belongs_to :ortsgruppe, class_name: 'Group::Ortsgruppe'
   end
 
   def canton
@@ -85,6 +87,16 @@ module Cevi::Person
     value_from_i18n(:salutation)
   end
 
+  def ortsgruppe_value
+    ortsgruppe && (ortsgruppe.short_name || ortsgruppe.name)
+  end
+
+  def possible_ortsgruppen
+    groups.map do |group|
+      person_ortsgruppe_for(group)
+    end.flatten.compact.uniq
+  end
+
   private
 
   def value_from_i18n(key)
@@ -93,5 +105,9 @@ module Cevi::Person
     if value.present?
       I18n.t("activerecord.attributes.person.#{key.to_s.pluralize}.#{value}")
     end
+  end
+
+  def person_ortsgruppe_for(group)
+    group.hierarchy.find_by(type: ::Group::Ortsgruppe.sti_name)
   end
 end
