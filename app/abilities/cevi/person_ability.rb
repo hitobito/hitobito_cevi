@@ -29,7 +29,8 @@ module Cevi::PersonAbility
         non_restricted_in_same_layer_or_visible_below_or_event_organizer
       permission(:any).may(:update).herself_or_for_leaded_events
 
-      permission(:layer_and_below_full).may(:update_old_data).angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
+      permission(:layer_and_below_full).may(:update_old_data).
+        angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
     end
   end
 
