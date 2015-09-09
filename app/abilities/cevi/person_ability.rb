@@ -28,6 +28,8 @@ module Cevi::PersonAbility
       permission(:layer_and_below_full).may(:update).
         non_restricted_in_same_layer_or_visible_below_or_event_organizer
       permission(:any).may(:update).herself_or_for_leaded_events
+
+      permission(:layer_and_below_full).may(:update_old_data).angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
     end
   end
 
@@ -63,6 +65,11 @@ module Cevi::PersonAbility
     herself || event_leader
   end
 
+  def angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
+    user.roles.any? { |role| angestellter_or_geschaeftsfuehrung_roles.include?(role.class) } &&
+      in_same_layer_or_below
+  end
+
   private
 
   def not_only_spender_roles?
@@ -92,6 +99,11 @@ module Cevi::PersonAbility
                                where(events: { id: subject.events.select(:id) }).
                                uniq.
                                pluck(:id)
+  end
+
+  def angestellter_or_geschaeftsfuehrung_roles
+    [Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter,
+     Group::MitgliederorganisationGeschaeftsstelle::Angestellter]
   end
 
 end

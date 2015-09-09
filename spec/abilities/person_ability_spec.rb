@@ -183,4 +183,48 @@ describe PersonAbility do
     end
   end
 
+  context :update_old_data do
+
+    roles = [Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter,
+             Group::MitgliederorganisationGeschaeftsstelle::Angestellter,
+             Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher]
+
+    [{ context: 'in same layer',
+       target_role: Group::Mitgliederorganisation::Administrator,
+       target_group: :zhshgl,
+       roles_results: [true, true, false]
+     },
+     { context: 'in layer below',
+       target_role: Group::Ortsgruppe::AdministratorCeviDB,
+       target_group: :stadtzh,
+       roles_results: [true, true, false]
+     },
+     { context: 'in another layer',
+       target_role: Group::Ortsgruppe::AdministratorCeviDB,
+       target_group: :burgdorf,
+       roles_results: [false, false, false]
+     }].each do |data|
+      context data[:context] do
+        let(:person) { Fabricate(data[:target_role].name, group: groups(data[:target_group])).person }
+
+        data[:roles_results].each_with_index do |result, i|
+          context 'as ' + roles[i].name.demodulize do
+            let(:role) { Fabricate(roles[i].name, group: groups(:zhshgl_gs)) }
+
+            if result
+              it 'is allowed' do
+                is_expected.to be_able_to(:update_old_data, person)
+              end
+            else
+              it 'is not allowed' do
+                is_expected.not_to be_able_to(:update_old_data, person)
+              end
+            end
+          end
+        end
+      end
+    end
+
+  end
+
 end

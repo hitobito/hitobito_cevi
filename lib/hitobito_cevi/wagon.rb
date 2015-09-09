@@ -52,11 +52,7 @@ module HitobitoCevi
       Event::KindsController.permitted_attrs += [:j_s_label]
       Event::ParticipationsController.send :include, Cevi::Event::ParticipationsController
 
-      PeopleController.permitted_attrs +=
-        [:title, :profession, :j_s_number, :joined, :ahv_number,
-         :ahv_number_old, :nationality, :salutation_parents, :name_parents,
-         :member_card_number, :salutation, :canton, :confession,
-         :correspondence_language]
+      PeopleController.send :include, Cevi::PeopleController
 
       Sheet::Group.send :include, Cevi::Sheet::Group
     end

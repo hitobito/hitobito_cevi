@@ -34,6 +34,8 @@
                                 { include_blank: true },
                                 class: 'span6'
 
+  = f.labeled_input_field :old_data if can?(:update_old_data, entry)
+
   = f.labeled_collection_select :ortsgruppe_id,
                                 entry.possible_ortsgruppen,
                                 :id,
