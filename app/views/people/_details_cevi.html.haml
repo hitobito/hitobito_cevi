@@ -8,7 +8,8 @@
 
 = render_attrs(entry, :nationality, :salutation, :correspondence_language, :canton, :confession)
 
-= render_attrs(entry, :old_data)
+= render_attrs(entry, :ortsgruppe)
 
-- if entry.ortsgruppe
-  = render_attrs(entry, :ortsgruppe)
+- if can?(:update_old_data, entry)
+  = render_attrs(entry, :old_data)
+
