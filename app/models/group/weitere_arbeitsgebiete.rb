@@ -51,11 +51,11 @@ class Group::WeitereArbeitsgebiete < Group
   end
 
   class Hauptleitung < ::Role
-    self.permissions = [:layer_and_below_full]
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
   class Materialverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_read, :contact_data]
   end
 
   class Leiter < ::Role

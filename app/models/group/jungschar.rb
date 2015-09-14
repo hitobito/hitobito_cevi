@@ -41,7 +41,7 @@ class Group::Jungschar < Group
   ### ROLES
 
   class Abteilungsleiter < ::Role
-    self.permissions = [:layer_and_below_full]
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
   class Coach < ::Role
@@ -61,7 +61,7 @@ class Group::Jungschar < Group
   end
 
   class Busverwalter < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_read, :contact_data]
   end
 
   class FreierMitarbeiter < ::Role
@@ -69,7 +69,7 @@ class Group::Jungschar < Group
   end
 
   class Hausverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_read, :contact_data]
   end
 
   class Input < ::Role
@@ -97,7 +97,7 @@ class Group::Jungschar < Group
   end
 
   class Materialverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_read, :contact_data]
   end
 
   class KontaktRegionalzeitschrift < ::Role

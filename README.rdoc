@@ -9,120 +9,120 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
   * Dachverband
     * Administrator/-in: [:admin, :layer_and_below_full]
   * Vorstand
-    * Präsidium: [:layer_and_below_read, :group_full]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
-    * Mitglied: [:layer_and_below_read]
+    * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
+    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials, :contact_data]
+    * Mitglied: [:layer_and_below_read, :contact_data]
   * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_and_below_full, :admin]
-    * Angestellte/-r: [:layer_and_below_full, :admin]
-    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :admin]
+    * Geschäftsleiter/-in: [:layer_and_below_full, :admin, :contact_data]
+    * Angestellte/-r: [:layer_and_below_full, :admin, :contact_data]
+    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :admin, :contact_data]
   * Gremium
-    * Leitung: [:layer_and_below_read, :group_full]
+    * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
     * Mitglied: [:layer_and_below_read]
     * Aktive/-r Kursleiter/-in: [:layer_and_below_read]
   * Mitglieder
-    * Adressverwalter/-in: [:group_full]
+    * Adressverwalter/-in: [:group_and_below_full]
     * Mitglied: []
   * Externe
-    * Adressverwalter/-in: [:group_full]
+    * Adressverwalter/-in: [:group_and_below_full]
     * Externe/-r: []
   * Spender
     * Spender/-in: []
-    * Spendenverwalter/-in: [:group_full]
+    * Spendenverwalter/-in: [:group_and_below_full]
 * Mitgliederorganisation
   * Mitgliederorganisation
     * Administrator/-in: [:admin, :layer_and_below_full]
   * Vorstand
-    * Präsidium: [:layer_and_below_read, :group_full]
-    * Finanzverantwortliche-/r: [:layer_and_below_read, :financials]
-    * Mitglied: [:layer_and_below_read]
+    * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
+    * Finanzverantwortliche-/r: [:layer_and_below_read, :financials, :contact_data]
+    * Mitglied: [:layer_and_below_read, :contact_data]
   * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_and_below_full, :admin]
-    * Angestellte/-r: [:layer_and_below_full, :admin]
-    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :admin]
+    * Geschäftsleiter/-in: [:layer_and_below_full, :admin, :contact_data]
+    * Angestellte/-r: [:layer_and_below_full, :admin, :contact_data]
+    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :admin, :contact_data]
     * Administrator/-in Ortsgruppen: [:layer_and_below_full, :unconfined_below]
   * Gremium
-    * Leitung: [:layer_and_below_read, :group_full]
+    * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
     * Mitglied: [:layer_and_below_read]
     * Aktive/-r Kursleiter/-in: [:layer_and_below_read]
   * Mitglieder
-    * Adressverwalter/-in: [:group_full]
+    * Adressverwalter/-in: [:group_and_below_full]
     * Mitglied: []
   * Externe
-    * Adressverwalter/-in: [:group_full]
+    * Adressverwalter/-in: [:group_and_below_full]
     * Externe/-r: []
   * Spender
     * Spender/-in: []
-    * Spendenverwalter/-in: [:group_full]
+    * Spendenverwalter/-in: [:group_and_below_full]
 * Sektion
 * Ortsgruppe
   * Ortsgruppe
     * Administrator/-in Cevi DB: [:layer_and_below_full, :unconfined_below]
 * Jungschar
   * Jungschar
-    * Abteilungsleiter/-in: [:layer_and_below_full]
+    * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
     * Coach: [:layer_and_below_read, :approve_applications]
     * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
     * Adressverwalter/-in: [:layer_and_below_full]
     * Aktuar/-in: [:layer_and_below_read]
-    * Busverwalter/-in: [:layer_and_below_read]
+    * Busverwalter/-in: [:layer_and_below_read, :contact_data]
     * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-    * Hausverantwortliche/-r: [:layer_and_below_read]
+    * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
     * Input: [:layer_and_below_read]
     * Lädeliverantwortliche/-r: [:layer_and_below_read]
     * Redaktor/-in: [:layer_and_below_read]
     * Regionaltreffenvertreter/-in: [:layer_and_below_read]
     * Webmaster/-in: [:layer_and_below_read]
     * Werbung: [:layer_and_below_read]
-    * Materialverantwortliche/-r: [:layer_and_below_read]
+    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
     * Kontakt Regionalzeitschrift: [:layer_and_below_read]
     * Verantwortliche/-r PSA: [:layer_and_below_read]
     * Jugendarbeiter/-in: [:layer_and_below_read]
   * Externe
-    * Verantwortliche/-r: [:group_full]
+    * Verantwortliche/-r: [:group_and_below_full]
     * Jugendarbeiter/-in: []
     * Externe/-r: []
     * Gotte/Götti: []
   * Fröschli
-    * Fröschlihauptleiter/-in: [:layer_and_below_read, :group_full]
+    * Fröschlihauptleiter/-in: [:layer_and_below_read, :group_and_below_full]
     * Fröschlileiter/-in: [:layer_and_below_read]
     * Teilnehmer/-in: [:group_read]
   * Stufe
-    * Stufenleiter/-in: [:layer_and_below_read, :group_full]
-    * Mini-Chef: [:layer_and_below_read, :group_full]
-    * Gruppenleiter/-in: [:layer_and_below_read, :group_full]
-    * Minigruppenleiter/-in: [:layer_and_below_read, :group_full]
+    * Stufenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+    * Mini-Chef: [:layer_and_below_read, :group_and_below_full]
+    * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+    * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
     * Helfer/-in: [:layer_and_below_read]
     * Teilnehmer/-in: [:group_read]
   * Untergruppe
-    * Gruppenleiter/-in: [:layer_and_below_read, :group_full]
-    * Minigruppenleiter/-in: [:layer_and_below_read, :group_full]
+    * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+    * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
     * Helfer/-in: [:layer_and_below_read]
     * Teilnehmer/-in: [:group_read]
   * Team
-    * Abteilungsleiter/-in: [:layer_and_below_full]
+    * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
     * Coach: [:layer_and_below_read, :approve_applications]
     * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
     * Adressverwalter/-in: [:layer_and_below_full]
     * Aktuar/-in: [:layer_and_below_read]
-    * Busverwalter/-in: [:layer_and_below_read]
+    * Busverwalter/-in: [:layer_and_below_read, :contact_data]
     * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-    * Hausverantwortliche/-r: [:layer_and_below_read]
+    * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
     * Input: [:layer_and_below_read]
     * Lädeliverantwortliche/-r: [:layer_and_below_read]
     * Redaktor/-in: [:layer_and_below_read]
     * Regionaltreffenvertreter/-in: [:layer_and_below_read]
     * Webmaster/-in: [:layer_and_below_read]
     * Werbung: [:layer_and_below_read]
-    * Materialverantwortliche/-r: [:layer_and_below_read]
+    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
     * Kontakt Regionalzeitschrift: [:layer_and_below_read]
     * Verantwortliche/-r PSA: [:layer_and_below_read]
     * Jugendarbeiter/-in: [:layer_and_below_read]
-    * Leitung: [:group_full]
+    * Leitung: [:group_and_below_full]
     * Mitarbeiter/-in: [:group_read]
   * Spender
     * Spender/-in: []
-    * Spendenverwalter/-in: [:group_full]
+    * Spendenverwalter/-in: [:group_and_below_full]
 * Verein
   * Verein
     * Adressverantwortlicher: [:layer_and_below_full]
@@ -134,63 +134,63 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Aktuar/-in: [:layer_and_below_read]
     * Mitglied: [:layer_and_below_read]
   * Mitglieder
-    * Leiter/-in: [:group_full]
+    * Leiter/-in: [:group_and_below_full]
     * Mitglied: [:group_read]
   * Externe
-    * Verantwortliche/-r: [:group_full]
+    * Verantwortliche/-r: [:group_and_below_full]
     * Externe-/r: []
   * Spender
     * Spender/-in: []
-    * Spendenverwalter/-in: [:group_full]
+    * Spendenverwalter/-in: [:group_and_below_full]
 * Ten-Sing
   * Team/Gruppe
-    * Adressverantwortliche/-r: [:group_full]
+    * Adressverantwortliche/-r: [:group_and_below_full]
   * Externe
-    * Verantwortliche/-r: [:group_full]
+    * Verantwortliche/-r: [:group_and_below_full]
     * Externe/-r: []
     * Jugendarbeiter/-in: []
   * Spender
     * Spender/-in: []
-    * Spendenverwalter/-in: [:group_full]
+    * Spendenverwalter/-in: [:group_and_below_full]
 * Sport
   * Sport
     * Adressverantwortliche-/r: [:layer_and_below_full]
     * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
-    * Hauptleitung: [:layer_and_below_full]
-    * Materialverantwortliche/-r: [:layer_and_below_read]
-    * Leiter/-in: [:group_full]
+    * Hauptleitung: [:layer_and_below_full, :contact_data]
+    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
+    * Leiter/-in: [:group_and_below_full]
     * Mitglied: [:group_read]
     * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
   * Sport Team/Gruppe
-    * Leiter: [:group_full]
+    * Leiter: [:group_and_below_full]
     * Mitglied: [:group_read]
   * Externe
-    * Verantwortliche/-r: [:group_full]
+    * Verantwortliche/-r: [:group_and_below_full]
     * Externe/-r: []
   * Spender
     * Spender/-in: []
-    * Spendenverwalter/-in: [:group_full]
+    * Spendenverwalter/-in: [:group_and_below_full]
 * Weiteres Arbeitsgebiet
   * Weiteres Arbeitsgebiet
     * Adressverantwortliche/-r: [:layer_and_below_full]
     * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
-    * Hauptleitung: [:layer_and_below_full]
-    * Materialverantwortliche/-r: [:layer_and_below_read]
-    * Leiter/-in: [:group_full]
+    * Hauptleitung: [:layer_and_below_full, :contact_data]
+    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
+    * Leiter/-in: [:group_and_below_full]
     * Mitglied: [:group_read]
     * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
   * Externe
-    * Verantwortliche/-r: [:group_full]
+    * Verantwortliche/-r: [:group_and_below_full]
     * Externe/-r: []
   * Team/Gruppe
-    * Leiter/-in: [:group_full]
+    * Leiter/-in: [:group_and_below_full]
     * Mitglied: [:group_read]
   * Spender
     * Spender/-in: []
-    * Spendenverwalter/-in: [:group_full]
+    * Spendenverwalter/-in: [:group_and_below_full]
 * Global
   * Global
-    * Hauptleiter/-in: [:layer_and_below_full]
+    * Hauptleiter/-in: [:layer_and_below_full, :contact_data]
     * Mitglied: [:group_read]
     * Arrangeur: [:layer_and_below_read]
     * Adressverwalter/-in: [:layer_and_below_full]

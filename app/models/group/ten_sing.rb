@@ -45,7 +45,7 @@ class Group::TenSing < Group
   ### ROLES
 
   class Hauptleiter < ::Role
-    self.permissions = [:layer_and_below_full]
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
   class Mitglied < ::Role
