@@ -15,14 +15,19 @@ module Cevi::Role
   private
 
   def reset_person_ortsgruppe!
-    person.update_column(:ortsgruppe_id, find_person_ortsgruppe.try(:id))
+    unless person.ortsgruppe_id
+      groups = find_person_ortsgruppen
+      if groups.size == 1
+        person.update_column(:ortsgruppe_id, groups.first.id)
+      end
+    end
     true
   end
 
-  def find_person_ortsgruppe
-    if person.roles.to_a.size == 1 && person.ortsgruppe_id.nil?
-      person_ortsgruppe_for(group)
-    end
+  def find_person_ortsgruppen
+    person.roles.to_a.collect do |role|
+      person_ortsgruppe_for(role.group)
+    end.uniq.compact
   end
 
   def person_ortsgruppe_for(group)

@@ -20,10 +20,21 @@ class AddPersonOrtsgruppe < ActiveRecord::Migration
 
   def update_persons_ortsgruppe
     Person.find_each do |person|
-      ortsgruppen = person.possible_ortsgruppen
+      ortsgruppen = find_person_ortsgruppen(person)
       if ortsgruppen.size == 1
         person.update_column(:ortsgruppe_id, ortsgruppen.first.id)
       end
     end
   end
+
+  def find_person_ortsgruppen(person)
+    person.roles.collect do |role|
+      person_ortsgruppe_for(role.group)
+    end.uniq.compact
+  end
+
+  def person_ortsgruppe_for(group)
+    group.hierarchy.select(:id).find_by(type: ::Group::Ortsgruppe.sti_name)
+  end
+
 end

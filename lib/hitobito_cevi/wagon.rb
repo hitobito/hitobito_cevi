@@ -20,6 +20,7 @@ module HitobitoCevi
 
     config.to_prepare do
       # extend application classes here
+      # models
       Group.send :include, Cevi::Group
       Person.send :include, Cevi::Person
       Role.send :include, Cevi::Role
@@ -32,6 +33,7 @@ module HitobitoCevi
       #   This only makes sense with :layer_and_below_full.
       Role::Permissions << :financials << :unconfined_below
 
+      # abilities
       PersonAbility.send :include, Cevi::PersonAbility
       RoleAbility.send :include, Cevi::RoleAbility
       GroupAbility.send :include, Cevi::GroupAbility
@@ -39,22 +41,30 @@ module HitobitoCevi
       PersonReadables.send :include, Cevi::PersonReadables
       AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
 
+      # domain
       Export::Csv::People::PersonRow.send :include, Cevi::Export::Csv::People::PersonRow
       Export::Csv::People::PeopleAddress.send :include, Cevi::Export::Csv::People::PeopleAddress
       Export::Csv::People::ParticipationNdbjsRow.send(
         :include, Cevi::Export::Csv::People::ParticipationNdbjsRow)
       Import::Person.send :include, Cevi::Import::Person
 
+      # serializers
       PersonSerializer.send :include, Cevi::PersonSerializer
+      PeopleSerializer.send :include, Cevi::PeopleSerializer
       GroupSerializer.send :include, Cevi::GroupSerializer
 
+      # controllers
       EventsController.send :include, Cevi::EventsController
       Event::KindsController.permitted_attrs += [:j_s_label]
       Event::ParticipationsController.send :include, Cevi::Event::ParticipationsController
 
       PeopleController.send :include, Cevi::PeopleController
 
+      # helpers
       Sheet::Group.send :include, Cevi::Sheet::Group
+
+      # decorators
+      PaperTrail::VersionDecorator.send :include, Cevi::PaperTrail::VersionDecorator
     end
 
     initializer 'cevi.add_settings' do |_app|

@@ -75,12 +75,19 @@ describe Role do
       expect(person.ortsgruppe_id).to be_nil
     end
 
-    it 'does not touch person\'s ortsgruppe if it already has groups' do
+    it 'does set person\'s ortsgruppe if it has no others' do
       Fabricate(Group::Dachverband::Administrator.name.to_sym,
                 group: groups(:dachverband), person: person)
       Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
                 group: groups(:jungschar_zh10), person: person.reload)
-      expect(person.ortsgruppe_id).to be_nil
+      expect(person.reload.ortsgruppe).to eq(groups(:stadtzh))
+    end
+
+    it 'does not touch person\'s ortsgruppe if it is already defined' do
+      person.update!(ortsgruppe: groups(:stadtzh))
+      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
+                group: groups(:jungschar_burgd), person: person.reload)
+      expect(person.reload.ortsgruppe).to eq(groups(:stadtzh))
     end
 
     it 'updates ortsgruppe in same transaction' do

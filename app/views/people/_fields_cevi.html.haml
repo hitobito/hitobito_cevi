@@ -20,12 +20,16 @@
                           placeholder: t('.correspondence_language.placeholder'),
                           data: { provide: :typeahead, source: existing_person_correspondence_languages }
 
-  = f.labeled_collection_select :canton,
-                                possible_person_cantons,
-                                :id,
-                                :to_s,
-                                { include_blank: true },
-                                class: 'span6'
+  = f.labeled(:canton) do
+    .span6{style: 'margin-left: 0px'}
+      = f.collection_select :canton,
+                            possible_person_cantons,
+                            :id,
+                            :to_s,
+                            { include_blank: true },
+                            class: 'chosen-select',
+                            data: { placeholder: ' ',
+                                    chosen_no_results: t('global.chosen_no_results') }
 
   = f.labeled_collection_select :confession,
                                 possible_person_confessions,
@@ -36,9 +40,13 @@
 
   = f.labeled_input_field :old_data if can?(:update_old_data, entry)
 
-  = f.labeled_collection_select :ortsgruppe_id,
-                                entry.possible_ortsgruppen,
-                                :id,
-                                :to_s,
-                                { include_blank: true },
-                                class: 'span6'
+  = f.labeled(:ortsgruppe_id) do
+    .span6{style: 'margin-left: 0px'}
+      = f.collection_select :ortsgruppe_id,
+                            Group::Ortsgruppe.order(:name),
+                            :id,
+                            :to_s,
+                            { include_blank: true },
+                            class: 'chosen-select',
+                            data: { placeholder: ' ',
+                                    chosen_no_results: t('global.chosen_no_results') }

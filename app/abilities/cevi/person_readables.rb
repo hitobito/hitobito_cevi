@@ -106,7 +106,7 @@ module Cevi::PersonReadables
   end
 
   def spender_group?
-    @spender_group ||= group.class.ancestors.include?(Group::Spender)
+    group.is_a?(Group::Spender)
   end
 
   def financial_layers_ids

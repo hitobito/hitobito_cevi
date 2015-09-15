@@ -9,20 +9,24 @@ module Cevi::PersonSerializer
   extend ActiveSupport::Concern
 
   included do
+    extension(:public) do |_|
+      map_properties :salutation_parents, :name_parents
+
+      entity :ortsgruppe, item.ortsgruppe, GroupLinkSerializer
+      group_template_link 'people.ortsgruppe'
+    end
+
     extension(:details) do |_|
       map_properties :title,
                      :profession,
                      :joined,
                      :ahv_number_old,
-                     :salutation_parents,
-                     :name_parents,
                      :member_card_number,
                      :nationality,
                      :salutation,
                      :correspondence_language,
                      :canton,
-                     :confession,
-                     :ortsgruppe
+                     :confession
     end
   end
 

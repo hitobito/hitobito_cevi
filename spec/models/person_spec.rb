@@ -31,36 +31,4 @@ describe Person do
     end
   end
 
-  context '#possible_ortsgruppen' do
-    let(:person) { Fabricate(:person, roles: []) }
-
-    it 'returns empty array if no ortsgruppe is in groups hierarchy' do
-      Fabricate(Group::Dachverband::Administrator.name.to_sym,
-                group: groups(:dachverband), person: person)
-      expect(person.possible_ortsgruppen).to eq([])
-    end
-
-    it 'returns all ortsgruppen in groups hierarchy' do
-      Fabricate(Group::Dachverband::Administrator.name.to_sym,
-                group: groups(:dachverband), person: person)
-      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
-                group: groups(:jungschar_zh10), person: person)
-      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
-                group: groups(:jungschar_burgd), person: person)
-      expect(person.reload.possible_ortsgruppen).to eq([groups(:stadtzh), groups(:burgdorf)])
-    end
-
-    it 'eliminates redundant ortsgruppen' do
-      Fabricate(Group::Dachverband::Administrator.name.to_sym,
-                group: groups(:dachverband), person: person)
-      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
-                group: groups(:jungschar_zh10), person: person)
-      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
-                group: groups(:jungschar_altst), person: person)
-      Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym,
-                group: groups(:jungschar_burgd), person: person)
-      expect(person.reload.possible_ortsgruppen).to eq([groups(:stadtzh), groups(:burgdorf)])
-    end
-  end
-
 end

@@ -62,7 +62,7 @@ module Cevi::Person
   extend ActiveSupport::Concern
 
   included do
-    Person::PUBLIC_ATTRS.push(:salutation_parents, :name_parents)
+    Person::PUBLIC_ATTRS.push(:salutation_parents, :name_parents, :ortsgruppe_id)
 
     belongs_to :ortsgruppe, class_name: 'Group::Ortsgruppe'
   end
@@ -91,12 +91,6 @@ module Cevi::Person
     ortsgruppe && (ortsgruppe.short_name || ortsgruppe.name)
   end
 
-  def possible_ortsgruppen
-    groups.map do |group|
-      person_ortsgruppe_for(group)
-    end.flatten.compact.uniq
-  end
-
   private
 
   def value_from_i18n(key)
@@ -107,7 +101,4 @@ module Cevi::Person
     end
   end
 
-  def person_ortsgruppe_for(group)
-    group.hierarchy.find_by(type: ::Group::Ortsgruppe.sti_name)
-  end
 end
