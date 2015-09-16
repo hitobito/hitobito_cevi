@@ -54,6 +54,16 @@ describe Event::ParticipationsController do
       expect(assigns(:participations)).to eq [@participant]
     end
 
+    it 'exports address csv' do
+      get :index, group_id: group.id, event_id: course.id, format: :csv
+      expect(response.body).to match(/^Vorname;Nachname;.+;Name Eltern;Ortsgruppe$/)
+    end
+
+    it 'exports full csv' do
+      get :index, group_id: group.id, event_id: course.id, details: true, format: :csv
+      expect(response.body).to match(/^Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$/)
+    end
+
     def create(*roles)
       roles.map do |role_class|
         role = Fabricate(:event_role, type: role_class.name)
@@ -96,7 +106,7 @@ describe Event::ParticipationsController do
 
       it "includes attributes in csv" do
         activate_participation
-        get :index, group_id: group.id, event_id: course.id, filter: :participants, format: :csv
+        get :index, group_id: group.id, event_id: course.id, filter: :participants, details: true, format: :csv
 
         expect(csv['Bezahlt']).to eq %w(ja)
         expect(csv['Interne Bemerkung']).to eq %w(test)

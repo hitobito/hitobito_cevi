@@ -18,7 +18,7 @@ module Cevi
       private
 
       def exporter_with_check
-        check? ? ::Export::Csv::People::ParticipationsComplete : exporter_without_check
+        params[:details] && check? ? ::Export::Csv::People::ParticipationsComplete : exporter_without_check
       end
 
       # only roles with update permission are allowed to set those attributes
