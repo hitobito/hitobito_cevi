@@ -55,11 +55,11 @@ module Cevi::PersonAbility
   end
 
   def non_restricted_in_same_layer_or_event_organizer
-    non_restricted_in_same_layer || event_organizer
+    non_restricted_in_same_layer || event_organizer_in_layer
   end
 
   def non_restricted_in_same_layer_or_visible_below_or_event_organizer
-    non_restricted_in_same_layer_or_visible_below || event_organizer
+    non_restricted_in_same_layer_or_visible_below || event_organizer_in_layer
   end
 
   def herself_or_for_leaded_events
@@ -91,15 +91,24 @@ module Cevi::PersonAbility
     permission_in_groups?(event_group_ids)
   end
 
+  def event_organizer_in_layer
+    permission_in_layers?(event_layer_ids)
+  end
+
   def event_leader
     (user_context.events_with_permission(:event_full) & subject.events.pluck(:id)).present?
   end
 
   def event_group_ids
-    @event_group_ids ||= Group.joins(:events).
-                               where(events: { id: subject.events.select(:id) }).
-                               uniq.
-                               pluck(:id)
+    @event_group_ids ||= subject_event_groups.pluck(:id)
+  end
+
+  def event_layer_ids
+    @event_layer_ids ||= subject_event_groups.pluck(:layer_group_id).uniq
+  end
+
+  def subject_event_groups
+    Group.joins(:events).where(events: { id: subject.events.select(:id) }).uniq
   end
 
   def angestellter_or_geschaeftsfuehrung_roles

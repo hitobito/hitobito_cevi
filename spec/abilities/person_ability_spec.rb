@@ -64,16 +64,46 @@ describe PersonAbility do
 
     context 'event organizer' do
       context 'layer_and_below_full' do
-        let(:role) { Fabricate(Group::Jungschar::Abteilungsleiter.name, group: groups(:jungschar_altst)) }
+        context 'in event group' do
+         let(:role) { Fabricate(Group::Jungschar::Abteilungsleiter.name, group: groups(:jungschar_altst)) }
 
-        it 'may update people participating in organized events' do
-          event = Fabricate(:event, groups: [role.group])
-          person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+          it 'may update people participating in organized events' do
+            event = Fabricate(:event, groups: [role.group])
+            person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
 
-          is_expected.not_to be_able_to(:update, person.reload)
+            is_expected.not_to be_able_to(:update, person.reload)
 
-          Fabricate(:event_participation, event: event, person: person)
-          is_expected.to be_able_to(:update, person.reload)
+            Fabricate(:event_participation, event: event, person: person)
+            is_expected.to be_able_to(:update, person.reload)
+          end
+        end
+
+        context 'in event layer' do
+          let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter.name, group: groups(:zhshgl_gs)) }
+
+          it 'may update people participating in organized events' do
+            event = Fabricate(:event, groups: [groups(:zhshgl_beirat)])
+            person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+
+            is_expected.not_to be_able_to(:update, person.reload)
+
+            Fabricate(:event_participation, event: event, person: person)
+            is_expected.to be_able_to(:update, person.reload)
+          end
+        end
+
+        context 'in course layer' do
+          let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter.name, group: groups(:zhshgl_gs)) }
+
+          it 'may update people participating in organized events' do
+            event = Fabricate(:course, groups: [groups(:zhshgl)], application_contact: role.group)
+            person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+
+            is_expected.not_to be_able_to(:update, person.reload)
+
+            Fabricate(:event_participation, event: event, person: person)
+            is_expected.to be_able_to(:update, person.reload)
+          end
         end
       end
 
