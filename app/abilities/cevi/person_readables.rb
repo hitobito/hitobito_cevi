@@ -8,6 +8,8 @@
 module Cevi::PersonReadables
   extend ActiveSupport::Concern
 
+  include Cevi::PersonFetchables
+
   included do
     alias_method_chain :group_accessible_people, :spender
     alias_method_chain :layer_and_below_read_in_same_layer?, :spender
@@ -65,19 +67,6 @@ module Cevi::PersonReadables
     condition.or(*query)
   end
 
-  def unconfined_from_above_condition(condition)
-    return if layer_groups_unconfined_below.blank?
-
-    unconfined_from_above_groups = OrCondition.new
-    collapse_groups_to_highest(layer_groups_unconfined_below) do |layer_group|
-      unconfined_from_above_groups.or('groups.lft >= ? AND groups.rgt <= ?',
-                                      layer_group.left,
-                                      layer_group.rgt)
-    end
-
-    condition.or(*unconfined_from_above_groups.to_a)
-  end
-
   def read_permission_for_this_group_with_unconfined_below?
     read_permission_for_this_group_without_unconfined_below? ||
     unconfined_below_in_above_layer?
@@ -91,10 +80,6 @@ module Cevi::PersonReadables
   def layers_unconfined_below
     @layers_unconfined_below ||=
       user_context.layer_ids(user.groups_with_permission(:unconfined_below).to_a)
-  end
-
-  def layer_groups_unconfined_below
-    @layer_groups_unconfined_below ||= layer_groups_with_permissions(:unconfined_below)
   end
 
   def without_spender_types

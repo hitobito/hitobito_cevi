@@ -39,6 +39,7 @@ module HitobitoCevi
       GroupAbility.send :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
       PersonReadables.send :include, Cevi::PersonReadables
+      PersonLayerWritables.send :include, Cevi::PersonLayerWritables
       AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
 
       # domain
