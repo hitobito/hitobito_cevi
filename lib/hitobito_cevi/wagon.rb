@@ -38,6 +38,7 @@ module HitobitoCevi
       RoleAbility.send :include, Cevi::RoleAbility
       GroupAbility.send :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
+      Event::ParticipationAbility.send :include, Cevi::Event::ParticipationAbility
       PersonReadables.send :include, Cevi::PersonReadables
       PersonLayerWritables.send :include, Cevi::PersonLayerWritables
       AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base

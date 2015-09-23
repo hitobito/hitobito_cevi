@@ -5,15 +5,19 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-module Cevi::RoleAbility
+module Cevi::Event::ParticipationAbility
   extend ActiveSupport::Concern
 
   included do
-    on(Role) do
+    on(Event::Participation) do
       permission(:unconfined_below).
-        may(:create, :create_in_subgroup, :update, :destroy).
-        in_same_layer_or_below
+        may(:create_tentative).
+        person_in_same_layer_or_below
     end
+  end
+
+  def person_in_same_layer_or_below
+    person.nil? || permission_in_layers?(person.groups_hierarchy_ids)
   end
 
 end
