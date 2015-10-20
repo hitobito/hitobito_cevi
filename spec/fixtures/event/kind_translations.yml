@@ -10,11 +10,15 @@ flock:
   locale: 'de'
   label: 'Scharleiterkurs'
   short_name: 'SLK'
-  event_kind_id:  <%= ActiveRecord::FixtureSet.identify(:flock) %> 
-  
+  event_kind_id:  <%= ActiveRecord::FixtureSet.identify(:flock) %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
 group:
   locale: 'de'
   label: 'Gruppenleiterkurs'
   short_name: 'GLK'
-  event_kind_id:  <%= ActiveRecord::FixtureSet.identify(:group) %> 
- 
+  event_kind_id:  <%= ActiveRecord::FixtureSet.identify(:group) %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
