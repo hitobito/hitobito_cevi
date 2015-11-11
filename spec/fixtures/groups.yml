@@ -46,7 +46,7 @@ zhshgl:
   address: Sihlstrasse 33
   zip_code: 8021
   town: Zürich
-  country: Schweiz
+  country: CH
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:zhshgl) %>
 
 be:
@@ -60,7 +60,7 @@ be:
   address: Rabbentalstrasse 69
   zip_code: 3013
   town: Bern
-  country: Schweiz
+  country: CH
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:be) %>
 
 alpin:
@@ -74,7 +74,7 @@ alpin:
   address: Ausser Dorf 2
   zip_code: 7260
   town: Davos
-  country: Schweiz
+  country: CH
   layer_group_id: <%= ActiveRecord::FixtureSet.identify(:alpin) %>
 
 zhshgl_vorstand:
