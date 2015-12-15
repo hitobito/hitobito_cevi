@@ -43,7 +43,7 @@
   = f.labeled(:ortsgruppe_id) do
     .span6{style: 'margin-left: 0px'}
       = f.collection_select :ortsgruppe_id,
-                            Group::Ortsgruppe.order(:name),
+                            Group::Ortsgruppe.without_deleted.order(:name),
                             :id,
                             :to_s,
                             { include_blank: true },
