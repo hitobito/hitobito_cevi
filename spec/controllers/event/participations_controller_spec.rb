@@ -25,14 +25,6 @@ describe Event::ParticipationsController do
     other
   end
 
-  let(:participation) do
-    p = Fabricate(:event_participation, event: course, application: Fabricate(:jubla_event_application, priority_2: Fabricate(:cevi_course, kind: course.kind)))
-    p.answers.create!(question_id: course.questions[0].id, answer: 'juhu')
-    p.answers.create!(question_id: course.questions[1].id, answer: 'blabla')
-    p
-  end
-
-
   let(:user) { people(:bulei) }
 
 
@@ -67,7 +59,7 @@ describe Event::ParticipationsController do
     def create(*roles)
       roles.map do |role_class|
         role = Fabricate(:event_role, type: role_class.name)
-        Fabricate(:event_participation, event: course, roles: [role], active: true)
+        Fabricate(:event_participation, event: course, roles: [role], state: 'assigned')
       end
     end
   end
