@@ -1,4 +1,5 @@
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -183,440 +184,583 @@ de:
 
       group/dachverband/administrator:
         one: Administrator/-in
+        other: Administrator/-innen
         description:
       group/dachverband_vorstand/praesidium:
         one: Präsidium
+        other: Präsidium
         description:
       group/dachverband_vorstand/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/dachverband_vorstand/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/dachverband_geschaeftsstelle/geschaeftsleiter:
         one: Geschäftsleiter/-in
+        other: Geschäftsleiter/-innen
         description:
       group/dachverband_geschaeftsstelle/angestellter:
         one: Angestellte/-r
+        other: Angestellte
         description:
       group/dachverband_geschaeftsstelle/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/dachverband_gremium/leitung:
         one: Leitung
+        other: Leitung
         description:
       group/dachverband_gremium/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/dachverband_gremium/aktiver_kursleiter:
         one: Aktive/-r Kursleiter/-in
+        other: Aktive/-r Kursleiter/-innen
         description:
       group/dachverband_mitglieder/adressverwalter:
         one: Adressverwalter/-in
+        other: Adressverwalter/-innen
         description:
       group/dachverband_mitglieder/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/dachverband_externe/adressverwalter:
         one: Adressverwalter/-in
+        other: Adressverwalter/-innen
         description:
       group/dachverband_externe/externer:
         one: Externe/-r
+        other: Externe
         description:
       group/dachverband_spender/spender:
         one: Spender/-in
+        other: Spender/-innen
         description:
       group/dachverband_spender/spenden_verwalter:
         one: Spendenverwalter/-in
+        other: Spendenverwalter/-innen
         description:
 
       group/mitgliederorganisation/administrator:
         one: Administrator/-in
+        other: Administrator/-innen
         description:
       group/mitgliederorganisation_vorstand/praesidium:
         one: Präsidium
+        other: Präsidium
         description:
       group/mitgliederorganisation_vorstand/finanzverantwortlicher:
         one: Finanzverantwortliche-/r
+        other: Finanzverantwortliche
         description:
       group/mitgliederorganisation_vorstand/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/mitgliederorganisation_geschaeftsstelle/geschaeftsleiter:
         one: Geschäftsleiter/-in
+        other: Geschäftsleiter/-innen
         description:
       group/mitgliederorganisation_geschaeftsstelle/angestellter:
         one: Angestellte/-r
+        other: Angestellte
         description:
       group/mitgliederorganisation_geschaeftsstelle/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/mitgliederorganisation_geschaeftsstelle/admin_ortsgruppen:
         one: Administrator/-in Ortsgruppen
+        other: Administrator/-innen Ortsgruppen
         description:
       group/mitgliederorganisation_gremium/leitung:
         one: Leitung
+        other: Leitung
         description:
       group/mitgliederorganisation_gremium/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/mitgliederorganisation_gremium/aktiver_kursleiter:
         one: Aktive/-r Kursleiter/-in
+        other: Aktive Kursleiter/-innen
         description:
       group/mitgliederorganisation_mitglieder/adressverwalter:
         one: Adressverwalter/-in
+        other: Adressverwalter/-innen
         description:
       group/mitgliederorganisation_mitglieder/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/mitgliederorganisation_externe/adressverwalter:
         one: Adressverwalter/-in
+        other: Adressverwalter/-innen
         description:
       group/mitgliederorganisation_externe/externer:
         one: Externe/-r
+        other: Externe
         description:
       group/mitgliederorganisation_spender/spender:
         one: Spender/-in
+        other: Spender/-innen
         description:
       group/mitgliederorganisation_spender/spenden_verwalter:
         one: Spendenverwalter/-in
+        other: Spendenverwalter/-innen
         description:
 
 
       group/ortsgruppe/administrator_cevi_db:
         one: Administrator/-in Cevi DB
+        other: Administrator/-innen Cevi DB
         description:
 
       group/verein/adressverantwortlicher:
         one: Adressverantwortlicher
+        other: Adressverantwortliche
         description:
       group/verein/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/verein/freier_mitarbeiter:
         one: Freie/-r Mitarbeiter/-in
+        other: Freie Mitarbeiter/-innen
         description:
       group/verein_vorstand/praesident:
         one: Präsident/-in
+        other: Präsident/-innen
         description:
       group/verein_vorstand/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/verein_vorstand/aktuar:
         one: Aktuar/-in
+        other: Aktuar/-innen
         description:
       group/verein_vorstand/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/verein_mitglieder/leiter:
         one: Leiter/-in
+        other: Leiter/-innen
         description:
       group/verein_mitglieder/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/verein_externe/verantwortlicher:
         one: Verantwortliche/-r
+        other: Verantwortliche
         description:
       group/verein_externe/externer:
         one: Externe-/r
+        other: Externe
         description:
       group/verein_spender/spender:
         one: Spender/-in
+        other: Spender/-innen
         description:
       group/verein_spender/spenden_verwalter:
         one: Spendenverwalter/-in
+        other: Spendenverwalter/-innen
         description:
 
       group/jungschar/abteilungsleiter:
         one: Abteilungsleiter/-in
+        other: Abteilungsleiter/-innen
         description:
       group/jungschar/coach:
         one: Coach
+        other: Coached
         description:
       group/jungschar/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/jungschar/adressverwalter:
         one: Adressverwalter/-in
+        other: Adressverwalter/-innen
         description:
       group/jungschar/aktuar:
         one: Aktuar/-in
+        other: Aktuar/-innen
         description:
       group/jungschar/busverwalter:
         one: Busverwalter/-in
+        other: Busverwalter/-innen
         description:
       group/jungschar/freier_mitarbeiter:
         one: Freie/-r Mitarbeiter/-in
+        other: Freie Mitarbeiter/-innen
         description:
       group/jungschar/hausverantwortlicher:
         one: Hausverantwortliche/-r
+        other: Hausverantwortliche
         description:
       group/jungschar/input:
         one: Input
+        other: Input
         description:
       group/jungschar/laedeliverantwortlicher:
         one: Lädeliverantwortliche/-r
+        other: Lädeliverantwortliche
         description:
       group/jungschar/redaktor:
         one: Redaktor/-in
+        other: Redaktor/-innen
         description:
       group/jungschar/regionaltreffenvertreter:
         one: Regionaltreffenvertreter/-in
+        other: Regionaltreffenvertreter/-innen
         description:
       group/jungschar/webmaster:
         one: Webmaster/-in
+        other: Webmaster/-innen
         description:
       group/jungschar/werbung:
         one: Werbung
+        other: Werbung
         description:
       group/jungschar/materialverantwortlicher:
         one: Materialverantwortliche/-r
+        other: Materialverantwortliche
         description:
       group/jungschar/kontakt_regionalzeitschrift:
         one: Kontakt Regionalzeitschrift
+        other: Kontakt Regionalzeitschrift
         description:
       group/jungschar/verantwortlicher_psa:
         one: Verantwortliche/-r PSA
+        other: Verantwortliche PSA
         description:
       group/jungschar/jugendarbeiter:
         one: Jugendarbeiter/-in
+        other: Jugendarbeiter/-innen
         description:
       group/froeschli/froeschlihauptleiter:
         one: Fröschlihauptleiter/-in
+        other: Fröschlihauptleiter/-innen
         description:
       group/froeschli/froeschlileiter:
         one: Fröschlileiter/-in
+        other: Fröschlileiter/-innen
         description:
       group/froeschli/teilnehmer:
         one: Teilnehmer/-in
+        other: Teilnehmer/-innen
         description:
       group/jungschar_externe/verantwortlicher:
         one: Verantwortliche/-r
+        other: Verantwortliche
         description:
       group/jungschar_externe/jugendarbeiter:
         one: Jugendarbeiter/-in
+        other: Jugendarbeiter/-innen
         description:
       group/jungschar_externe/externer:
         one: Externe/-r
+        other: Externe
         description:
       group/jungschar_externe/goetti:
         one: Gotte/Götti
+        other: Gotten/Göttis
         description:
       group/stufe/stufenleiter:
         one: Stufenleiter/-in
+        other: Stufenleiter/-innen
         description:
       group/stufe/mini_chef:
         one: Mini-Chef
+        other: Mini-Chefs
         description:
       group/stufe/gruppenleiter:
         one: Gruppenleiter/-in
+        other: Gruppenleiter/-innen
         description:
       group/stufe/minigruppenleiter:
         one: Minigruppenleiter/-in
+        other: Minigruppenleiter/-innen
         description:
       group/stufe/helfer:
         one: Helfer/-in
+        other: Helfer/-innen
         description:
       group/stufe/teilnehmer:
         one: Teilnehmer/-in
+        other: Teilnehmer/-innen
         description:
       group/jungschar_team/leitung:
         one: Leitung
+        other: Leitung
         description:
       group/jungschar_team/mitarbeiter:
         one: Mitarbeiter/-in
+        other: Mitarbeiter/-innen
         description:
       group/jungschar_spender/spender:
         one: Spender/-in
+        other: Spender/-innen
         description:
       group/jungschar_spender/spenden_verwalter:
         one: Spendenverwalter/-in
+        other: Spendenverwalter/-innen
         description:
 
       group/ten_sing/hauptleiter:
         one: Hauptleiter/-in
+        other: Hauptleiter/-innen
         description:
       group/ten_sing/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/ten_sing/arrangeur:
         one: Arrangeur
+        other: Arrangeure
         description:
       group/ten_sing/adressverwalter:
         one: Adressverwalter/-in
+        other: Adressverwalter/-innen
         description:
       group/ten_sing/aktuar:
         one: Aktuar/-in
+        other: Aktuar/-innen
         description:
       group/ten_sing/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/ten_sing/freier_mitarbeiter:
         one: Freie/-r Mitarbeiter/-in
+        other: Freie Mitarbeiter/-innen
         description:
       group/ten_sing/input_leiter:
         one: Input Leiter/-in
+        other: Input Leiter/-innen
         description:
       group/ten_sing/redaktor:
         one: Redaktor/-in
+        other: Redaktor/-innen
         description:
       group/ten_sing/regionaltreffenvertreter:
         one: Regionaltreffenvertreter/-in
+        other: Regionaltreffenvertreter/-innen
         description:
       group/ten_sing/webmaster:
         one: Webmaster/-in
+        other: Webmaster/-innen
         description:
       group/ten_sing/werbeteam_leitender:
         one: Werbeteam Leitende/-r
+        other: Werbeteam Leitende
         description:
       group/ten_sing/dirigent:
         one: Dirigent/-in
+        other: Dirigent/-innen
         description:
       group/ten_sing/chorleiter:
         one: Chorleiter/-in
+        other: Chorleiter/-innen
         description:
       group/ten_sing/chorsaenger:
         one: Chorsänger/-in
+        other: Chorsänger/-innen
         description:
       group/ten_sing/video_leiter:
         one: Video Leiter/-in
+        other: Video Leiter/-innen
         description:
       group/ten_sing/stagedesign_leiter:
         one: Stagedesign Leiter/-in
+        other: Stagedesign Leiter/-innen
         description:
       group/ten_sing/stagedesigner:
         one: Stagedesigner/-in
+        other: Stagedesigner/-innen
         description:
       group/ten_sing/dj:
         one: DJ
+        other: DJs
         description:
       group/ten_sing/verantwortlicher_lager_weekends:
         one: Verantwortliche/-r Lager Weekends
+        other: Verantwortliche Lager Weekends
         description:
       group/ten_sing/jugendarbeiter:
         one: Jugendarbeiter/-in
+        other: Jugendarbeiter/-innen
         description:
       group/ten_sing/band_leiter:
         one: Band Leiter/-in
+        other: Band Leiter/-innen
         description:
       group/ten_sing/bandmitglied:
         one: Bandmitglied
+        other: Bandmitglieder
         description:
       group/ten_sing/tanz_leiter:
         one: Tanz Leiter/-in
+        other: Tanz Leiter/-innen
         description:
       group/ten_sing/taenzer:
         one: Tänzer/-in
+        other: Tänzer/-innen
         description:
       group/ten_sing/technik_leiter:
         one: Technik Leiter/-in
+        other: Technik Leiter/-innen
         description:
       group/ten_sing/techniker:
         one: Techniker/-in
+        other: Techniker/-innen
         description:
       group/ten_sing/theater_leiter:
         one: Theater Leiter/-in
+        other: Theater Leiter/-innen
         description:
       group/ten_sing/schauspieler:
         one: Schauspieler/-in
+        other: Schauspieler/-innen
         description:
       group/ten_sing_team_gruppe/adressverantwortliche:
         one: Adressverantwortliche/-r
+        other: Adressverantwortliche
         description:
       group/ten_sing_externe/verantwortlicher:
         one: Verantwortliche/-r
+        other: Verantwortliche
         description:
       group/ten_sing_externe/externer:
         one: Externe/-r
+        other: Externe
         description:
       group/ten_sing_externe/jugendarbeiter:
         one: Jugendarbeiter/-in
+        other: Jugendarbeiter/-innen
         description:
       group/ten_sing_spender/spender:
         one: Spender/-in
+        other: Spender/-innen
         description:
       group/ten_sing_spender/spenden_verwalter:
         one: Spendenverwalter/-in
+        other: Spendenverwalter/-innen
         description:
 
       group/sport/adressverantwortlicher:
         one: Adressverantwortliche-/r
+        other: Adressverantwortliche
         description:
       group/sport/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/sport/hauptleitung:
         one: Hauptleitung
+        other: Hauptleitung
         description:
       group/sport/materialverantwortlicher:
         one: Materialverantwortliche/-r
+        other: Materialverantwortliche
         description:
       group/sport/leiter:
         one: Leiter/-in
+        other: Leiter/-innen
         description:
       group/sport/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/sport/freier_mitarbeiter:
         one: Freie/-r Mitarbeiter/-in
+        other: Freie Mitarbeiter/-innen
         description:
       group/sport_team_gruppe/leiter:
-        one: Leiter
+        one: Leiter/-in
+        other: Leiter/-innen
         description:
       group/sport_team_gruppe/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/sport_externe/verantwortlicher:
         one: Verantwortliche/-r
+        other: Verantwortliche
         description:
       group/sport_externe/externer:
         one: Externe/-r
+        other: Externe
         description:
       group/sport_spender/spender:
         one: Spender/-in
+        other: Spender/-innen
         description:
       group/sport_spender/spenden_verwalter:
         one: Spendenverwalter/-in
+        other: Spendenverwalter/-innen
         description:
 
       group/weitere_arbeitsgebiete/adressverantwortlicher:
         one: Adressverantwortliche/-r
+        other: Adressverantwortliche
         description:
       group/weitere_arbeitsgebiete/finanzverantwortlicher:
         one: Finanzverantwortliche/-r
+        other: Finanzverantwortliche
         description:
       group/weitere_arbeitsgebiete/hauptleitung:
         one: Hauptleitung
+        other: Hauptleitung
         description:
       group/weitere_arbeitsgebiete/materialverantwortlicher:
         one: Materialverantwortliche/-r
+        other: Materialverantwortliche
         description:
       group/weitere_arbeitsgebiete/leiter:
         one: Leiter/-in
+        other: Leiter/-innen
         description:
       group/weitere_arbeitsgebiete/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/weitere_arbeitsgebiete/freier_mitarbeiter:
         one: Freie/-r Mitarbeiter/-in
+        other: Freie Mitarbeiter/-innen
         description:
       group/weitere_arbeitsgebiete_externe/verantwortlicher:
         one: Verantwortliche/-r
+        other: Verantwortliche
         description:
       group/weitere_arbeitsgebiete_externe/externer:
         one: Externe/-r
+        other: Externe
         description:
       group/weitere_arbeitsgebiete_team_gruppe/leiter:
         one: Leiter/-in
+        other: Leiter/-innen
         description:
       group/weitere_arbeitsgebiete_team_gruppe/mitglied:
         one: Mitglied
+        other: Mitglieder
         description:
       group/weitere_arbeitsgebiete_spender/spender:
         one: Spender/-in
+        other: Spender/-innen
         description:
       group/weitere_arbeitsgebiete_spender/spenden_verwalter:
         one: Spendenverwalter/-in
+        other: Spendenverwalter/-innen
         description:
 
       census:
