@@ -13,7 +13,7 @@ describe Export::Csv::People do
   let(:person) { people(:bulei) }
   let(:simple_headers) do
     ['Vorname', 'Nachname', 'Ceviname', 'Firmenname', 'Firma', 'Haupt-E-Mail', 'Adresse', 'PLZ',
-     'Ort', 'Land', 'Geschlecht', 'Geburtstag', 'Rollen', 'Anrede Eltern', 'Name Eltern',
+     'Ort', 'Land', 'Geschlecht', 'Geburtstag', 'Rollen', 'Tags', 'Anrede Eltern', 'Name Eltern',
      'Ortsgruppe']
   end
 
