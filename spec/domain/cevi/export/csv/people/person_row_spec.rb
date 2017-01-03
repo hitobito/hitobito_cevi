@@ -56,7 +56,7 @@ describe Export::Csv::People do
       before do
         person.update_attributes(canton: 'be',
                                  confession: 'rk',
-                                 correspondence_language: 'de',
+                                 correspondence_language: 'Deutsch',
                                  salutation: 'formal')
 
       end

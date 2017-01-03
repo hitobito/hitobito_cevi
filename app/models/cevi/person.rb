@@ -79,10 +79,6 @@ module Cevi::Person
     value_from_i18n(:confession)
   end
 
-  def correspondence_language_value
-    value_from_i18n(:correspondence_language)
-  end
-
   def salutation_value
     value_from_i18n(:salutation)
   end

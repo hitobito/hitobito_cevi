@@ -17,7 +17,7 @@ module Cevi
           end
 
           def correspondence_language
-            entry.correspondence_language_value
+            entry.correspondence_language
           end
 
           def confession

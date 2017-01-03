@@ -810,11 +810,6 @@ de:
           other: Andere
 
         correspondence_language: Korrespondenzsprache
-        correspondence_languages:
-          de: Deutsch
-          fr: Französisch
-          it: Italienisch
-
         joined: Eintrittsdatum
         j_s_number: J+S Nummer
         member_card_number: Mitgliederkarte Nummer
