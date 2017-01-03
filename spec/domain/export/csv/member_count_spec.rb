@@ -100,7 +100,7 @@ describe Export::Csv::MemberCount do
   end
 
   def export(conditions = { year: 2012 })
-    Export::Csv::MemberCount.export(MemberCount.where(conditions))
+    Export::Csv::MemberCount.export(MemberCount.where(conditions).order(:id))
   end
 
 end
