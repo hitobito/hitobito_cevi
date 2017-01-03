@@ -65,6 +65,10 @@ module Cevi::Person
     Person::PUBLIC_ATTRS.push(:salutation_parents, :name_parents, :ortsgruppe_id)
 
     belongs_to :ortsgruppe, class_name: 'Group::Ortsgruppe'
+
+    include I18nSettable
+    i18n_setter :confession, %w(ev rk ck none other)
+    i18n_setter :salutation, %w(formal informal)
   end
 
   def canton
