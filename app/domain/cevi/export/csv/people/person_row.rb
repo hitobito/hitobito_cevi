@@ -13,23 +13,19 @@ module Cevi
           extend ActiveSupport::Concern
 
           def canton
-            entry.canton_value
-          end
-
-          def correspondence_language
-            entry.correspondence_language
+            entry.canton_label
           end
 
           def confession
-            entry.confession_value
+            entry.confession_label
           end
 
           def salutation
-            entry.salutation_value
+            entry.salutation_label
           end
 
           def ortsgruppe_id
-            entry.ortsgruppe_value
+            entry.ortsgruppe_label
           end
         end
       end

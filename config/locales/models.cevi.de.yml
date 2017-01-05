@@ -808,6 +808,7 @@ de:
           ck: Christkatholisch
           none: Konfessionlos
           other: Andere
+          _nil: unbekannt
 
         correspondence_language: Korrespondenzsprache
         joined: Eintrittsdatum
@@ -822,6 +823,7 @@ de:
         salutations:
           formal: Sie
           informal: Du
+          _nil: unbekannt
 
         salutation_parents: Anrede Eltern
         title: Titel
