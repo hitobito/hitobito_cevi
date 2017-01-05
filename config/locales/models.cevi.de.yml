@@ -808,13 +808,9 @@ de:
           ck: Christkatholisch
           none: Konfessionlos
           other: Andere
+          _nil: unbekannt
 
         correspondence_language: Korrespondenzsprache
-        correspondence_languages:
-          de: Deutsch
-          fr: Französisch
-          it: Italienisch
-
         joined: Eintrittsdatum
         j_s_number: J+S Nummer
         member_card_number: Mitgliederkarte Nummer
@@ -827,6 +823,7 @@ de:
         salutations:
           formal: Sie
           informal: Du
+          _nil: unbekannt
 
         salutation_parents: Anrede Eltern
         title: Titel

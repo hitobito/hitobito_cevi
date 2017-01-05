@@ -10,7 +10,7 @@ module PeopleCeviHelper
   IdLabel = Struct.new(:id, :to_s)
 
   def format_person_canton(person)
-    person.canton_value
+    person.canton_label
   end
 
   def possible_person_cantons
@@ -20,7 +20,7 @@ module PeopleCeviHelper
   end
 
   def format_person_confession(person)
-    person.confession_value
+    person.confession_label
   end
 
   def possible_person_confessions
@@ -28,7 +28,7 @@ module PeopleCeviHelper
   end
 
   def format_person_salutation(person)
-    person.salutation_value
+    person.salutation_label
   end
 
   def possible_person_salutations
@@ -44,7 +44,7 @@ module PeopleCeviHelper
   end
 
   def format_person_ortsgruppe(person)
-    person.ortsgruppe_value
+    person.ortsgruppe_label
   end
 
   private

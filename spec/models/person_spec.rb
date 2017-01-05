@@ -16,18 +16,18 @@ describe Person do
     end
   end
 
-  context 'canton_value' do
+  context 'canton_label' do
 
     it 'is blank for nil value' do
-      expect(Person.new.canton_value).to be_blank
+      expect(Person.new.canton_label).to be_blank
     end
 
     it 'is blank for blank value' do
-      expect(Person.new(canton: '').canton_value).to be_blank
+      expect(Person.new(canton: '').canton_label).to be_blank
     end
 
     it 'is locale specific value for valid key' do
-      expect(Person.new(canton: 'be').canton_value).to eq 'Bern'
+      expect(Person.new(canton: 'be').canton_label).to eq 'Bern'
     end
   end
 

@@ -18,13 +18,16 @@ class CeviPersonSeeder < PersonSeeder
 
 end
 
-puzzlers = ['Pascal Zumkehr',
-            'Pierre Fritsch',
-            'Andreas Maierhofer',
-            'Andre Kunz',
-            'Roland Studer',
-            'Mathis Hofer',
-            'Bruno Santschi']
+puzzlers = [
+  'Andre Kunz',
+  'Andreas Maierhofer',
+  'Bruno Santschi',
+  'Mathis Hofer',
+  'Matthias Viehweger',
+  'Pascal Zumkehr',
+  'Pierre Fritsch',
+  'Roland Studer',
+]
 
 devs = {}
 puzzlers.each do |puz|
