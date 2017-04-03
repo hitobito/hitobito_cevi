@@ -65,7 +65,7 @@ describe Export::Tabular::People do
       its(['Anrede']) { should eq 'Sie' }
       its(['Kanton']) { should eq 'Bern' }
       its(['Konfession']) { should eq 'Römisch-katholisch' }
-      its(['Korrespondenzsprache']) { should eq 'Deutsch' }
+      its(['Korrespondenzsprache']) { should eq 'de' }
     end
   end
 end

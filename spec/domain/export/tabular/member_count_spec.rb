@@ -106,7 +106,7 @@ describe Export::Tabular::MemberCount do
   end
 
   def export(conditions = { year: 2012 })
-    Export::Tabular::MemberCount.csv(MemberCount.where(conditions))
+    Export::Tabular::MemberCount.csv(MemberCount.where(conditions).order(:id))
   end
 
 end

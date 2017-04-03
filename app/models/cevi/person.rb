@@ -64,41 +64,31 @@ module Cevi::Person
   included do
     Person::PUBLIC_ATTRS.push(:salutation_parents, :name_parents, :ortsgruppe_id)
 
+    CONFESSIONS = %w(ev rk ck none other).freeze
+    SALUTATIONS = %w(formal informal).freeze
+
     belongs_to :ortsgruppe, class_name: 'Group::Ortsgruppe'
+
+    include I18nSettable
+    include I18nEnums
+
+    i18n_enum   :confession, CONFESSIONS
+    i18n_setter :confession, CONFESSIONS
+
+    i18n_enum   :salutation, SALUTATIONS
+    i18n_setter :salutation, SALUTATIONS
   end
 
   def canton
     self[:canton]
   end
 
-  def canton_value
+  def canton_label
     Cantons.full_name(canton)
   end
 
-  def confession_value
-    value_from_i18n(:confession)
-  end
-
-  def correspondence_language_value
-    value_from_i18n(:correspondence_language)
-  end
-
-  def salutation_value
-    value_from_i18n(:salutation)
-  end
-
-  def ortsgruppe_value
+  def ortsgruppe_label
     ortsgruppe && (ortsgruppe.short_name || ortsgruppe.name)
-  end
-
-  private
-
-  def value_from_i18n(key)
-    value = send(key)
-
-    if value.present?
-      I18n.t("activerecord.attributes.person.#{key.to_s.pluralize}.#{value}")
-    end
   end
 
 end

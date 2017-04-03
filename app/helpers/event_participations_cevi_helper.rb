@@ -8,7 +8,7 @@
 module EventParticipationsCeviHelper
 
   def format_ortsgruppe(participation)
-    participation.person.ortsgruppe_value
+    participation.person.ortsgruppe_label
   end
 
   def format_payed(participation)
