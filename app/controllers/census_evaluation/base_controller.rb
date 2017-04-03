@@ -29,7 +29,7 @@ class CensusEvaluation::BaseController < ApplicationController
       includes(:group, :mitgliederorganisation).
       where(conditions.merge(year: year))
 
-    Export::Csv::MemberCount.export(counts)
+    Export::Tabular::MemberCount.csv(counts)
   end
 
   def evaluation

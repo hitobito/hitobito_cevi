@@ -5,8 +5,8 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-module Export::Csv
-  class MemberCount < Export::Csv::Base
+module Export::Tabular
+  class MemberCount < Base
     self.row_class = Row
 
     attr_reader :years
@@ -34,7 +34,8 @@ module Export::Csv
         map do |_group_id, member_counts|
           common_attrs = build_common_attrs(member_counts.first)
           OpenStruct.new(add_counts(common_attrs, member_counts))
-        end
+        end.
+        sort_by { |s| s.name }
     end
 
     def build_common_attrs(reference)
@@ -44,7 +45,8 @@ module Export::Csv
         town: reference.group.town,
         zip_code: reference.group.zip_code,
         mitgliederorganisation: reference.mitgliederorganisation.to_s,
-        m_total: 0, f_total: 0 }
+        m_total: 0,
+        f_total: 0 }
     end
 
     def build_address_information(contactable)

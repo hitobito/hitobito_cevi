@@ -5,7 +5,8 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_youth.
 
-module Cevi::Export::Csv::People::ParticipationNdbjsRow
+module Cevi::Export::Tabular::People::ParticipationNdbjsRow
+
   extend ActiveSupport::Concern
 
   included do
@@ -16,4 +17,5 @@ module Cevi::Export::Csv::People::ParticipationNdbjsRow
     lang = entry.correspondence_language.presence
     lang ? lang.first.upcase : 'D'
   end
+
 end

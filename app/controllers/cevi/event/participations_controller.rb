@@ -12,16 +12,16 @@ module Cevi
 
       included do
         alias_method_chain :assign_attributes, :check
-        alias_method_chain :exporter, :check
+        alias_method_chain :tabular_exporter, :check
       end
 
       private
 
-      def exporter_with_check
+      def tabular_exporter_with_check
         if params[:details] && check?
-          ::Export::Csv::People::ParticipationsComplete
+          ::Export::Tabular::People::ParticipationsComplete
         else
-          exporter_without_check
+          tabular_exporter_without_check
         end
       end
 

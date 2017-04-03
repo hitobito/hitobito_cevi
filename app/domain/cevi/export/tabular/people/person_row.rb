@@ -7,9 +7,10 @@
 
 module Cevi
   module Export
-    module Csv
+    module Tabular
       module People
         module PersonRow
+
           extend ActiveSupport::Concern
 
           def canton
@@ -31,6 +32,7 @@ module Cevi
           def ortsgruppe_id
             entry.ortsgruppe_value
           end
+
         end
       end
     end

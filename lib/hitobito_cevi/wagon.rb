@@ -44,10 +44,11 @@ module HitobitoCevi
       AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
 
       # domain
-      Export::Csv::People::PersonRow.send :include, Cevi::Export::Csv::People::PersonRow
-      Export::Csv::People::PeopleAddress.send :include, Cevi::Export::Csv::People::PeopleAddress
-      Export::Csv::People::ParticipationNdbjsRow.send(
-        :include, Cevi::Export::Csv::People::ParticipationNdbjsRow)
+      Export::Tabular::People::PersonRow.send :include, Cevi::Export::Tabular::People::PersonRow
+      Export::Tabular::People::PeopleAddress.send(
+        :include, Cevi::Export::Tabular::People::PeopleAddress)
+      Export::Tabular::People::ParticipationNdbjsRow.send(
+        :include, Cevi::Export::Tabular::People::ParticipationNdbjsRow)
       Import::Person.send :include, Cevi::Import::Person
 
       # serializers

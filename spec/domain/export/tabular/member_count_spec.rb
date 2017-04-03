@@ -1,25 +1,31 @@
 # encoding: UTF-8
+
+#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  hitobito_cevi and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_cevi.
+
 require 'spec_helper'
 require 'csv'
 
-describe Export::Csv::MemberCount do
+describe Export::Tabular::MemberCount do
 
   context '.export' do
     let(:csv) { CSV.parse(export, headers: true, col_sep: ';') }
 
     it 'has translated headers' do
       expect(csv.headers).to eq ["Jahr", "Name", "Adresse", "Ort", "PLZ",
-                             "Mitgliederorganisation",
-                             "Total Mitglieder m", "Total Mitglieder w",
-                             "1988 m", "1988 w", "1997 m", "1997 w",
-                             "1998 m", "1998 w", "1999 m", "1999 w",
-                             "2000 m", "2000 w", "Jahrgang unbekannt m", "Jahrgang unbekannt w" ]
+                                 "Mitgliederorganisation",
+                                 "Total Mitglieder m", "Total Mitglieder w",
+                                 "1988 m", "1988 w", "1997 m", "1997 w",
+                                 "1998 m", "1998 w", "1999 m", "1999 w",
+                                 "2000 m", "2000 w", "Jahrgang unbekannt m", "Jahrgang unbekannt w" ]
     end
 
     it 'includes data for whole year' do
-      expect(csv['Name']).to eq ['Burgdorf', 'Zürich 10', 'Altstetten-Albisrieden']
-      expect(csv['Total Mitglieder m']).to eq ['5', '9', '3']
-      expect(csv['1998 m']).to eq ['3', nil, '1']
+      expect(csv['Name']).to eq ['Altstetten-Albisrieden', 'Burgdorf', 'Zürich 10']
+      expect(csv['Total Mitglieder m']).to eq ['3', '5', '9']
+      expect(csv['1998 m']).to eq ['1', '3', nil]
     end
 
     context 'for mitgliederorganisation' do
@@ -40,10 +46,10 @@ describe Export::Csv::MemberCount do
   context '#attributes' do
     it 'includes static attributes and dynamic year range' do
       expect(count.attributes).to eq [:year, :name, :address, :town, :zip_code, :mitgliederorganisation,
-                                  :m_total, :f_total,
-                                  :m_1988, :f_1988, :m_1997, :f_1997, :m_1998, :f_1998,
-                                  :m_1999, :f_1999, :m_2000, :f_2000,
-                                  :m_unknown, :f_unknown]
+                                      :m_total, :f_total,
+                                      :m_1988, :f_1988, :m_1997, :f_1997, :m_1998, :f_1998,
+                                      :m_1999, :f_1999, :m_2000, :f_2000,
+                                      :m_unknown, :f_unknown]
     end
   end
 
@@ -96,11 +102,11 @@ describe Export::Csv::MemberCount do
   end
 
   def count(conditions = { year: 2012 })
-    Export::Csv::MemberCount.new(MemberCount.where(conditions))
+    Export::Tabular::MemberCount.new(MemberCount.where(conditions))
   end
 
   def export(conditions = { year: 2012 })
-    Export::Csv::MemberCount.export(MemberCount.where(conditions))
+    Export::Tabular::MemberCount.csv(MemberCount.where(conditions))
   end
 
 end
