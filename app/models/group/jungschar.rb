@@ -45,7 +45,7 @@ class Group::Jungschar < Group
   end
 
   class Coach < ::Role
-    self.permissions = [:layer_and_below_read, :approve_applications]
+    self.permissions = [:layer_and_below_full, :approve_applications]
   end
 
   class Finanzverantwortlicher < ::Role

@@ -36,15 +36,15 @@ class Group::DachverbandVorstand < Group::Vorstand
   ### ROLES
 
   class Praesidium < ::Role
-    self.permissions = [:layer_and_below_read, :group_and_below_full, :contact_data]
+    self.permissions = [:layer_read, :group_and_below_full, :contact_data]
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_read, :financials, :contact_data]
+    self.permissions = [:layer_read, :financials, :contact_data]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:layer_and_below_read, :contact_data]
+    self.permissions = [:layer_read, :contact_data]
   end
 
   roles Praesidium,
