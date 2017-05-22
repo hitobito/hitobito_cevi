@@ -16,7 +16,7 @@ describe PersonLayerWritables do
   subject { accessibles }
 
   context :layer_and_below_full do
-    let(:role) { Fabricate(Group::DachverbandGeschaeftsstelle::Geschaeftsleiter.name, group: groups(:dachverband_gs)) }
+    let(:role) { Fabricate(Group::Dachverband::Administrator.name, group: groups(:dachverband)) }
 
     context 'own layer' do
       it 'may get people' do
