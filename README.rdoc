@@ -9,17 +9,17 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
   * Dachverband
     * Administrator/-in: [:admin, :layer_and_below_full]
   * Vorstand
-    * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials, :contact_data]
-    * Mitglied: [:layer_and_below_read, :contact_data]
+    * Präsidium: [:layer_read, :group_and_below_full, :contact_data]
+    * Finanzverantwortliche/-r: [:layer_read, :financials, :contact_data]
+    * Mitglied: [:layer_read, :contact_data]
   * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_and_below_full, :admin, :contact_data]
-    * Angestellte/-r: [:layer_and_below_full, :admin, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :admin, :contact_data]
+    * Geschäftsleiter/-in: [:layer_full, :contact_data]
+    * Angestellte/-r: [:layer_full, :contact_data]
+    * Finanzverantwortliche/-r: [:layer_full, :financials, :contact_data]
   * Gremium
-    * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
-    * Mitglied: [:layer_and_below_read]
-    * Aktive/-r Kursleiter/-in: [:layer_and_below_read]
+    * Leitung: [:layer_read, :group_and_below_full, :contact_data]
+    * Mitglied: [:layer_read]
+    * Aktive/-r Kursleiter/-in: [:layer_read]
   * Mitglieder
     * Adressverwalter/-in: [:group_and_below_full]
     * Mitglied: []
@@ -37,9 +37,9 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Finanzverantwortliche-/r: [:layer_and_below_read, :financials, :contact_data]
     * Mitglied: [:layer_and_below_read, :contact_data]
   * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_and_below_full, :admin, :contact_data]
-    * Angestellte/-r: [:layer_and_below_full, :admin, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :admin, :contact_data]
+    * Geschäftsleiter/-in: [:layer_and_below_full, :contact_data]
+    * Angestellte/-r: [:layer_and_below_full, :contact_data]
+    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :contact_data]
     * Administrator/-in Ortsgruppen: [:layer_and_below_full, :unconfined_below]
   * Gremium
     * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
@@ -55,13 +55,15 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Spender/-in: []
     * Spendenverwalter/-in: [:group_and_below_full]
 * Sektion
+  * Sektion
+    * Administrator/-in: [:layer_and_below_full, :contact_data]
 * Ortsgruppe
   * Ortsgruppe
     * Administrator/-in Cevi DB: [:layer_and_below_full, :unconfined_below]
 * Jungschar
   * Jungschar
     * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
-    * Coach: [:layer_and_below_read, :approve_applications]
+    * Coach: [:layer_and_below_full, :approve_applications]
     * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
     * Adressverwalter/-in: [:layer_and_below_full]
     * Aktuar/-in: [:layer_and_below_read]
@@ -101,7 +103,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Teilnehmer/-in: [:group_read]
   * Team
     * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
-    * Coach: [:layer_and_below_read, :approve_applications]
+    * Coach: [:layer_and_below_full, :approve_applications]
     * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
     * Adressverwalter/-in: [:layer_and_below_full]
     * Aktuar/-in: [:layer_and_below_read]
@@ -162,7 +164,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Mitglied: [:group_read]
     * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
   * Sport Team/Gruppe
-    * Leiter: [:group_and_below_full]
+    * Leiter/-in: [:group_and_below_full]
     * Mitglied: [:group_read]
   * Externe
     * Verantwortliche/-r: [:group_and_below_full]

@@ -316,6 +316,12 @@ de:
         other: Spendenverwalter/-innen
         description:
 
+      group/sektion/administrator:
+        one: Administrator/-in
+        other: Administrator/-innen
+        description:
+
+
 
       group/ortsgruppe/administrator_cevi_db:
         one: Administrator/-in Cevi DB

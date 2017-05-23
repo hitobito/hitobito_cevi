@@ -195,7 +195,7 @@ describe PersonAbility do
   end
 
   context :layer_and_below_full do
-    let(:role) { Fabricate(Group::DachverbandGeschaeftsstelle::Geschaeftsleiter.name.to_sym, group: groups(:dachverband_gs)) }
+    let(:role) { Fabricate(Group::Dachverband::Administrator.name.to_sym, group: groups(:dachverband)) }
 
     it 'may not view any non-visible in lower layers' do
       other = Fabricate(Group::Stufe::Teilnehmer.name.to_sym, group: groups(:jungschar_burgd_wildsau))

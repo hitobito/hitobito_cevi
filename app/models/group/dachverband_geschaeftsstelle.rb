@@ -36,15 +36,15 @@ class Group::DachverbandGeschaeftsstelle < Group::Geschaeftsstelle
   ### ROLES
 
   class Geschaeftsleiter < ::Role
-    self.permissions = [:layer_and_below_full, :admin, :contact_data]
+    self.permissions = [:layer_full, :contact_data]
   end
 
   class Angestellter < ::Role
-    self.permissions = [:layer_and_below_full, :admin, :contact_data]
+    self.permissions = [:layer_full, :contact_data]
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_full, :financials, :admin, :contact_data]
+    self.permissions = [:layer_full, :financials, :contact_data]
   end
 
   roles Geschaeftsleiter,
