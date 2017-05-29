@@ -44,6 +44,11 @@ module HitobitoCevi
       AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
 
       # domain
+      Event::ParticipationFilter.load_entries_includes.each do |incl|
+        if incl.is_a?(Hash) && incl.key?(:person)
+          incl[:person] << :ortsgruppe
+        end
+      end
       Export::Tabular::People::PersonRow.send :include, Cevi::Export::Tabular::People::PersonRow
       Export::Tabular::People::PeopleAddress.send(
         :include, Cevi::Export::Tabular::People::PeopleAddress)

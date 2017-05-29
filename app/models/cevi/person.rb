@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2017, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -88,7 +88,7 @@ module Cevi::Person
   end
 
   def ortsgruppe_label
-    ortsgruppe && (ortsgruppe.short_name || ortsgruppe.name)
+    ortsgruppe && (ortsgruppe.short_name.presence || ortsgruppe.name.presence)
   end
 
 end

@@ -11,6 +11,9 @@ module Cevi
       extend ActiveSupport::Concern
 
       included do
+        sort_mappings_with_indifferent_access['ortsgruppe'] =
+          '(IFNULL(groups.short_name, "") || groups.name)'
+
         alias_method_chain :assign_attributes, :check
         alias_method_chain :tabular_exporter, :check
       end

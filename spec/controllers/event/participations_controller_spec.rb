@@ -110,21 +110,50 @@ describe Event::ParticipationsController do
 
         it "includes columns in index page" do
           get :index, group_id: group.id, event_id: course.id, filter: :participants
+          html = Capybara::Node::Simple.new(response.body)
+          expect(html).to have_content 'Ortsgruppe'
+          expect(html).to have_content 'Bezahlt'
+          expect(html).to have_content 'Interne Bemerkung'
+        end
+
+        it 'may sort by ortsgruppe' do
+          Fabricate(:event_role,
+                    type: course.participant_types.first.name,
+                    participation: Fabricate(:event_participation,
+                                             event: course,
+                                             person: Fabricate(:person,
+                                                               ortsgruppe: groups(:stadtzh))))
+          Fabricate(:event_role,
+                    type: course.participant_types.first.name,
+                    participation: Fabricate(:event_participation,
+                                             event: course,
+                                             person: Fabricate(:person,
+                                                               ortsgruppe: groups(:jona))))
+          Fabricate(:event_role,
+                    type: course.participant_types.first.name,
+                    participation: Fabricate(:event_participation,
+                                             event: course,
+                                             person: Fabricate(:person,
+                                                               ortsgruppe: groups(:burgdorf))))
+
+          get :index, group_id: group.id, event_id: course.id, sort: :ortsgruppe
+          expect(assigns(:participations).map { |p| p.person.ortsgruppe_label }).to eq([nil, 'Burgdorf', 'Jona', 'StZH'])
         end
 
         it "includes attributes on show" do
           get :show, group_id: group.id, event_id: course.id, id: participation.id
-        end
-
-        it "includes attributes on edit" do
-          get :edit, group_id: group.id, event_id: course.id, id: participation.id
-        end
-
-        after do
           html = Capybara::Node::Simple.new(response.body)
           expect(html).to have_content 'Bezahlt'
           expect(html).to have_content 'Interne Bemerkung'
         end
+
+        it "includes attributes on edit" do
+          get :edit, group_id: group.id, event_id: course.id, id: participation.id
+          html = Capybara::Node::Simple.new(response.body)
+          expect(html).to have_content 'Bezahlt'
+          expect(html).to have_content 'Interne Bemerkung'
+        end
+
       end
 
     end
