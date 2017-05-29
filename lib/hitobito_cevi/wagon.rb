@@ -34,9 +34,10 @@ module HitobitoCevi
       Role::Permissions << :financials << :unconfined_below
 
       # abilities
+      EventAbility.send :include, Cevi::EventAbility
+      GroupAbility.send :include, Cevi::GroupAbility
       PersonAbility.send :include, Cevi::PersonAbility
       RoleAbility.send :include, Cevi::RoleAbility
-      GroupAbility.send :include, Cevi::GroupAbility
       VariousAbility.send :include, Cevi::VariousAbility
       Event::ParticipationAbility.send :include, Cevi::Event::ParticipationAbility
       PersonReadables.send :include, Cevi::PersonReadables

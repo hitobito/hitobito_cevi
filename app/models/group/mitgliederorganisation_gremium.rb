@@ -50,8 +50,13 @@ class Group::MitgliederorganisationGremium < Group::Gremium
     self.permissions = [:layer_and_below_read]
   end
 
+  class Ausbildungsmitglied < ::Role
+    self.permissions = [:layer_and_below_read]
+  end
+
   roles Leitung,
         Mitglied,
-        AktiverKursleiter
+        AktiverKursleiter,
+        Ausbildungsmitglied
 
 end

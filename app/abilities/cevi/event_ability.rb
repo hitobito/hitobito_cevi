@@ -5,27 +5,19 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-module Cevi::Event::ParticipationAbility
+module Cevi::EventAbility
   extend ActiveSupport::Concern
 
   included do
-    on(Event::Participation) do
-      permission(:unconfined_below).
-        may(:create_tentative).
-        person_in_same_layer_or_below
-
+    on(Event::Course) do
       permission(:layer_and_below_read).
-        may(:show).
+        may(:index_participations, :application_market).
         in_same_layer_or_below_if_ausbildungsmitglied
     end
   end
 
-  def person_in_same_layer_or_below
-    person.nil? || permission_in_layers?(person.groups_hierarchy_ids)
-  end
-
   def in_same_layer_or_below_if_ausbildungsmitglied
-    event.is_a?(Event::Course) && contains_any?(ausbildungs_layer_ids, event_hierarchy_ids)
+    contains_any?(ausbildungs_layer_ids, event_hierarchy_ids)
   end
 
   private

@@ -291,6 +291,10 @@ de:
         one: Aktive/-r Kursleiter/-in
         other: Aktive Kursleiter/-innen
         description:
+      group/mitgliederorganisation_gremium/ausbildungsmitglied:
+        one: Ausbildungsmitglied
+        other: Ausbildungsmitglieder
+        description:
       group/mitgliederorganisation_mitglieder/adressverwalter:
         one: Adressverwalter/-in
         other: Adressverwalter/-innen
