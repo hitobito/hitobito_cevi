@@ -11,7 +11,7 @@ module Cevi::EventAbility
   included do
     on(Event::Course) do
       permission(:layer_and_below_read).
-        may(:index_participations, :application_market).
+        may(:index_participations).
         in_same_layer_or_below_if_ausbildungsmitglied
     end
   end
