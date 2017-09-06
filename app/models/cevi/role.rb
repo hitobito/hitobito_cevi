@@ -9,7 +9,7 @@ module Cevi::Role
   extend ActiveSupport::Concern
 
   included do
-    after_create :reset_person_ortsgruppe!
+    after_create :reset_person_ortsgruppe!, if: :ortsgruppe_id_column_available?
   end
 
   private
@@ -33,4 +33,10 @@ module Cevi::Role
   def person_ortsgruppe_for(group)
     group.hierarchy.select(:id).find_by(type: ::Group::Ortsgruppe.sti_name)
   end
+
+  # Missing when core person is seeded and wagon migrations have not be run
+  def ortsgruppe_id_column_available?
+    Person.column_names.include?('ortsgruppe_id')
+  end
+
 end
