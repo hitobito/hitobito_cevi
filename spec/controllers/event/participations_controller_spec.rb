@@ -46,14 +46,11 @@ describe Event::ParticipationsController do
       expect(assigns(:participations)).to eq [@participant]
     end
 
-    it 'exports address csv' do
-      get :index, group_id: group.id, event_id: course.id, format: :csv
-      expect(response.body).to match(/^Vorname;Nachname;.+;Name Eltern;Ortsgruppe$/)
-    end
-
-    it 'exports full csv' do
-      get :index, group_id: group.id, event_id: course.id, details: true, format: :csv
-      expect(response.body).to match(/^Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$/)
+    it 'exports csv' do
+      expect do
+        get :index, group_id: group.id, event_id: course.id, format: :csv
+        expect(flash[:notice]).to match(/Export wird im Hintergrund gestartet und nach Fertigstellung an \S+@\S+ versendet./)
+      end.to change(Delayed::Job, :count).by(1)
     end
 
     def create(*roles)
@@ -66,7 +63,6 @@ describe Event::ParticipationsController do
 
 
   context 'custom attributes' do
-    let(:csv) { CSV.parse(response.body, headers: true, col_sep: ';') }
     let(:custom_attrs) { { internal_comment: 'test', payed: '1' } }
     let(:participation) { Fabricate(:event_participation, event: course, person: person) }
 
@@ -94,14 +90,6 @@ describe Event::ParticipationsController do
         patch :update, group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs
         expect(participation.reload).to be_payed
         expect(participation.reload.internal_comment).to eq 'test'
-      end
-
-      it "includes attributes in csv" do
-        activate_participation
-        get :index, group_id: group.id, event_id: course.id, filter: :participants, details: true, format: :csv
-
-        expect(csv['Bezahlt']).to eq %w(ja)
-        expect(csv['Interne Bemerkung']).to eq %w(test)
       end
 
       context 'rendered pages' do
@@ -172,14 +160,6 @@ describe Event::ParticipationsController do
         expect do
           patch :update, group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs
         end.to raise_error CanCan::AccessDenied
-      end
-
-      it "does not include attributes in csv" do
-        activate_participation
-        get :index, group_id: group.id, event_id: course.id, filter: :participants, format: :csv
-
-        expect(csv.headers).not_to include 'Bezahlt'
-        expect(csv.headers).not_to include 'Interne Bemerkung'
       end
 
       context 'rendered pages' do

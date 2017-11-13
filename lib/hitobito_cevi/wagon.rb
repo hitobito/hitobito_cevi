@@ -70,6 +70,9 @@ module HitobitoCevi
 
       PeopleController.send :include, Cevi::PeopleController
 
+      # jobs
+      Export::EventParticipationsExportJob.send :include, Cevi::Export::EventParticipationsExportJob
+
       # helpers
       Sheet::Group.send :include, Cevi::Sheet::Group
 

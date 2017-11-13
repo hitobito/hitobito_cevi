@@ -19,18 +19,9 @@ module Cevi
           end
 
         alias_method_chain :assign_attributes, :check
-        alias_method_chain :tabular_exporter, :check
       end
 
       private
-
-      def tabular_exporter_with_check
-        if params[:details] && check?
-          ::Export::Tabular::People::ParticipationsComplete
-        else
-          tabular_exporter_without_check
-        end
-      end
 
       # only roles with update permission are allowed to set those attributes
       def assign_attributes_with_check
