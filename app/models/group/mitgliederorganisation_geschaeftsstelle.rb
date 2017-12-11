@@ -44,7 +44,7 @@ class Group::MitgliederorganisationGeschaeftsstelle < Group::Geschaeftsstelle
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_full, :financials, :contact_data]
+    self.permissions = [:layer_and_below_full, :finance, :contact_data]
   end
 
   class AdminOrtsgruppen < ::Role

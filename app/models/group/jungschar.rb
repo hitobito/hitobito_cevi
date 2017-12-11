@@ -49,7 +49,7 @@ class Group::Jungschar < Group
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_read, :financials]
+    self.permissions = [:layer_and_below_read, :finance]
   end
 
   class Adressverwalter < ::Role

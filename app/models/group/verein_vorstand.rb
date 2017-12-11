@@ -40,7 +40,7 @@ class Group::VereinVorstand < Group::Vorstand
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_read, :financials]
+    self.permissions = [:layer_and_below_read, :finance]
   end
 
   class Aktuar < ::Role
