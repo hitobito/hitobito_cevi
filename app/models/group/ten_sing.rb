@@ -65,7 +65,7 @@ class Group::TenSing < Group
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_and_below_read, :finance]
+    self.permissions = [:layer_and_below_read, :finance, :financials]
   end
 
   class FreierMitarbeiter < ::Role

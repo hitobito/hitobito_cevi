@@ -44,7 +44,7 @@ class Group::DachverbandGeschaeftsstelle < Group::Geschaeftsstelle
   end
 
   class Finanzverantwortlicher < ::Role
-    self.permissions = [:layer_full, :finance, :contact_data]
+    self.permissions = [:layer_full, :finance, :financials, :contact_data]
   end
 
   roles Geschaeftsleiter,
