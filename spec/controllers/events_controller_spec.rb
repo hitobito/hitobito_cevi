@@ -94,7 +94,8 @@ describe EventsController do
 
       it 'lists courses' do
         get :index, group_id: group.id, year: 2012, type: Event::Course.sti_name
-        expect(assigns(:events)).to eq [course]
+        expect(assigns(:events)).to include(course)
+        expect(assigns(:events)).to include(events(:top_course))
       end
     end
 
