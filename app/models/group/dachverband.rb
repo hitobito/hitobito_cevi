@@ -49,7 +49,7 @@ class Group::Dachverband < Group
   ### ROLES
 
   class Administrator < ::Role
-    self.permissions = [:admin, :layer_and_below_full]
+    self.permissions = [:admin, :layer_and_below_full, :impersonation]
   end
 
   roles Administrator
