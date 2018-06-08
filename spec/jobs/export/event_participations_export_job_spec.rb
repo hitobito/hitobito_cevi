@@ -9,7 +9,11 @@ require 'spec_helper'
 
 describe Export::EventParticipationsExportJob do
 
-  subject { Export::EventParticipationsExportJob.new(format, user.id, course.id, params) }
+  subject { Export::EventParticipationsExportJob.new(format,
+                                                     user.id,
+                                                     course.id,
+                                                     event_participation_filter,
+                                                     params) }
 
   let(:group) { groups(:dachverband) }
   let(:user) { people(:bulei) }
@@ -23,6 +27,7 @@ describe Export::EventParticipationsExportJob do
   end
   let(:event_role)    { Fabricate(:event_role, type: Event::Role::Leader.sti_name) }
   let(:participation) { Fabricate(:event_participation, event: course, person: person, roles: [event_role]) }
+  let(:event_participation_filter) { Event::ParticipationFilter.new(course, user, params) }
 
   before do
     SeedFu.quiet = true
