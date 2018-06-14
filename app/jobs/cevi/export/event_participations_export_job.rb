@@ -15,7 +15,7 @@ module Cevi::Export::EventParticipationsExportJob
   private
 
   def exporter_with_check
-    if @controller_params[:details] && Ability.new(user).can?(:update, entries.first)
+    if @options[:details] && ability.can?(:update, entries.first)
       Export::Tabular::People::ParticipationsComplete
     else
       exporter_without_check
