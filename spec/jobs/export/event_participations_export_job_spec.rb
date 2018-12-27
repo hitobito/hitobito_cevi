@@ -12,7 +12,7 @@ describe Export::EventParticipationsExportJob do
   subject { Export::EventParticipationsExportJob.new(format,
                                                      user.id,
                                                      event_participation_filter,
-                                                     params) }
+                                                     params.merge(filename: 'event_participation_export')) }
 
   let(:group) { groups(:dachverband) }
   let(:user) { people(:bulei) }
@@ -27,6 +27,7 @@ describe Export::EventParticipationsExportJob do
   let(:event_role)    { Fabricate(:event_role, type: Event::Role::Leader.sti_name) }
   let(:participation) { Fabricate(:event_participation, event: course, person: person, roles: [event_role]) }
   let(:event_participation_filter) { Event::ParticipationFilter.new(course, user, params) }
+  let(:filepath) { AsyncDownloadFile::DIRECTORY.join('event_participation_export') }
 
   before do
     SeedFu.quiet = true
@@ -38,14 +39,10 @@ describe Export::EventParticipationsExportJob do
     let(:format) { :csv }
     let(:params) { { details: false } }
 
-    it 'and sends it via mail' do
-      expect do
-        subject.perform
-      end.to change { ActionMailer::Base.deliveries.size }.by 1
+    it 'dilligently' do
+      subject.perform
 
-      expect(last_email.subject).to eq('Export der Event-Teilnehmer')
-
-      lines = last_email.attachments.first.body.to_s.split("\n")
+      lines = File.readlines("#{filepath}.csv")
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(/^Vorname;Nachname/)
       expect(lines[0].split(';').count).to match(17)
@@ -56,14 +53,10 @@ describe Export::EventParticipationsExportJob do
     let(:format) { :csv }
     let(:params) { { details: true } }
 
-    it 'and sends it via mail' do
-      expect do
-        subject.perform
-      end.to change { ActionMailer::Base.deliveries.size }.by 1
+    it 'dilligently' do
+      subject.perform
 
-      expect(last_email.subject).to eq('Export der Event-Teilnehmer')
-
-      lines = last_email.attachments.first.body.to_s.split("\n")
+      lines = File.readlines("#{filepath}.csv")
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(/^Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$/)
       expect(lines[0].split(';').count).to match(38)
