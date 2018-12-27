@@ -54,9 +54,14 @@ class Group::MitgliederorganisationGremium < Group::Gremium
     self.permissions = [:layer_and_below_read]
   end
 
+  class Kassier < ::Role
+    self.permissions = [:layer_and_below_read, :finance]
+  end
+
   roles Leitung,
         Mitglied,
         AktiverKursleiter,
-        Ausbildungsmitglied
+        Ausbildungsmitglied,
+        Kassier
 
 end

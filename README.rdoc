@@ -10,16 +10,17 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Administrator/-in: [:admin, :layer_and_below_full]
   * Vorstand
     * Präsidium: [:layer_read, :group_and_below_full, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_read, :financials, :contact_data]
+    * Finanzverantwortliche/-r: [:layer_read, :finance, :financials, :contact_data]
     * Mitglied: [:layer_read, :contact_data]
   * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_full, :contact_data]
-    * Angestellte/-r: [:layer_full, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_full, :financials, :contact_data]
+    * Geschäftsleiter/-in: [:layer_full, :contact_data, :finance]
+    * Angestellte/-r: [:layer_full, :contact_data, :finance]
+    * Finanzverantwortliche/-r: [:layer_full, :finance, :financials, :contact_data]
   * Gremium
     * Leitung: [:layer_read, :group_and_below_full, :contact_data]
     * Mitglied: [:layer_read]
     * Aktive/-r Kursleiter/-in: [:layer_read]
+    * Kassier: [:layer_read, :finance]
   * Mitglieder
     * Adressverwalter/-in: [:group_and_below_full]
     * Mitglied: []
@@ -34,17 +35,19 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Administrator/-in: [:admin, :layer_and_below_full]
   * Vorstand
     * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
-    * Finanzverantwortliche-/r: [:layer_and_below_read, :financials, :contact_data]
+    * Finanzverantwortliche-/r: [:layer_and_below_read, :finance, :financials, :contact_data]
     * Mitglied: [:layer_and_below_read, :contact_data]
   * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_and_below_full, :contact_data]
-    * Angestellte/-r: [:layer_and_below_full, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_and_below_full, :financials, :contact_data]
-    * Administrator/-in Ortsgruppen: [:layer_and_below_full, :unconfined_below]
+    * Geschäftsleiter/-in: [:layer_and_below_full, :contact_data, :finance]
+    * Angestellte/-r: [:layer_and_below_full, :contact_data, :finance]
+    * Finanzverantwortliche/-r: [:layer_and_below_full, :finance, :financials, :contact_data]
+    * Administrator/-in Ortsgruppen: [:layer_and_below_full, :unconfined_below, :finance]
   * Gremium
     * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
     * Mitglied: [:layer_and_below_read]
     * Aktive/-r Kursleiter/-in: [:layer_and_below_read]
+    * Ausbildungsmitglied: [:layer_and_below_read]
+    * Kassier: [:layer_and_below_read, :finance]
   * Mitglieder
     * Adressverwalter/-in: [:group_and_below_full]
     * Mitglied: []
@@ -60,11 +63,12 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
 * Ortsgruppe
   * Ortsgruppe
     * Administrator/-in Cevi DB: [:layer_and_below_full, :unconfined_below]
+    * Kassier: [:layer_and_below_read, :finance]
 * Jungschar
   * Jungschar
     * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
     * Coach: [:layer_and_below_full, :approve_applications]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
+    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
     * Adressverwalter/-in: [:layer_and_below_full]
     * Aktuar/-in: [:layer_and_below_read]
     * Busverwalter/-in: [:layer_and_below_read, :contact_data]
@@ -104,7 +108,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
   * Team
     * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
     * Coach: [:layer_and_below_full, :approve_applications]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
+    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
     * Adressverwalter/-in: [:layer_and_below_full]
     * Aktuar/-in: [:layer_and_below_read]
     * Busverwalter/-in: [:layer_and_below_read, :contact_data]
@@ -132,7 +136,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
   * Vorstand
     * Präsident/-in: [:layer_and_below_full, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
+    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
     * Aktuar/-in: [:layer_and_below_read]
     * Mitglied: [:layer_and_below_read]
   * Mitglieder
@@ -157,7 +161,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
 * Sport
   * Sport
     * Adressverantwortliche-/r: [:layer_and_below_full]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
+    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
     * Hauptleitung: [:layer_and_below_full, :contact_data]
     * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
     * Leiter/-in: [:group_and_below_full]
@@ -175,7 +179,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
 * Weiteres Arbeitsgebiet
   * Weiteres Arbeitsgebiet
     * Adressverantwortliche/-r: [:layer_and_below_full]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
+    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
     * Hauptleitung: [:layer_and_below_full, :contact_data]
     * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
     * Leiter/-in: [:group_and_below_full]
@@ -197,7 +201,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Arrangeur: [:layer_and_below_read]
     * Adressverwalter/-in: [:layer_and_below_full]
     * Aktuar/-in: [:layer_and_below_read]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :financials]
+    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
     * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
     * Input Leiter/-in: [:layer_and_below_read]
     * Redaktor/-in: [:layer_and_below_read]
@@ -221,5 +225,6 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Techniker/-in: [:group_read]
     * Theater Leiter/-in: [:layer_and_below_read]
     * Schauspieler/-in: [:group_read]
+
 
 (Output of rake app:hitobito:roles)

@@ -50,8 +50,13 @@ class Group::DachverbandGremium < Group::Gremium
     self.permissions = [:layer_read]
   end
 
+  class Kassier < ::Role
+    self.permissions = [:layer_read, :finance]
+  end
+
   roles Leitung,
         Mitglied,
-        AktiverKursleiter
+        AktiverKursleiter,
+        Kassier
 
 end

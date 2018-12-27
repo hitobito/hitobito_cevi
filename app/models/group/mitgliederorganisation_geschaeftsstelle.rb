@@ -36,11 +36,11 @@ class Group::MitgliederorganisationGeschaeftsstelle < Group::Geschaeftsstelle
   ### ROLES
 
   class Geschaeftsleiter < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
+    self.permissions = [:layer_and_below_full, :contact_data, :finance]
   end
 
   class Angestellter < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
+    self.permissions = [:layer_and_below_full, :contact_data, :finance]
   end
 
   class Finanzverantwortlicher < ::Role
@@ -48,7 +48,7 @@ class Group::MitgliederorganisationGeschaeftsstelle < Group::Geschaeftsstelle
   end
 
   class AdminOrtsgruppen < ::Role
-    self.permissions = [:layer_and_below_full, :unconfined_below]
+    self.permissions = [:layer_and_below_full, :unconfined_below, :finance]
   end
 
   roles Geschaeftsleiter,

@@ -222,6 +222,10 @@ de:
         one: Aktive/-r Kursleiter/-in
         other: Aktive/-r Kursleiter/-innen
         description:
+      group/dachverband_gremium/kassier:
+        one: Kassier
+        other: Kassiere
+        description:
       group/dachverband_mitglieder/adressverwalter:
         one: Adressverwalter/-in
         other: Adressverwalter/-innen
@@ -287,6 +291,10 @@ de:
         one: Mitglied
         other: Mitglieder
         description:
+      group/mitgliederorganisation_gremium/kassier:
+        one: Kassier
+        other: Kassiere
+        description:
       group/mitgliederorganisation_gremium/aktiver_kursleiter:
         one: Aktive/-r Kursleiter/-in
         other: Aktive Kursleiter/-innen
@@ -330,6 +338,10 @@ de:
       group/ortsgruppe/administrator_cevi_db:
         one: Administrator/-in Cevi DB
         other: Administrator/-innen Cevi DB
+        description:
+      group/ortsgruppe/kassier:
+        one: Kassier
+        other: Kassiere
         description:
 
       group/verein/adressverantwortlicher:

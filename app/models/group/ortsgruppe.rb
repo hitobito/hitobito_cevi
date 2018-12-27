@@ -47,6 +47,11 @@ class Group::Ortsgruppe < Group
     self.permissions = [:layer_and_below_full, :unconfined_below]
   end
 
-  roles AdministratorCeviDB
+  class Kassier < ::Role
+    self.permissions = [:layer_and_below_read, :finance]
+  end
+
+  roles AdministratorCeviDB,
+        Kassier
 
 end
