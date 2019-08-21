@@ -12,11 +12,11 @@ env:
     - RAILS_ENV=development
 rvm:
   - 2.2.3
-  - 2.3.1
+  - 2.5
 matrix:
   allow_failures:
     rvm:
-      - 2.3.1
+      - 2.5
 install:
   - unset BUNDLE_GEMFILE # we bundle in different directories
   - cd .. && git clone https://github.com/hitobito/hitobito_youth.git hitobito_youth
