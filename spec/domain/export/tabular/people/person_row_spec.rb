@@ -14,7 +14,7 @@ describe Export::Tabular::People do
   let(:simple_headers) do
     ['Vorname', 'Nachname', 'Ceviname', 'Firmenname', 'Firma', 'Haupt-E-Mail',
      'Adresse', 'PLZ', 'Ort', 'Land', 'Geschlecht', 'Geburtstag', 'Hauptebene',
-     'Rollen', 'Anrede Eltern', 'Name Eltern', 'Ortsgruppe']
+     'Rollen', 'Tags', 'Anrede Eltern', 'Name Eltern', 'Ortsgruppe']
   end
 
   let(:list) { [person] }

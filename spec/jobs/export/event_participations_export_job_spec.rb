@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2017, Jungwacht Blauring Schweiz. This file is part of
+#  Copyright (c) 2018, Jungwacht Blauring Schweiz. This file is part of
 #  hitobito and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito.
@@ -45,7 +45,7 @@ describe Export::EventParticipationsExportJob do
       lines = File.readlines("#{filepath}.csv")
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(/^Vorname;Nachname/)
-      expect(lines[0].split(';').count).to match(17)
+      expect(lines[0].split(';').count).to match(18)
     end
   end
 
@@ -59,7 +59,7 @@ describe Export::EventParticipationsExportJob do
       lines = File.readlines("#{filepath}.csv")
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(/^Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$/)
-      expect(lines[0].split(';').count).to match(38)
+      expect(lines[0].split(';').count).to match(39)
     end
   end
 end
