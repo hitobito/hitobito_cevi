@@ -9,7 +9,7 @@ require 'spec_helper'
 
 describe EventParticipationSerializer do
   let(:controller)    { double().as_null_object }
-  let(:participation) { event_participations(:top) }
+  let(:participation) { event_participations(:top_leader) }
   let(:serializer)    { EventParticipationSerializer.new(participation, controller) }
 
   let(:hash)          { serializer.to_hash.with_indifferent_access }
