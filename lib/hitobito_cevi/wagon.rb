@@ -62,6 +62,7 @@ module HitobitoCevi
       PersonSerializer.send :include, Cevi::PersonSerializer
       PeopleSerializer.send :include, Cevi::PeopleSerializer
       GroupSerializer.send :include, Cevi::GroupSerializer
+      EventParticipationSerializer.send :include, Cevi::EventParticipationSerializer
 
       # controllers
       EventsController.send :include, Cevi::EventsController
