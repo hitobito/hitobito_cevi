@@ -7,7 +7,7 @@
 
 = form_for(@group, url: group_member_counts_path(@group), method: :put) do |f|
   = hidden_field_tag(:year, @year)
-  = save_form_buttons(f, nil, census_group_group_path(@group, year: @year))
+  = form_buttons(f, submit_label: nil, cancel_url: census_group_group_path(@group, year: @year))
 
   = render layout: 'member_counts/table_header',
            locals: { before_columns: %w(Jahrgang), id: 'member_counts_fields'} do
@@ -23,4 +23,4 @@
   #member_counts_fields_blueprint{style: 'display: none', data: { blueprint: member_counts_fields_blueprint } }
   = link_to 'Eintrag hinzufügen', 'javascript:void(0);', class: 'add_nested_fields', data: { association: 'member_counts', 'blueprint-id' => 'member_counts_fields_blueprint' }
 
-  = save_form_buttons(f, nil, census_group_group_path(@group, year: @year))
+  = form_buttons(f, submit_label: nil, cancel_url: census_group_group_path(@group, year: @year))
