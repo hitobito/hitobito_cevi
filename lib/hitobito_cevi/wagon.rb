@@ -79,6 +79,7 @@ module HitobitoCevi
 
       # decorators
       PaperTrail::VersionDecorator.send :include, Cevi::PaperTrail::VersionDecorator
+      PersonDecorator.send :include, Cevi::PersonDecorator
     end
 
     initializer 'cevi.add_settings' do |_app|

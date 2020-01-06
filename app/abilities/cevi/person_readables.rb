@@ -20,6 +20,13 @@ module Cevi::PersonReadables
     alias_method_chain :read_permission_for_this_group?, :unconfined_below
   end
 
+  def spender_visible?
+    group_read_in_this_group? ||
+      group_read_in_above_group? ||
+      financial_layers_ids.include?(group.layer_group_id) ||
+      unconfined_below_in_above_layer?
+  end
+
   private
 
   def accessible_conditions_with_spender
@@ -38,10 +45,7 @@ module Cevi::PersonReadables
   end
 
   def scope_for_spender_group
-    if group_read_in_this_group? ||
-       group_read_in_above_group? ||
-       financial_layers_ids.include?(group.layer_group_id) ||
-       unconfined_below_in_above_layer?
+    if spender_visible?
       group.people.only_public_data
     else
       group.people.only_public_data.visible_from_above(group)
