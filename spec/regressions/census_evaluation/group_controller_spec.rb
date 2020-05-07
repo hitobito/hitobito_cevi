@@ -14,7 +14,7 @@ describe CensusEvaluation::GroupController, type: :controller do
   before { sign_in(people(:bulei)) }
 
   describe 'GET total' do
-    before { get :index, id: groups(:jungschar_zh10).id }
+    before { get :index, params: { id: groups(:jungschar_zh10).id } }
 
     it 'renders correct templates' do
       is_expected.to render_template('index')

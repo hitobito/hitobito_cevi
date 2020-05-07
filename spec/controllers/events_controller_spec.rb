@@ -23,13 +23,15 @@ describe EventsController do
       it 'creates new event course with dates and contact' do
         contact = Person.first
 
-        post :create, event: {  group_ids: [group.id],
-                                name: 'foo',
-                                kind_id: event_kind_id,
-                                dates_attributes: [date],
-                                contact_id: contact.id,
-                                type: 'Event::Course' },
-                      group_id: group.id
+        post :create, params: {
+                                                        event: {  group_ids: [group.id],
+                                                          name: 'foo',
+                                                          kind_id: event_kind_id,
+                                                          dates_attributes: [date],
+                                                          contact_id: contact.id,
+                                                          type: 'Event::Course' },
+                                                group_id: group.id
+        }
 
 
         event = assigns(:event)
@@ -43,13 +45,15 @@ describe EventsController do
       end
 
       it 'creates new event course without contact' do
-        post :create, event: {  group_ids: [group.id],
-                                name: 'foo',
-                                kind_id: event_kind_id,
-                                contact_id: '',
-                                dates_attributes: [date],
-                                type: 'Event::Course' },
-                      group_id: group.id
+        post :create, params: {
+                                                        event: {  group_ids: [group.id],
+                                                          name: 'foo',
+                                                          kind_id: event_kind_id,
+                                                          contact_id: '',
+                                                          dates_attributes: [date],
+                                                          type: 'Event::Course' },
+                                                group_id: group.id
+        }
 
         event = assigns(:event)
 
@@ -60,12 +64,14 @@ describe EventsController do
 
 
       it 'should set application contact if only one is available' do
-        post :create, event: {  group_ids: [group.id],
-                                name: 'foo',
-                                kind_id: event_kind_id,
-                                dates_attributes: [date],
-                                type: 'Event::Course' },
-                                group_id: group.id
+        post :create, params: {
+                                                                  event: {  group_ids: [group.id],
+                                                          name: 'foo',
+                                                          kind_id: event_kind_id,
+                                                          dates_attributes: [date],
+                                                          type: 'Event::Course' },
+                                                          group_id: group.id
+        }
 
         event = assigns(:event)
 
@@ -88,13 +94,13 @@ describe EventsController do
 
 
       it 'lists events' do
-        get :index, group_id: group.id, year: 2012
+        get :index, params: { group_id: group.id, year: 2012 }
         expect(assigns(:events)).to include(event)
         expect(assigns(:events)).to include(events(:top_event))
       end
 
       it 'lists courses' do
-        get :index, group_id: group.id, year: 2012, type: Event::Course.sti_name
+        get :index, params: { group_id: group.id, year: 2012, type: Event::Course.sti_name }
         expect(assigns(:events)).to include(course)
         expect(assigns(:events)).to include(events(:top_course))
       end
@@ -105,7 +111,7 @@ describe EventsController do
       let!(:event) { Fabricate(:event, groups: [group]) }
 
       it 'lists event' do
-        get :index, group_id: group.id, year: 2012
+        get :index, params: { group_id: group.id, year: 2012 }
         expect(assigns(:events)).to eq [event]
       end
     end

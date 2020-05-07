@@ -21,7 +21,7 @@ describe CensusEvaluation::DachverbandController, type: :controller do
 
   describe 'GET total' do
     context 'as admin' do
-      before { get :index, id: ch.id }
+      before { get :index, params: { id: ch.id } }
 
       it 'renders correct templates' do
         is_expected.to render_template('index')

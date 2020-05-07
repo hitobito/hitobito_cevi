@@ -15,7 +15,7 @@ describe CensusEvaluation::GroupController do
 
   describe 'GET total' do
 
-    before { get :index, id: zh.id }
+    before { get :index, params: { id: zh.id } }
 
     it 'assigns counts' do
       expect(assigns(:group_counts)).to be_nil

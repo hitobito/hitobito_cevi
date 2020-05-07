@@ -17,7 +17,7 @@ describe CensusEvaluation::MitgliederorganisationController do
   before { sign_in(people(:bulei)) }
 
   describe 'GET index' do
-    before { get :index, id: zhshgl.id }
+    before { get :index, params: { id: zhshgl.id } }
 
     it 'assigns counts' do
       counts = assigns(:group_counts)
@@ -52,7 +52,7 @@ describe CensusEvaluation::MitgliederorganisationController do
 
   context 'csv export' do
     it 'exports data to csv' do
-      get :index, id: zhshgl.id, format: :csv
+      get :index, params: { id: zhshgl.id }, format: :csv
       expect(CSV.parse(response.body, headers: true)).to have(2).rows
     end
   end

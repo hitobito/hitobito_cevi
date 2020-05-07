@@ -23,8 +23,7 @@ describe PeopleController do
       end
 
       it 'can be updated' do
-        put :update, group_id: person.groups.first.id, id: person.id,
-                     person: { old_data: 'Lorem ipsum' }
+        put :update, params: { group_id: person.groups.first.id, id: person.id, person: { old_data: 'Lorem ipsum' } }
         expect(person.reload.old_data).to eq('Lorem ipsum')
       end
     end
@@ -36,8 +35,7 @@ describe PeopleController do
       end
 
       it 'cannot be updated' do
-        put :update, group_id: person.groups.first.id, id: person.id,
-                     person: { old_data: 'Lorem ipsum' }
+        put :update, params: { group_id: person.groups.first.id, id: person.id, person: { old_data: 'Lorem ipsum' } }
         expect(person.reload.old_data).to be_nil
       end
     end

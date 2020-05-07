@@ -15,7 +15,7 @@ describe MemberCountsController do
 
   describe 'GET edit' do
     context 'in 2012' do
-      before { get :edit, group_id: group.id }
+      before { get :edit, params: { group_id: group.id } }
 
       it 'assigns counts' do
        expect(assigns(:member_counts)).to have(3).items
@@ -28,11 +28,11 @@ describe MemberCountsController do
     context 'as administrator dachverband' do
 
       it 'updates counts' do
-        put :update, group_id: group.id, year: 2012, member_count:
+        put :update, params: { group_id: group.id, year: 2012, member_count:
           { member_counts(:jungschar_zh10_2012_1999).id => { person_f: 4, person_m: '1'},
             member_counts(:jungschar_zh10_2012_1997).id => { person_f: 2, person_m: ''},
             member_counts(:jungschar_zh10_2012_1988).id => { person_f: nil, person_m: 0},
-          }
+          } }
 
         assert_member_counts(member_counts(:jungschar_zh10_2012_1999).reload, 4, 1)
         assert_member_counts(member_counts(:jungschar_zh10_2012_1997).reload, 2, nil)
@@ -44,10 +44,12 @@ describe MemberCountsController do
       it "saves additional member counts" do
         expect do
            put :update,
-               group_id: group.id,
-               additional_member_counts: [ { born_in: 2001,
-                                             person_f: 1,
-                                             person_m: "" } ]
+               params: {
+                 group_id: group.id,
+                 additional_member_counts: [ { born_in: 2001,
+                                               person_f: 1,
+                                               person_m: "" } ]
+               }
         end.to change { group.reload.member_counts.count }.by(1)
 
         is_expected.to redirect_to(census_group_group_path(group, year: 2012))
@@ -56,10 +58,12 @@ describe MemberCountsController do
       it "renders flash for invalid additional count" do
         expect do
           put :update,
-              group_id: group.id,
-              additional_member_counts: [ { born_in: 'asdf',
-                                            person_f: 1,
-                                            person_m: "" } ]
+              params: {
+                group_id: group.id,
+                additional_member_counts: [ { born_in: 'asdf',
+                                              person_f: 1,
+                                              person_m: "" } ]
+              }
         end.not_to change { group.reload.member_counts.count }
         expect(flash[:alert]).to be_present
       end
@@ -67,10 +71,12 @@ describe MemberCountsController do
       it "renders flash for additional count of existing year" do
         expect do
            put :update,
-               group_id: group.id,
-               additional_member_counts: [ { born_in: 1999,
-                                             person_f: 1,
-                                             person_m: "" } ]
+               params: {
+                 group_id: group.id,
+                 additional_member_counts: [ { born_in: 1999,
+                                               person_f: 1,
+                                               person_m: "" } ]
+               }
         end.not_to change { group.reload.member_counts.count }
         expect(flash[:alert]).to be_present
       end
@@ -81,7 +87,7 @@ describe MemberCountsController do
       it 'denies access' do
         leiter = Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym, group: group).person
         sign_in(leiter)
-        expect { put :update, group_id: group.id, year: 2012, member_count: {} }.to raise_error(CanCan::AccessDenied)
+        expect { put :update, params: {group_id: group.id, year: 2012, member_count: {}} }.to raise_error(CanCan::AccessDenied)
       end
     end
   end
@@ -89,14 +95,14 @@ describe MemberCountsController do
   describe 'POST create' do
     it 'handles request with redirect' do
       censuses(:two_o_12).destroy
-      post :create, group_id: group.id
+      post :create, params: { group_id: group.id }
 
       is_expected.to redirect_to(census_group_group_path(group, year: 2011))
       expect(flash[:notice]).to be_present
     end
 
     it 'should not change anything if counts exist' do
-      expect { post :create, group_id: group.id }.not_to change { MemberCount.count }
+      expect { post :create, params: { group_id: group.id } }.not_to change { MemberCount.count }
     end
 
     it 'should create counts' do
@@ -113,7 +119,7 @@ describe MemberCountsController do
                 group: groups(:jungschar_zh10_aranda),
                 person: Fabricate(:person, gender: 'm', birthday: Date.new(2000, 12, 31)))
 
-      expect { post :create, group_id: group.id }.to change { MemberCount.count }.by(3)
+      expect { post :create, params: { group_id: group.id } }.to change { MemberCount.count }.by(3)
 
       counts = MemberCount.where(group_id: group.id, year: 2011).order(:born_in).to_a
       expect(counts).to have(3).items
@@ -131,7 +137,7 @@ describe MemberCountsController do
                                              birthday: Date.new(2000, 12, 31))).person
 
         sign_in(leader)
-        post :create, group_id: group.id
+        post :create, params: { group_id: group.id }
 
         is_expected.to redirect_to(census_group_group_path(group, year: 2011))
         expect(flash[:notice]).to be_present
@@ -143,18 +149,18 @@ describe MemberCountsController do
         guide = Fabricate(Group::Stufe::Stufenleiter.name.to_sym,
                           group: groups(:jungschar_zh10_aranda)).person
         sign_in(guide)
-        expect { post :create, group_id: group.id }.to raise_error(CanCan::AccessDenied)
+        expect { post :create, params: { group_id: group.id } }.to raise_error(CanCan::AccessDenied)
       end
     end
   end
 
   describe 'DELETE destroy' do
     it 'removes member count' do
-      expect { delete :destroy, group_id: group.id }.to change { MemberCount.count }.by(-3)
+      expect { delete :destroy, params: { group_id: group.id } }.to change { MemberCount.count }.by(-3)
     end
 
     it 'handles request with redirect' do
-      delete :destroy, group_id: group.id
+      delete :destroy, params: { group_id: group.id }
 
       is_expected.to redirect_to(census_group_group_path(group, year: 2012))
       expect(flash[:notice]).to be_present

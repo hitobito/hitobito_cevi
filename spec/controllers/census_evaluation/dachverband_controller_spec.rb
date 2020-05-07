@@ -27,7 +27,7 @@ describe CensusEvaluation::DachverbandController do
     context 'defaults' do
       before do
         allow(Date).to receive_messages(today: censuses(:two_o_12).finish_at)
-        get :index, id: ch.id
+        get :index, params: { id: ch.id }
       end
 
 
@@ -75,13 +75,13 @@ describe CensusEvaluation::DachverbandController do
 
       it 'is empty member count when viewing current census but no data exists' do
         MemberCount.where(year: 2012).delete_all
-        get :index, id: ch.id, year: 2012
+        get :index, params: { id: ch.id, year: 2012 }
 
         expect(assigns(:total).attributes).to eq MemberCount.new.attributes
       end
 
       it 'is nil when viewing census which has not been created yet' do
-        get :index, id: ch.id, year: 2014
+        get :index, params: { id: ch.id, year: 2014 }
 
         expect(assigns(:total)).to be_nil
       end
@@ -89,7 +89,7 @@ describe CensusEvaluation::DachverbandController do
 
     context 'csv export' do
       it 'exports data to csv' do
-        get :index, id: ch.id, format: :csv
+        get :index, params: { id: ch.id }, format: :csv
         expect(CSV.parse(response.body, headers: true)).to have(3).rows
       end
     end

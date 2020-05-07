@@ -37,18 +37,18 @@ describe Event::ParticipationsController do
     end
 
     it 'lists only leader_group' do
-      get :index, group_id: group.id, event_id: course.id, filter: :teamers
+      get :index, params: { group_id: group.id, event_id: course.id, filter: :teamers }
       expect(assigns(:participations)).to eq [@leader]
     end
 
     it 'lists only participant_group' do
-      get :index, group_id: group.id, event_id: course.id, filter: :participants
+      get :index, params: { group_id: group.id, event_id: course.id, filter: :participants }
       expect(assigns(:participations)).to eq [@participant]
     end
 
     it 'exports csv' do
       expect do
-        get :index, group_id: group.id, event_id: course.id, format: :csv
+        get :index, params: { group_id: group.id, event_id: course.id }, format: :csv
         expect(flash[:notice]).to match(/Export wird im Hintergrund gestartet und nach Fertigstellung heruntergeladen./)
       end.to change(Delayed::Job, :count).by(1)
     end
@@ -81,13 +81,13 @@ describe Event::ParticipationsController do
       let(:person) { people(:bulei) }
 
       it "updates attributes on create" do
-        post :create, group_id: group.id, event_id: course.id, event_participation: custom_attrs
+        post :create, params: { group_id: group.id, event_id: course.id, event_participation: custom_attrs }
         expect(assigns(:participation)).to be_payed
         expect(assigns(:participation).internal_comment).to eq 'test'
       end
 
       it "updates attributes on update" do
-        patch :update, group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs
+        patch :update, params: { group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs }
         expect(participation.reload).to be_payed
         expect(participation.reload.internal_comment).to eq 'test'
       end
@@ -97,7 +97,7 @@ describe Event::ParticipationsController do
         before { activate_participation }
 
         it "includes columns in index page" do
-          get :index, group_id: group.id, event_id: course.id, filter: :participants
+          get :index, params: { group_id: group.id, event_id: course.id, filter: :participants }
           html = Capybara::Node::Simple.new(response.body)
           expect(html).to have_content 'Ortsgruppe'
           expect(html).to have_content 'Bezahlt'
@@ -124,19 +124,19 @@ describe Event::ParticipationsController do
                                              person: Fabricate(:person,
                                                                ortsgruppe: groups(:burgdorf))))
 
-          get :index, group_id: group.id, event_id: course.id, sort: :ortsgruppe
+          get :index, params: { group_id: group.id, event_id: course.id, sort: :ortsgruppe }
           expect(assigns(:participations).map { |p| p.person.ortsgruppe_label }).to eq([nil, 'Burgdorf', 'Jona', 'StZH'])
         end
 
         it "includes attributes on show" do
-          get :show, group_id: group.id, event_id: course.id, id: participation.id
+          get :show, params: { group_id: group.id, event_id: course.id, id: participation.id }
           html = Capybara::Node::Simple.new(response.body)
           expect(html).to have_content 'Bezahlt'
           expect(html).to have_content 'Interne Bemerkung'
         end
 
         it "includes attributes on edit" do
-          get :edit, group_id: group.id, event_id: course.id, id: participation.id
+          get :edit, params: { group_id: group.id, event_id: course.id, id: participation.id }
           html = Capybara::Node::Simple.new(response.body)
           expect(html).to have_content 'Bezahlt'
           expect(html).to have_content 'Interne Bemerkung'
@@ -151,14 +151,14 @@ describe Event::ParticipationsController do
       let(:person) { people(:al_altst) }
 
       it "ignores attributes on create" do
-        post :create, group_id: group.id, event_id: course.id, event_participation: custom_attrs
+        post :create, params: { group_id: group.id, event_id: course.id, event_participation: custom_attrs }
         expect(assigns(:participation)).not_to be_payed
         expect(assigns(:participation).internal_comment).to be_blank
       end
 
       it "not allowed to update" do
         expect do
-          patch :update, group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs
+          patch :update, params: { group_id: group.id, event_id: course.id, id: participation.id, event_participation: custom_attrs }
         end.to raise_error CanCan::AccessDenied
       end
 
@@ -167,16 +167,16 @@ describe Event::ParticipationsController do
         before { activate_participation }
 
         it "does not include columns on index page" do
-          get :index, group_id: group.id, event_id: course.id, filter: :participants
+          get :index, params: { group_id: group.id, event_id: course.id, filter: :participants }
         end
 
         it "does not include attributes on show" do
-          get :show, group_id: group.id, event_id: course.id, id: participation.id
+          get :show, params: { group_id: group.id, event_id: course.id, id: participation.id }
         end
 
         it "does not render edit page" do
           expect do
-            get :edit, group_id: group.id, event_id: course.id, id: participation.id
+            get :edit, params: { group_id: group.id, event_id: course.id, id: participation.id }
           end.to raise_error CanCan::AccessDenied
         end
 
