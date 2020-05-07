@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-class AddPeopleContactDataVisible < ActiveRecord::Migration
+class AddPeopleContactDataVisible < ActiveRecord::Migration[4.2]
   def change
     types = Role.all_types.select { |r| r.permissions.include?(:contact_data) }
     Person.where(id: Role.where(type: types).select(:person_id)).update_all(contact_data_visible: true)

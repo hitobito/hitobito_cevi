@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-class AddOldDataToPeople < ActiveRecord::Migration
+class AddOldDataToPeople < ActiveRecord::Migration[4.2]
   def change
     add_column(:people, :old_data, :text)
   end

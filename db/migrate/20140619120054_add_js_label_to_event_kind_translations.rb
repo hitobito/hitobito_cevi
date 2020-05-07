@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-class AddJsLabelToEventKindTranslations < ActiveRecord::Migration
+class AddJsLabelToEventKindTranslations < ActiveRecord::Migration[4.2]
   def change
     add_column(:event_kind_translations, :j_s_label, :string)
   end

@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-class AddPersonOrtsgruppe < ActiveRecord::Migration
+class AddPersonOrtsgruppe < ActiveRecord::Migration[4.2]
   def change
     add_column(:people, :ortsgruppe_id, :integer)
 

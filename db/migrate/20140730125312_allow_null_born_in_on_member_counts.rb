@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-class AllowNullBornInOnMemberCounts < ActiveRecord::Migration
+class AllowNullBornInOnMemberCounts < ActiveRecord::Migration[4.2]
   def change
     change_column(:member_counts, :born_in, :integer, null: true)
   end

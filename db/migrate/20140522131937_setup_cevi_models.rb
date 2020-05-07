@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-class SetupCeviModels < ActiveRecord::Migration
+class SetupCeviModels < ActiveRecord::Migration[4.2]
   def change
     add_column :people, :title, :string
 

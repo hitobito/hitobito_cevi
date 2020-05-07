@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-class AdditionalEventParticipationColumns < ActiveRecord::Migration
+class AdditionalEventParticipationColumns < ActiveRecord::Migration[4.2]
   def change
     add_column(:event_participations, :internal_comment, :text)
     add_column(:event_participations, :payed, :boolean)
