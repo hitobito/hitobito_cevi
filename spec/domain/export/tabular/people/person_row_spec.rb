@@ -27,7 +27,7 @@ describe Export::Tabular::People do
     its(:headers) { should eq simple_headers }
 
     before do
-      person.update_attributes(salutation_parents: 'Herr & Frau',
+      person.update(salutation_parents: 'Herr & Frau',
                                name_parents: 'Meier',
                                ortsgruppe_id: groups(:stadtzh).id)
     end
@@ -52,10 +52,10 @@ describe Export::Tabular::People do
     let(:data) { Export::Tabular::People::PeopleFull.csv(list) }
 
     before do
-      person.update_attributes(canton: 'be',
-                               confession: 'rk',
-                               correspondence_language: 'de',
-                               salutation: 'formal')
+      person.update(canton: 'be',
+                    confession: 'rk',
+                    correspondence_language: 'de',
+                    salutation: 'formal')
 
     end
 

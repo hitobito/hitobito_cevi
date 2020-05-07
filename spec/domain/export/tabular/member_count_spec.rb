@@ -65,10 +65,10 @@ describe Export::Tabular::MemberCount do
     let(:entry) { count(mitgliederorganisation: groups(:be)).list.first }
     let(:group) { groups(:jungschar_burgd) }
 
-    before { group.update_attributes(name: 'Jungschar Burgdorf',
-                                     address: 'Dorfplatz 1',
-                                     zip_code: 3455,
-                                     town: 'Burgdorf') }
+    before { group.update(name: 'Jungschar Burgdorf',
+                          address: 'Dorfplatz 1',
+                          zip_code: 3455,
+                          town: 'Burgdorf') }
 
     it 'has group attributes attributes set' do
       expect(entry.name).to eq 'Jungschar Burgdorf'

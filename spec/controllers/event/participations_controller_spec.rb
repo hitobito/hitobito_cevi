@@ -73,7 +73,7 @@ describe Event::ParticipationsController do
 
     def activate_participation
       participation.roles << Fabricate(:event_role, type: course.participant_types.first.name)
-      participation.update_attributes(active: true, internal_comment: 'test', payed: true)
+      participation.update(active: true, internal_comment: 'test', payed: true)
     end
 
 
