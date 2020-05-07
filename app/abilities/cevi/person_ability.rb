@@ -108,7 +108,7 @@ module Cevi::PersonAbility
   end
 
   def subject_event_groups
-    Group.joins(:events).where(events: { id: subject.events.select(:id) }).uniq
+    Group.joins(:events).where(events: { id: subject.events.select(:id) }).distinct
   end
 
   def angestellter_or_geschaeftsfuehrung_roles

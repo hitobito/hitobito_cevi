@@ -90,7 +90,7 @@ class MemberCounter
            where(roles: { group_id: group.self_and_descendants,
                           type: self.class.counted_roles.collect(&:sti_name),
                           deleted_at: nil }).
-           uniq
+           distinct
   end
 
   private
