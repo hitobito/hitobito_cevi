@@ -21,7 +21,7 @@
                           data: { provide: :typeahead, source: existing_person_correspondence_languages }
 
   = f.labeled(:canton) do
-    .span6{style: 'margin-left: 0px'}
+    .span6.shown{style: 'margin-left: 0px'}
       = f.collection_select :canton,
                             possible_person_cantons,
                             :id,
@@ -41,7 +41,7 @@
   = f.labeled_input_field :old_data if can?(:update_old_data, entry)
 
   = f.labeled(:ortsgruppe_id) do
-    .span6{style: 'margin-left: 0px'}
+    .span6.shown{style: 'margin-left: 0px'}
       = f.collection_select :ortsgruppe_id,
                             Group::Ortsgruppe.without_deleted.order(:name),
                             :id,
