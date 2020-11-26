@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -33,6 +33,7 @@ module Cevi::PersonReadables
     accessible_conditions_without_spender.tap do |condition|
       financials_condition(condition)
       unconfined_from_above_condition(condition)
+      condition.delete(*contact_data_condition) if contact_data_visible?
     end
   end
 
