@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
@@ -10,9 +10,17 @@ module Cevi::PersonDecorator
 
   included do
     alias_method_chain :roles_grouped, :filtered_spender_roles
+    alias_method_chain :filtered_roles, :spenders_removed
   end
 
   private
+
+  def filtered_roles_with_spenders_removed(group)
+    filtered_roles_without_spenders_removed(group).reject do |role|
+      role.is_a?(::Group::MitgliederorganisationSpender::Spender) &&
+        role.person_id != current_user.id
+    end
+  end
 
   def roles_grouped_with_filtered_spender_roles
     roles_grouped_without_filtered_spender_roles.collect do |group, roles|
