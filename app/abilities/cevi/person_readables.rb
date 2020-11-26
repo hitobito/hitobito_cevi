@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
@@ -99,7 +99,7 @@ module Cevi::PersonReadables
   end
 
   def financial_layers_ids
-    @financal_layer_ids ||= user.groups_with_permission(:financials).map(&:layer_group_id)
+    @financial_layers_ids ||= user.groups_with_permission(:financials).map(&:layer_group_id)
   end
 
 end
