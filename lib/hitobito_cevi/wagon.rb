@@ -1,4 +1,4 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
@@ -13,20 +13,22 @@ module HitobitoCevi
     app_requirement '>= 0'
 
     # Add a load path for this specific wagon
-    config.autoload_paths += %W( #{config.root}/app/abilities
-                                 #{config.root}/app/domain
-                                 #{config.root}/app/serializers )
+    config.autoload_paths += %W[
+      #{config.root}/app/abilities
+      #{config.root}/app/domain
+      #{config.root}/app/serializers
+    ]
 
 
-    config.to_prepare do
+    config.to_prepare do # rubocop:disable Metrics/BlockLength
       # extend application classes here
       # models
-      Group.send :include, Cevi::Group
-      Person.send :include, Cevi::Person
-      Role.send :include, Cevi::Role
+      Group.include Cevi::Group
+      Person.include Cevi::Person
+      Role.include Cevi::Role
 
-      Event::Kind.send :include, Cevi::Event::Kind
-      Event::Course.send :include, Cevi::Event::Course
+      Event::Kind.include Cevi::Event::Kind
+      Event::Course.include Cevi::Event::Course
       Event::Role::AssistantLeader.permissions = [:participations_read]
 
       # :financials may edit all people in a Group::Spender group.
@@ -35,15 +37,15 @@ module HitobitoCevi
       Role::Permissions << :financials << :unconfined_below
 
       # abilities
-      EventAbility.send :include, Cevi::EventAbility
-      GroupAbility.send :include, Cevi::GroupAbility
-      PersonAbility.send :include, Cevi::PersonAbility
-      RoleAbility.send :include, Cevi::RoleAbility
-      VariousAbility.send :include, Cevi::VariousAbility
-      Event::ParticipationAbility.send :include, Cevi::Event::ParticipationAbility
-      PersonReadables.send :include, Cevi::PersonReadables
-      PersonLayerWritables.send :include, Cevi::PersonLayerWritables
-      AbilityDsl::Base.send :include, Cevi::AbilityDsl::Base
+      EventAbility.include Cevi::EventAbility
+      GroupAbility.include Cevi::GroupAbility
+      PersonAbility.include Cevi::PersonAbility
+      RoleAbility.include Cevi::RoleAbility
+      VariousAbility.include Cevi::VariousAbility
+      Event::ParticipationAbility.include Cevi::Event::ParticipationAbility
+      PersonReadables.include Cevi::PersonReadables
+      PersonLayerWritables.include Cevi::PersonLayerWritables
+      AbilityDsl::Base.include Cevi::AbilityDsl::Base
 
       # domain
       Event::ParticipationFilter.load_entries_includes.each do |incl|
@@ -51,35 +53,35 @@ module HitobitoCevi
           incl[:person].prepend :ortsgruppe
         end
       end
-      Export::Tabular::People::PersonRow.send :include, Cevi::Export::Tabular::People::PersonRow
-      Export::Tabular::People::PeopleAddress.send(
-        :include, Cevi::Export::Tabular::People::PeopleAddress)
-      Export::Tabular::People::ParticipationNdbjsRow.send(
-        :include, Cevi::Export::Tabular::People::ParticipationNdbjsRow)
-      Import::Person.send :include, Cevi::Import::Person
+      Export::Tabular::People::PersonRow.include Cevi::Export::Tabular::People::PersonRow
+      Export::Tabular::People::PeopleAddress.include Cevi::Export::Tabular::People::PeopleAddress
+      Export::Tabular::People::ParticipationNdbjsRow.include(
+        Cevi::Export::Tabular::People::ParticipationNdbjsRow
+      )
+      Import::Person.include Cevi::Import::Person
 
       # serializers
-      PersonSerializer.send :include, Cevi::PersonSerializer
-      PeopleSerializer.send :include, Cevi::PeopleSerializer
-      GroupSerializer.send :include, Cevi::GroupSerializer
-      EventParticipationSerializer.send :include, Cevi::EventParticipationSerializer
+      PersonSerializer.include Cevi::PersonSerializer
+      PeopleSerializer.include Cevi::PeopleSerializer
+      GroupSerializer.include Cevi::GroupSerializer
+      EventParticipationSerializer.include Cevi::EventParticipationSerializer
 
       # controllers
-      EventsController.send :include, Cevi::EventsController
+      EventsController.include Cevi::EventsController
       Event::KindsController.permitted_attrs += [:j_s_label]
-      Event::ParticipationsController.send :include, Cevi::Event::ParticipationsController
+      Event::ParticipationsController.include Cevi::Event::ParticipationsController
 
-      PeopleController.send :include, Cevi::PeopleController
+      PeopleController.include Cevi::PeopleController
 
       # jobs
-      Export::EventParticipationsExportJob.send :include, Cevi::Export::EventParticipationsExportJob
+      Export::EventParticipationsExportJob.include Cevi::Export::EventParticipationsExportJob
 
       # helpers
-      Sheet::Group.send :include, Cevi::Sheet::Group
+      Sheet::Group.include Cevi::Sheet::Group
 
       # decorators
-      PaperTrail::VersionDecorator.send :include, Cevi::PaperTrail::VersionDecorator
-      PersonDecorator.send :include, Cevi::PersonDecorator
+      PaperTrail::VersionDecorator.include Cevi::PaperTrail::VersionDecorator
+      PersonDecorator.include Cevi::PersonDecorator
     end
 
     initializer 'cevi.add_settings' do |_app|
