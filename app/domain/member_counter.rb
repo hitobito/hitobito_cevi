@@ -26,6 +26,7 @@ class MemberCounter
 
   IGNORED_ROLE_NAMES = %w(
     FreierMitarbeiter
+    Coach
   ).freeze
 
   attr_reader :year, :group
