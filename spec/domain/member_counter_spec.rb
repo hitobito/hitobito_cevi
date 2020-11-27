@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -39,6 +39,8 @@ describe 'MemberCounter' do
               person: Fabricate(:person, gender: 'w', birthday: '1972-01-01'))
     Fabricate(Group::Jungschar::FreierMitarbeiter.name, group: jungschar_zh10,
               person: Fabricate(:person, gender: 'w', birthday: '1972-01-01'))
+    Fabricate(Group::Jungschar::Coach.name, group: jungschar_zh10,
+              person: Fabricate(:person, gender: 'w', birthday: '1972-01-01'))
 
     # soft delete role must not be counted
     Fabricate(Group::Jungschar::Abteilungsleiter.name, group: jungschar_zh10,
@@ -49,10 +51,10 @@ describe 'MemberCounter' do
   it 'does not include soft deleted role in group count' do
     load_data
 
-    expect(jungschar_zh10.people.count).to eq 2
+    expect(jungschar_zh10.people.count).to eq 3
     expect(Person.joins('INNER JOIN roles ON roles.person_id = people.id').
            where(roles: { group_id: jungschar_zh10.id }).
-           count).to eq(3)
+           count).to eq(4)
   end
 
   context 'instance' do
@@ -83,12 +85,13 @@ describe 'MemberCounter' do
 
     it 'should include desired roles of desired groups' do
       is_expected.to include(Group::Stufe::Teilnehmer,
-                     Group::Jungschar::Abteilungsleiter)
+                             Group::Jungschar::Abteilungsleiter)
     end
 
     it 'should exclude ignored roles of desired groups' do
       is_expected.not_to include(Group::Sport::FreierMitarbeiter,
-                         Group::JungscharExterne::Externer)
+                                 Group::JungscharExterne::Externer,
+                                 Group::Jungschar::Coach)
     end
 
     it 'should exclude roles from ignored groups' do

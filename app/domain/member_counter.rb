@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -13,7 +13,7 @@ class MemberCounter
     Group::Jungschar,
     Group::TenSing,
     Group::WeitereArbeitsgebiete
-  ]
+  ].freeze
   GROUPS = TOP_LEVEL + [
     Group::SportTeamGruppe,
     Group::WeitereArbeitsgebieteTeamGruppe,
@@ -24,9 +24,10 @@ class MemberCounter
     Group::TenSingTeamGruppe
   ]
 
-  IGNORED_ROLE_NAMES = [
-    'FreierMitarbeiter'
-  ]
+  IGNORED_ROLE_NAMES = %w(
+    FreierMitarbeiter
+    Coach
+  ).freeze
 
   attr_reader :year, :group
 
@@ -57,7 +58,7 @@ class MemberCounter
     end
   end
 
-  ROLE_MAPPING = { person: filtered_roles }
+  ROLE_MAPPING = { person: filtered_roles }.freeze
 
   # create a new counter for with the given year and group.
   # beware: the year is only used to store the results and does not
@@ -87,10 +88,10 @@ class MemberCounter
 
   def members
     Person.joins(:roles).
-           where(roles: { group_id: group.self_and_descendants,
-                          type: self.class.counted_roles.collect(&:sti_name),
-                          deleted_at: nil }).
-           distinct
+      where(roles: { group_id: group.self_and_descendants,
+                     type: self.class.counted_roles.collect(&:sti_name),
+                     deleted_at: nil }).
+      distinct
   end
 
   private
@@ -125,6 +126,7 @@ class MemberCounter
 
   def increment(count, field)
     return unless field
+
     val = count.send(field)
     count.send("#{field}=", val ? val + 1 : 1)
   end
