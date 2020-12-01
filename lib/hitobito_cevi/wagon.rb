@@ -91,7 +91,7 @@ module HitobitoCevi
       Settings.reload!
     end
 
-    initializer 'jubla.add_inflections' do |_app|
+    initializer 'cevi.add_inflections' do |_app|
       ActiveSupport::Inflector.inflections do |inflect|
         inflect.irregular 'census', 'censuses'
       end
