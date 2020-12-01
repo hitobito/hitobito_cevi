@@ -24,13 +24,13 @@ describe EventsController do
         contact = Person.first
 
         post :create, params: {
-                                                        event: {  group_ids: [group.id],
-                                                          name: 'foo',
-                                                          kind_id: event_kind_id,
-                                                          dates_attributes: [date],
-                                                          contact_id: contact.id,
-                                                          type: 'Event::Course' },
-                                                group_id: group.id
+          event: {  group_ids: [group.id],
+                    name: 'foo',
+                    kind_id: event_kind_id,
+                    dates_attributes: [date],
+                    contact_id: contact.id,
+                    type: 'Event::Course' },
+          group_id: group.id
         }
 
 
@@ -46,13 +46,13 @@ describe EventsController do
 
       it 'creates new event course without contact' do
         post :create, params: {
-                                                        event: {  group_ids: [group.id],
-                                                          name: 'foo',
-                                                          kind_id: event_kind_id,
-                                                          contact_id: '',
-                                                          dates_attributes: [date],
-                                                          type: 'Event::Course' },
-                                                group_id: group.id
+          event: {  group_ids: [group.id],
+                    name: 'foo',
+                    kind_id: event_kind_id,
+                    contact_id: '',
+                    dates_attributes: [date],
+                    type: 'Event::Course' },
+          group_id: group.id
         }
 
         event = assigns(:event)
@@ -65,12 +65,12 @@ describe EventsController do
 
       it 'should set application contact if only one is available' do
         post :create, params: {
-                                                                  event: {  group_ids: [group.id],
-                                                          name: 'foo',
-                                                          kind_id: event_kind_id,
-                                                          dates_attributes: [date],
-                                                          type: 'Event::Course' },
-                                                          group_id: group.id
+          event: {  group_ids: [group.id],
+                    name: 'foo',
+                    kind_id: event_kind_id,
+                    dates_attributes: [date],
+                    type: 'Event::Course' },
+          group_id: group.id
         }
 
         event = assigns(:event)
