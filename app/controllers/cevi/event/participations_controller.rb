@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -19,6 +19,14 @@ module Cevi
           end
 
         alias_method_chain :assign_attributes, :check
+      end
+
+      def become_a_leader
+        if entry.update_columns(leader_interest: true) # rubocop:disable Rails/SkipsModelValidations
+          flash[:notice] = t('event.participations.become_a_leader.success')
+        end
+
+        redirect_to group_event_participation_path(@group, @event, entry)
       end
 
       private

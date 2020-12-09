@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2017, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -100,6 +100,18 @@ describe Event::ParticipationAbility do
       Fabricate(Group::MitgliederorganisationGremium::Mitglied.name.to_sym, group: gremium)
       participation = Fabricate(:event_participation, event: Fabricate(:event, groups: [groups(:be)]))
       is_expected.not_to be_able_to(:show, participation)
+    end
+  end
+
+  context 'Mitglied' do
+    it 'may signal to become a leader' do
+      bern_mitglieder = Fabricate(Group::MitgliederorganisationMitglieder.name.to_sym, parent: groups(:be))
+      role = Fabricate(Group::MitgliederorganisationMitglieder::Mitglied.name.to_sym, group: bern_mitglieder)
+      participation = Fabricate(:event_participation,
+                                event: Fabricate(:event, groups: [bern_mitglieder]),
+                                person: role.person)
+
+      expect(Ability.new(role.person)).to be_able_to(:become_a_leader, participation)
     end
   end
 end

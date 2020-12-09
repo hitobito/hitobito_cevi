@@ -44,6 +44,14 @@ de:
   census_evaluation/mitgliederorganisation:
     email_sent: Erinnerungsemail an %{group} geschickt
 
+  event:
+    participations:
+      actions_show_cevi:
+        interest_join_leaders: 'Mitarbeit im Leiterteam'
+        interest_join_leaders_tooltip: 'Interesse an der Mitarbeit im Leiterteam melden'
+      become_a_leader:
+        success: 'Interesse an der Mitarbeit im Leiterteam wurde hinterlegt'
+
   events:
     form:
       caption_requires_approval: 'Der Coach wird informiert und muss die Anmeldung bestätigen'

@@ -3,4 +3,8 @@
 -#  or later. See the COPYING file at the top-level directory or at
 -#  https://github.com/hitobito/hitobito_cevi.
 
-= render_attrs(@participation, :internal_comment, :payed) if can?(:update, @participation)
+- if can?(:update, @participation)
+  - attrs = [:internal_comment, :payed]
+  - attrs << :leader_interest if @participation.leader_interest?
+
+  = render_attrs(@participation, *attrs)
