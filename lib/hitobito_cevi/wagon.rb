@@ -84,6 +84,9 @@ module HitobitoCevi
       # decorators
       PaperTrail::VersionDecorator.include Cevi::PaperTrail::VersionDecorator
       PersonDecorator.include Cevi::PersonDecorator
+
+      # mailer
+      Event::ParticipationMailer.prepend Cevi::Event::ParticipationMailer
     end
 
     initializer 'cevi.add_settings' do |_app|
