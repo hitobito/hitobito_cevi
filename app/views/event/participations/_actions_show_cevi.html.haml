@@ -9,3 +9,6 @@
                   :hand_point_up,
                   title: t('.interest_join_leaders_tooltip'),
                   method: :patch)
+
+- if entry.leader_interest? && can?(:new, @event.new_role)
+  = Dropdown::Event::RoleAdd.new(self, @group, @event, entry.person)
