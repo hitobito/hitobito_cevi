@@ -803,6 +803,7 @@ de:
       event/participation:
         internal_comment: Interne Bemerkung
         payed: Bezahlt
+        leader_interest: Leiterteam-Interesse
 
       event/kind:
         j_s_label: J+S Bezeichnung

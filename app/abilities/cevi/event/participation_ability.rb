@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2017, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -10,6 +10,8 @@ module Cevi::Event::ParticipationAbility
 
   included do
     on(Event::Participation) do
+      permission(:any).may(:become_a_leader).her_own_if_not_leader
+
       permission(:unconfined_below).
         may(:create_tentative).
         person_in_same_layer_or_below
@@ -18,6 +20,12 @@ module Cevi::Event::ParticipationAbility
         may(:show).
         in_same_layer_or_below_if_ausbildungsmitglied
     end
+  end
+
+  def her_own_if_not_leader
+    her_own &&
+      subject.roles.all? { |r| r.is_a? Event::Course::Role::Participant } &&
+      !subject.leader_interest?
   end
 
   def person_in_same_layer_or_below

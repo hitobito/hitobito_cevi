@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -27,6 +27,16 @@ Rails.application.routes.draw do
         end
 
         get 'population' => 'population#index'
+      end
+
+      resources :events, only: [] do # do not redefine events actions, only add new ones
+        scope module: 'event' do
+          resources :participations, only: [] do
+            member do
+              patch :become_a_leader
+            end
+          end
+        end
       end
 
       resource :member_counts, only: [:create, :edit, :update, :destroy]

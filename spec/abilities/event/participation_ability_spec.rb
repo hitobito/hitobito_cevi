@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2017, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -10,7 +10,8 @@ require 'spec_helper'
 describe Event::ParticipationAbility do
 
   def build(attrs)
-    course = Event::Course.new(groups: attrs.fetch(:groups).map { |g| groups(g) }, tentative_applications: true)
+    course = Event::Course.new(groups: attrs.fetch(:groups).map { |g| groups(g) },
+                               tentative_applications: true)
     @participation = Event::Participation.new(event: course, person: attrs[:person])
   end
 
@@ -20,17 +21,19 @@ describe Event::ParticipationAbility do
   subject { Ability.new(user) }
 
   context 'participation with person' do
-
     context 'layer_and_below_full' do
-      let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter.name, group: groups(:zhshgl_gs)) }
+      let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter.name,
+                             group: groups(:zhshgl_gs)) }
 
       it 'may not create_tentative for person in upper layer' do
-        person = Fabricate(Group::DachverbandGeschaeftsstelle::Geschaeftsleiter.name, group: groups(:dachverband_gs)).person
+        person = Fabricate(Group::DachverbandGeschaeftsstelle::Geschaeftsleiter.name,
+                           group: groups(:dachverband_gs)).person
         is_expected.not_to be_able_to(:create_tentative, build(groups: [:zhshgl], person: person))
       end
 
       it 'may create_tentative for person in his layer' do
-        person = Fabricate(Group::MitgliederorganisationGremium::Mitglied.name, group: groups(:zhshgl_beirat)).person
+        person = Fabricate(Group::MitgliederorganisationGremium::Mitglied.name,
+                           group: groups(:zhshgl_beirat)).person
         is_expected.to be_able_to(:create_tentative, build(groups: [:zhshgl], person: person))
       end
 
@@ -54,7 +57,8 @@ describe Event::ParticipationAbility do
       let(:role) { Fabricate(Group::Ortsgruppe::AdministratorCeviDB.name, group: groups(:stadtzh)) }
 
       it 'may not create_tentative for person in upper layer' do
-        person = Fabricate(Group::DachverbandGeschaeftsstelle::Geschaeftsleiter.name, group: groups(:dachverband_gs)).person
+        person = Fabricate(Group::DachverbandGeschaeftsstelle::Geschaeftsleiter.name,
+                           group: groups(:dachverband_gs)).person
         is_expected.not_to be_able_to(:create_tentative, build(groups: [:zhshgl], person: person))
       end
 
@@ -71,7 +75,8 @@ describe Event::ParticipationAbility do
   end
 
   context 'Ausbildungsmitglied' do
-    let(:role) { Fabricate(Group::MitgliederorganisationGremium::Ausbildungsmitglied.name.to_sym, group: groups(:zhshgl_beirat)) }
+    let(:role) { Fabricate(Group::MitgliederorganisationGremium::Ausbildungsmitglied.name.to_sym,
+                           group: groups(:zhshgl_beirat)) }
 
     it 'may show participant in same layer course' do
       participation = Fabricate(:event_participation, event: events(:top_course))
@@ -79,12 +84,14 @@ describe Event::ParticipationAbility do
     end
 
     it 'may not show participant in same layer event' do
-      participation = Fabricate(:event_participation, event: Fabricate(:event, groups: [groups(:zhshgl_beirat)]))
+      participation = Fabricate(:event_participation,
+                                event: Fabricate(:event, groups: [groups(:zhshgl_beirat)]))
       is_expected.not_to be_able_to(:show, participation)
     end
 
     it 'may not show participant in lower layer event' do
-      participation = Fabricate(:event_participation, event: Fabricate(:event, groups: [groups(:stadtzh)]))
+      participation = Fabricate(:event_participation,
+                                event: Fabricate(:event, groups: [groups(:stadtzh)]))
       is_expected.not_to be_able_to(:show, participation)
     end
 
@@ -93,6 +100,18 @@ describe Event::ParticipationAbility do
       Fabricate(Group::MitgliederorganisationGremium::Mitglied.name.to_sym, group: gremium)
       participation = Fabricate(:event_participation, event: Fabricate(:event, groups: [groups(:be)]))
       is_expected.not_to be_able_to(:show, participation)
+    end
+  end
+
+  context 'Mitglied' do
+    it 'may signal to become a leader' do
+      bern_mitglieder = Fabricate(Group::MitgliederorganisationMitglieder.name.to_sym, parent: groups(:be))
+      role = Fabricate(Group::MitgliederorganisationMitglieder::Mitglied.name.to_sym, group: bern_mitglieder)
+      participation = Fabricate(:event_participation,
+                                event: Fabricate(:event, groups: [bern_mitglieder]),
+                                person: role.person)
+
+      expect(Ability.new(role.person)).to be_able_to(:become_a_leader, participation)
     end
   end
 end
