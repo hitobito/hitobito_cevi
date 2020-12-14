@@ -1,0 +1,21 @@
+-#
+  Copyright (c) 2020, CEVI Regionalverband ZH-SH-GL. This file is part of
+  hitobito and licensed under the Affero General Public License version 3
+  or later. See the COPYING file at the top-level directory or at
+  https://github.com/hitobito/hitobito.
+
+- only_one_role = entry.roles.one?
+= section_table(Role.model_name.human(count: 2), entry.roles.includes(:participation)) do |role|
+
+  %td
+    %strong= role.to_s
+  %td
+    - if can?(:edit, role)
+      = link_action_edit(edit_group_event_role_path(@group, @event, role))
+  %td
+    - if only_one_role
+      - if !role.restricted? && can?(:destroy, role)
+        = link_action_destroy(group_event_role_path(@group, @event, role))
+    - else
+      - if can?(:destroy, role)
+        = link_action_destroy(group_event_role_path(@group, @event, role))
