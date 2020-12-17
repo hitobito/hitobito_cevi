@@ -44,6 +44,8 @@ de:
   census_evaluation/mitgliederorganisation:
     email_sent: Erinnerungsemail an %{group} geschickt
 
+  dropdown/event/role_add:
+    add_leader: Rolle hinzufügen
 
   events:
     form:

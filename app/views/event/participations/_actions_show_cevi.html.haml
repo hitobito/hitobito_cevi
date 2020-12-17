@@ -3,5 +3,5 @@
 -#  or later. See the COPYING file at the top-level directory or at
 -#  https://github.com/hitobito/hitobito_cevi.
 
-- if entry.leader_interest? && can?(:new, @event.new_role)
-  = Dropdown::Event::RoleAdd.new(self, @group, @event, entry.person)
+- if can?(:new, @event.new_role)
+  = new_course_leader_role_dropdown(@group, entry)
