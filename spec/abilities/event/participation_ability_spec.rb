@@ -102,16 +102,4 @@ describe Event::ParticipationAbility do
       is_expected.not_to be_able_to(:show, participation)
     end
   end
-
-  context 'Mitglied' do
-    it 'may signal to become a leader' do
-      bern_mitglieder = Fabricate(Group::MitgliederorganisationMitglieder.name.to_sym, parent: groups(:be))
-      role = Fabricate(Group::MitgliederorganisationMitglieder::Mitglied.name.to_sym, group: bern_mitglieder)
-      participation = Fabricate(:event_participation,
-                                event: Fabricate(:event, groups: [bern_mitglieder]),
-                                person: role.person)
-
-      expect(Ability.new(role.person)).to be_able_to(:become_a_leader, participation)
-    end
-  end
 end
