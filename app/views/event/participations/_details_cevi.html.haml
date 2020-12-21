@@ -4,7 +4,4 @@
 -#  https://github.com/hitobito/hitobito_cevi.
 
 - if can?(:update, @participation)
-  - attrs = [:internal_comment, :payed]
-  - attrs << :leader_interest if @participation.leader_interest?
-
-  = render_attrs(@participation, *attrs)
+  = render_attrs(@participation, :internal_comment, :payed)

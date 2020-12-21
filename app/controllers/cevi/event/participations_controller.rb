@@ -21,10 +21,6 @@ module Cevi
         alias_method_chain :assign_attributes, :check
       end
 
-      # def become_a_leader
-      #   entry.update_columns(leader_interest: true)
-      # end
-
       private
 
       # only roles with update permission are allowed to set those attributes
