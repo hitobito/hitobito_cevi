@@ -33,5 +33,6 @@ install:
   - npm i -g yarn
   - yarn install
   - bundle exec rails webpacker:compile
+  - cp -rvf public/packs public/packs-test && echo "copied public/packs -> public/packs-test"
 script:
   - bundle exec rake db:create ci:wagon --trace
