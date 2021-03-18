@@ -43,6 +43,8 @@ devs.each do |name, email|
   seeder.seed_developer(name, email, root, Group::Dachverband::Administrator)
 end
 
+seeder.assign_role_to_root(root, Group::Dachverband::Administrator)
+
 cevi_emails = %w(zora@cevi.ch
   simba.uster@cevi.ch
   lb@blattertech.ch
