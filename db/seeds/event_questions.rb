@@ -26,5 +26,14 @@ role_names = Event::Course.role_types
     question: attrs.delete(:question),
   )
   eq.attributes = attrs
-  eq.save!
+
+  if eq.save
+    puts "<Event::Question '#{eq.question}' -- '#{eq.choices}'> saved."
+  else
+    raise <<~ERRORMESSAGE
+      Error while saving: <Event::Question '#{eq.question}' -- '#{eq.choices}'>.
+
+      #{eq.errors.full_messages.to_sentence}
+    ERRORMESSAGE
+  end
 end
