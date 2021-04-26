@@ -10,8 +10,9 @@ role_names = Event::Course.role_types
                           .map { |role| I18n.t(role.name.underscore, scope: 'activerecord.models', count: 1) }
                           .map { |role_name| role_name.gsub(',', '') }
 
-# if we want to change the wording, we can do this with a
-# data-migration alongside the same update here.
+# if we want to change the wording of the question, we can do this with a
+# data-migration alongside the same update here. choices and other attributes
+# are updated on every db:seed
 [
   {
     event_id: nil, # global question
