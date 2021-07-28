@@ -77,3 +77,8 @@ de:
       no_census_data_requested: Momentan ist keine Bestandesmeldung ausstehend.
       please_confirm_census_data: 'Bitte ergänze das Geschlecht aller Mitglieder und bestätige den Bestand deiner Gruppe mit "Bestand bestätigen".'
       missing_information: Um den Bestand bestätigen zu können, muss bei allen Mitgliedern das Geschlecht ausgefüllt sein.
+  devise:
+    mailer:
+      unlock_instructions:
+        body:
+          footer: 'Dieses E-Mail wurde von der CeviDB gesendet'
