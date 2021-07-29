@@ -81,4 +81,4 @@ de:
     mailer:
       unlock_instructions:
         body:
-          footer: 'Dieses E-Mail wurde von der CeviDB gesendet'
+          footer: 'Dieses E-Mail wurde von der CeviDB gesendet.'
