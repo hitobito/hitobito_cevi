@@ -15,7 +15,7 @@ module Cevi::PersonDecorator
 
   private
 
-  def filtered_roles_with_spenders_removed(group)
+  def filtered_roles_with_spenders_removed(group, multiple_groups = false)
     filtered_roles_without_spenders_removed(group).reject do |role|
       role.is_a?(::Group::MitgliederorganisationSpender::Spender) &&
         role.person_id != current_user.id
