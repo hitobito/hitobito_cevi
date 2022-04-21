@@ -53,6 +53,7 @@ module HitobitoCevi
           incl[:person].prepend :ortsgruppe
         end
       end
+      Export::Tabular::Groups::List::EXCLUDED_ATTRS += [:member_count]
       Export::Tabular::People::PersonRow.include Cevi::Export::Tabular::People::PersonRow
       Export::Tabular::People::PeopleAddress.include Cevi::Export::Tabular::People::PeopleAddress
       Export::Tabular::People::ParticipationNdbjsRow.include(
