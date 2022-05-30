@@ -27,7 +27,7 @@ describe Export::EventParticipationsExportJob do
   let(:event_role)    { Fabricate(:event_role, type: Event::Role::Leader.sti_name) }
   let(:participation) { Fabricate(:event_participation, event: course, person: person, roles: [event_role]) }
   let(:event_participation_filter) { Event::ParticipationFilter.new(course, user, params) }
-  let(:filepath) { AsyncDownloadFile::DIRECTORY.join('event_participation_export') }
+  let(:file) { AsyncDownloadFile.maybe_from_filename('event_participation_export', user.id, format) }
 
   before do
     SeedFu.quiet = true
@@ -42,7 +42,8 @@ describe Export::EventParticipationsExportJob do
     it 'dilligently' do
       subject.perform
 
-      lines = File.readlines("#{filepath}.csv")
+      lines = file.read.lines
+
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(/^Vorname;Nachname/)
       expect(lines[0].split(';').count).to match(18)
@@ -56,10 +57,11 @@ describe Export::EventParticipationsExportJob do
     it 'dilligently' do
       subject.perform
 
-      lines = File.readlines("#{filepath}.csv")
+      lines = file.read.lines
+
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(/^Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$/)
-      expect(lines[0].split(';').count).to match(39)
+      expect(lines[0].split(';').count).to match(40)
     end
   end
 end

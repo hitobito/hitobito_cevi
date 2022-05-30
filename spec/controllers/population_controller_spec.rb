@@ -17,7 +17,7 @@ describe PopulationController do
   let!(:leader) { Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym, group: jungschar).person }
   let!(:werbung) { Fabricate(Group::Jungschar::Werbung.name.to_sym, group: jungschar).person }
   let!(:freier_ma) { Fabricate(Group::Jungschar::FreierMitarbeiter.name.to_sym, group: jungschar).person }
-  let!(:deleted) { Fabricate(Group::Jungschar::Werbung.name.to_sym, group: jungschar, deleted_at: 1.year.ago) }
+  let!(:deleted) { Fabricate(Group::Jungschar::Werbung.name.to_sym, group: jungschar, created_at: 2.years.ago, deleted_at: 1.year.ago) }
   let!(:group_leader) { Fabricate(Group::Froeschli::Froeschlihauptleiter.name.to_sym, group: froeschli, person: werbung).person }
   let!(:child) { Fabricate(Group::Froeschli::Teilnehmer.name.to_sym, group: froeschli).person }
 
