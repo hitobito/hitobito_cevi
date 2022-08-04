@@ -12,7 +12,7 @@ describe Export::EventParticipationsExportJob do
   subject { Export::EventParticipationsExportJob.new(format,
                                                      user.id,
                                                      event_participation_filter,
-                                                     params.merge(filename: 'event_participation_export')) }
+                                                     params.merge(filename: filename)) }
 
   let(:group) { groups(:dachverband) }
   let(:user) { people(:bulei) }
@@ -27,7 +27,8 @@ describe Export::EventParticipationsExportJob do
   let(:event_role)    { Fabricate(:event_role, type: Event::Role::Leader.sti_name) }
   let(:participation) { Fabricate(:event_participation, event: course, person: person, roles: [event_role]) }
   let(:event_participation_filter) { Event::ParticipationFilter.new(course, user, params) }
-  let(:file) { AsyncDownloadFile.maybe_from_filename('event_participation_export', user.id, format) }
+  let(:filename) { AsyncDownloadFile.create_name('event_participation_export', user.id) }
+  let(:file) { AsyncDownloadFile.from_filename(filename, format) }
 
   before do
     SeedFu.quiet = true
