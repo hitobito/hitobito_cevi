@@ -49,8 +49,12 @@ module Cevi::PersonReadables
     if spender_visible?
       group.people.only_public_data
     else
-      group.people.only_public_data.visible_from_above(group)
+      group.people.only_public_data.merge(spender_accessible_condition)
     end
+  end
+
+  def spender_accessible_condition
+    Person.visible_from_above(group).or(Person.where(*herself_condition))
   end
 
   def in_same_layer_condition_with_spender(condition)

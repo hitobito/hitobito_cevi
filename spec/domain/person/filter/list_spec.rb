@@ -58,7 +58,7 @@ describe Person::Filter::List do
     end
   end
 
-  def filter(range: nil, group: @spenders, filter: PeopleFilter.new(name: 'name'))
+  def filter(range: nil, group: @spenders, filter: PeopleFilter.new(name: 'name', range: range))
     Person::Filter::List.new(group, bulei, filter)
   end
 end
