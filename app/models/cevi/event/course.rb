@@ -10,6 +10,7 @@ module Cevi::Event::Course
 
   included do
     self.used_attributes += [:application_contact_id]
+    self.used_attributes -= [:priorization]
 
     ### ASSOCIATIONS
 
