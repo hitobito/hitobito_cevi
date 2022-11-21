@@ -22,6 +22,10 @@ module Cevi::GroupAbility
         may(:remind_census, :update_member_counts, :delete_member_counts).
         in_upper_layer_hierarchy
 
+      permission(:financials).
+        may(:show_donors).
+        in_same_layer
+
       permission(:unconfined_below).may(:index_local_people).in_same_layer_or_below
     end
   end
