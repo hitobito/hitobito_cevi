@@ -56,8 +56,8 @@ module HitobitoCevi
       Export::Tabular::Groups::List::EXCLUDED_ATTRS += [:member_count]
       Export::Tabular::People::PersonRow.include Cevi::Export::Tabular::People::PersonRow
       Export::Tabular::People::PeopleAddress.include Cevi::Export::Tabular::People::PeopleAddress
-      Export::Tabular::People::ParticipationNdbjsRow.include(
-        Cevi::Export::Tabular::People::ParticipationNdbjsRow
+      Export::Tabular::People::ParticipationNdsRow.include(
+        Cevi::Export::Tabular::People::ParticipationNdsRow
       )
       Import::Person.include Cevi::Import::Person
 
