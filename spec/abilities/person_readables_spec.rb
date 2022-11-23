@@ -136,74 +136,15 @@ describe PersonReadables do
           let(:user) { service_token.dynamic_user }
           let(:service_token) { Fabricate(:service_token, show_donors: true, layer: groups(:zhshgl)) }
 
+          let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
           it 'has show_donors' do
             expect(service_token.show_donors).to eq(true)
           end
 
-          context 'with people' do
-            before { service_token.update(people: true) }
-
-            context 'in same layer' do
-              let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-              it 'may get spender people of spender group' do
-                other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-                is_expected.to include(other.person)
-              end
-            end
-
-            context 'in lower layer' do
-              let(:group) { Fabricate(Group::JungscharSpender.name, parent: groups(:jungschar_altst)) }
-
-              it 'may not get spender people of spender group' do
-                other = Fabricate(Group::JungscharSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
-          end
-
-          context 'with people_below' do
-            before { service_token.update(people_below: true) }
-
-            context 'in same layer' do
-              let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-              it 'may not get spender people of spender group' do
-                other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
-
-            context 'in lower layer' do
-              let(:group) { Fabricate(Group::JungscharSpender.name, parent: groups(:jungschar_altst)) }
-
-              it 'may get spender people of spender group' do
-                other = Fabricate(Group::JungscharSpender::Spender.name, group: group)
-                is_expected.to include(other.person)
-              end
-            end
-          end
-
-          context 'with people and people_below' do
-            before { service_token.update(people: true, people_below: true) }
-
-            context 'in same layer' do
-              let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-              it 'may get spender people of spender group' do
-                other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-                is_expected.to include(other.person)
-              end
-            end
-
-            context 'in lower layer' do
-              let(:group) { Fabricate(Group::JungscharSpender.name, parent: groups(:jungschar_altst)) }
-
-              it 'may get spender people of spender group' do
-                other = Fabricate(Group::JungscharSpender::Spender.name, group: group)
-                is_expected.to include(other.person)
-              end
-            end
+          it 'may get spender people of spender group' do
+            other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+            is_expected.to include(other.person)
           end
         end
 
@@ -211,74 +152,16 @@ describe PersonReadables do
           let(:user) { service_token.dynamic_user }
           let(:service_token) { Fabricate(:service_token, show_donors: false, layer: groups(:zhshgl)) }
 
+          let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
           it 'does not have show_donors' do
             expect(service_token.show_donors).to eq(false)
           end
 
-          context 'with people' do
-            before { service_token.update(people: true) }
 
-            context 'in same layer' do
-              let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-              it 'may not get spender people of spender group in same layer' do
-                other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
-
-            context 'in lower layer' do
-              let(:group) { Fabricate(Group::JungscharSpender.name, parent: groups(:jungschar_altst)) }
-
-              it 'may not get spender people of spender group' do
-                other = Fabricate(Group::JungscharSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
-          end
-
-          context 'with people_below' do
-            before { service_token.update(people_below: true) }
-
-            context 'in same layer' do
-              let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-              it 'may not get spender people of spender group' do
-                other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
-
-            context 'in lower layer' do
-              let(:group) { Fabricate(Group::JungscharSpender.name, parent: groups(:jungschar_altst)) }
-
-              it 'may not get spender people of spender group' do
-                other = Fabricate(Group::JungscharSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
-          end
-
-          context 'with people and people_below' do
-            before { service_token.update(people: true, people_below: true) }
-
-            context 'in same layer' do
-              let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-              it 'may not get spender people of spender group' do
-                other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
-
-            context 'in lower layer' do
-              let(:group) { Fabricate(Group::JungscharSpender.name, parent: groups(:jungschar_altst)) }
-
-              it 'may not get spender people of spender group' do
-                other = Fabricate(Group::JungscharSpender::Spender.name, group: group)
-                is_expected.to_not include(other.person)
-              end
-            end
+          it 'may not get spender people of spender group in same layer' do
+            other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+            is_expected.to_not include(other.person)
           end
         end
       end
