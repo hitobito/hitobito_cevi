@@ -21,7 +21,8 @@ module Cevi::PersonReadables
   end
 
   def spender_visible?
-    group_read_in_this_group? ||
+    service_token_with_show_donors? ||
+      group_read_in_this_group? ||
       group_read_in_above_group? ||
       financial_layers_ids.include?(group.layer_group_id) ||
       unconfined_below_in_above_layer?
@@ -69,9 +70,10 @@ module Cevi::PersonReadables
   end
 
   def financials_condition(condition)
-    return if financial_layers_ids.blank?
+    return unless financial_layers_ids.present? || service_token_with_show_donors?
 
     additional_layer_ids = layer_groups_same_layer.collect(&:id) & financial_layers_ids
+    additional_layer_ids << service_token_layer_id if service_token_with_show_donors?
     query = layer_group_query(additional_layer_ids, Role.all_types)
     condition.or(*query)
   end
@@ -107,4 +109,19 @@ module Cevi::PersonReadables
     @financial_layers_ids ||= user.groups_with_permission(:financials).map(&:layer_group_id)
   end
 
+  def service_token_with_show_donors?
+    return false unless service_token
+
+    service_token.show_donors?
+  end
+
+  def service_token_layer_id
+    return unless service_token
+
+    service_token.layer_group_id
+  end
+
+  def service_token
+    @service_token ||= user.instance_variable_get(:@service_token) 
+  end
 end
