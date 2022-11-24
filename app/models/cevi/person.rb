@@ -90,4 +90,5 @@ module Cevi::Person
   def ortsgruppe_label
     ortsgruppe && (ortsgruppe.short_name.presence || ortsgruppe.name.presence)
   end
+
 end
