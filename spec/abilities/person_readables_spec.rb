@@ -130,7 +130,41 @@ describe PersonReadables do
           end
         end
       end
+
+      context 'using service_token' do
+        describe 'with show_donors' do
+          let(:user) { service_token.dynamic_user }
+          let(:service_token) { Fabricate(:service_token, show_donors: true, layer: groups(:zhshgl)) }
+
+          let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+          it 'has show_donors' do
+            expect(service_token.show_donors).to eq(true)
+          end
+
+          it 'may get spender people of spender group' do
+            other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+            is_expected.to include(other.person)
+          end
+        end
+
+        describe 'without show_donors' do
+          let(:user) { service_token.dynamic_user }
+          let(:service_token) { Fabricate(:service_token, show_donors: false, layer: groups(:zhshgl)) }
+
+          let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+          it 'does not have show_donors' do
+            expect(service_token.show_donors).to eq(false)
+          end
+
+
+          it 'may not get spender people of spender group in same layer' do
+            other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+            is_expected.to_not include(other.person)
+          end
+        end
+      end
     end
   end
-
 end

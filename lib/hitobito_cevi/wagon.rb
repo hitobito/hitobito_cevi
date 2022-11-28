@@ -46,6 +46,8 @@ module HitobitoCevi
       PersonReadables.include Cevi::PersonReadables
       PersonLayerWritables.include Cevi::PersonLayerWritables
       AbilityDsl::Base.include Cevi::AbilityDsl::Base
+      AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
+      AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]
 
       # domain
       Event::ParticipationFilter.load_entries_includes.each do |incl|
@@ -75,6 +77,8 @@ module HitobitoCevi
       PeopleController.include Cevi::PeopleController
 
       Person::LogController.prepend Cevi::Person::LogController
+
+      ServiceTokensController.include Cevi::ServiceTokensController
 
       # jobs
       Export::EventParticipationsExportJob.include Cevi::Export::EventParticipationsExportJob

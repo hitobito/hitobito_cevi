@@ -1,0 +1,7 @@
+- # Copyright (c) 2022, CEVI Schweiz. This file is part of
+- # hitobito_pbs and licensed under the Affero General Public License version 3
+- # or later. See the COPYING file at the top-level directory or at
+- # https://github.com/hitobito/hitobito_cevi.
+
+- if can?(:show_donors, parent)
+  = f.boolean_field(:show_donors, caption: model_class.human_attribute_name(:show_donors)) 

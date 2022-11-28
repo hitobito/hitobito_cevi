@@ -67,7 +67,87 @@ describe Person::Filter::List do
     end
   end
 
-  def filter(range: nil, group: @spenders, filter: PeopleFilter.new(name: 'name', range: range))
-    Person::Filter::List.new(group, bulei, filter)
+  context 'using service_token' do
+    let(:user) { service_token.dynamic_user }
+
+    subject { filter(range: 'deep', group: groups(:zhshgl), user: user).entries }
+
+    describe 'with show_donors' do
+      let(:service_token) { Fabricate(:service_token, show_donors: true, layer: groups(:zhshgl)) }
+
+      context 'with people' do
+        before { service_token.update(people: true) }
+
+        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+        it 'may get spender people of spender group' do
+          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+          is_expected.to include(other.person)
+        end
+      end
+
+      context 'with people_below' do
+        before { service_token.update(people_below: true) }
+
+        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+        it 'may get spender people of spender group' do
+          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+          is_expected.to include(other.person)
+        end
+      end
+
+      context 'with people and people_below' do
+        before { service_token.update(people: true, people_below: true) }
+
+        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+        it 'may get spender people of spender group' do
+          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+          is_expected.to include(other.person)
+        end
+      end
+    end
+
+    describe 'without show_donors' do
+      let(:service_token) { Fabricate(:service_token, show_donors: false, layer: groups(:zhshgl)) }
+
+      context 'with people' do
+        before { service_token.update(people: true) }
+
+        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+        it 'may not get spender people of spender group in same layer' do
+          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+          is_expected.to_not include(other.person)
+        end
+      end
+
+      context 'with people_below' do
+        before { service_token.update(people_below: true) }
+
+        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+        it 'may not get spender people of spender group' do
+          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+          is_expected.to_not include(other.person)
+        end
+      end
+
+      context 'with people and people_below' do
+        before { service_token.update(people: true, people_below: true) }
+
+        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
+
+        it 'may not get spender people of spender group' do
+          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
+          is_expected.to_not include(other.person)
+        end
+      end
+    end
+  end
+
+  def filter(range: nil, group: @spenders, user: bulei, filter: PeopleFilter.new(name: 'name', range: range))
+    Person::Filter::List.new(group, user, filter)
   end
 end
