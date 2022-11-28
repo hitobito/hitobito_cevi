@@ -14,7 +14,6 @@ describe Person::Filter::List do
   before do
     @spenders = Fabricate(Group::DachverbandSpender.sti_name, parent: dachverband)
     @spender  = Fabricate(Group::DachverbandSpender::Spender.sti_name, group: @spenders).person
-    Fabricate(Group::Dachverband::Administrator.sti_name, group: dachverband, person: @spender)
   end
 
   def self.each_range
@@ -25,12 +24,22 @@ describe Person::Filter::List do
 
 
   context Group::Dachverband::Administrator do
-    each_range do |range|
-      it "#{range} hides other spender role" do
-        filtered = filter(range: range)
-        expect(filtered.entries).to be_empty
-        expect(filtered.all_count).to eq 1
-      end
+    it "deep hides other spender role" do
+      filtered = filter(range: 'deep')
+      expect(filtered.entries).to be_empty
+      expect(filtered.all_count).to eq 1
+    end
+
+    it "layer hides other spender role, shows himself" do
+      filtered = filter(range: 'layer')
+      expect(filtered.entries).to eq([bulei])
+      expect(filtered.all_count).to eq 2
+    end
+
+    it "hides other spender role" do
+      filtered = filter(range: nil)
+      expect(filtered.entries).to be_empty
+      expect(filtered.all_count).to eq 1
     end
   end
 
