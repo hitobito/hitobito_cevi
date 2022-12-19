@@ -4,6 +4,8 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 de:
+  event/participations:
+    pending: 'Es wurde eine Voranmeldung für die %{full_entry_label} erstellt. Die Teilnahme ist noch nicht definitiv und muss von der Kursadministration bestätigt werden.'
   groups:
     tabs:
       population: Bestand
@@ -49,6 +51,7 @@ de:
 
   events:
     form:
+      caption_waiting_list: Teilnehmende können sich selbst immer nur voranmelden und müssen dann manuell zugewiesen werden, auch wenn es noch freie Plätze hat.
       caption_requires_approval: 'Der Coach wird informiert und muss die Anmeldung bestätigen'
 
   member_counts:

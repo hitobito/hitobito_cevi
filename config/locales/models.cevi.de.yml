@@ -10,6 +10,9 @@
 de:
   activerecord:
     models:
+      event/application:
+        one: Voranmeldung
+        other: Voranmeldungen
       group/dachverband:
         one: Dachverband
         other: Dachverbände
@@ -791,12 +794,16 @@ de:
         one: Anrede
         other: Anreden
     attributes:
+      event/course:
+        participation_states:
+          applied: Vorangemeldet
       census:
         year: Jahr
         start_at: Ab
         finish_at: Stichdatum
 
       event:
+        waiting_list: Voranmeldungen
         application_contact: Anmeldung an
         application_contact_id: Anmeldung an
 
