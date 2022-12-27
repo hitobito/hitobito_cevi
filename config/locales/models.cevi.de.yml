@@ -11,8 +11,8 @@ de:
   activerecord:
     models:
       event/application:
-        one: Voranmeldung
-        other: Voranmeldungen
+        one: Anmeldung
+        other: Anmeldungen
       group/dachverband:
         one: Dachverband
         other: Dachverbände
@@ -803,7 +803,7 @@ de:
         finish_at: Stichdatum
 
       event:
-        waiting_list: Voranmeldungen
+        waiting_list: Automatisch zugeteilt
         application_contact: Anmeldung an
         application_contact_id: Anmeldung an
 
