@@ -80,7 +80,7 @@ describe PersonDecorator do
   end
 
   context 'as service_token' do
-    let(:service_token) { Fabricate(:service_token, groups: true, people: true, people_below: true, layer: groups(:zhshgl)) }
+    let(:service_token) { Fabricate(:service_token, groups: true, people: true, permission: 'layer_and_below_read', layer: groups(:zhshgl)) }
 
     before do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(service_token.dynamic_user)

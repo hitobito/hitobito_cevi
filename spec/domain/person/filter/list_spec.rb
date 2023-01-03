@@ -75,7 +75,7 @@ describe Person::Filter::List do
     describe 'with show_donors' do
       let(:service_token) { Fabricate(:service_token, show_donors: true, layer: groups(:zhshgl)) }
 
-      context 'with people' do
+      context 'with people and layer_read' do
         before { service_token.update(people: true) }
 
         let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
@@ -86,19 +86,8 @@ describe Person::Filter::List do
         end
       end
 
-      context 'with people_below' do
-        before { service_token.update(people_below: true) }
-
-        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-        it 'may get spender people of spender group' do
-          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-          is_expected.to include(other.person)
-        end
-      end
-
-      context 'with people and people_below' do
-        before { service_token.update(people: true, people_below: true) }
+      context 'with people and layer_and_below_read' do
+        before { service_token.update(people: true, permission: 'layer_and_below_read') }
 
         let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
 
@@ -112,7 +101,7 @@ describe Person::Filter::List do
     describe 'without show_donors' do
       let(:service_token) { Fabricate(:service_token, show_donors: false, layer: groups(:zhshgl)) }
 
-      context 'with people' do
+      context 'with people and layer_read' do
         before { service_token.update(people: true) }
 
         let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
@@ -123,19 +112,8 @@ describe Person::Filter::List do
         end
       end
 
-      context 'with people_below' do
-        before { service_token.update(people_below: true) }
-
-        let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
-
-        it 'may not get spender people of spender group' do
-          other = Fabricate(Group::MitgliederorganisationSpender::Spender.name, group: group)
-          is_expected.to_not include(other.person)
-        end
-      end
-
-      context 'with people and people_below' do
-        before { service_token.update(people: true, people_below: true) }
+      context 'with people and layer_and_below_read' do
+        before { service_token.update(people: true, permission: 'layer_and_below_read') }
 
         let(:group) { Fabricate(Group::MitgliederorganisationSpender.name, parent: groups(:zhshgl)) }
 
