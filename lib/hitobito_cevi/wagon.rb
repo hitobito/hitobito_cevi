@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2023, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -62,6 +62,24 @@ module HitobitoCevi
         Cevi::Export::Tabular::People::ParticipationNdsRow
       )
       Import::Person.include Cevi::Import::Person
+
+      TableDisplay.register_column(Person,
+                                   TableDisplays::ShowFullColumn,
+                                   [
+                                     :additional_information,
+                                     :ahv_number_old,
+                                     :canton,
+                                     :confession,
+                                     :correspondence_language,
+                                     :joined,
+                                     :language,
+                                     :member_card_number,
+                                     :nationality,
+                                     :old_data,
+                                     :profession,
+                                     :salutation,
+                                     :title,
+                                   ])
 
       # serializers
       PersonSerializer.include Cevi::PersonSerializer
