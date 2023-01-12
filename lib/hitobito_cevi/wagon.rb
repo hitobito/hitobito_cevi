@@ -63,23 +63,29 @@ module HitobitoCevi
       )
       Import::Person.include Cevi::Import::Person
 
+      whitelisted_person_attrs = [
+        :additional_information,
+        :ahv_number_old,
+        :canton,
+        :confession,
+        :correspondence_language,
+        :joined,
+        :language,
+        :member_card_number,
+        :nationality,
+        :old_data,
+        :profession,
+        :salutation,
+        :title,
+      ]
+
       TableDisplay.register_column(Person,
                                    TableDisplays::ShowFullColumn,
-                                   [
-                                     :additional_information,
-                                     :ahv_number_old,
-                                     :canton,
-                                     :confession,
-                                     :correspondence_language,
-                                     :joined,
-                                     :language,
-                                     :member_card_number,
-                                     :nationality,
-                                     :old_data,
-                                     :profession,
-                                     :salutation,
-                                     :title,
-                                   ])
+                                   whitelisted_person_attrs)
+
+      TableDisplay.register_column(Event::Participation,
+                                   TableDisplays::ShowFullColumn,
+                                   whitelisted_person_attrs.map { |col| "person.#{col}" })
 
       # serializers
       PersonSerializer.include Cevi::PersonSerializer
