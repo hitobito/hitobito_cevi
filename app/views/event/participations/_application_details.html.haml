@@ -1,0 +1,14 @@
+- # frozen_string_literal: true
+- #  Copyright (c) 2023, CEVI Schweiz. This file is part of
+- #  hitobito_cevi and licensed under the Affero General Public License version 3
+- #  or later. See the COPYING file at the top-level directory or at
+- #  https://github.com/hitobito/hitobito_cevi.
+
+= render_attrs(entry, :created_at)
+- if @event.is_a?(Event::Course) && entry.state == 'canceled'
+  = render_attrs(entry, :canceled_at)
+- if entry.states?
+  = render_attrs(entry, :state)
+
+- if can?(:application_market, entry.event)
+  = render_attrs(entry, :ahv_number, :j_s_number, :nationality_j_s)

@@ -115,6 +115,7 @@ module HitobitoCevi
       # decorators
       PaperTrail::VersionDecorator.include Cevi::PaperTrail::VersionDecorator
       PersonDecorator.include Cevi::PersonDecorator
+      Event::ParticipationDecorator.include Cevi::Event::ParticipationDecorator
     end
 
     initializer 'cevi.add_settings' do |_app|
