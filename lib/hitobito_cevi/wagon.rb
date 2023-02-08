@@ -30,6 +30,7 @@ module HitobitoCevi
       Event::Kind.include Cevi::Event::Kind
       Event::Course.include Cevi::Event::Course
       Event::Role::AssistantLeader.permissions = [:participations_read]
+      Event::Role::Leader.permissions << :manage_attendances
 
       # :financials may edit all people in a Group::Spender group.
       # :unconfined_below may edit below people even when they have visible_from_above = false.
