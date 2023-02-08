@@ -37,10 +37,81 @@ describe EventAbility do
 
   context 'AktiverKursleiter' do
     let(:role) { Fabricate(Group::MitgliederorganisationGremium::AktiverKursleiter.name.to_sym, group: groups(:zhshgl_beirat)) }
+    let(:person) { role.person }
+    let(:event) { events(:top_course) }
 
-    it 'may not index participants in same layer course' do
-      expect(ability).not_to be_able_to(:index_participations, events(:top_course))
+    context 'index participants' do
+      it 'is not allowed in same layer course' do
+        expect(ability).not_to be_able_to(:index_participations, event)
+      end
+
+      it 'is allowed in led course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::Leader.create(participation: participation)
+        expect(ability).to be_able_to(:index_participations, event)
+      end
+
+      it 'is allowed in assisted course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::AssistantLeader.create(participation: participation)
+        expect(ability).to be_able_to(:index_participations, event)
+      end
     end
+
+    context 'application_market' do
+      it 'is not allowed in same layer course' do
+        expect(ability).not_to be_able_to(:application_market, event)
+      end
+
+      it 'is allowed in led course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::Leader.create(participation: participation)
+        expect(ability).to be_able_to(:application_market, event)
+      end
+
+      it 'is not allowed in assisted course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::AssistantLeader.create(participation: participation)
+        expect(ability).not_to be_able_to(:application_market, event)
+      end
+    end
+
+    context 'index_invitations' do
+      it 'is not allowed in same layer course' do
+        expect(ability).not_to be_able_to(:index_invitations, event)
+      end
+
+      it 'is allowed in led course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::Leader.create(participation: participation)
+        expect(ability).to be_able_to(:index_invitations, event)
+      end
+
+      it 'is not allowed in assisted course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::AssistantLeader.create(participation: participation)
+        expect(ability).not_to be_able_to(:index_invitations, event)
+      end
+    end
+
+    context 'list_tentatives' do
+      it 'is not allowed in same layer course' do
+        expect(ability).not_to be_able_to(:list_tentatives, event)
+      end
+
+      it 'is allowed in led course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::Leader.create(participation: participation)
+        expect(ability).to be_able_to(:list_tentatives, event)
+      end
+
+      it 'is not allowed in assisted course' do
+        participation = Event::Participation.create(event: event, active: true, person: person)
+        Event::Role::AssistantLeader.create(participation: participation)
+        expect(ability).not_to be_able_to(:list_tentatives, event)
+      end
+    end
+
   end
 
 end

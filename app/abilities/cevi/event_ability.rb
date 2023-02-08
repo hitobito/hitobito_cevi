@@ -14,10 +14,20 @@ module Cevi::EventAbility
         may(:index_participations).
         in_same_layer_or_below_if_ausbildungsmitglied
     end
+
+    on(Event) do
+      permission(:any).may(:application_market).if_manage_attendances_in_event
+      permission(:any).may(:index_invitations).if_manage_attendances_in_event
+      permission(:any).may(:list_tentatives).if_manage_attendances_in_event
+    end
   end
 
   def in_same_layer_or_below_if_ausbildungsmitglied
     contains_any?(ausbildungs_layer_ids, event_hierarchy_ids)
+  end
+
+  def if_manage_attendances_in_event
+    permission_in_event?(:manage_attendances)
   end
 
   private
