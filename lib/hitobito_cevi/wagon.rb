@@ -44,6 +44,7 @@ module HitobitoCevi
       RoleAbility.include Cevi::RoleAbility
       VariousAbility.include Cevi::VariousAbility
       Event::ParticipationAbility.include Cevi::Event::ParticipationAbility
+      Event::ApplicationAbility.include Cevi::Event::ApplicationAbility
       PersonReadables.include Cevi::PersonReadables
       PersonLayerWritables.include Cevi::PersonLayerWritables
       AbilityDsl::Base.include Cevi::AbilityDsl::Base
