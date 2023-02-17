@@ -17,7 +17,15 @@ module Cevi::Event::ParticipationAbility
       permission(:layer_and_below_read).
         may(:show).
         in_same_layer_or_below_if_ausbildungsmitglied
+
+      permission(:any).
+        may(:create).
+        if_manage_attendances_in_event_or_her_own_if_application_possible
     end
+  end
+
+  def if_manage_attendances_in_event_or_her_own_if_application_possible
+    permission_in_event?(:manage_attendances) || her_own_if_application_possible
   end
 
   def person_in_same_layer_or_below
