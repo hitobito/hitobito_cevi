@@ -11,6 +11,7 @@ module Cevi::Event::ApplicationAbility
   included do
     on(Event::Application) do
       permission(:any).may(:approve).if_manage_attendances_in_event
+      permission(:any).may(:reject).if_manage_attendances_in_event
     end
   end
 
