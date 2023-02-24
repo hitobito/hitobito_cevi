@@ -19,6 +19,7 @@ module Cevi
           end
 
         alias_method_chain :assign_attributes, :check
+        alias_method_chain :directly_assign_place?, :waiting_list
       end
 
       private
@@ -35,6 +36,10 @@ module Cevi
 
       def check?
         can?(:update, entry.event)
+      end
+
+      def directly_assign_place_with_waiting_list?
+        event.waiting_list? && directly_assign_place_without_waiting_list?
       end
     end
   end
