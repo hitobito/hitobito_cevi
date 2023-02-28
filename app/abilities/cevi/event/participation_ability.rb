@@ -21,7 +21,14 @@ module Cevi::Event::ParticipationAbility
       permission(:any).
         may(:create).
         if_manage_attendances_in_event_or_her_own_if_application_possible
+
+      permission(:any).may(:approve).if_manage_attendances_in_event
+      permission(:any).may(:reject).if_manage_attendances_in_event
     end
+  end
+
+  def if_manage_attendances_in_event
+    permission_in_event?(:manage_attendances)
   end
 
   def if_manage_attendances_in_event_or_her_own_if_application_possible
