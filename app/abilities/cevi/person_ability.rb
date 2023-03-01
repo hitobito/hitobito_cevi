@@ -1,6 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2023, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -27,10 +27,20 @@ module Cevi::PersonAbility
         non_restricted_in_same_layer_or_event_organizer
       permission(:layer_and_below_full).may(:update).
         non_restricted_in_same_layer_or_visible_below_or_event_organizer
-      permission(:any).may(:update).herself_or_for_leaded_events
+      permission(:any).may(:update).herself_or_manager_or_for_leaded_events
 
       permission(:layer_and_below_full).may(:update_old_data).
         angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
+
+      permission(:unconfined_below).may(:change_managers).in_same_layer_or_below_except_self
+      permission(:group_full).may(:change_managers).
+        non_restricted_in_same_group_or_event_organizer_except_self
+      permission(:group_and_below_full).may(:change_managers).
+        non_restricted_in_same_group_or_below_or_event_organizer_except_self
+      permission(:layer_full).may(:change_managers).
+        non_restricted_in_same_layer_or_event_organizer_except_self
+      permission(:layer_and_below_full).may(:change_managers).
+        non_restricted_in_same_layer_or_visible_below_or_event_organizer_except_self
     end
   end
 
@@ -62,8 +72,28 @@ module Cevi::PersonAbility
     non_restricted_in_same_layer_or_visible_below || event_organizer_in_layer
   end
 
-  def herself_or_for_leaded_events
-    herself || event_leader
+  def in_same_layer_or_below_except_self
+    in_same_layer_or_below && !herself
+  end
+
+  def non_restricted_in_same_group_or_event_organizer_except_self
+    non_restricted_in_same_group_or_event_organizer && !herself
+  end
+
+  def non_restricted_in_same_group_or_below_or_event_organizer_except_self
+    non_restricted_in_same_group_or_below_or_event_organizer && !herself
+  end
+
+  def non_restricted_in_same_layer_or_event_organizer_except_self
+    non_restricted_in_same_layer_or_event_organizer && !herself
+  end
+
+  def non_restricted_in_same_layer_or_visible_below_or_event_organizer_except_self
+    non_restricted_in_same_layer_or_visible_below_or_event_organizer && !herself
+  end
+
+  def herself_or_manager_or_for_leaded_events
+    herself || manager || event_leader
   end
 
   def angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
