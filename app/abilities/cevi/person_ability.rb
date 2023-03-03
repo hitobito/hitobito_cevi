@@ -146,4 +146,8 @@ module Cevi::PersonAbility
      Group::MitgliederorganisationGeschaeftsstelle::Angestellter]
   end
 
+  def manager
+    contains_any?([user.id], person.managers.pluck(:id))
+  end
+
 end
