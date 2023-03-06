@@ -6,18 +6,12 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 module Cevi::PersonLayerWritables
-  extend ActiveSupport::Concern
-
   include Cevi::PersonFetchables
-
-  included do
-    alias_method_chain :writable_conditions, :unconfined_below
-  end
 
   private
 
-  def writable_conditions_with_unconfined_below
-    writable_conditions_without_unconfined_below.tap do |condition|
+  def writable_conditions
+    super.tap do |condition|
       unconfined_from_above_condition(condition)
     end
   end

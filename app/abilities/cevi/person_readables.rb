@@ -6,19 +6,7 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 module Cevi::PersonReadables
-  extend ActiveSupport::Concern
-
   include Cevi::PersonFetchables
-
-  included do
-    alias_method_chain :group_accessible_people, :spender
-    alias_method_chain :layer_and_below_read_in_same_layer?, :spender
-
-    alias_method_chain :in_same_layer_condition, :spender
-    alias_method_chain :accessible_conditions, :spender
-
-    alias_method_chain :read_permission_for_this_group?, :unconfined_below
-  end
 
   def spender_visible?
     service_token_with_show_donors? ||
@@ -30,19 +18,19 @@ module Cevi::PersonReadables
 
   private
 
-  def accessible_conditions_with_spender
-    accessible_conditions_without_spender.tap do |condition|
+  def accessible_conditions
+    super.tap do |condition|
       financials_condition(condition)
       unconfined_from_above_condition(condition)
       condition.delete(*contact_data_condition) if contact_data_visible?
     end
   end
 
-  def group_accessible_people_with_spender
+  def group_accessible_people
     if spender_group?
       can(:index, Person, scope_for_spender_group) { |_| true }
     else
-      group_accessible_people_without_spender
+      super
     end
   end
 
@@ -58,7 +46,7 @@ module Cevi::PersonReadables
     Person.visible_from_above(group).or(Person.where(*herself_condition))
   end
 
-  def in_same_layer_condition_with_spender(condition)
+  def in_same_layer_condition(condition)
     if layer_groups_same_layer.present?
       condition.or(*layer_group_query(layer_groups_same_layer.collect(&:id), without_spender_types))
     end
@@ -78,9 +66,8 @@ module Cevi::PersonReadables
     condition.or(*query)
   end
 
-  def read_permission_for_this_group_with_unconfined_below?
-    read_permission_for_this_group_without_unconfined_below? ||
-    unconfined_below_in_above_layer?
+  def read_permission_for_this_group?
+    super || unconfined_below_in_above_layer?
   end
 
   def unconfined_below_in_above_layer?
@@ -97,8 +84,8 @@ module Cevi::PersonReadables
     Role.all_types.reject { |type| type.name =~ /Spender$/ }
   end
 
-  def layer_and_below_read_in_same_layer_with_spender?
-    spender_group? ? false : layer_and_below_read_in_same_layer_without_spender?
+  def layer_and_below_read_in_same_layer?
+    spender_group? ? false : super
   end
 
   def spender_group?

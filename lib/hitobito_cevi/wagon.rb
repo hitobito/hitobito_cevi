@@ -44,8 +44,8 @@ module HitobitoCevi
       RoleAbility.include Cevi::RoleAbility
       VariousAbility.include Cevi::VariousAbility
       Event::ParticipationAbility.include Cevi::Event::ParticipationAbility
-      PersonReadables.include Cevi::PersonReadables
-      PersonLayerWritables.include Cevi::PersonLayerWritables
+      PersonReadables.prepend Cevi::PersonReadables
+      PersonLayerWritables.prepend Cevi::PersonLayerWritables
       AbilityDsl::Base.include Cevi::AbilityDsl::Base
       AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
       AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]
