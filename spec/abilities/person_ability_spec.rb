@@ -161,6 +161,17 @@ describe PersonAbility do
         expect(Ability.new(role.person.reload)).not_to be_able_to(:update, person.reload)
       end
     end
+
+    context 'manager' do
+      let(:role) { Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)) }
+
+      it 'may update managed person' do
+        other = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
+        other.people_managers.create!(manager: role.person)
+
+        is_expected.to be_able_to(:update, other)
+      end
+    end
   end
 
   context :unconfined_below do
@@ -192,6 +203,19 @@ describe PersonAbility do
       is_expected.not_to be_able_to(:index_local_people, groups(:jungschar_burgd_wildsau))
     end
 
+    it 'may change managers in same layer' do
+      other = Fabricate(Group::MitgliederorganisationGremium::Mitglied.name.to_sym, group: groups(:zhshgl_beirat))
+      is_expected.to be_able_to(:change_managers, other.person.reload)
+    end
+
+    it 'may change managers in lower layer' do
+      other = Fabricate(Group::Stufe::Teilnehmer.name.to_sym, group: groups(:jungschar_altst_0405))
+      is_expected.to be_able_to(:change_managers, other.person.reload)
+    end
+
+    it 'may not change managers on self' do
+      is_expected.to_not be_able_to(:change_managers, role.person.reload)
+    end
   end
 
   context :layer_and_below_full do
@@ -210,6 +234,74 @@ describe PersonAbility do
       is_expected.to be_able_to(:index_people, groups(:jungschar_burgd_wildsau))
       is_expected.to be_able_to(:index_full_people, groups(:jungschar_burgd_wildsau))
       is_expected.not_to be_able_to(:index_local_people, groups(:jungschar_burgd_wildsau))
+    end
+
+    it 'may change managers in same layer' do
+      other = Fabricate(Group::DachverbandGremium::Mitglied.name, group: groups(:dachverband_revision)).person
+
+      is_expected.to be_able_to(:change_managers, other)
+    end
+
+    it 'may change managers in lower layer' do
+      other = Fabricate(Group::MitgliederorganisationGremium::Mitglied.name.to_sym, group: groups(:zhshgl_beirat))
+
+      is_expected.to be_able_to(:change_managers, other.person.reload)
+    end
+
+    it 'may not change managers in non-visible lower layer' do
+      other = Fabricate(Group::Stufe::Teilnehmer.name.to_sym, group: groups(:jungschar_burgd_wildsau)).person
+
+      is_expected.to_not be_able_to(:change_managers, other)
+    end
+
+    it 'may not change managers on self' do
+      is_expected.to_not be_able_to(:change_managers, role.person.reload)
+    end
+  end
+
+  context :layer_full do
+    let(:role) { Fabricate(Group::DachverbandGeschaeftsstelle::Angestellter.name.to_sym, group: groups(:dachverband_gs)) }
+
+    it 'may change managers in same layer' do
+      other = Fabricate(Group::DachverbandGremium::Mitglied.name, group: groups(:dachverband_revision)).person
+
+      is_expected.to be_able_to(:change_managers, other)
+    end
+
+    it 'may not change managers in lower layer' do
+      other = Fabricate(Group::MitgliederorganisationGremium::Mitglied.name.to_sym, group: groups(:zhshgl_beirat))
+
+      is_expected.to_not be_able_to(:change_managers, other.person.reload)
+    end
+
+    it 'may not change managers in non-visible lower layer' do
+      other = Fabricate(Group::Stufe::Teilnehmer.name.to_sym, group: groups(:jungschar_burgd_wildsau)).person
+
+      is_expected.to_not be_able_to(:change_managers, other)
+    end
+
+    it 'may not change managers on self' do
+      is_expected.to_not be_able_to(:change_managers, role.person.reload)
+    end
+  end
+
+  context :group_and_below_full do
+    let(:role) { Fabricate(Group::Stufe::Stufenleiter.name.to_sym, group: groups(:jungschar_altst_0405)) }
+
+    it 'may change managers in same group' do
+      other = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_altst_0405)).person
+
+      is_expected.to be_able_to(:change_managers, other)
+    end
+
+    it 'may change managers in lower group' do
+      other = Fabricate(Group::Gruppe::Teilnehmer.name.to_sym, group: groups(:jungschar_altst_0405_ammon))
+
+      is_expected.to be_able_to(:change_managers, other.person.reload)
+    end
+
+    it 'may not change managers on self' do
+      is_expected.to_not be_able_to(:change_managers, role.person.reload)
     end
   end
 
