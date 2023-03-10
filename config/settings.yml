@@ -41,3 +41,8 @@ people:
   # if you change this number, please also adapt
   # people.log.no_changes in config/locales/views.cevi.de.yml
   visible_log_months: 3
+
+csv:
+  separator: ;
+  encoding: UTF-8
+  utf8_bom: true # allowing M$ Excel to read UTF-8
