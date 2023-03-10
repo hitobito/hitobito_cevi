@@ -107,6 +107,7 @@ describe Export::Tabular::MemberCount do
 
   def export(conditions = { year: 2012 })
     Export::Tabular::MemberCount.csv(MemberCount.where(conditions).order(:id))
+                                .gsub(Regexp.new("^#{Export::Csv::UTF8_BOM}"), '')
   end
 
 end
