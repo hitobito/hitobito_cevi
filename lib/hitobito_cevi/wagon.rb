@@ -81,14 +81,14 @@ module HitobitoCevi
       ]
 
       TableDisplay.register_column(Person,
-                                   TableDisplays::ShowFullColumn,
-                                   whitelisted_person_attrs)
+        TableDisplays::ShowFullColumn,
+        whitelisted_person_attrs)
 
       TableDisplay.register_column(Event::Participation,
-                                   TableDisplays::ShowFullColumn,
-                                   (whitelisted_person_attrs + [
-                                     :ahv_number, :j_s_number, :nationality_j_s
-                                   ]).map { |col| "person.#{col}" })
+        TableDisplays::Event::Participations::ShowFullOrEventLeaderColumn,
+        (whitelisted_person_attrs + [
+         :ahv_number, :j_s_number, :nationality_j_s
+        ]).map { |col| "person.#{col}" })
 
       # serializers
       PersonSerializer.include Cevi::PersonSerializer
