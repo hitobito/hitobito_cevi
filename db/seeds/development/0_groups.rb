@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -9,16 +9,21 @@ require Rails.root.join('db', 'seeds', 'support', 'group_seeder')
 
 @seeder = GroupSeeder.new
 
-dachverband = Group.roots.first
-srand(42)
-
 def seed_group(group, *attrs)
-  with_group_attributes = attrs.map { |attr| attr.merge(@seeder.group_attributes) }
+  with_group_attributes = attrs.map {
+    |attr| attr.merge(@seeder.group_attributes)
+  }
   group.seed(:name, :parent_id, *with_group_attributes)
 end
 
-seed_group(Group::DachverbandVorstand, {
-  name: 'Vorstand',
+#
+# Init Root Level
+#
+dachverband = Group.roots.first
+srand(42)
+
+seed_group(Group::DachverbandGremium, {
+  name: 'Fachgruppen',
   parent_id: dachverband.id
 })
 
@@ -27,197 +32,298 @@ seed_group(Group::DachverbandGeschaeftsstelle, {
   parent_id: dachverband.id
 })
 
-seed_group(Group::DachverbandGremium, {
-  name: 'Revisionsstelle',
+seed_group(Group::DachverbandExterne, {
+  name: 'Mitarbeitende',
   parent_id: dachverband.id
 })
 
-zhshgl, be, alpin = seed_group(Group::Mitgliederorganisation,
-  {name: 'Cevi Regionalverband ZH-SH-GL',
-   short_name: 'RV ZH-SH-GL',
-   address: 'Sihlstrasse 33',
-   zip_code: 8021,
-   town: 'Zürich',
-   country: 'Schweiz',
-   email: 'rv-zhshgl@example.com',
-   parent_id: dachverband.id, },
+seed_group(Group::DachverbandVorstand, {
+  name: 'Vorstand',
+  parent_id: dachverband.id
+})
 
-  {name: 'Cevi Region Bern',
-   short_name: 'RV BE',
-   address: 'Rabbentalstrasse 69',
-   zip_code: 3013,
-   town: 'Bern',
-   country: 'Schweiz',
-   email: 'rv-bern@example.com',
-   parent_id: dachverband.id},
+reg_agsoluzg, alpin, extkurse, reg_be, reg_ws, reg_zh = seed_group(Group::Mitgliederorganisation, {
+  name: 'Regionalverband AG-SO-LU-ZG',
+  short_name: 'AG-SO-LU-ZG',
+  parent_id: dachverband.id
+},
+{
+  name: 'Cevi Alpin',
+  short_name: 'Cevi Alpin',
+  parent_id: dachverband.id
+},
+{
+  name: 'Externe Kursen',
+  short_name: 'Externe Kursen',
+  parent_id: dachverband.id
+},
 
- {name: 'Cevi Alpin',
-  short_name: 'AG ALP',
-  address: 'Ausser Dorf 2',
-  zip_code: 7260,
-  town: 'Davos',
+{
+  name: 'Region Bern',
+  short_name: 'Region Bern',
+  address: 'Rabbentalstrasse 69',
+  zip_code: 3013,
+  town: 'Bern',
   country: 'Schweiz',
-  email: 'alpin@example.com',
-  parent_id: dachverband.id})
+  parent_id: dachverband.id
+},
+{
+  name: 'RV Winterthur-Schaffhausen',
+  short_name: 'Region WS',
+  address: 'Stadthausstrasse 103',
+  zip_code: 8400,
+  town: 'Winterthur',
+  parent_id: dachverband.id
+},
+{
+  name: 'Region Zürich',
+  short_name: 'Region Zürich',
+  address: 'Sihlstrasse 33',
+  zip_code: 8021,
+  town: 'Zürich',
+  country: 'Schweiz',
+  parent_id: dachverband.id
+})
 
-[zhshgl, be, alpin].each do |s|
+[alpin, reg_ws].each do |s|
   @seeder.seed_social_accounts(s)
 end
 
-seed_group(Group::MitgliederorganisationVorstand, {
-  name: 'Zentralvorstand',
-  parent_id: zhshgl.id})
+#
+# Init AG-SO-LU-ZG
+#
+seed_group(Group::MitgliederorganisationGremium, {
+  name: 'Gremien',
+  parent_id: reg_agsoluzg.id
+})
 
 seed_group(Group::MitgliederorganisationGeschaeftsstelle, {
-  name: 'Leitungsteam',
-  parent_id: zhshgl.id})
+  name: 'Seki',
+  parent_id: reg_agsoluzg.id
+})
+
+seed_group(Group::MitgliederorganisationVorstand, {
+  name: 'Vorstand',
+  parent_id: reg_agsoluzg.id
+})
+
+ort_buro = seed_group(Group::Ortsgruppe, {
+  name: 'Cevi Buchs-Rohr-Aarau',
+  short_name: 'Cevi Buchs-Rohr-Aarau',
+  parent_id: reg_agsoluzg.id
+})
+
+#
+# Init Cevi Alpin
+#
+seed_group(Group::MitgliederorganisationGremium, {
+  name: 'Bergführer',
+  parent_id: alpin.id
+})
+
+seed_group(Group::MitgliederorganisationGeschaeftsstelle, {
+  name: 'Hauptleiter',
+  parent_id: alpin.id
+})
+
+seed_group(Group::MitgliederorganisationVorstand, {
+  name: 'Vorstand',
+  parent_id: alpin.id
+})
+
+#
+# Init Ext Kurse
+#
+seed_group(Group::MitgliederorganisationGeschaeftsstelle, {
+  name: 'Fiktive GS',
+  parent_id: extkurse.id
+})
+
+#
+# Init Region Bern
+#
+seed_group(Group::MitgliederorganisationExterne, {
+  name: 'Externe',
+  parent_id: reg_be.id
+})
 
 seed_group(Group::MitgliederorganisationGremium, {
-  name: 'Beirat',
-  parent_id: zhshgl.id})
+  name: 'Gremien',
+  parent_id: reg_be.id
+})
 
+seed_group(Group::MitgliederorganisationGeschaeftsstelle, {
+  name: 'Sekretariat',
+  parent_id: reg_be.id
+})
 
-zuerich, oberland, emmental = seed_group(Group::Sektion,
-  {name: 'Zürich',
-   parent_id: zhshgl.id },
+seed_group(Group::MitgliederorganisationVorstand, {
+  name: 'Vorstand',
+  parent_id: reg_be.id
+})
 
-  {name: 'Oberland',
-   parent_id: zhshgl.id},
+ort_aarwangen = seed_group(Group::Ortsgruppe, {
+  name: 'Aarwangen',
+  short_name: 'Aarwangen',
+  parent_id: reg_be.id
+})
 
-  {name: 'Emmental',
-   parent_id: be.id})
+#
+# Init Region WS
+#
+seed_group(Group::MitgliederorganisationGremium, {
+  name: 'Informatik',
+  parent_id: reg_ws.id
+})
 
+seed_group(Group::MitgliederorganisationGeschaeftsstelle, {
+  name: 'Sekretariat WS',
+  short_name: 'Seki',
+  parent_id: reg_ws.id
+})
 
-stadtzh, jona, hintereff, burgdorf = seed_group(Group::Ortsgruppe,
-  {name: 'Stadt Zürich',
-   parent_id: zuerich.id},
+seed_group(Group::MitgliederorganisationVorstand, {
+  name: 'Regionalleitung (Vorstand)',
+  short_name: 'RL',
+  parent_id: reg_ws.id
+})
 
-  {name: 'Jona',
-   parent_id: zuerich.id},
+ort_andelfingen = seed_group(Group::Ortsgruppe, {
+  name: 'Andelfingen',
+  short_name: 'AND',
+  parent_id: reg_ws.id
+})
 
-  # Ortsgruppe without Sektion
-  {name: 'Hintereffretikon',
-   parent_id: zhshgl.id},
+#
+# Init Region Zürich
+#
+seed_group(Group::MitgliederorganisationGremium, {
+  name: 'FG Informatik',
+  parent_id: reg_zh.id
+})
 
-  {name: 'Burgdorf',
-   parent_id: emmental.id})
+seed_group(Group::MitgliederorganisationGeschaeftsstelle, {
+  name: 'Geschäftsstelle',
+  parent_id: reg_zh.id
+})
 
+seed_group(Group::MitgliederorganisationVorstand, {
+  name: 'Vorstand',
+  parent_id: reg_zh.id
+})
+
+sek_oberland, sek_zuerich, sek_emmental = seed_group(Group::Sektion, {
+  name: 'Sektion Oberland',
+  parent_id: reg_zh.id
+},
+{
+  name: 'Sektion Zürich',
+  parent_id: reg_zh.id
+})
+
+ort_zh, ort_zh10, ort_zh11 = seed_group(Group::Ortsgruppe, {
+  name: 'Cevi Zürich',
+  short_name: 'Cevi Zürich',
+  parent_id: sek_zuerich.id
+},
+{
+  name: 'Zürich 10',
+  short_name: 'Z10',
+  parent_id: sek_zuerich.id
+},
+{
+  name: 'Zürich 11',
+  short_name: 'Z11',
+  parent_id: sek_zuerich.id
+})
 
 seed_group(vereine = Group::Verein, {
-  name: 'Verein Cevi Zürich',
-  parent_id: stadtzh.id })
+  name: 'Verein Zürich',
+  short_name: 'VER GLO',
+  parent_id: ort_zh.id
+})
 
+jungschar_zh10, = seed_group(Group::Jungschar, {name: 'JS Zürich 10',
+  parent_id: ort_zh.id
+})
 
-jungschar_altst, jungschar_zh10, jungschar_burgd = seed_group(Group::Jungschar,
-  {name: 'Altstetten-Albisrieden',
-   parent_id: stadtzh.id},
+stufe_achaja = seed_group(Group::Stufe, {
+  name: 'Achaja',
+  parent_id: jungschar_zh10.id
+},
+{
+  name: 'Aragaz',
+  parent_id: jungschar_zh10.id
+},
+{
+  name: 'Asharah',
+  parent_id: jungschar_zh10.id
+},
+{
+  name: 'Ephraim',
+  parent_id: jungschar_zh10.id
+})[0]
 
-  {name: 'Zürich 10',
-   parent_id: stadtzh.id},
+seed_group(Group::Gruppe, {
+  name: 'Ammon',
+  parent_id: stufe_achaja.id
+},
+{
+  name: 'Genesis',
+  parent_id: stufe_achaja.id
+},
+{
+  name: 'Masada',
+  parent_id: stufe_achaja.id
+})
 
-  {name: 'Burgdorf',
-   parent_id: burgdorf.id})
+seed_group(Group::Froeschli, {
+  name: 'Fröschli',
+  parent_id: jungschar_zh10.id
+})
 
-jungschar_altst_0405, jungschar_altst_0203 = seed_group(Group::Stufe,
-  {name: 'Jahrgang 04/05',
-   parent_id: jungschar_altst.id},
-  {name: 'Jahrgang 02/03',
-   parent_id: jungschar_altst.id})
+seed_group(Group::JungscharTeam, {
+  name: 'Leitungsteam',
+  parent_id: jungschar_zh10.id
+})
 
-seed_group(Group::Gruppe,
-  {name: 'Ammon',
-   parent_id: jungschar_altst_0405.id},
-  {name: 'Genesis',
-   parent_id: jungschar_altst_0405.id},
-  {name: 'Masada',
-   parent_id: jungschar_altst_0203.id})
+seed_group(Group::JungscharExterne, {
+  name: 'Achaja Extern',
+  parent_id: jungschar_zh10.id
+},
+{
+  name: 'Aragaz Extern',
+  parent_id: jungschar_zh10.id
+})
 
+sport = seed_group(Group::Sport, {
+  name: 'Zürich 10 Sportgruppe',
+  parent_id: jungschar_zh10.id
+})[0]
 
-seed_group(Group::Froeschli,
-  {name: 'Fröschli',
-   parent_id: jungschar_zh10.id})
+tensing = seed_group(Group::TenSing, {
+  name: 'Ten Sing Seebach',
+  short_name: 'TS Seebach',
+  parent_id: ort_zh11.id
+})[0]
 
-seed_group(Group::Stufe,
-  {name: 'Aranda',
-   parent_id: jungschar_zh10.id},
+seed_group(Group::TenSingTeamGruppe, {
+  name: 'Leitungsteam',
+  parent_id: tensing.id
+})
 
-  {name: 'Jakob',
-   parent_id: jungschar_zh10.id},
+cevie, passivmitglieder = seed_group(Group::WeitereArbeitsgebiete, {
+  name: 'Zürich 10 Cevi-E',
+  parent_id: ort_zh.id
+},
+{
+  name: 'Zürich 10 Passivmitglieder',
+  parent_id: ort_zh.id
+})
 
-  {name: 'Salomo',
-   parent_id: jungschar_zh10.id},
-
-  {name: 'Samson',
-   parent_id: jungschar_zh10.id},
-
-  {name: 'Sinai',
-   parent_id: jungschar_zh10.id},
-
-  {name: 'Zephanja',
-   parent_id: jungschar_zh10.id},
-
-  {name: 'Zion',
-   parent_id: jungschar_zh10.id})
-
-seed_group(Group::JungscharTeam,
-  {name: 'Leitungsteam',
-   parent_id: jungschar_zh10.id})
-
-seed_group(Group::JungscharExterne,
-  {name: 'Cevi-E',
-   parent_id: jungschar_zh10.id},
-  {name: 'Räumlichkeit',
-   parent_id: jungschar_zh10.id})
-
-
-seed_group(Group::Stufe,
-  {name: 'Paprika',
-   parent_id: jungschar_burgd.id},
-
-  {name: 'Wildsau',
-   parent_id: jungschar_burgd.id},
-
-  {name: 'Tiger',
-   parent_id: jungschar_burgd.id})
-
-seed_group(Group::JungscharTeam,
-  {name: 'Leitungsteam',
-   parent_id: jungschar_burgd.id})
-
-
-tensing = seed_group(Group::TenSing,
-  {name: 'Seebach',
-   parent_id: stadtzh.id})[0]
-
-seed_group(Group::TenSingTeamGruppe,
-  {name: 'Leitungsteam',
-   parent_id: tensing.id})
-
-
-sport = seed_group(Group::Sport,
-  {name: 'Cevi Zürich Sport',
-   parent_id: stadtzh.id})[0]
-
-seed_group(Group::SportTeamGruppe,
-  {name: 'Mannschaft A',
-   parent_id: sport.id},
-  {name: 'Mannschaft B',
-   parent_id: sport.id})
-
-
-lernhilfe, kino = seed_group(Group::WeitereArbeitsgebiete,
-  {name: 'Cevi Lernhilfe',
-   parent_id: stadtzh.id},
-
-  {name: 'Cevi Kino',
-   parent_id: stadtzh.id})
-
-seed_group(Group::WeitereArbeitsgebieteTeamGruppe,
-  {name: 'Lehrpersonen',
-   parent_id: lernhilfe.id})
-
-seed_group(Group::WeitereArbeitsgebieteExterne,
-  {name: 'Schüler/-innen',
-   parent_id: lernhilfe.id})
+seed_group(Group::WeitereArbeitsgebieteExterne, {
+  name: 'Ehemalige Passive',
+  parent_id: passivmitglieder.id
+})
 
 Group.rebuild!

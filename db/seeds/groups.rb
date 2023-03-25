@@ -6,6 +6,6 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 Group::Dachverband.seed_once(:parent_id,
-  {name: 'CEVI Schweiz',
-   short_name: 'CEVI'}
+  {name: 'Cevi Schweiz',
+   short_name: 'Cevi Schweiz'}
 )
