@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -19,14 +19,11 @@ class CeviPersonSeeder < PersonSeeder
 end
 
 puzzlers = [
-  'Andre Kunz',
   'Andreas Maierhofer',
   'Bruno Santschi',
   'Mathis Hofer',
   'Matthias Viehweger',
-  'Pascal Zumkehr',
-  'Pierre Fritsch',
-  'Roland Studer',
+  'Pascal Zumkehr'
 ]
 
 devs = {}
@@ -45,24 +42,16 @@ end
 
 seeder.assign_role_to_root(root, Group::Dachverband::Administrator)
 
-cevi_emails = %w(zora@cevi.ch
-  simba.uster@cevi.ch
-  lb@blattertech.ch
+cevi_emails = %w(
   carbon@cevi.ch
-  adler@cevi-dinhard.ch
-  ursina.gubler@cevi.ch
-  christian.rahm@cevi.ch
+  louis.siegrist@cevi.ch
+  zottel@cevi.ch
   calvin.h@cevi.ws
-  leu@cevi.ws
-  lanu.rl@cevi.ws
-  tuemi@cevi.ch
-  info@thomashaefliger.ch)
+  luchs@cevimail.ch)
 
-cevi_password = BCrypt::Password.create("cevi14cevi", cost: 1)
 cevi_emails.each do |email|
   role_type = Group::Dachverband::Administrator
-  attrs = seeder.person_attributes(role_type).merge(email: email,
-                                                     encrypted_password: cevi_password )
+  attrs = seeder.person_attributes(role_type).merge(email: email)
   Person.seed_once(:email, attrs)
   person = Person.find_by_email(attrs[:email])
   role_attrs = { person_id: person.id, group_id: root.id, type: role_type.sti_name }
