@@ -1,73 +1,62 @@
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+# encoding: utf-8
+
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-# == Schema Information
-#
-# Table name: member_counts
-#
-#  id                        :integer          not null, primary key
-#  group_id                  :integer          not null
-#  mitgliederorganisation_id :integer          not null
-#  year                      :integer          not null
-#  born_in                   :integer          not null
-#  person_f                  :integer
-#  person_m                  :integer
-#
-
-jungschar_zh10_2012_1999:
+jungschar_zh10_jg_1999:
   group: jungschar_zh10
   mitgliederorganisation: zhshgl
-  year: 2012
+  year: <%= TESTYEAR %>
   born_in: 1999
   person_m: 3
   person_f: 2
 
-jungschar_zh10_2012_1997:
+jungschar_zh10_jg_1997:
   group: jungschar_zh10
   mitgliederorganisation: zhshgl
-  year: 2012
+  year: <%= TESTYEAR %>
   born_in: 1997
   person_m: 1
   person_f: 4
 
-jungschar_zh10_2012_1988:
+jungschar_zh10_jg_1988:
   group: jungschar_zh10
   mitgliederorganisation: zhshgl
-  year: 2012
+  year: <%= TESTYEAR %>
   born_in: 1988
   person_m: 5
   person_f: 2
 
-jungschar_altst_2012_1997:
+jungschar_altst_jg_1997:
   group: jungschar_altst
   mitgliederorganisation: zhshgl
-  year: 2012
+  year: <%= TESTYEAR %>
   born_in: 1997
   person_m: 2
   person_f: 3
 
-jungschar_altst_2012_1998:
+jungschar_altst_jg_1998:
   group: jungschar_altst
   mitgliederorganisation: zhshgl
-  year: 2012
+  year: <%= TESTYEAR %>
   born_in: 1998
   person_m: 1
   person_f: 2
 
-jungschar_burgd_2012_1998:
+jungschar_burgd_jg_1998:
   group: jungschar_burgd
   mitgliederorganisation: be
-  year: 2012
+  year: <%= TESTYEAR %>
   born_in: 1998
   person_m: 3
   person_f: 6
 
-jungschar_burgd_2012_2000:
+jungschar_burgd_jg_2000:
   group: jungschar_burgd
   mitgliederorganisation: be
-  year: 2012
+  year: <%= TESTYEAR %>
   born_in: 2000
   person_m: 2
   person_f: 1

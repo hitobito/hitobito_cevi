@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -8,13 +8,12 @@
 require 'spec_helper'
 
 describe MemberCountsController do
-
   let(:group) { groups(:jungschar_zh10) }
 
   before { sign_in(people(:bulei)) }
 
   describe 'GET edit' do
-    context 'in 2012' do
+    context 'in ' + TESTYEAR.to_s do
       before { get :edit, params: { group_id: group.id } }
 
       it 'assigns counts' do
@@ -28,17 +27,17 @@ describe MemberCountsController do
     context 'as administrator dachverband' do
 
       it 'updates counts' do
-        put :update, params: { group_id: group.id, year: 2012, member_count:
-          { member_counts(:jungschar_zh10_2012_1999).id => { person_f: 4, person_m: '1'},
-            member_counts(:jungschar_zh10_2012_1997).id => { person_f: 2, person_m: ''},
-            member_counts(:jungschar_zh10_2012_1988).id => { person_f: nil, person_m: 0},
+        put :update, params: { group_id: group.id, year: TESTYEAR, member_count:
+          { member_counts(:jungschar_zh10_jg_1999).id => { person_f: 4, person_m: '1'},
+            member_counts(:jungschar_zh10_jg_1997).id => { person_f: 2, person_m: ''},
+            member_counts(:jungschar_zh10_jg_1988).id => { person_f: nil, person_m: 0},
           } }
 
-        assert_member_counts(member_counts(:jungschar_zh10_2012_1999).reload, 4, 1)
-        assert_member_counts(member_counts(:jungschar_zh10_2012_1997).reload, 2, nil)
-        assert_member_counts(member_counts(:jungschar_zh10_2012_1988).reload, nil, 0)
+        assert_member_counts(member_counts(:jungschar_zh10_jg_1999).reload, 4, 1)
+        assert_member_counts(member_counts(:jungschar_zh10_jg_1997).reload, 2, nil)
+        assert_member_counts(member_counts(:jungschar_zh10_jg_1988).reload, nil, 0)
 
-        is_expected.to redirect_to(census_group_group_path(group, year: 2012))
+        is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR))
       end
 
       it "saves additional member counts" do
@@ -52,7 +51,7 @@ describe MemberCountsController do
                }
         end.to change { group.reload.member_counts.count }.by(1)
 
-        is_expected.to redirect_to(census_group_group_path(group, year: 2012))
+        is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR))
       end
 
       it "renders flash for invalid additional count" do
@@ -87,7 +86,7 @@ describe MemberCountsController do
       it 'denies access' do
         leiter = Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym, group: group).person
         sign_in(leiter)
-        expect { put :update, params: {group_id: group.id, year: 2012, member_count: {}} }.to raise_error(CanCan::AccessDenied)
+        expect { put :update, params: {group_id: group.id, year: TESTYEAR, member_count: {}} }.to raise_error(CanCan::AccessDenied)
       end
     end
   end
@@ -97,7 +96,7 @@ describe MemberCountsController do
       censuses(:two_o_12).destroy
       post :create, params: { group_id: group.id }
 
-      is_expected.to redirect_to(census_group_group_path(group, year: 2011))
+      is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR-1))
       expect(flash[:notice]).to be_present
     end
 
@@ -121,7 +120,7 @@ describe MemberCountsController do
 
       expect { post :create, params: { group_id: group.id } }.to change { MemberCount.count }.by(3)
 
-      counts = MemberCount.where(group_id: group.id, year: 2011).order(:born_in).to_a
+      counts = MemberCount.where(group_id: group.id, year: TESTYEAR-1).order(:born_in).to_a
       expect(counts).to have(3).items
 
       assert_member_counts(counts[0], nil, 1)
@@ -139,7 +138,7 @@ describe MemberCountsController do
         sign_in(leader)
         post :create, params: { group_id: group.id }
 
-        is_expected.to redirect_to(census_group_group_path(group, year: 2011))
+        is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR-1))
         expect(flash[:notice]).to be_present
       end
     end
@@ -162,7 +161,7 @@ describe MemberCountsController do
     it 'handles request with redirect' do
       delete :destroy, params: { group_id: group.id }
 
-      is_expected.to redirect_to(census_group_group_path(group, year: 2012))
+      is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR))
       expect(flash[:notice]).to be_present
     end
   end

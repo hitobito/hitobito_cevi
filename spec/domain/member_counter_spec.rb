@@ -1,6 +1,6 @@
-# frozen_string_literal: true
+# encoding: utf-8
 
-#  Copyright (c) 2012-2020, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -58,7 +58,7 @@ describe 'MemberCounter' do
   end
 
   context 'instance' do
-    subject { MemberCounter.new(2011, jungschar_zh10) }
+    subject { MemberCounter.new(TESTYEAR-1, jungschar_zh10) }
 
     it { is_expected.not_to be_exists }
     its(:mitgliederorganisation) { should == groups(:zhshgl) }
@@ -103,9 +103,9 @@ describe 'MemberCounter' do
     before { load_data }
 
     it 'creates count with current census if no count exists' do
-      member_counts(:jungschar_zh10_2012_1999).destroy!
-      member_counts(:jungschar_zh10_2012_1997).destroy!
-      member_counts(:jungschar_zh10_2012_1988).destroy!
+      member_counts(:jungschar_zh10_jg_1999).destroy!
+      member_counts(:jungschar_zh10_jg_1997).destroy!
+      member_counts(:jungschar_zh10_jg_1988).destroy!
       expect { MemberCounter.create_counts_for(jungschar_zh10) }.to change { MemberCount.count }.by(4)
     end
 
@@ -128,7 +128,7 @@ describe 'MemberCounter' do
     end
 
     context 'without counts' do
-      before { MemberCount.update_all(year: 2011) }
+      before { MemberCount.update_all(year: TESTYEAR-1) }
       it { is_expected.to be_falsey }
     end
 
@@ -139,7 +139,7 @@ describe 'MemberCounter' do
   end
 
   def assert_member_count(born_in, fields = {})
-    counts = MemberCount.where(group: jungschar_zh10, year: 2011, born_in: born_in)
+    counts = MemberCount.where(group: jungschar_zh10, year: TESTYEAR-1, born_in: born_in)
     expect(counts).to have(1).item
     count = counts.first
 

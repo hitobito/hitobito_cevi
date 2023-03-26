@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -21,6 +21,6 @@ describe CensusesController, type: :controller do
 
   let(:user) { people(:bulei) }
   let(:test_entry) { censuses(:two_o_12) }
-  let(:test_entry_attrs) { { year: 2013, start_at: Date.new(2013, 8), finish_at: Date.new(2013, 10, 31) } }
+  let(:test_entry_attrs) { { year: TESTYEAR+1, start_at: Date.new(TESTYEAR+1, 8), finish_at: Date.new(TESTYEAR+1, 10, 31) } }
 
 end

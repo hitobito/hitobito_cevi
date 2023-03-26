@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -94,13 +94,13 @@ describe EventsController do
 
 
       it 'lists events' do
-        get :index, params: { group_id: group.id, year: 2012 }
+        get :index, params: { group_id: group.id, year: TESTYEAR }
         expect(assigns(:events)).to include(event)
         expect(assigns(:events)).to include(events(:top_event))
       end
 
       it 'lists courses' do
-        get :index, params: { group_id: group.id, year: 2012, type: Event::Course.sti_name }
+        get :index, params: { group_id: group.id, year: TESTYEAR, type: Event::Course.sti_name }
         expect(assigns(:events)).to include(course)
         expect(assigns(:events)).to include(events(:top_course))
       end
@@ -111,7 +111,7 @@ describe EventsController do
       let!(:event) { Fabricate(:event, groups: [group]) }
 
       it 'lists event' do
-        get :index, params: { group_id: group.id, year: 2012 }
+        get :index, params: { group_id: group.id, year: TESTYEAR }
         expect(assigns(:events)).to eq [event]
       end
     end
