@@ -7,7 +7,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
 
 * Dachverband
   * Dachverband
-    * Administrator/-in: [:admin, :layer_and_below_full]
+    * Administrator/-in: [:admin, :layer_and_below_full, :impersonation]
   * Vorstand
     * Präsidium: [:layer_read, :group_and_below_full, :contact_data]
     * Finanzverantwortliche/-r: [:layer_read, :finance, :financials, :contact_data]
@@ -32,7 +32,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
     * Spendenverwalter/-in: [:group_and_below_full]
 * Mitgliederorganisation
   * Mitgliederorganisation
-    * Administrator/-in: [:admin, :layer_and_below_full]
+    * Administrator/-in: [:layer_and_below_full]
   * Vorstand
     * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
     * Finanzverantwortliche-/r: [:layer_and_below_read, :finance, :financials, :contact_data]
