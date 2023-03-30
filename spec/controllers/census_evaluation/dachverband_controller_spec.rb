@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -74,14 +74,14 @@ describe CensusEvaluation::DachverbandController do
     context 'totals' do
 
       it 'is empty member count when viewing current census but no data exists' do
-        MemberCount.where(year: 2012).delete_all
-        get :index, params: { id: ch.id, year: 2012 }
+        MemberCount.where(year: TESTYEAR).delete_all
+        get :index, params: { id: ch.id, year: TESTYEAR }
 
         expect(assigns(:total).attributes).to eq MemberCount.new.attributes
       end
 
       it 'is nil when viewing census which has not been created yet' do
-        get :index, params: { id: ch.id, year: 2014 }
+        get :index, params: { id: ch.id, year: TESTYEAR+2 }
 
         expect(assigns(:total)).to be_nil
       end

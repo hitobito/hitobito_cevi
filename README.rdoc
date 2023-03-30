@@ -2,7 +2,6 @@
 
 This hitobito wagon defines the organization hierarchy with groups and roles of Cevi.
 
-
 === Cevi Organization Hierarchy
 
     * Dachverband
@@ -226,5 +225,4 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
         * Theater Leiter/-in: [:layer_and_below_read]
         * Schauspieler/-in: [:group_read]
 
-
-(Output of rake app:hitobito:roles)
+(Output of rake hitobito:roles)

@@ -194,8 +194,8 @@ describe CensusEvaluation do
 
           context 'in new parent' do
             before do
-              member_counts(:jungschar_burgd_2012_1998).destroy
-              member_counts(:jungschar_burgd_2012_2000).destroy
+              member_counts(:jungschar_burgd_jg_1998).destroy
+              member_counts(:jungschar_burgd_jg_2000).destroy
             end
 
             include_examples 'sub_groups_examples' do
@@ -210,8 +210,8 @@ describe CensusEvaluation do
 
             context '' do
               before do
-                member_counts(:jungschar_burgd_2012_1998).destroy
-                member_counts(:jungschar_burgd_2012_2000).destroy
+                member_counts(:jungschar_burgd_jg_1998).destroy
+                member_counts(:jungschar_burgd_jg_2000).destroy
               end
 
               include_examples 'sub_groups_examples' do

@@ -1,6 +1,6 @@
-# encoding: UTF-8
+# encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -55,7 +55,7 @@ describe Export::Tabular::MemberCount do
 
   context '#list' do
     it 'is built based on supplied counts' do
-      expect(count(year: 2012).list).to have(3).items
+      expect(count(year: TESTYEAR).list).to have(3).items
       expect(count(mitgliederorganisation: groups(:zhshgl)).list).to have(2).items
       expect(count(mitgliederorganisation: groups(:be)).list).to have(1).items
     end
@@ -78,7 +78,7 @@ describe Export::Tabular::MemberCount do
     end
 
     it 'has mitgliederorganisation and year set' do
-      expect(entry.year).to eq 2012
+      expect(entry.year).to eq TESTYEAR
       expect(entry.mitgliederorganisation).to eq 'Cevi Region Bern'
     end
 
@@ -101,11 +101,11 @@ describe Export::Tabular::MemberCount do
     end
   end
 
-  def count(conditions = { year: 2012 })
+  def count(conditions = { year: TESTYEAR })
     Export::Tabular::MemberCount.new(MemberCount.where(conditions))
   end
 
-  def export(conditions = { year: 2012 })
+  def export(conditions = { year: TESTYEAR })
     Export::Tabular::MemberCount.csv(MemberCount.where(conditions).order(:id))
                                 .gsub(Regexp.new("^#{Export::Csv::UTF8_BOM}"), '')
   end

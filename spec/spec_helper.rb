@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -17,3 +17,5 @@ Dir[HitobitoCevi::Wagon.root.join('spec/support/**/*.rb')].sort.each { |f| requi
 RSpec.configure do |config|
   config.fixture_path = File.expand_path('../fixtures', __FILE__)
 end
+
+TESTYEAR = 2012

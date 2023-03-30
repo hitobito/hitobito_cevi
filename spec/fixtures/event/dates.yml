@@ -1,4 +1,6 @@
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+# encoding: utf-8
+
+#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -6,21 +8,21 @@
 first:
   label: Vorbereitung
   event: top_course
-  start_at: <%= Time.zone.parse("2012-3-01") %>
+  start_at: <%= Time.zone.parse(TESTYEAR.to_s + "-03-01") %>
 
 first_two:
   label: Kurs
   event: top_course
-  start_at: <%= Time.zone.parse("2012-4-03") %>
-  finish_at: <%= Time.zone.parse("2012-4-10") %>
+  start_at: <%= Time.zone.parse(TESTYEAR.to_s + "-04-03") %>
+  finish_at: <%= Time.zone.parse(TESTYEAR.to_s + "-04-10") %>
 
 second:
   label: Event
   event: top_event
-  start_at: <%= Time.zone.parse("2012-9-01") %>
+  start_at: <%= Time.zone.parse(TESTYEAR.to_s + "-09-01") %>
 
 third:
   label: Lager
   event: camp
-  start_at: <%= Time.zone.parse("2012-6-01") %>
-  finish_at: <%= Time.zone.parse("2012-6-08") %>
+  start_at: <%= Time.zone.parse(TESTYEAR.to_s + "-06-01") %>
+  finish_at: <%= Time.zone.parse(TESTYEAR.to_s + "-06-08") %>
