@@ -4,225 +4,225 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
 
 === Cevi Organization Hierarchy
 
-* Dachverband
-  * Dachverband
-    * Administrator/-in: [:admin, :layer_and_below_full, :impersonation]
-  * Vorstand
-    * Präsidium: [:layer_read, :group_and_below_full, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_read, :finance, :financials, :contact_data]
-    * Mitglied: [:layer_read, :contact_data]
-  * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_full, :contact_data, :finance]
-    * Angestellte/-r: [:layer_full, :contact_data, :finance]
-    * Finanzverantwortliche/-r: [:layer_full, :finance, :financials, :contact_data]
-  * Gremium
-    * Leitung: [:layer_read, :group_and_below_full, :contact_data]
-    * Mitglied: [:layer_read]
-    * Aktive/-r Kursleiter/-in: [:layer_read]
-    * Kassier: [:layer_read, :finance]
-  * Mitglieder
-    * Adressverwalter/-in: [:group_and_below_full]
-    * Mitglied: []
-  * Externe
-    * Adressverwalter/-in: [:group_and_below_full]
-    * Externe/-r: []
-  * Spender
-    * Spender/-in: []
-    * Spendenverwalter/-in: [:group_and_below_full]
-* Mitgliederorganisation
-  * Mitgliederorganisation
-    * Administrator/-in: [:admin, :layer_and_below_full]
-  * Vorstand
-    * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
-    * Finanzverantwortliche-/r: [:layer_and_below_read, :finance, :financials, :contact_data]
-    * Mitglied: [:layer_and_below_read, :contact_data]
-  * Geschäftsstelle
-    * Geschäftsleiter/-in: [:layer_and_below_full, :contact_data, :finance]
-    * Angestellte/-r: [:layer_and_below_full, :contact_data, :finance]
-    * Finanzverantwortliche/-r: [:layer_and_below_full, :finance, :financials, :contact_data]
-    * Administrator/-in Ortsgruppen: [:layer_and_below_full, :unconfined_below, :finance]
-  * Gremium
-    * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
-    * Mitglied: [:layer_and_below_read]
-    * Aktive/-r Kursleiter/-in: [:layer_and_below_read]
-    * Ausbildungsmitglied: [:layer_and_below_read]
-    * Kassier: [:layer_and_below_read, :finance]
-  * Mitglieder
-    * Adressverwalter/-in: [:group_and_below_full]
-    * Mitglied: []
-  * Externe
-    * Adressverwalter/-in: [:group_and_below_full]
-    * Externe/-r: []
-  * Spender
-    * Spender/-in: []
-    * Spendenverwalter/-in: [:group_and_below_full]
-* Sektion
-  * Sektion
-    * Administrator/-in: [:layer_and_below_full, :contact_data]
-* Ortsgruppe
-  * Ortsgruppe
-    * Administrator/-in Cevi DB: [:layer_and_below_full, :unconfined_below]
-    * Kassier: [:layer_and_below_read, :finance]
-* Jungschar
-  * Jungschar
-    * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
-    * Coach: [:layer_and_below_full, :approve_applications]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
-    * Adressverwalter/-in: [:layer_and_below_full]
-    * Aktuar/-in: [:layer_and_below_read]
-    * Busverwalter/-in: [:layer_and_below_read, :contact_data]
-    * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-    * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
-    * Input: [:layer_and_below_read]
-    * Lädeliverantwortliche/-r: [:layer_and_below_read]
-    * Redaktor/-in: [:layer_and_below_read]
-    * Regionaltreffenvertreter/-in: [:layer_and_below_read]
-    * Webmaster/-in: [:layer_and_below_read]
-    * Werbung: [:layer_and_below_read]
-    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
-    * Kontakt Regionalzeitschrift: [:layer_and_below_read]
-    * Verantwortliche/-r PSA: [:layer_and_below_read]
-    * Jugendarbeiter/-in: [:layer_and_below_read]
-  * Externe
-    * Verantwortliche/-r: [:group_and_below_full]
-    * Jugendarbeiter/-in: []
-    * Externe/-r: []
-    * Gotte/Götti: []
-  * Fröschli
-    * Fröschlihauptleiter/-in: [:layer_and_below_read, :group_and_below_full]
-    * Fröschlileiter/-in: [:layer_and_below_read]
-    * Teilnehmer/-in: [:group_read]
-  * Stufe
-    * Stufenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-    * Mini-Chef: [:layer_and_below_read, :group_and_below_full]
-    * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-    * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-    * Helfer/-in: [:layer_and_below_read]
-    * Teilnehmer/-in: [:group_read]
-  * Untergruppe
-    * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-    * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-    * Helfer/-in: [:layer_and_below_read]
-    * Teilnehmer/-in: [:group_read]
-  * Team
-    * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
-    * Coach: [:layer_and_below_full, :approve_applications]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
-    * Adressverwalter/-in: [:layer_and_below_full]
-    * Aktuar/-in: [:layer_and_below_read]
-    * Busverwalter/-in: [:layer_and_below_read, :contact_data]
-    * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-    * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
-    * Input: [:layer_and_below_read]
-    * Lädeliverantwortliche/-r: [:layer_and_below_read]
-    * Redaktor/-in: [:layer_and_below_read]
-    * Regionaltreffenvertreter/-in: [:layer_and_below_read]
-    * Webmaster/-in: [:layer_and_below_read]
-    * Werbung: [:layer_and_below_read]
-    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
-    * Kontakt Regionalzeitschrift: [:layer_and_below_read]
-    * Verantwortliche/-r PSA: [:layer_and_below_read]
-    * Jugendarbeiter/-in: [:layer_and_below_read]
-    * Leitung: [:group_and_below_full]
-    * Mitarbeiter/-in: [:group_read]
-  * Spender
-    * Spender/-in: []
-    * Spendenverwalter/-in: [:group_and_below_full]
-* Verein
-  * Verein
-    * Adressverantwortlicher: [:layer_and_below_full]
-    * Mitglied: [:group_read]
-    * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-  * Vorstand
-    * Präsident/-in: [:layer_and_below_full, :contact_data]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
-    * Aktuar/-in: [:layer_and_below_read]
-    * Mitglied: [:layer_and_below_read]
-  * Mitglieder
-    * Leiter/-in: [:group_and_below_full]
-    * Mitglied: [:group_read]
-  * Externe
-    * Verantwortliche/-r: [:group_and_below_full]
-    * Externe-/r: []
-  * Spender
-    * Spender/-in: []
-    * Spendenverwalter/-in: [:group_and_below_full]
-* Ten-Sing
-  * Team/Gruppe
-    * Adressverantwortliche/-r: [:group_and_below_full]
-  * Externe
-    * Verantwortliche/-r: [:group_and_below_full]
-    * Externe/-r: []
-    * Jugendarbeiter/-in: []
-  * Spender
-    * Spender/-in: []
-    * Spendenverwalter/-in: [:group_and_below_full]
-* Sport
-  * Sport
-    * Adressverantwortliche-/r: [:layer_and_below_full]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
-    * Hauptleitung: [:layer_and_below_full, :contact_data]
-    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
-    * Leiter/-in: [:group_and_below_full]
-    * Mitglied: [:group_read]
-    * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-  * Sport Team/Gruppe
-    * Leiter/-in: [:group_and_below_full]
-    * Mitglied: [:group_read]
-  * Externe
-    * Verantwortliche/-r: [:group_and_below_full]
-    * Externe/-r: []
-  * Spender
-    * Spender/-in: []
-    * Spendenverwalter/-in: [:group_and_below_full]
-* Weiteres Arbeitsgebiet
-  * Weiteres Arbeitsgebiet
-    * Adressverantwortliche/-r: [:layer_and_below_full]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
-    * Hauptleitung: [:layer_and_below_full, :contact_data]
-    * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
-    * Leiter/-in: [:group_and_below_full]
-    * Mitglied: [:group_read]
-    * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-  * Externe
-    * Verantwortliche/-r: [:group_and_below_full]
-    * Externe/-r: []
-  * Team/Gruppe
-    * Leiter/-in: [:group_and_below_full]
-    * Mitglied: [:group_read]
-  * Spender
-    * Spender/-in: []
-    * Spendenverwalter/-in: [:group_and_below_full]
-* Global
-  * Global
-    * Hauptleiter/-in: [:layer_and_below_full, :contact_data]
-    * Mitglied: [:group_read]
-    * Arrangeur: [:layer_and_below_read]
-    * Adressverwalter/-in: [:layer_and_below_full]
-    * Aktuar/-in: [:layer_and_below_read]
-    * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
-    * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
-    * Input Leiter/-in: [:layer_and_below_read]
-    * Redaktor/-in: [:layer_and_below_read]
-    * Regionaltreffenvertreter/-in: [:layer_and_below_read]
-    * Webmaster/-in: [:layer_and_below_read]
-    * Werbeteam Leitende/-r: [:layer_and_below_read]
-    * Dirigent/-in: [:layer_and_below_read]
-    * Chorleiter/-in: [:layer_and_below_read]
-    * Chorsänger/-in: [:group_read]
-    * Video Leiter/-in: [:layer_and_below_read]
-    * Stagedesign Leiter/-in: [:layer_and_below_read]
-    * Stagedesigner/-in: [:group_read]
-    * DJ: [:layer_and_below_read]
-    * Verantwortliche/-r Lager Weekends: [:layer_and_below_read]
-    * Jugendarbeiter/-in: [:layer_and_below_read]
-    * Band Leiter/-in: [:layer_and_below_read]
-    * Bandmitglied: [:group_read]
-    * Tanz Leiter/-in: [:layer_and_below_read]
-    * Tänzer/-in: [:group_read]
-    * Technik Leiter/-in: [:layer_and_below_read]
-    * Techniker/-in: [:group_read]
-    * Theater Leiter/-in: [:layer_and_below_read]
-    * Schauspieler/-in: [:group_read]
+    * Dachverband
+      * Dachverband
+        * Administrator/-in: [:admin, :layer_and_below_full, :impersonation]
+      * Vorstand
+        * Präsidium: [:layer_read, :group_and_below_full, :contact_data]
+        * Finanzverantwortliche/-r: [:layer_read, :finance, :financials, :contact_data]
+        * Mitglied: [:layer_read, :contact_data]
+      * Geschäftsstelle
+        * Geschäftsleiter/-in: [:layer_full, :contact_data, :finance]
+        * Angestellte/-r: [:layer_full, :contact_data, :finance]
+        * Finanzverantwortliche/-r: [:layer_full, :finance, :financials, :contact_data]
+      * Gremium
+        * Leitung: [:layer_read, :group_and_below_full, :contact_data]
+        * Mitglied: [:layer_read]
+        * Aktive/-r Kursleiter/-in: [:layer_read]
+        * Kassier: [:layer_read, :finance]
+      * Mitglieder
+        * Adressverwalter/-in: [:group_and_below_full]
+        * Mitglied: []
+      * Externe
+        * Adressverwalter/-in: [:group_and_below_full]
+        * Externe/-r: []
+      * Spender
+        * Spender/-in: []
+        * Spendenverwalter/-in: [:group_and_below_full]
+    * Mitgliederorganisation
+      * Mitgliederorganisation
+        * Administrator/-in: [:layer_and_below_full]
+      * Vorstand
+        * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
+        * Finanzverantwortliche-/r: [:layer_and_below_read, :finance, :financials, :contact_data]
+        * Mitglied: [:layer_and_below_read, :contact_data]
+      * Geschäftsstelle
+        * Geschäftsleiter/-in: [:layer_and_below_full, :contact_data, :finance]
+        * Angestellte/-r: [:layer_and_below_full, :contact_data, :finance]
+        * Finanzverantwortliche/-r: [:layer_and_below_full, :finance, :financials, :contact_data]
+        * Administrator/-in Ortsgruppen: [:layer_and_below_full, :unconfined_below, :finance]
+      * Gremium
+        * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
+        * Mitglied: [:layer_and_below_read]
+        * Aktive/-r Kursleiter/-in: [:layer_and_below_read]
+        * Ausbildungsmitglied: [:layer_and_below_read]
+        * Kassier: [:layer_and_below_read, :finance]
+      * Mitglieder
+        * Adressverwalter/-in: [:group_and_below_full]
+        * Mitglied: []
+      * Externe
+        * Adressverwalter/-in: [:group_and_below_full]
+        * Externe/-r: []
+      * Spender
+        * Spender/-in: []
+        * Spendenverwalter/-in: [:group_and_below_full]
+    * Sektion
+      * Sektion
+        * Administrator/-in: [:layer_and_below_full, :contact_data]
+    * Ortsgruppe
+      * Ortsgruppe
+        * Administrator/-in Cevi DB: [:layer_and_below_full, :unconfined_below]
+        * Kassier: [:layer_and_below_read, :finance]
+    * Jungschar
+      * Jungschar
+        * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
+        * Coach: [:layer_and_below_full, :approve_applications]
+        * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
+        * Adressverwalter/-in: [:layer_and_below_full]
+        * Aktuar/-in: [:layer_and_below_read]
+        * Busverwalter/-in: [:layer_and_below_read, :contact_data]
+        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+        * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
+        * Input: [:layer_and_below_read]
+        * Lädeliverantwortliche/-r: [:layer_and_below_read]
+        * Redaktor/-in: [:layer_and_below_read]
+        * Regionaltreffenvertreter/-in: [:layer_and_below_read]
+        * Webmaster/-in: [:layer_and_below_read]
+        * Werbung: [:layer_and_below_read]
+        * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
+        * Kontakt Regionalzeitschrift: [:layer_and_below_read]
+        * Verantwortliche/-r PSA: [:layer_and_below_read]
+        * Jugendarbeiter/-in: [:layer_and_below_read]
+      * Externe
+        * Verantwortliche/-r: [:group_and_below_full]
+        * Jugendarbeiter/-in: []
+        * Externe/-r: []
+        * Gotte/Götti: []
+      * Fröschli
+        * Fröschlihauptleiter/-in: [:layer_and_below_read, :group_and_below_full]
+        * Fröschlileiter/-in: [:layer_and_below_read]
+        * Teilnehmer/-in: [:group_read]
+      * Stufe
+        * Stufenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+        * Mini-Chef: [:layer_and_below_read, :group_and_below_full]
+        * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+        * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+        * Helfer/-in: [:layer_and_below_read]
+        * Teilnehmer/-in: [:group_read]
+      * Untergruppe
+        * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+        * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
+        * Helfer/-in: [:layer_and_below_read]
+        * Teilnehmer/-in: [:group_read]
+      * Team
+        * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
+        * Coach: [:layer_and_below_full, :approve_applications]
+        * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
+        * Adressverwalter/-in: [:layer_and_below_full]
+        * Aktuar/-in: [:layer_and_below_read]
+        * Busverwalter/-in: [:layer_and_below_read, :contact_data]
+        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+        * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
+        * Input: [:layer_and_below_read]
+        * Lädeliverantwortliche/-r: [:layer_and_below_read]
+        * Redaktor/-in: [:layer_and_below_read]
+        * Regionaltreffenvertreter/-in: [:layer_and_below_read]
+        * Webmaster/-in: [:layer_and_below_read]
+        * Werbung: [:layer_and_below_read]
+        * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
+        * Kontakt Regionalzeitschrift: [:layer_and_below_read]
+        * Verantwortliche/-r PSA: [:layer_and_below_read]
+        * Jugendarbeiter/-in: [:layer_and_below_read]
+        * Leitung: [:group_and_below_full]
+        * Mitarbeiter/-in: [:group_read]
+      * Spender
+        * Spender/-in: []
+        * Spendenverwalter/-in: [:group_and_below_full]
+    * Verein
+      * Verein
+        * Adressverantwortlicher: [:layer_and_below_full]
+        * Mitglied: [:group_read]
+        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+      * Vorstand
+        * Präsident/-in: [:layer_and_below_full, :contact_data]
+        * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
+        * Aktuar/-in: [:layer_and_below_read]
+        * Mitglied: [:layer_and_below_read]
+      * Mitglieder
+        * Leiter/-in: [:group_and_below_full]
+        * Mitglied: [:group_read]
+      * Externe
+        * Verantwortliche/-r: [:group_and_below_full]
+        * Externe-/r: []
+      * Spender
+        * Spender/-in: []
+        * Spendenverwalter/-in: [:group_and_below_full]
+    * Ten-Sing
+      * Team/Gruppe
+        * Adressverantwortliche/-r: [:group_and_below_full]
+      * Externe
+        * Verantwortliche/-r: [:group_and_below_full]
+        * Externe/-r: []
+        * Jugendarbeiter/-in: []
+      * Spender
+        * Spender/-in: []
+        * Spendenverwalter/-in: [:group_and_below_full]
+    * Sport
+      * Sport
+        * Adressverantwortliche-/r: [:layer_and_below_full]
+        * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
+        * Hauptleitung: [:layer_and_below_full, :contact_data]
+        * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
+        * Leiter/-in: [:group_and_below_full]
+        * Mitglied: [:group_read]
+        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+      * Sport Team/Gruppe
+        * Leiter/-in: [:group_and_below_full]
+        * Mitglied: [:group_read]
+      * Externe
+        * Verantwortliche/-r: [:group_and_below_full]
+        * Externe/-r: []
+      * Spender
+        * Spender/-in: []
+        * Spendenverwalter/-in: [:group_and_below_full]
+    * Weiteres Arbeitsgebiet
+      * Weiteres Arbeitsgebiet
+        * Adressverantwortliche/-r: [:layer_and_below_full]
+        * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
+        * Hauptleitung: [:layer_and_below_full, :contact_data]
+        * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
+        * Leiter/-in: [:group_and_below_full]
+        * Mitglied: [:group_read]
+        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+      * Externe
+        * Verantwortliche/-r: [:group_and_below_full]
+        * Externe/-r: []
+      * Team/Gruppe
+        * Leiter/-in: [:group_and_below_full]
+        * Mitglied: [:group_read]
+      * Spender
+        * Spender/-in: []
+        * Spendenverwalter/-in: [:group_and_below_full]
+    * Global
+      * Global
+        * Hauptleiter/-in: [:layer_and_below_full, :contact_data]
+        * Mitglied: [:group_read]
+        * Arrangeur: [:layer_and_below_read]
+        * Adressverwalter/-in: [:layer_and_below_full]
+        * Aktuar/-in: [:layer_and_below_read]
+        * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
+        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+        * Input Leiter/-in: [:layer_and_below_read]
+        * Redaktor/-in: [:layer_and_below_read]
+        * Regionaltreffenvertreter/-in: [:layer_and_below_read]
+        * Webmaster/-in: [:layer_and_below_read]
+        * Werbeteam Leitende/-r: [:layer_and_below_read]
+        * Dirigent/-in: [:layer_and_below_read]
+        * Chorleiter/-in: [:layer_and_below_read]
+        * Chorsänger/-in: [:group_read]
+        * Video Leiter/-in: [:layer_and_below_read]
+        * Stagedesign Leiter/-in: [:layer_and_below_read]
+        * Stagedesigner/-in: [:group_read]
+        * DJ: [:layer_and_below_read]
+        * Verantwortliche/-r Lager Weekends: [:layer_and_below_read]
+        * Jugendarbeiter/-in: [:layer_and_below_read]
+        * Band Leiter/-in: [:layer_and_below_read]
+        * Bandmitglied: [:group_read]
+        * Tanz Leiter/-in: [:layer_and_below_read]
+        * Tänzer/-in: [:group_read]
+        * Technik Leiter/-in: [:layer_and_below_read]
+        * Techniker/-in: [:group_read]
+        * Theater Leiter/-in: [:layer_and_below_read]
+        * Schauspieler/-in: [:group_read]
 
 (Output of rake hitobito:roles)

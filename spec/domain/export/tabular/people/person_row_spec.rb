@@ -13,8 +13,8 @@ describe Export::Tabular::People do
   let(:person) { people(:bulei) }
   let(:simple_headers) do
     ['Vorname', 'Nachname', 'Ceviname', 'Firmenname', 'Firma', 'Haupt-E-Mail',
-     'Adresse', 'PLZ', 'Ort', 'Land', 'Geschlecht', 'Geburtstag', 'Hauptebene',
-     'Rollen', 'Tags', 'Anrede Eltern', 'Name Eltern', 'Ortsgruppe']
+     'Adresse', 'PLZ', 'Ort', 'Land', 'Hauptebene', 'Rollen', 'Tags', 'Anrede Eltern',
+     'Name Eltern', 'Ortsgruppe']
   end
 
   let(:list) { [person] }
@@ -40,7 +40,6 @@ describe Export::Tabular::People do
       its(['Nachname']) { should eq person.last_name }
       its(['Haupt-E-Mail']) { should eq person.email }
       its(['Ort']) { should eq person.town }
-      its(['Geschlecht']) { should eq person.gender_label }
       its(['Rollen']) { should eq 'Administrator/-in CEVI Schweiz' }
       its(['Anrede Eltern']) { should eq 'Herr & Frau' }
       its(['Name Eltern']) { should eq 'Meier' }
