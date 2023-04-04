@@ -47,7 +47,7 @@ describe Export::EventParticipationsExportJob do
 
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(Regexp.new("^#{Export::Csv::UTF8_BOM}Vorname;Nachname"))
-      expect(lines[0].split(';').count).to match(16)
+      expect(lines[0].split(';').count).to match(15)
     end
   end
 

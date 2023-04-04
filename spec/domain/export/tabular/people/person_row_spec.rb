@@ -13,7 +13,7 @@ describe Export::Tabular::People do
   let(:person) { people(:bulei) }
   let(:simple_headers) do
     ['Vorname', 'Nachname', 'Ceviname', 'Firmenname', 'Firma', 'Haupt-E-Mail',
-     'Adresse', 'PLZ', 'Ort', 'Land', 'Hauptebene', 'Rollen', 'Tags', 'Anrede Eltern',
+     'Adresse', 'PLZ', 'Ort', 'Land', 'Hauptebene', 'Rollen', 'Anrede Eltern',
      'Name Eltern', 'Ortsgruppe']
   end
 
