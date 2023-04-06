@@ -18,7 +18,7 @@ class Group::Ortsgruppe < Group
   ### ROLES
 
   class AdministratorCeviDB < ::Role
-    self.permissions = [:layer_and_below_full, :unconfined_below]
+    self.permissions = [:layer_and_below_full, :manage_invisible_people]
   end
 
   class Kassier < ::Role

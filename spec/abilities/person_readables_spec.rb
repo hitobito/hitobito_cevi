@@ -66,11 +66,11 @@ describe PersonReadables do
         end
       end
 
-      describe 'unconfined_below on upper layer' do
+      describe 'manage_invisible_people on upper layer' do
         let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::AdminOrtsgruppen.name, group: groups(:zhshgl_gs)) }
 
         it 'has layer and below full permission' do
-          expect(role.permissions).to include(:unconfined_below)
+          expect(role.permissions).to include(:manage_invisible_people)
         end
 
         context 'lower spender group' do
@@ -92,7 +92,7 @@ describe PersonReadables do
         end
       end
 
-      describe 'unconfined_below on same layer' do
+      describe 'manage_invisible_people on same layer' do
         let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::AdminOrtsgruppen.name, group: groups(:zhshgl_gs)) }
 
         context 'spender group' do

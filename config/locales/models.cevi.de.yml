@@ -865,7 +865,6 @@ de:
           permission:
             description:
               financials: Bearbeiten von Personen in Spender Gruppen.
-              unconfined_below: Sieht zusätzlich Personen, welche sonst von höheren Ebenen nicht eingesehen werden dürfen.
 
       service_token:
         show_donors: Darf Spender anzeigen

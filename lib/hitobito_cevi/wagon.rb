@@ -33,9 +33,9 @@ module HitobitoCevi
       Event::Role::Leader.permissions << :manage_attendances
 
       # :financials may edit all people in a Group::Spender group.
-      # :unconfined_below may edit below people even when they have visible_from_above = false.
+      # :manage_invisible_people may edit below people even when they have visible_from_above = false.
       #   This only makes sense with :layer_and_below_full.
-      Role::Permissions << :financials << :unconfined_below
+      Role::Permissions << :financials << :manage_invisible_people
 
       # abilities
       EventAbility.include Cevi::EventAbility
@@ -45,8 +45,6 @@ module HitobitoCevi
       VariousAbility.include Cevi::VariousAbility
       Event::ParticipationAbility.include Cevi::Event::ParticipationAbility
       PersonReadables.prepend Cevi::PersonReadables
-      PersonLayerWritables.prepend Cevi::PersonLayerWritables
-      AbilityDsl::Base.include Cevi::AbilityDsl::Base
       AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
       AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]
 

@@ -22,7 +22,7 @@ class Group::MitgliederorganisationGeschaeftsstelle < Group::Geschaeftsstelle
   end
 
   class AdminOrtsgruppen < ::Role
-    self.permissions = [:layer_and_below_full, :unconfined_below, :finance]
+    self.permissions = [:layer_and_below_full, :manage_invisible_people, :finance]
   end
 
   roles Geschaeftsleiter,

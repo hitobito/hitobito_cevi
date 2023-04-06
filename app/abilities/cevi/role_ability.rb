@@ -10,7 +10,7 @@ module Cevi::RoleAbility
 
   included do
     on(Role) do
-      permission(:unconfined_below).
+      permission(:manage_invisible_people).
         may(:create, :create_in_subgroup, :update, :destroy).
         in_same_layer_or_below
     end
