@@ -11,7 +11,7 @@ module Cevi::PersonReadables
       group_read_in_this_group? ||
       group_read_in_above_group? ||
       financial_layers_ids.include?(group.layer_group_id) ||
-      manage_invisible_people_in_above_layer?
+      see_invisible_from_above_in_above_layer?
   end
 
   private

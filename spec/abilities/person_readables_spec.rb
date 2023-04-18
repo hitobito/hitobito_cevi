@@ -66,11 +66,11 @@ describe PersonReadables do
         end
       end
 
-      describe 'manage_invisible_people on upper layer' do
+      describe 'see_invisible_from_above on upper layer' do
         let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::AdminOrtsgruppen.name, group: groups(:zhshgl_gs)) }
 
         it 'has layer and below full permission' do
-          expect(role.permissions).to include(:manage_invisible_people)
+          expect(role.permissions).to include(:see_invisible_from_above)
         end
 
         context 'lower spender group' do
@@ -92,7 +92,7 @@ describe PersonReadables do
         end
       end
 
-      describe 'manage_invisible_people on same layer' do
+      describe 'see_invisible_from_above on same layer' do
         let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::AdminOrtsgruppen.name, group: groups(:zhshgl_gs)) }
 
         context 'spender group' do

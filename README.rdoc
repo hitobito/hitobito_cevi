@@ -40,7 +40,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
         * Geschäftsleiter/-in: [:layer_and_below_full, :contact_data, :finance]
         * Angestellte/-r: [:layer_and_below_full, :contact_data, :finance]
         * Finanzverantwortliche/-r: [:layer_and_below_full, :finance, :financials, :contact_data]
-        * Administrator/-in Ortsgruppen: [:layer_and_below_full, :manage_invisible_people, :finance]
+        * Administrator/-in Ortsgruppen: [:layer_and_below_full, :see_invisible_from_above, :finance]
       * Gremium
         * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
         * Mitglied: [:layer_and_below_read]
@@ -61,7 +61,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
         * Administrator/-in: [:layer_and_below_full, :contact_data]
     * Ortsgruppe
       * Ortsgruppe
-        * Administrator/-in Cevi DB: [:layer_and_below_full, :manage_invisible_people]
+        * Administrator/-in Cevi DB: [:layer_and_below_full, :see_invisible_from_above]
         * Kassier: [:layer_and_below_read, :finance]
     * Jungschar
       * Jungschar
