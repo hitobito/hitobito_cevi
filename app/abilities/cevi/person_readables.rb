@@ -6,14 +6,12 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 module Cevi::PersonReadables
-  include Cevi::PersonFetchables
-
   def spender_visible?
     service_token_with_show_donors? ||
       group_read_in_this_group? ||
       group_read_in_above_group? ||
       financial_layers_ids.include?(group.layer_group_id) ||
-      unconfined_below_in_above_layer?
+      see_invisible_from_above_in_above_layer?
   end
 
   private
@@ -21,7 +19,6 @@ module Cevi::PersonReadables
   def accessible_conditions
     super.tap do |condition|
       financials_condition(condition)
-      unconfined_from_above_condition(condition)
       condition.delete(*contact_data_condition) if contact_data_visible?
     end
   end
@@ -66,20 +63,6 @@ module Cevi::PersonReadables
     condition.or(*query)
   end
 
-  def read_permission_for_this_group?
-    super || unconfined_below_in_above_layer?
-  end
-
-  def unconfined_below_in_above_layer?
-    layers_unconfined_below.present? &&
-    (layers_unconfined_below & group.layer_hierarchy.collect(&:id)).present?
-  end
-
-  def layers_unconfined_below
-    @layers_unconfined_below ||=
-      user_context.layer_ids(user.groups_with_permission(:unconfined_below).to_a)
-  end
-
   def without_spender_types
     Role.all_types.reject { |type| type.name =~ /Spender$/ }
   end
@@ -109,6 +92,6 @@ module Cevi::PersonReadables
   end
 
   def service_token
-    @service_token ||= user.instance_variable_get(:@service_token) 
+    @service_token ||= user.instance_variable_get(:@service_token)
   end
 end

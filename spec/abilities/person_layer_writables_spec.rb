@@ -52,7 +52,7 @@ describe PersonLayerWritables do
     end
   end
 
-  context :unconfined_below do
+  context :see_invisible_from_above do
     let(:role) { Fabricate(Group::Ortsgruppe::AdministratorCeviDB.name, group: groups(:stadtzh)) }
 
     context 'lower layer' do

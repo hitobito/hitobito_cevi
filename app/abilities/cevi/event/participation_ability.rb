@@ -10,7 +10,7 @@ module Cevi::Event::ParticipationAbility
 
   included do
     on(Event::Participation) do
-      permission(:unconfined_below).
+      permission(:see_invisible_from_above).
         may(:create_tentative).
         person_in_same_layer_or_below
 

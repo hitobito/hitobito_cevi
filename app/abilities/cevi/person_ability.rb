@@ -14,7 +14,7 @@ module Cevi::PersonAbility
     on(Person) do
       permission(:financials).may(:update).financials_in_same_layer
 
-      permission(:unconfined_below).
+      permission(:see_invisible_from_above).
         may(:show, :show_full, :show_details, :history, :update,
             :primary_group, :send_password_instructions, :log).
         in_same_layer_or_below
@@ -32,7 +32,7 @@ module Cevi::PersonAbility
       permission(:layer_and_below_full).may(:update_old_data).
         angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
 
-      permission(:unconfined_below).may(:change_managers).in_same_layer_or_below_except_self
+      permission(:see_invisible_from_above).may(:change_managers).in_same_layer_or_below_except_self
       permission(:group_full).may(:change_managers).
         non_restricted_in_same_group_or_event_organizer_except_self
       permission(:group_and_below_full).may(:change_managers).

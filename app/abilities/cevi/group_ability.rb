@@ -26,7 +26,7 @@ module Cevi::GroupAbility
         may(:show_donors).
         in_same_layer
 
-      permission(:unconfined_below).may(:index_local_people).in_same_layer_or_below
+      permission(:see_invisible_from_above).may(:index_local_people).in_same_layer_or_below
     end
   end
 

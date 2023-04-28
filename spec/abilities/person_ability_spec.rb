@@ -174,7 +174,7 @@ describe PersonAbility do
     end
   end
 
-  context :unconfined_below do
+  context :see_invisible_from_above do
     let(:role) { Fabricate(Group::MitgliederorganisationGeschaeftsstelle::AdminOrtsgruppen.name.to_sym, group: groups(:zhshgl_gs)) }
 
     it 'may view any non-visible in lower layers' do
