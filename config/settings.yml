@@ -37,7 +37,7 @@ email:
 
 people:
   people_managers:
-    enabled: false # disabled for now, so we can release without rolling out a partially complete feature
+    enabled: true # disabled for now, so we can release without rolling out a partially complete feature
   # if you change this number, please also adapt
   # people.log.no_changes in config/locales/views.cevi.de.yml
   visible_log_months: 3
