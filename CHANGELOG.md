@@ -1,6 +1,6 @@
 # Hitobito Changelog
 
-## unreleased
+## Version 1.28
 
 * Mitgliederorganisations-Admins können keine Personen mehr definitiv löschen. Merci @nchiapol! (hitobito/hitobito_cevi#109)
 
