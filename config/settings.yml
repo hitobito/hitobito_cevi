@@ -37,7 +37,7 @@ email:
 
 people:
   people_managers:
-    enabled: false # enabled for testing on integration
+    enabled: true # enabled for testing on integration
   # if you change this number, please also adapt
   # people.log.no_changes in config/locales/views.cevi.de.yml
   visible_log_months: 3
