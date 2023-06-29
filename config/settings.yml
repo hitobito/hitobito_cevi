@@ -36,8 +36,6 @@ email:
   mass_recipient: <%= "<noreply@#{mail_domain}>" %>
 
 people:
-  people_managers:
-    enabled: true # enabled for testing on integration
   # if you change this number, please also adapt
   # people.log.no_changes in config/locales/views.cevi.de.yml
   visible_log_months: 3
