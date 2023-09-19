@@ -23,7 +23,7 @@ describe Person::LogController do
       end
 
       it 'shows 0 versions if none are present' do
-        expect(PaperTrail::Version.count).to be 0
+        expect(PaperTrail::Version.where(main_type: Person.sti_name).count).to be 0
 
         get :index, params: { group_id: group.id, id: person.id }
 
@@ -35,7 +35,7 @@ describe Person::LogController do
           person.nickname = Faker::Superhero.name
           person.save!
         end
-        expect(PaperTrail::Version.count).to eq 10
+        expect(PaperTrail::Version.where(main_type: Person.sti_name).count).to eq 10
 
         get :index, params: { group_id: group.id, id: person.id }
 
@@ -50,8 +50,8 @@ describe Person::LogController do
         end
         travel_back
 
-        expect(PaperTrail::Version.count).to eq 10
-        expect(PaperTrail::Version.where(created_at: 3.months.ago..DateTime.current).count).to eq 2
+        expect(PaperTrail::Version.where(main_type: Person.sti_name).count).to eq 10
+        expect(PaperTrail::Version.where(main_type: Person.sti_name, created_at: 3.months.ago..DateTime.current).count).to eq 2
         expect(Settings.people.visible_log_months).to eq 3
 
         get :index, params: { group_id: group.id, id: person.id }
@@ -67,8 +67,8 @@ describe Person::LogController do
         end
         travel_back
 
-        expect(PaperTrail::Version.count).to eq 10
-        expect(PaperTrail::Version.where(created_at: 3.months.ago..DateTime.current).count).to eq 2
+        expect(PaperTrail::Version.where(main_type: Person.sti_name).count).to eq 10
+        expect(PaperTrail::Version.where(main_type: Person.sti_name, created_at: 3.months.ago..DateTime.current).count).to eq 2
 
         prev_setting, Settings.people.visible_log_months = Settings.people.visible_log_months, nil
         expect(Settings.people.visible_log_months).to be_nil
