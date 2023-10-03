@@ -6,5 +6,5 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 module HitobitoCevi
-  VERSION = '1.30.4'
+  VERSION = '1.30.16'
 end
