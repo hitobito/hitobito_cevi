@@ -13,21 +13,21 @@
   = f.labeled_collection_select :salutation, possible_person_salutations,
                                 :id,
                                 :to_s,
-                                { include_blank: true },
-                                class: 'span6'
+                                { include_blank: "" },
+                                class: 'form-select form-select-sm'
 
   = f.labeled_input_field :correspondence_language,
                           placeholder: t('.correspondence_language.placeholder'),
                           data: { provide: :typeahead, source: existing_person_correspondence_languages }
 
   = f.labeled(:canton) do
-    .span6.shown{style: 'margin-left: 0px'}
+    .shown.ms-0
       = f.collection_select :canton,
                             possible_person_cantons,
                             :id,
                             :to_s,
-                            { include_blank: true },
-                            class: 'chosen-select',
+                            { include_blank: "" },
+                            class: 'form-select form-select-sm',
                             data: { placeholder: ' ',
                                     chosen_no_results: t('global.chosen_no_results') }
 
@@ -35,18 +35,18 @@
                                 possible_person_confessions,
                                 :id,
                                 :to_s,
-                                { include_blank: true },
-                                class: 'span6'
+                                { include_blank: "" },
+                                class: 'form-select form-select-sm'
 
   = f.labeled_input_field :old_data if can?(:update_old_data, entry)
 
   = f.labeled(:ortsgruppe_id) do
-    .span6.shown{style: 'margin-left: 0px'}
+    .shown.ms-0
       = f.collection_select :ortsgruppe_id,
                             Group::Ortsgruppe.without_deleted.order(:name),
                             :id,
                             :to_s,
-                            { include_blank: true },
-                            class: 'chosen-select',
+                            { include_blank: "" },
+                            class: 'form-select form-select-sm',
                             data: { placeholder: ' ',
                                     chosen_no_results: t('global.chosen_no_results') }

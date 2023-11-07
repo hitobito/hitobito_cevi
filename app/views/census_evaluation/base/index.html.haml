@@ -9,12 +9,12 @@
 
 = render 'infos'
 
-#main.row-fluid
+#main.row
   -if @total
     -if @sub_groups
-      %article.span6
+      %article.col-6
         = render 'totals'
-    %article.span6
+    %article.col-6
       = render 'details'
 
   -else

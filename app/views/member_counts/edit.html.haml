@@ -16,9 +16,9 @@
       = fields_for 'member_count[]', count, builder: StandardFormBuilder do |f|
         %tr
           %td
-            %span{style: 'padding-right: 5px;'}= format_member_count_born_in(count)
-          %td= f.input_field :person_f, class: 'span1'
-          %td= f.input_field :person_m, class: 'span1'
+            %span.pe-2= format_member_count_born_in(count)
+          %td= f.input_field :person_f
+          %td= f.input_field :person_m
 
   #member_counts_fields_blueprint{style: 'display: none', data: { blueprint: member_counts_fields_blueprint } }
   = link_to 'Eintrag hinzufügen', 'javascript:void(0);', class: 'add_nested_fields', data: { association: 'member_counts', 'blueprint-id' => 'member_counts_fields_blueprint' }
