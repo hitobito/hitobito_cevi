@@ -22,7 +22,7 @@ module Cevi::PersonDecorator
     end
   end
 
-  def roles_grouped_with_filtered_spender_roles
+  def roles_grouped_with_filtered_spender_roles(scope:)
     roles_grouped_without_filtered_spender_roles.collect do |group, roles|
       next [group, roles] if !group.is_a?(Group::Spender) || spender_visible?(group)
 
