@@ -27,10 +27,19 @@ module Cevi::GroupAbility
         in_same_layer
 
       permission(:see_invisible_from_above).may(:index_local_people).in_same_layer_or_below
+
+      permission(:layer_full).may(:log).never
+      permission(:layer_and_below_full).may(:log).never
+      permission(:group_full).may(:log).never
+      permission(:group_and_below_full).may(:log).never
     end
   end
 
   def in_upper_layer_hierarchy
     group && permission_in_layers?(group.upper_layer_hierarchy.collect(&:id))
+  end
+
+  def never
+    false
   end
 end
