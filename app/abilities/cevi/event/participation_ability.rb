@@ -18,9 +18,11 @@ module Cevi::Event::ParticipationAbility
         may(:show).
         in_same_layer_or_below_if_ausbildungsmitglied
 
-      permission(:any).
-        may(:create).
-        if_manage_attendances_in_event_or_her_own_if_application_possible
+      for_self_or_manageds do
+        permission(:any).
+          may(:create).
+          if_manage_attendances_in_event_or_her_own_if_application_possible
+      end
 
       permission(:any).may(:approve).if_manage_attendances_in_event
       permission(:any).may(:reject).if_manage_attendances_in_event
