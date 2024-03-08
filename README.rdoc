@@ -17,9 +17,9 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
         * Finanzverantwortliche/-r: [:layer_full, :finance, :financials, :contact_data]
       * Gremium
         * Leitung: [:layer_read, :group_and_below_full, :contact_data]
-        * Mitglied: [:layer_read]
-        * Aktive/-r Kursleiter/-in: [:layer_read]
-        * Kassier: [:layer_read, :finance]
+        * Mitglied: [:layer_read, :group_and_below_full]
+        * Aktive/-r Kursleiter/-in: [:layer_read, :group_and_below_full]
+        * Kassier: [:layer_read, :group_and_below_full, :finance]
       * Mitglieder
         * Adressverwalter/-in: [:group_and_below_full]
         * Mitglied: []
