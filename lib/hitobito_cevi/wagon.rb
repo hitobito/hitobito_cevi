@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2023, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2024, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -46,8 +46,8 @@ module HitobitoCevi
       VariousAbility.include Cevi::VariousAbility
       Event::ParticipationAbility.include Cevi::Event::ParticipationAbility
       PersonReadables.prepend Cevi::PersonReadables
-      AbilityDsl::UserContext::LAYER_PERMISSIONS += [:financials]
-      AbilityDsl::UserContext::GROUP_PERMISSIONS += [:financials]
+      AbilityDsl::UserContext::LAYER_PERMISSIONS << :financials
+      AbilityDsl::UserContext::GROUP_PERMISSIONS << :financials
 
       # domain
       Event::ParticipationFilter.load_entries_includes.each do |incl|
@@ -55,7 +55,7 @@ module HitobitoCevi
           incl[:person].prepend :ortsgruppe
         end
       end
-      Export::Tabular::Groups::List::EXCLUDED_ATTRS += [:member_count]
+      Export::Tabular::Groups::List::EXCLUDED_ATTRS << :member_count
       Export::Tabular::People::PersonRow.include Cevi::Export::Tabular::People::PersonRow
       Export::Tabular::People::PeopleAddress.include Cevi::Export::Tabular::People::PeopleAddress
       Export::Tabular::People::ParticipationNdsRow.include(
@@ -76,18 +76,22 @@ module HitobitoCevi
         :old_data,
         :profession,
         :salutation,
-        :title,
+        :title
       ]
 
-      TableDisplay.register_column(Person,
+      TableDisplay.register_column(
+        Person,
         TableDisplays::ShowFullColumn,
-        whitelisted_person_attrs)
+        whitelisted_person_attrs
+      )
 
-      TableDisplay.register_column(Event::Participation,
+      TableDisplay.register_column(
+        Event::Participation,
         TableDisplays::Event::Participations::ShowFullOrEventLeaderColumn,
         (whitelisted_person_attrs + [
-         :ahv_number, :j_s_number, :nationality_j_s
-        ]).map { |col| "person.#{col}" })
+          :ahv_number, :j_s_number, :nationality_j_s
+        ]).map { |col| "person.#{col}" }
+      )
 
       # serializers
       PersonSerializer.include Cevi::PersonSerializer
@@ -97,7 +101,7 @@ module HitobitoCevi
 
       # controllers
       EventsController.include Cevi::EventsController
-      Event::KindsController.permitted_attrs += [:j_s_label]
+      Event::KindsController.permitted_attrs << :j_s_label
       Event::ParticipationsController.include Cevi::Event::ParticipationsController
 
       PeopleController.include Cevi::PeopleController
