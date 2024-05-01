@@ -51,7 +51,6 @@ de:
 
   events:
     form:
-      caption_waiting_list: Wenn es noch freie Plätze hat, werden Teilnehmende automatisch zugeteilt.
       caption_requires_approval: 'Der Coach wird informiert und muss die Anmeldung bestätigen'
 
   member_counts:
