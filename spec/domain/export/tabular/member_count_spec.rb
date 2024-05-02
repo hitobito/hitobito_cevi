@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
+#  Copyright (c) 2023-2024, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -66,7 +66,8 @@ describe Export::Tabular::MemberCount do
     let(:group) { groups(:jungschar_burgd) }
 
     before { group.update(name: 'Jungschar Burgdorf',
-                          address: 'Dorfplatz 1',
+                          street: 'Dorfplatz',
+                          housenumber: '1',
                           zip_code: 3455,
                           town: 'Burgdorf') }
 
