@@ -375,6 +375,21 @@
             "match",
             "not_match"
           ]
+        },
+        "number": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
         }
       },
       "relationships": {
@@ -1683,12 +1698,6 @@
           "readable": "guarded",
           "writable": "guarded",
           "description": null
-        },
-        "language": {
-          "type": "string",
-          "readable": true,
-          "writable": true,
-          "description": null
         }
       },
       "extra_attributes": {
@@ -1721,8 +1730,6 @@
         "gender": {
         },
         "birthday": {
-        },
-        "language": {
         }
       },
       "filters": {
@@ -1914,21 +1921,6 @@
             "gte",
             "lt",
             "lte"
-          ]
-        },
-        "language": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
           ]
         },
         "updated_at": {
