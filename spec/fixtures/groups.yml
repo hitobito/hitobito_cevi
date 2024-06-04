@@ -1,4 +1,4 @@
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2024, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -43,7 +43,8 @@ zhshgl:
   short_name: RV ZH-SH-GL
   type: Group::Mitgliederorganisation
   email: rv-zhshgl@example.com
-  address: Sihlstrasse 33
+  street: Sihlstrasse
+  housenumber: 33
   zip_code: 8021
   town: Zürich
   country: CH
@@ -57,7 +58,8 @@ be:
   short_name: RV BE
   type: Group::Mitgliederorganisation
   email: rv-bern@example.com
-  address: Rabbentalstrasse 69
+  street: Rabbentalstrasse
+  housenumber: 69
   zip_code: 3013
   town: Bern
   country: CH
@@ -71,7 +73,8 @@ alpin:
   short_name: AG ALP
   type: Group::Mitgliederorganisation
   email: alpin@example.com
-  address: Ausser Dorf 2
+  street: Ausser Dorf
+  housenumber: 2
   zip_code: 7260
   town: Davos
   country: CH
