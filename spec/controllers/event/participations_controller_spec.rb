@@ -125,7 +125,7 @@ describe Event::ParticipationsController do
                                                                ortsgruppe: groups(:burgdorf))))
 
           get :index, params: { group_id: group.id, event_id: course.id, sort: :ortsgruppe }
-          expect(assigns(:participations).map { |p| p.person.ortsgruppe_label }).to eq([nil, 'Burgdorf', 'Jona', 'StZH'])
+          expect(assigns(:participations).map { |p| p.person.ortsgruppe_label }).to eq(['Burgdorf', 'Jona', 'StZH', nil])
         end
 
         it "includes attributes on show" do

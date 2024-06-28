@@ -1,0 +1,671 @@
+dachverband:
+  name: 'Group::Dachverband::Administrator'
+  order_weight: 1
+
+dachverbandvorstand:
+  name: 'Group::DachverbandVorstand::Praesidium'
+  order_weight: 2
+
+dachverbandvorstandfinanzverantwortlicher:
+  name: 'Group::DachverbandVorstand::Finanzverantwortlicher'
+  order_weight: 3
+
+dachverbandvorstandmitglied:
+  name: 'Group::DachverbandVorstand::Mitglied'
+  order_weight: 4
+
+dachverbandgeschaeftsstellegeschaeftsleiter:
+  name: 'Group::DachverbandGeschaeftsstelle::Geschaeftsleiter'
+  order_weight: 5
+
+dachverbandgeschaeftsstelleangestellter:
+  name: 'Group::DachverbandGeschaeftsstelle::Angestellter'
+  order_weight: 6
+
+dachverbandgeschaeftsstellefinanzverantwortlicher:
+  name: 'Group::DachverbandGeschaeftsstelle::Finanzverantwortlicher'
+  order_weight: 7
+
+dachverbandgremiumleitung:
+  name: 'Group::DachverbandGremium::Leitung'
+  order_weight: 8
+
+dachverbandgremiummitglied:
+  name: 'Group::DachverbandGremium::Mitglied'
+  order_weight: 9
+
+dachverbandgremiumaktiverkursleiter:
+  name: 'Group::DachverbandGremium::AktiverKursleiter'
+  order_weight: 10
+
+dachverbandgremiumkassier:
+  name: 'Group::DachverbandGremium::Kassier'
+  order_weight: 11
+
+dachverbandmitgliederadressverwalter:
+  name: 'Group::DachverbandMitglieder::Adressverwalter'
+  order_weight: 12
+
+dachverbandmitglied:
+  name: 'Group::DachverbandMitglieder::Mitglied'
+  order_weight: 13
+
+dachverbandexterneadressverwalter:
+  name: 'Group::DachverbandExterne::Adressverwalter'
+  order_weight: 14
+
+dachverbandexterner:
+  name: 'Group::DachverbandExterne::Externer'
+  order_weight: 15
+
+dachverbandspenderspender:
+  name: 'Group::DachverbandSpender::Spender'
+  order_weight: 16
+
+dachverbandspenderspendenverwalter:
+  name: 'Group::DachverbandSpender::SpendenVerwalter'
+  order_weight: 17
+
+mitgliederorganisationadministrator:
+  name: 'Group::Mitgliederorganisation::Administrator'
+  order_weight: 18
+
+mitgliederorganisationvorstandpraesidium:
+  name: 'Group::MitgliederorganisationVorstand::Praesidium'
+  order_weight: 19
+
+mitgliederorganisationvorstandfinanzverantwortlicher:
+  name: 'Group::MitgliederorganisationVorstand::Finanzverantwortlicher'
+  order_weight: 20
+
+mitgliederorganisationvorstandmitglied:
+  name: 'Group::MitgliederorganisationVorstand::Mitglied'
+  order_weight: 21
+
+mitgliederorganisationgeschaeftsstellegeschaeftsleiter:
+  name: 'Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter'
+  order_weight: 22
+
+mitgliederorganisationgeschaeftsstelleangestellter:
+  name: 'Group::MitgliederorganisationGeschaeftsstelle::Angestellter'
+  order_weight: 23
+
+mitgliederorganisationgeschaeftsstellefinanzverantwortlicher:
+  name: 'Group::MitgliederorganisationGeschaeftsstelle::Finanzverantwortlicher'
+  order_weight: 24
+
+mitgliederorganisationgeschaeftsstelleadminortsgruppen:
+  name: 'Group::MitgliederorganisationGeschaeftsstelle::AdminOrtsgruppen'
+  order_weight: 25
+
+mitgliederorganisationgremiumleitung:
+  name: 'Group::MitgliederorganisationGremium::Leitung'
+  order_weight: 26
+
+mitgliederorganisationgremiummitglied:
+  name: 'Group::MitgliederorganisationGremium::Mitglied'
+  order_weight: 27
+
+mitgliederorganisationgremiumaktiverkursleiter:
+  name: 'Group::MitgliederorganisationGremium::AktiverKursleiter'
+  order_weight: 28
+
+mitgliederorganisationgremiumausbildungsmitglied:
+  name: 'Group::MitgliederorganisationGremium::Ausbildungsmitglied'
+  order_weight: 29
+
+mitgliederorganisationgremiumkassier:
+  name: 'Group::MitgliederorganisationGremium::Kassier'
+  order_weight: 30
+
+mitgliederorganisationmitgliederadressverwalter:
+  name: 'Group::MitgliederorganisationMitglieder::Adressverwalter'
+  order_weight: 31
+
+mitgliederorganisationmitglied:
+  name: 'Group::MitgliederorganisationMitglieder::Mitglied'
+  order_weight: 32
+
+mitgliederorganisationexterneadressverwalter:
+  name: 'Group::MitgliederorganisationExterne::Adressverwalter'
+  order_weight: 33
+
+mitgliederorganisationexterner:
+  name: 'Group::MitgliederorganisationExterne::Externer'
+  order_weight: 34
+
+mitgliederorganisationspenderspender:
+  name: 'Group::MitgliederorganisationSpender::Spender'
+  order_weight: 35
+
+mitgliederorganisationspenderspendenverwalter:
+  name: 'Group::MitgliederorganisationSpender::SpendenVerwalter'
+  order_weight: 36
+
+sektionadministrator:
+  name: 'Group::Sektion::Administrator'
+  order_weight: 37
+
+ortsgruppeadministratorcevidb:
+  name: 'Group::Ortsgruppe::AdministratorCeviDB'
+  order_weight: 38
+
+ortsgruppekassier:
+  name: 'Group::Ortsgruppe::Kassier'
+  order_weight: 39
+
+jungscharabteilungsleiter:
+  name: 'Group::Jungschar::Abteilungsleiter'
+  order_weight: 40
+
+jungscharcoach:
+  name: 'Group::Jungschar::Coach'
+  order_weight: 41
+
+jungscharfinanzverantwortlicher:
+  name: 'Group::Jungschar::Finanzverantwortlicher'
+  order_weight: 42
+
+jungscharadressverwalter:
+  name: 'Group::Jungschar::Adressverwalter'
+  order_weight: 43
+
+jungscharaktuar:
+  name: 'Group::Jungschar::Aktuar'
+  order_weight: 44
+
+jungscharbusverwalter:
+  name: 'Group::Jungschar::Busverwalter'
+  order_weight: 45
+
+jungscharfreiermitarbeiter:
+  name: 'Group::Jungschar::FreierMitarbeiter'
+  order_weight: 46
+
+jungscharhausverantwortlicher:
+  name: 'Group::Jungschar::Hausverantwortlicher'
+  order_weight: 47
+
+jungscharinput:
+  name: 'Group::Jungschar::Input'
+  order_weight: 48
+
+jungscharlaedeliverantwortlicher:
+  name: 'Group::Jungschar::Laedeliverantwortlicher'
+  order_weight: 49
+
+jungscharredaktor:
+  name: 'Group::Jungschar::Redaktor'
+  order_weight: 50
+
+jungscharregionaltreffenvertreter:
+  name: 'Group::Jungschar::Regionaltreffenvertreter'
+  order_weight: 51
+
+jungscharwebmaster:
+  name: 'Group::Jungschar::Webmaster'
+  order_weight: 52
+
+jungscharwerbung:
+  name: 'Group::Jungschar::Werbung'
+  order_weight: 53
+
+jungscharmaterialverantwortlicher:
+  name: 'Group::Jungschar::Materialverantwortlicher'
+  order_weight: 54
+
+jungschargkontaktregionalzeitschrift:
+  name: 'Group::Jungschar::KontaktRegionalzeitschrift'
+  order_weight: 55
+
+jungscharverantwortlicherpsa:
+  name: 'Group::Jungschar::VerantwortlicherPSA'
+  order_weight: 56
+
+jungscharjugendarbeiter:
+  name: 'Group::Jungschar::Jugendarbeiter'
+  order_weight: 57
+
+jungscharexterneverantwortlicher:
+  name: 'Group::JungscharExterne::Verantwortlicher'
+  order_weight: 58
+
+jungscharexterneverantwortlicher:
+  name: 'Group::JungscharExterne::Verantwortlicher'
+  order_weight: 58
+
+froeschlihauptleiter:
+  name: 'Group::Froeschli::Froeschlihauptleiter'
+  order_weight: 59
+
+froeschlileiter:
+  name: 'Group::Froeschli::Froeschlileiter'
+  order_weight: 60
+
+teilnehmer:
+  name: 'Group::Froeschli::Teilnehmer'
+  order_weight: 61
+
+stufenleiter:
+  name: 'Group::Stufe::Stufenleiter'
+  order_weight: 62
+
+minichef:
+  name: 'Group::Stufe::MiniChef'
+  order_weight: 63
+
+gruppenleiter:
+  name: 'Group::Stufe::Gruppenleiter'
+  order_weight: 64
+
+minigruppenleiter:
+  name: 'Group::Stufe::Minigruppenleiter'
+  order_weight: 65
+
+helfer:
+  name: 'Group::Stufe::Helfer'
+  order_weight: 66
+
+stufe_teilnehmer:
+  name: 'Group::Stufe::Teilnehmer'
+  order_weight: 67
+
+gruppe_leiter:
+  name: 'Group::Gruppe::Gruppenleiter'
+  order_weight: 68
+
+gruppe_minigruppenleiter:
+  name: 'Group::Gruppe::Minigruppenleiter'
+  order_weight: 69
+
+gruppe_helfer:
+  name: 'Group::Gruppe::Helfer'
+  order_weight: 70
+
+gruppe_teilnehmer:
+  name: 'Group::Gruppe::Teilnehmer'
+  order_weight: 71
+
+jungscharteam_abteilungsleiter:
+  name: 'Group::JungscharTeam::Abteilungsleiter'
+  order_weight: 72
+
+jungscharteam_coach:
+  name: 'Group::JungscharTeam::Coach'
+  order_weight: 73
+
+jungscharteam_finanzverantwortlicher:
+  name: 'Group::JungscharTeam::Finanzverantwortlicher'
+  order_weight: 74
+
+jungscharteam_adressverwalter:
+  name: 'Group::JungscharTeam::Adressverwalter'
+  order_weight: 75
+
+jungscharteam_aktuar:
+  name: 'Group::JungscharTeam::Aktuar'
+  order_weight: 76
+
+jungscharteam_busverwalter:
+  name: 'Group::JungscharTeam::Busverwalter'
+  order_weight: 77
+
+jungscharteam_freiermitarbeiter:
+  name: 'Group::JungscharTeam::FreierMitarbeiter'
+  order_weight: 78
+
+jungscharteam_hausverantwortlicher:
+  name: 'Group::JungscharTeam::Hausverantwortlicher'
+  order_weight: 79
+
+jungscharteam_input:
+  name: 'Group::JungscharTeam::Input'
+  order_weight: 80
+
+jungscharteam_laedi_leiter:
+  name: 'Group::JungscharTeam::Laedeliverantwortlicher'
+  order_weight: 81
+
+jungscharteam_redaktor:
+  name: 'Group::JungscharTeam::Redaktor'
+  order_weight: 82
+
+jungscharteam_regionaltreffenvertreter:
+  name: 'Group::JungscharTeam::Regionaltreffenvertreter'
+  order_weight: 83
+
+jungscharteam_webmaster:
+  name: 'Group::JungscharTeam::Webmaster'
+  order_weight: 84
+
+jungscharteam_werbung:
+  name: 'Group::JungscharTeam::Werbung'
+  order_weight: 85
+
+jungscharteam_materialverantwortlicher:
+  name: 'Group::JungscharTeam::Materialverantwortlicher'
+  order_weight: 86
+
+jungscharteam_kontaktregionalzeitschrift:
+  name: 'Group::JungscharTeam::KontaktRegionalzeitschrift'
+  order_weight: 87
+
+jungscharteam_verantwortlicher_psa:
+  name: 'Group::JungscharTeam::VerantwortlicherPSA'
+  order_weight: 88
+
+jungscharteam_jugendarbeiter:
+  name: 'Group::JungscharTeam::Jugendarbeiter'
+  order_weight: 89
+
+jungscharteam_leitung:
+  name: 'Group::JungscharTeam::Leitung'
+  order_weight: 90
+
+jungscharteam_mitarbeiter:
+  name: 'Group::JungscharTeam::Mitarbeiter'
+  order_weight: 91
+
+jungscharspender_spender:
+  name: 'Group::JungscharSpender::Spender'
+  order_weight: 92
+
+jungscharspender_spendenverwalter:
+  name: 'Group::JungscharSpender::SpendenVerwalter'
+  order_weight: 93
+
+verein_adressverantwortlicher:
+  name: 'Group::Verein::Adressverantwortlicher'
+  order_weight: 94
+
+verein_mitglied:
+  name: 'Group::Verein::Mitglied'
+  order_weight: 95
+
+verein_freiermitarbeiter:
+  name: 'Group::Verein::FreierMitarbeiter'
+  order_weight: 96
+
+vereinvorstand_praesident:
+  name: 'Group::VereinVorstand::Praesident'
+  order_weight: 97
+
+vereinvorstand_finanzverantwortlicher:
+  name: 'Group::VereinVorstand::Finanzverantwortlicher'
+  order_weight: 98
+
+vereinvorstand_aktuar:
+  name: 'Group::VereinVorstand::Aktuar'
+  order_weight: 99
+
+vereinvorstand_mitglied:
+  name: 'Group::VereinVorstand::Mitglied'
+  order_weight: 100
+
+vereinmitglieder_leiter:
+  name: 'Group::VereinMitglieder::Leiter'
+  order_weight: 101
+
+vereinmitglieder_mitglied:
+  name: 'Group::VereinMitglieder::Mitglied'
+  order_weight: 102
+
+vereinexterne_verantwortlicher:
+  name: 'Group::VereinExterne::Verantwortlicher'
+  order_weight: 103
+
+vereinexterne_externer:
+  name: 'Group::VereinExterne::Externer'
+  order_weight: 104
+
+vereinspender_spender:
+  name: 'Group::VereinSpender::Spender'
+  order_weight: 105
+
+vereinspender_spendenverwalter:
+  name: 'Group::VereinSpender::SpendenVerwalter'
+  order_weight: 106
+
+tensingteamgruppe_adressverantwortliche:
+  name: 'Group::TenSingTeamGruppe::Adressverantwortliche'
+  order_weight: 107
+
+tensing_hauptleiter:
+  name: 'Group::TenSing::Hauptleiter'
+  order_weight: 108
+
+tensing_mitglied:
+  name: 'Group::TenSing::Mitglied'
+  order_weight: 109
+
+tensing_arrangeur:
+  name: 'Group::TenSing::Arrangeur'
+  order_weight: 110
+
+tensing_adressverwalter:
+  name: 'Group::TenSing::Adressverwalter'
+  order_weight: 111
+
+tensing_aktuar:
+  name: 'Group::TenSing::Aktuar'
+  order_weight: 112
+
+tensing_finanzverantwortlicher:
+  name: 'Group::TenSing::Finanzverantwortlicher'
+  order_weight: 113
+
+tensing_freiermitarbeiter:
+  name: 'Group::TenSing::FreierMitarbeiter'
+  order_weight: 114
+
+tensing_inputleiter:
+  name: 'Group::TenSing::InputLeiter'
+  order_weight: 115
+
+tensing_redaktor:
+  name: 'Group::TenSing::Redaktor'
+  order_weight: 116
+
+tensing_regionaltreffenvertreter:
+  name: 'Group::TenSing::Regionaltreffenvertreter'
+  order_weight: 117
+
+tensing_webmaster:
+  name: 'Group::TenSing::Webmaster'
+  order_weight: 118
+
+tensing_werbeteamleitender:
+  name: 'Group::TenSing::WerbeteamLeitender'
+  order_weight: 119
+
+tensing_dirigent:
+  name: 'Group::TenSing::Dirigent'
+  order_weight: 120
+
+tensing_chorleiter:
+  name: 'Group::TenSing::Chorleiter'
+  order_weight: 121
+
+tensing_chorsaenger:
+  name: 'Group::TenSing::Chorsaenger'
+  order_weight: 122
+
+tensing_videoleiter:
+  name: 'Group::TenSing::VideoLeiter'
+  order_weight: 123
+
+tensing_stagedesignleiter:
+  name: 'Group::TenSing::StagedesignLeiter'
+  order_weight: 124
+
+tensing_stagedesigner:
+  name: 'Group::TenSing::Stagedesigner'
+  order_weight: 125
+
+tensing_dj:
+  name: 'Group::TenSing::DJ'
+  order_weight: 126
+
+tensing_verantwortlicher_lagerweekends:
+  name: 'Group::TenSing::VerantwortlicherLagerWeekends'
+  order_weight: 127
+
+tensing_jugendarbeiter:
+  name: 'Group::TenSing::Jugendarbeiter'
+  order_weight: 128
+
+tensing_bandleiter:
+  name: 'Group::TenSing::BandLeiter'
+  order_weight: 129
+
+tensing_bandmitglied:
+  name: 'Group::TenSing::Bandmitglied'
+  order_weight: 130
+
+tensing_tanzleiter:
+  name: 'Group::TenSing::TanzLeiter'
+  order_weight: 131
+
+tensing_taenzer:
+  name: 'Group::TenSing::Taenzer'
+  order_weight: 132
+
+tensing_technikleiter:
+  name: 'Group::TenSing::TechnikLeiter'
+  order_weight: 133
+
+tensing_techniker:
+  name: 'Group::TenSing::Techniker'
+  order_weight: 134
+
+tensing_theaterleiter:
+  name: 'Group::TenSing::TheaterLeiter'
+  order_weight: 135
+
+tensing_schauspieler:
+  name: 'Group::TenSing::Schauspieler'
+  order_weight: 136
+
+tensingexterne_verantwortlicher:
+  name: 'Group::TenSingExterne::Verantwortlicher'
+  order_weight: 137
+
+tensingexterne_externer:
+  name: 'Group::TenSingExterne::Externer'
+  order_weight: 138
+
+tensingexterne_jugendarbeiter:
+  name: 'Group::TenSingExterne::Jugendarbeiter'
+  order_weight: 139
+
+tensingspender_spender:
+  name: 'Group::TenSingSpender::Spender'
+  order_weight: 140
+
+tensingspender_spendenverwalter:
+  name: 'Group::TenSingSpender::SpendenVerwalter'
+  order_weight: 141
+
+sport_adressverantwortlicher:
+  name: 'Group::Sport::Adressverantwortlicher'
+  order_weight: 142
+
+sport_finanzverantwortlicher:
+  name: 'Group::Sport::Finanzverantwortlicher'
+  order_weight: 143
+
+sport_hauptleitung:
+  name: 'Group::Sport::Hauptleitung'
+  order_weight: 144
+
+sport_materialverantwortlicher:
+  name: 'Group::Sport::Materialverantwortlicher'
+  order_weight: 145
+
+sport_leiter:
+  name: 'Group::Sport::Leiter'
+  order_weight: 146
+
+sport_mitglied:
+  name: 'Group::Sport::Mitglied'
+  order_weight: 147
+
+sport_freiermitarbeiter:
+  name: 'Group::Sport::FreierMitarbeiter'
+  order_weight: 148
+
+sportteamgruppe_leiter:
+  name: 'Group::SportTeamGruppe::Leiter'
+  order_weight: 149
+
+sportteamgruppe_mitglied:
+  name: 'Group::SportTeamGruppe::Mitglied'
+  order_weight: 150
+
+sportexterne_verantwortlicher:
+  name: 'Group::SportExterne::Verantwortlicher'
+  order_weight: 151
+
+sportexterne_externer:
+  name: 'Group::SportExterne::Externer'
+  order_weight: 152
+
+sportspender_spender:
+  name: 'Group::SportSpender::Spender'
+  order_weight: 153
+
+sportspender_spendenverwalter:
+  name: 'Group::SportSpender::SpendenVerwalter'
+  order_weight: 154
+
+weiterearbeitsgebiete_adressverantwortlicher:
+  name: 'Group::WeitereArbeitsgebiete::Adressverantwortlicher'
+  order_weight: 155
+
+weiterearbeitsgebiete_finanzverantwortlicher:
+  name: 'Group::WeitereArbeitsgebiete::Finanzverantwortlicher'
+  order_weight: 156
+
+weiterearbeitsgebiete_hauptleitung:
+  name: 'Group::WeitereArbeitsgebiete::Hauptleitung'
+  order_weight: 157
+
+weiterearbeitsgebiete_materialverantwortlicher:
+  name: 'Group::WeitereArbeitsgebiete::Materialverantwortlicher'
+  order_weight: 158
+
+weiterearbeitsgebiete_leiter:
+  name: 'Group::WeitereArbeitsgebiete::Leiter'
+  order_weight: 159
+
+weiterearbeitsgebiete_mitglied:
+  name: 'Group::WeitereArbeitsgebiete::Mitglied'
+  order_weight: 160
+
+weiterearbeitsgebiete_freiermitarbeiter:
+  name: 'Group::WeitereArbeitsgebiete::FreierMitarbeiter'
+  order_weight: 161
+
+weiterearbeitsgebieteexterne_verantwortlicher:
+  name: 'Group::WeitereArbeitsgebieteExterne::Verantwortlicher'
+  order_weight: 162
+
+weiterearbeitsgebieteexterne_externer:
+  name: 'Group::WeitereArbeitsgebieteExterne::Externer'
+  order_weight: 163
+
+weiterearbeitsgebieteteamgruppe_leiter:
+  name: 'Group::WeitereArbeitsgebieteTeamGruppe::Leiter'
+  order_weight: 164
+
+weiterearbeitsgebieteteamgruppe_mitglied:
+  name: 'Group::WeitereArbeitsgebieteTeamGruppe::Mitglied'
+  order_weight: 165
+
+weiterearbeitsgebietespender_spender:
+  name: 'Group::WeitereArbeitsgebieteSpender::Spender'
+  order_weight: 166
+
+weiterearbeitsgebietespender_spendenverwalter:
+  name: 'Group::WeitereArbeitsgebieteSpender::SpendenVerwalter'
+  order_weight: 167
