@@ -26,7 +26,7 @@ class PopulationController < ApplicationController
     group.self_and_descendants
       .without_deleted
       .where(type: MemberCounter::GROUPS.map(&:sti_name))
-      .order_by_type(group)
+      .order_by_type
   end
 
   def load_people_by_group
@@ -44,10 +44,12 @@ class PopulationController < ApplicationController
 
   def load_people(group)
     @member_counter.members
-      .where(roles: {group_id: group})
-      .preload_groups
-      .order_by_role
-      .order_by_name
+                   .where(roles: { group_id: group })
+                   .preload_groups
+                   .unscope(:joins)
+                   .select("people.*")
+                   .order_by_role
+                   .order("sort_name")
   end
 
   def authorize
