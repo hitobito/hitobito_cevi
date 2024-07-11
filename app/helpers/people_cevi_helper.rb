@@ -1,12 +1,9 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
 module PeopleCeviHelper
-
   IdLabel = Struct.new(:id, :to_s)
 
   def format_person_canton(person)
@@ -36,11 +33,11 @@ module PeopleCeviHelper
   end
 
   def existing_person_correspondence_languages
-    Person.where('correspondence_language IS NOT NULL').pluck(:correspondence_language).uniq
+    Person.where.not(correspondence_language: nil).pluck(:correspondence_language).uniq
   end
 
   def existing_person_nationalities
-    Person.where('nationality IS NOT NULL').pluck(:nationality).uniq
+    Person.where.not(nationality: nil).pluck(:nationality).uniq
   end
 
   def format_person_ortsgruppe(person)

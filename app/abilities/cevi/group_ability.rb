@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -10,21 +8,21 @@ module Cevi::GroupAbility
 
   included do
     on(Group) do
-      permission(:layer_and_below_full).
-        may(:evaluate_census).
-        in_same_layer_or_below
+      permission(:layer_and_below_full)
+        .may(:evaluate_census)
+        .in_same_layer_or_below
 
-      permission(:layer_and_below_full).
-        may(:show_population, :create_member_counts).
-        in_same_layer_or_below
+      permission(:layer_and_below_full)
+        .may(:show_population, :create_member_counts)
+        .in_same_layer_or_below
 
-      permission(:layer_and_below_full).
-        may(:remind_census, :update_member_counts, :delete_member_counts).
-        in_upper_layer_hierarchy
+      permission(:layer_and_below_full)
+        .may(:remind_census, :update_member_counts, :delete_member_counts)
+        .in_upper_layer_hierarchy
 
-      permission(:financials).
-        may(:show_donors).
-        in_same_layer
+      permission(:financials)
+        .may(:show_donors)
+        .in_same_layer
 
       permission(:see_invisible_from_above).may(:index_local_people).in_same_layer_or_below
 
