@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -136,39 +134,38 @@ class Group::TenSing < Group
   end
 
   roles Hauptleiter,
-        Mitglied,
-        Arrangeur,
-        Adressverwalter,
-        Aktuar,
-        Finanzverantwortlicher,
-        FreierMitarbeiter,
-        InputLeiter,
-        Redaktor,
-        Regionaltreffenvertreter,
-        Webmaster,
-        WerbeteamLeitender,
-        Dirigent,
-        Chorleiter,
-        Chorsaenger,
-        VideoLeiter,
-        StagedesignLeiter,
-        Stagedesigner,
-        DJ,
-        VerantwortlicherLagerWeekends,
-        Jugendarbeiter,
-        BandLeiter,
-        Bandmitglied,
-        TanzLeiter,
-        Taenzer,
-        TechnikLeiter,
-        Techniker,
-        TheaterLeiter,
-        Schauspieler
-
+    Mitglied,
+    Arrangeur,
+    Adressverwalter,
+    Aktuar,
+    Finanzverantwortlicher,
+    FreierMitarbeiter,
+    InputLeiter,
+    Redaktor,
+    Regionaltreffenvertreter,
+    Webmaster,
+    WerbeteamLeitender,
+    Dirigent,
+    Chorleiter,
+    Chorsaenger,
+    VideoLeiter,
+    StagedesignLeiter,
+    Stagedesigner,
+    DJ,
+    VerantwortlicherLagerWeekends,
+    Jugendarbeiter,
+    BandLeiter,
+    Bandmitglied,
+    TanzLeiter,
+    Taenzer,
+    TechnikLeiter,
+    Techniker,
+    TheaterLeiter,
+    Schauspieler
 
   # TenSingTeamGruppe has TenSing roles
   # need to place children after roles are defined
   children Group::TenSingTeamGruppe,
-           Group::TenSingExterne,
-           Group::TenSingSpender
+    Group::TenSingExterne,
+    Group::TenSingSpender
 end

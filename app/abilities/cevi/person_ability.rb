@@ -14,33 +14,33 @@ module Cevi::PersonAbility
     on(Person) do
       permission(:financials).may(:update).financials_in_same_layer
 
-      permission(:see_invisible_from_above).
-        may(:show, :show_full, :show_details, :history, :update,
-            :primary_group, :send_password_instructions, :log).
-        in_same_layer_or_below
+      permission(:see_invisible_from_above)
+        .may(:show, :show_full, :show_details, :history, :update,
+          :primary_group, :send_password_instructions, :log)
+        .in_same_layer_or_below
 
-      permission(:group_full).may(:update).
-        non_restricted_in_same_group_or_event_organizer
-      permission(:group_and_below_full).may(:update).
-        non_restricted_in_same_group_or_below_or_event_organizer
-      permission(:layer_full).may(:update).
-        non_restricted_in_same_layer_or_event_organizer
-      permission(:layer_and_below_full).may(:update).
-        non_restricted_in_same_layer_or_visible_below_or_event_organizer
+      permission(:group_full).may(:update)
+        .non_restricted_in_same_group_or_event_organizer
+      permission(:group_and_below_full).may(:update)
+        .non_restricted_in_same_group_or_below_or_event_organizer
+      permission(:layer_full).may(:update)
+        .non_restricted_in_same_layer_or_event_organizer
+      permission(:layer_and_below_full).may(:update)
+        .non_restricted_in_same_layer_or_visible_below_or_event_organizer
       permission(:any).may(:update).herself_or_manager_or_for_leaded_events
 
-      permission(:layer_and_below_full).may(:update_old_data).
-        angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
+      permission(:layer_and_below_full).may(:update_old_data)
+        .angestellter_or_geschaeftsfuehrung_in_same_layer_or_below
 
       permission(:see_invisible_from_above).may(:change_managers).in_same_layer_or_below_except_self
-      permission(:group_full).may(:change_managers).
-        non_restricted_in_same_group_or_event_organizer_except_self
-      permission(:group_and_below_full).may(:change_managers).
-        non_restricted_in_same_group_or_below_or_event_organizer_except_self
-      permission(:layer_full).may(:change_managers).
-        non_restricted_in_same_layer_or_event_organizer_except_self
-      permission(:layer_and_below_full).may(:change_managers).
-        non_restricted_in_same_layer_or_visible_below_or_event_organizer_except_self
+      permission(:group_full).may(:change_managers)
+        .non_restricted_in_same_group_or_event_organizer_except_self
+      permission(:group_and_below_full).may(:change_managers)
+        .non_restricted_in_same_group_or_below_or_event_organizer_except_self
+      permission(:layer_full).may(:change_managers)
+        .non_restricted_in_same_layer_or_event_organizer_except_self
+      permission(:layer_and_below_full).may(:change_managers)
+        .non_restricted_in_same_layer_or_visible_below_or_event_organizer_except_self
     end
   end
 
@@ -138,16 +138,15 @@ module Cevi::PersonAbility
   end
 
   def subject_event_groups
-    Group.joins(:events).where(events: { id: subject.events.select(:id) }).distinct
+    Group.joins(:events).where(events: {id: subject.events.select(:id)}).distinct
   end
 
   def angestellter_or_geschaeftsfuehrung_roles
     [Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter,
-     Group::MitgliederorganisationGeschaeftsstelle::Angestellter]
+      Group::MitgliederorganisationGeschaeftsstelle::Angestellter]
   end
 
   def manager
     contains_any?([user.id], person.managers.pluck(:id))
   end
-
 end

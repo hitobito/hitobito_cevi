@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -7,7 +5,6 @@
 #
 
 class Group::DachverbandSpender < Group::Spender
-
   children Group::DachverbandSpender
 
   ### ROLES
@@ -20,6 +17,5 @@ class Group::DachverbandSpender < Group::Spender
   end
 
   roles Spender,
-        SpendenVerwalter
-
+    SpendenVerwalter
 end

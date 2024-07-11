@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -87,27 +85,26 @@ class Group::Jungschar < Group
   end
 
   roles Abteilungsleiter,
-        Coach,
-        Finanzverantwortlicher,
-        Adressverwalter,
-        Aktuar,
-        Busverwalter,
-        FreierMitarbeiter,
-        Hausverantwortlicher,
-        Input,
-        Laedeliverantwortlicher,
-        Redaktor,
-        Regionaltreffenvertreter,
-        Webmaster,
-        Werbung,
-        Materialverantwortlicher,
-        KontaktRegionalzeitschrift,
-        VerantwortlicherPSA,
-        Jugendarbeiter
+    Coach,
+    Finanzverantwortlicher,
+    Adressverwalter,
+    Aktuar,
+    Busverwalter,
+    FreierMitarbeiter,
+    Hausverantwortlicher,
+    Input,
+    Laedeliverantwortlicher,
+    Redaktor,
+    Regionaltreffenvertreter,
+    Webmaster,
+    Werbung,
+    Materialverantwortlicher,
+    KontaktRegionalzeitschrift,
+    VerantwortlicherPSA,
+    Jugendarbeiter
 
   children Group::JungscharExterne,
-           Group::Froeschli,
-           Group::Stufe,
-           Group::JungscharTeam
-
+    Group::Froeschli,
+    Group::Stufe,
+    Group::JungscharTeam
 end

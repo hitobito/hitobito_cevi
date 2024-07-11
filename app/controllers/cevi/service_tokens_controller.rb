@@ -13,5 +13,4 @@ module Cevi::ServiceTokensController
     permitted << :show_donors if can?(:show_donors, group)
     permitted
   end
-
 end

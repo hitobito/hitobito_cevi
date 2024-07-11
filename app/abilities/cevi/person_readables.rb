@@ -50,8 +50,8 @@ module Cevi::PersonReadables
   end
 
   def layer_group_query(layer_group_ids, role_types)
-    ['groups.layer_group_id IN (?) AND roles.type IN (?)',
-     layer_group_ids, role_types.map(&:sti_name)]
+    ["groups.layer_group_id IN (?) AND roles.type IN (?)",
+      layer_group_ids, role_types.map(&:sti_name)]
   end
 
   def financials_condition(condition)

@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 class MemberCounter
-
   # Groups not appearing here are not counted at all.
   TOP_LEVEL = [
     Group::Sport,
@@ -24,18 +23,18 @@ class MemberCounter
     Group::TenSingTeamGruppe
   ]
 
-  IGNORED_ROLE_NAMES = %w(
+  IGNORED_ROLE_NAMES = %w[
     FreierMitarbeiter
     Coach
-  ).freeze
+  ].freeze
 
   attr_reader :year, :group
 
   class << self
     def filtered_roles
       GROUPS.map(&:roles).flatten.reject do |role|
-        role_name = role.to_s.demodulize.split('::').last
-        role_name =~ /#{IGNORED_ROLE_NAMES.join('|')}/
+        role_name = role.to_s.demodulize.split("::").last
+        role_name =~ /#{IGNORED_ROLE_NAMES.join("|")}/
       end
     end
 
@@ -58,7 +57,7 @@ class MemberCounter
     end
   end
 
-  ROLE_MAPPING = { person: filtered_roles }.freeze
+  ROLE_MAPPING = {person: filtered_roles}.freeze
 
   # create a new counter for with the given year and group.
   # beware: the year is only used to store the results and does not
@@ -87,11 +86,11 @@ class MemberCounter
   end
 
   def members
-    Person.joins(:roles).
-      where(roles: { group_id: group.self_and_descendants,
+    Person.joins(:roles)
+      .where(roles: {group_id: group.self_and_descendants,
                      type: self.class.counted_roles.collect(&:sti_name),
-                     deleted_at: nil }).
-      distinct
+                     deleted_at: nil})
+      .distinct
   end
 
   private
@@ -118,7 +117,7 @@ class MemberCounter
   def count_field(person)
     ROLE_MAPPING.each do |field, roles|
       if (person.roles.collect(&:class) & roles).present?
-        return person.gender == 'm' ? :"#{field}_m" : :"#{field}_f"
+        return (person.gender == "m") ? :"#{field}_m" : :"#{field}_f"
       end
     end
     nil
@@ -128,7 +127,6 @@ class MemberCounter
     return unless field
 
     val = count.send(field)
-    count.send("#{field}=", val ? val + 1 : 1)
+    count.send(:"#{field}=", val ? val + 1 : 1)
   end
-
 end

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2015, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -10,9 +8,9 @@ module Cevi::PeopleController
 
   included do
     self.permitted_attrs += [:title, :profession, :j_s_number, :joined, :ahv_number,
-                             :ahv_number_old, :nationality, :salutation_parents, :name_parents,
-                             :member_card_number, :salutation, :canton, :confession,
-                             :correspondence_language, :ortsgruppe_id]
+      :ahv_number_old, :nationality, :salutation_parents, :name_parents,
+      :member_card_number, :salutation, :canton, :confession,
+      :correspondence_language, :ortsgruppe_id]
 
     alias_method_chain :permitted_attrs, :old_data
   end

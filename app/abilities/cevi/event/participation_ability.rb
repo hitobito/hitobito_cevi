@@ -10,18 +10,18 @@ module Cevi::Event::ParticipationAbility
 
   included do
     on(Event::Participation) do
-      permission(:see_invisible_from_above).
-        may(:create_tentative).
-        person_in_same_layer_or_below
+      permission(:see_invisible_from_above)
+        .may(:create_tentative)
+        .person_in_same_layer_or_below
 
-      permission(:layer_and_below_read).
-        may(:show).
-        in_same_layer_or_below_if_ausbildungsmitglied
+      permission(:layer_and_below_read)
+        .may(:show)
+        .in_same_layer_or_below_if_ausbildungsmitglied
 
       for_self_or_manageds do
-        permission(:any).
-          may(:create).
-          if_manage_attendances_in_event_or_her_own_if_application_possible
+        permission(:any)
+          .may(:create)
+          .if_manage_attendances_in_event_or_her_own_if_application_possible
       end
 
       permission(:any).may(:approve).if_manage_attendances_in_event
@@ -48,14 +48,13 @@ module Cevi::Event::ParticipationAbility
   private
 
   def ausbildungs_layer_ids
-    user.
-      roles.
-      select { |r| r.is_a?(Group::MitgliederorganisationGremium::Ausbildungsmitglied) }.
-      map { |r| r.group.layer_group_id }
+    user
+      .roles
+      .select { |r| r.is_a?(Group::MitgliederorganisationGremium::Ausbildungsmitglied) }
+      .map { |r| r.group.layer_group_id }
   end
 
   def event_hierarchy_ids
     event.groups.collect(&:layer_hierarchy).flatten.collect(&:id).uniq
   end
-
 end

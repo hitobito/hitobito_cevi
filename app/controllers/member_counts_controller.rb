@@ -1,12 +1,9 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
 class MemberCountsController < ApplicationController
-
   decorates :group
 
   def create
@@ -15,7 +12,7 @@ class MemberCountsController < ApplicationController
     year = MemberCounter.create_counts_for(group)
     if year
       total = MemberCount.total_for_group(year, group).try(:total) || 0
-      flash[:notice] = translate('.created_data_for_year', total: total, year: year)
+      flash[:notice] = translate(".created_data_for_year", total: total, year: year)
     end
 
     year ||= Time.zone.today.year
@@ -36,7 +33,7 @@ class MemberCountsController < ApplicationController
       redirect_to census_group_group_path(group, year: year)
     else
       flash.now[:alert] = faulty_counts_message(with_errors)
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -45,7 +42,7 @@ class MemberCountsController < ApplicationController
 
     member_counts.destroy_all
     redirect_to census_group_group_path(group, year: year),
-                notice: translate('.deleted_data_for_year', year: year)
+      notice: translate(".deleted_data_for_year", year: year)
   end
 
   private
@@ -66,11 +63,11 @@ class MemberCountsController < ApplicationController
 
   def faulty_counts_message(with_errors)
     messages = with_errors.collect do |e|
-      "#{e.born_in || 'unbekannt'}: #{e.errors.full_messages.join(', ')}"
+      "#{e.born_in || "unbekannt"}: #{e.errors.full_messages.join(", ")}"
     end
 
-    'Nicht alle Jahrgänge konnten gespeichert werden. ' \
-    "Bitte überprüfen Sie Ihre Angaben. (#{messages.join('; ')})"
+    "Nicht alle Jahrgänge konnten gespeichert werden. " \
+    "Bitte überprüfen Sie Ihre Angaben. (#{messages.join("; ")})"
   end
 
   def create_additional_member_counts
@@ -78,7 +75,7 @@ class MemberCountsController < ApplicationController
     additionals = permitted[:additional_member_counts] || []
     additionals.map do |attrs|
       @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation,
-                                              year: year))
+        year: year))
     end
   end
 
@@ -88,12 +85,10 @@ class MemberCountsController < ApplicationController
 
   def year
     @year ||= Census.current.try(:year) ||
-              fail(ActiveRecord::RecordNotFound, 'No current census found')
+      fail(ActiveRecord::RecordNotFound, "No current census found")
   end
 
   def permitted_params
     params.require(:member_count).permit(MemberCount::COUNT_COLUMNS)
   end
-
-
 end

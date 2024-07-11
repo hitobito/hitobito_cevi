@@ -40,5 +40,4 @@ module Cevi::PersonDecorator
       role.group.class.ancestors.include?(Group::Spender)
     end
   end
-
 end

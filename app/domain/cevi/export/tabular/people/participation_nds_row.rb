@@ -6,7 +6,6 @@
 # https://github.com/hitobito/hitobito_youth.
 
 module Cevi::Export::Tabular::People::ParticipationNdsRow
-
   extend ActiveSupport::Concern
 
   included do
@@ -15,7 +14,6 @@ module Cevi::Export::Tabular::People::ParticipationNdsRow
 
   def first_language_with_correspondence_language
     lang = entry.correspondence_language.presence
-    lang ? lang.upcase : 'DE'
+    lang ? lang.upcase : "DE"
   end
-
 end

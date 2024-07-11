@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2015, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -36,7 +34,6 @@ module Cevi::Role
 
   # Missing when core person is seeded and wagon migrations have not be run
   def ortsgruppe_id_column_available?
-    Person.column_names.include?('ortsgruppe_id')
+    Person.column_names.include?("ortsgruppe_id")
   end
-
 end
