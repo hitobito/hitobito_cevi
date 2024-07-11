@@ -11,7 +11,7 @@ module Export::Tabular
 
     def initialize(list)
       @list = grouped(list.includes(:group, :mitgliederorganisation))
-      @years = list.pluck(:born_in).uniq.reject(&:blank?).sort + [:unknown]
+      @years = list.pluck(:born_in).uniq.compact_blank.sort + [:unknown]
     end
 
     def attributes

@@ -11,12 +11,16 @@ class CensusEvaluation::BaseController < ApplicationController
   before_action :authorize
 
   decorates :group, :sub_groups
+  helper_method :group_counts
 
   def index
     @sub_groups = evaluation.sub_groups
-    @group_counts = evaluation.counts_by_sub_group
     @total = evaluation.total || empty_count_for_current_census
     @details = evaluation.details
+  end
+
+  def group_counts
+    @group_counts ||= evaluation.counts_by_sub_group
   end
 
   private
