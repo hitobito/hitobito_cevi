@@ -9,9 +9,9 @@ module Cevi::Person::LogController
   def version_conditions
     return super if Settings.people.visible_log_months.blank?
 
-    start_timestamp  = Settings.people.visible_log_months.months.ago
+    start_timestamp = Settings.people.visible_log_months.months.ago
     finish_timestamp = DateTime.current
 
-    super.merge({ created_at: (start_timestamp..finish_timestamp) })
+    super.merge({created_at: (start_timestamp..finish_timestamp)})
   end
 end

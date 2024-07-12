@@ -4,7 +4,7 @@
 -#  https://github.com/hitobito/hitobito_cevi.
 
 %p.alert.alert-info
-  - if check_approveable?
+  - if check_approveable?(@group)
     = t('.please_confirm_census_data')
 
   - else
@@ -15,7 +15,7 @@
 = render 'people_list'
 
 
-- if check_approveable?
+- if check_approveable?(@group)
   - if @people_data_complete
     = action_button(t('.confirm_census_data'),
                     group_member_counts_path(@group),

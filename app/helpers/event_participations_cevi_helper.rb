@@ -6,19 +6,17 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 module EventParticipationsCeviHelper
-
   def format_ortsgruppe(participation)
     participation.person.ortsgruppe_label
   end
 
   def format_event_participation_payed(participation)
-    participation.payed? ? t('global.yes') : t('global.no')
+    participation.payed? ? t("global.yes") : t("global.no")
   end
 
   def new_course_leader_role_dropdown(group, part)
     Dropdown::Event::RoleAdd.new(self, group, part.event, part.person).tap do |dropdown|
-      dropdown.label = t(:'dropdown/event/role_add.add_leader')
+      dropdown.label = t(:"dropdown/event/role_add.add_leader")
     end
   end
-
 end

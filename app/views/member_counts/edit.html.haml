@@ -20,7 +20,7 @@
           %td= f.input_field :person_f
           %td= f.input_field :person_m
 
-  #member_counts_fields_blueprint{style: 'display: none', data: { blueprint: member_counts_fields_blueprint } }
+  #member_counts_fields_blueprint{style: 'display: none', data: { blueprint: member_counts_fields_blueprint(@group) } }
   = link_to 'Eintrag hinzufügen', 'javascript:void(0);', class: 'add_nested_fields', data: { association: 'member_counts', 'blueprint-id' => 'member_counts_fields_blueprint' }
 
   = form_buttons(f, submit_label: nil, cancel_url: census_group_group_path(@group, year: @year))

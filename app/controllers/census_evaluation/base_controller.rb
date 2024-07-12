@@ -1,12 +1,9 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
 class CensusEvaluation::BaseController < ApplicationController
-
   include YearBasedPaging
 
   class_attribute :sub_group_type
@@ -25,9 +22,9 @@ class CensusEvaluation::BaseController < ApplicationController
   private
 
   def csv_export(conditions = {})
-    counts = MemberCount.
-      includes(:group, :mitgliederorganisation).
-      where(conditions.merge(year: year))
+    counts = MemberCount
+      .includes(:group, :mitgliederorganisation)
+      .where(conditions.merge(year: year))
 
     Export::Tabular::MemberCount.csv(counts)
   end
@@ -37,7 +34,7 @@ class CensusEvaluation::BaseController < ApplicationController
   end
 
   def empty_count_for_current_census
-    year == Census.current.try(:year) ? MemberCount.new : nil
+    (year == Census.current.try(:year)) ? MemberCount.new : nil
   end
 
   def group

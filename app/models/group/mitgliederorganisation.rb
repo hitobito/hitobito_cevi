@@ -1,28 +1,23 @@
-# encoding: utf-8
-
 #  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
 class Group::Mitgliederorganisation < Group
-
   self.layer = true
   self.event_types = [Event, Event::Course]
   self.contact_group_type = Group::MitgliederorganisationGeschaeftsstelle
 
-
-  has_many :member_counts
+  has_many :member_counts, dependent: nil
 
   children Group::MitgliederorganisationVorstand,
-           Group::MitgliederorganisationGeschaeftsstelle,
-           Group::MitgliederorganisationGremium,
-           Group::MitgliederorganisationMitglieder,
-           Group::MitgliederorganisationExterne,
-           Group::MitgliederorganisationSpender,
-           Group::Sektion,
-           Group::Ortsgruppe
-
+    Group::MitgliederorganisationGeschaeftsstelle,
+    Group::MitgliederorganisationGremium,
+    Group::MitgliederorganisationMitglieder,
+    Group::MitgliederorganisationExterne,
+    Group::MitgliederorganisationSpender,
+    Group::Sektion,
+    Group::Ortsgruppe
 
   ### ROLES
 
@@ -43,5 +38,4 @@ class Group::Mitgliederorganisation < Group
   def census_details(year)
     MemberCount.details_for_mitgliederorganisation(year, self)
   end
-
 end

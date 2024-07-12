@@ -1,12 +1,9 @@
-# encoding: utf-8
-
 #  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
 class CensusEvaluation
-
   attr_reader :year, :group, :sub_group_type
 
   # Group may be one of the referenced group types in MemberCount.
@@ -72,14 +69,14 @@ class CensusEvaluation
   end
 
   def sub_groups_with_counts
-    Group.where(id: group.member_counts.where(year: year).
-                                        select(sub_group_id_col).
-                                        distinct)
+    Group.where(id: group.member_counts.where(year: year)
+                                        .select(sub_group_id_col)
+                                        .distinct)
   end
 
   def current_census_sub_groups
     sub_group_ids = current_sub_groups.pluck(:id)
-    unless group.class == Group::Dachverband
+    unless group.instance_of?(Group::Dachverband)
       sub_group_ids -= sub_group_ids_with_other_group_count(sub_group_ids)
     end
     sub_group_ids += sub_groups_with_counts.pluck(:id)
@@ -92,9 +89,9 @@ class CensusEvaluation
 
   def sub_group_ids_with_other_group_count(sub_group_ids)
     MemberCount.where(sub_group_id_col => sub_group_ids,
-                      :year => year).
-                where("#{group_id_col} <> ?", group.id).
-                pluck(sub_group_id_col)
+      :year => year)
+      .where("#{group_id_col} <> ?", group.id)
+      .pluck(sub_group_id_col)
   end
 
   def sub_group_types
@@ -112,5 +109,4 @@ class CensusEvaluation
   def single_sub_group_type?
     sub_group_types.size == 1
   end
-
 end

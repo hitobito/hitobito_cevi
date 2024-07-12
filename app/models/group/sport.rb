@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #  Copyright (c) 2023, Cevi.DB Steuergruppe. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
@@ -11,8 +9,8 @@ class Group::Sport < Group
   self.layer = true
 
   children Group::SportTeamGruppe,
-           Group::SportExterne,
-           Group::SportSpender
+    Group::SportExterne,
+    Group::SportSpender
 
   ### ROLES
 
@@ -47,11 +45,10 @@ class Group::Sport < Group
   end
 
   roles Adressverantwortlicher,
-        Finanzverantwortlicher,
-        Hauptleitung,
-        Materialverantwortlicher,
-        Leiter,
-        Mitglied,
-        FreierMitarbeiter
-
+    Finanzverantwortlicher,
+    Hauptleitung,
+    Materialverantwortlicher,
+    Leiter,
+    Mitglied,
+    FreierMitarbeiter
 end

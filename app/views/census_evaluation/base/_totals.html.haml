@@ -9,7 +9,7 @@
     %tr
       %td= link_to(g.to_s, census_evaluation_path(g, year: @year))
       - %w(person_f person_m).each do |col|
-        %td.center= count_field(g, col)
-      %td.center= count_field(g, :total)
+        %td.center= count_field(g, col, @group_counts)
+      %td.center= count_field(g, :total, @group_counts)
       %td.center= render 'total_actions', group: g
   = render 'total_row'

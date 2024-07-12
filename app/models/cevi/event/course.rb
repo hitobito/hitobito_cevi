@@ -14,7 +14,7 @@ module Cevi::Event::Course
 
     ### ASSOCIATIONS
 
-    belongs_to :application_contact, class_name: 'Group'
+    belongs_to :application_contact, class_name: "Group"
 
     validate :validate_application_contact
   end
@@ -36,5 +36,4 @@ module Cevi::Event::Course
       errors.add(:base, :geschaeftsstelle_missing)
     end
   end
-
 end
