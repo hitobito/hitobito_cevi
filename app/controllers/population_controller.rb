@@ -44,12 +44,12 @@ class PopulationController < ApplicationController
 
   def load_people(group)
     @member_counter.members
-                   .where(roles: { group_id: group })
-                   .preload_groups
-                   .unscope(:joins)
-                   .select("people.*")
-                   .order_by_role
-                   .order("sort_name")
+      .where(roles: {group_id: group})
+      .preload_groups
+      .unscope(:joins)
+      .select("people.*")
+      .order_by_role
+      .order("sort_name")
   end
 
   def authorize
