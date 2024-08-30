@@ -15,7 +15,7 @@ module Cevi
           if /mysql/.match?(::Event.connection.adapter_name.downcase)
             'CONCAT_WS("", groups.short_name, groups.name)'
           else
-            '(IFNULL(groups.short_name, "") || groups.name)'
+            "(COALESCE(groups.short_name, '') || groups.name)"
           end
 
         alias_method_chain :assign_attributes, :check

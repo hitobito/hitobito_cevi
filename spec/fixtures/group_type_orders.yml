@@ -1,0 +1,159 @@
+dachverband:
+  name: Group::Dachverband
+  order_weight: 1
+
+dachverband_vorstand:
+  name: Group::DachverbandVorstand
+  order_weight: 2
+
+dachverband_geschaeftsstelle:
+  name: Group::DachverbandGeschaeftsstelle
+  order_weight: 3
+
+dachverband_gremium:
+  name: Group::DachverbandGremium
+  order_weight: 4
+
+dachverband_mitglieder:
+  name: Group::DachverbandMitglieder
+  order_weight: 5
+
+dachverband_externe:
+  name: Group::DachverbandExterne
+  order_weight: 6
+
+dachverband_spender:
+  name: Group::DachverbandSpender
+  order_weight: 7
+
+mitgliederorganisation:
+  name: Group::Mitgliederorganisation
+  order_weight: 8
+
+mitgliederorganisation_vorstand:
+  name: Group::MitgliederorganisationVorstand
+  order_weight: 9
+
+mitgliederorganisation_geschaeftsstelle:
+  name: Group::MitgliederorganisationGeschaeftsstelle
+  order_weight: 10
+
+mitgliederorganisation_gremium:
+  name: Group::MitgliederorganisationGremium
+  order_weight: 11
+
+mitgliederorganisation_mitglieder:
+  name: Group::MitgliederorganisationMitglieder
+  order_weight: 12
+
+mitgliederorganisation_externe:
+  name: Group::MitgliederorganisationExterne
+  order_weight: 13
+
+mitgliederorganisation_spender:
+  name: Group::MitgliederorganisationSpender
+  order_weight: 14
+
+sektion:
+  name: Group::Sektion
+  order_weight: 15
+
+ortsgruppe:
+  name: Group::Ortsgruppe
+  order_weight: 16
+
+jungschar:
+  name: Group::Jungschar
+  order_weight: 17
+
+jungschar_externe:
+  name: Group::JungscharExterne
+  order_weight: 18
+
+froeschli:
+  name: Group::Froeschli
+  order_weight: 19
+
+stufe:
+  name: Group::Stufe
+  order_weight: 20
+
+gruppe:
+  name: Group::Gruppe
+  order_weight: 21
+
+jungschar_team:
+  name: Group::JungscharTeam
+  order_weight: 22
+
+jungschar_spender:
+  name: Group::JungscharSpender
+  order_weight: 23
+
+verein:
+  name: Group::Verein
+  order_weight: 24
+
+verein_vorstand:
+  name: Group::VereinVorstand
+  order_weight: 25
+
+verein_mitglieder:
+  name: Group::VereinMitglieder
+  order_weight: 26
+
+verein_externe:
+  name: Group::VereinExterne
+  order_weight: 27
+
+verein_spender:
+  name: Group::VereinSpender
+  order_weight: 28
+
+tensing:
+  name: Group::TenSing
+  order_weight: 29
+
+tensing_team_gruppe:
+  name: Group::TenSingTeamGruppe
+  order_weight: 30
+
+tensing_externe:
+  name: Group::TenSingExterne
+  order_weight: 31
+
+tensing_spender:
+  name: Group::TenSingSpender
+  order_weight: 32
+
+sport:
+  name: Group::Sport
+  order_weight: 33
+
+sport_team_gruppe:
+  name: Group::SportTeamGruppe
+  order_weight: 34
+
+sport_externe:
+  name: Group::SportExterne
+  order_weight: 35
+
+sport_spender:
+  name: Group::SportSpender
+  order_weight: 36
+
+weitere_arbeitsgebiete:
+  name: Group::WeitereArbeitsgebiete
+  order_weight: 37
+
+weitere_arbeitsgebiete_externe:
+  name: Group::WeitereArbeitsgebieteExterne
+  order_weight: 38
+
+weitere_arbeitsgebiete_team_gruppe:
+  name: Group::WeitereArbeitsgebieteTeamGruppe
+  order_weight: 39
+
+weitere_arbeitsgebiete_spender:
+  name: Group::WeitereArbeitsgebieteSpender
+  order_weight: 40

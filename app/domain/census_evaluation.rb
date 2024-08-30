@@ -19,7 +19,8 @@ class CensusEvaluation
   def sub_groups
     if sub_group_type
       scope = sub_groups_locked? ? sub_groups_with_counts : current_census_sub_groups
-      scope.order(:name)
+      order_clause = Arel.sql('groups.name COLLATE "C"')
+      scope.order(order_clause)
     end
   end
 

@@ -22,17 +22,17 @@ class MemberCount < ActiveRecord::Base
     end
 
     def total_for_dachverband(year)
-      totals_by(year, :year).first
+      totals_by(year, :year).order("MIN(member_counts.id)").first
     end
 
     def total_for_group(year, group)
-      totals_by(year, :group_id, group_id: group.id).first
+      totals_by(year, :group_id, group_id: group.id).order("MIN(member_counts.id)").first
     end
 
     def totals(year)
-      select("mitgliederorganisation_id, " \
-             "group_id, " \
-             "born_in, " \
+      select("MIN(mitgliederorganisation_id) AS mitgliederorganisation_id, " \
+             "MIN(group_id) AS group_id, " \
+             "MIN(born_in) AS born_in, " \
              "SUM(person_f) AS person_f, " \
              "SUM(person_m) AS person_m")
         .where(year: year)
