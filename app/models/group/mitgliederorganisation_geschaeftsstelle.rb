@@ -8,18 +8,22 @@ class Group::MitgliederorganisationGeschaeftsstelle < Group::Geschaeftsstelle
 
   class Geschaeftsleiter < ::Role
     self.permissions = [:layer_and_below_full, :contact_data, :finance]
+    self.two_factor_authentication_enforced = true
   end
 
   class Angestellter < ::Role
     self.permissions = [:layer_and_below_full, :contact_data, :finance]
+    self.two_factor_authentication_enforced = true
   end
 
   class Finanzverantwortlicher < ::Role
     self.permissions = [:layer_and_below_full, :finance, :financials, :contact_data]
+    self.two_factor_authentication_enforced = true
   end
 
   class AdminOrtsgruppen < ::Role
     self.permissions = [:layer_and_below_full, :see_invisible_from_above, :finance]
+    self.two_factor_authentication_enforced = true
   end
 
   roles Geschaeftsleiter,

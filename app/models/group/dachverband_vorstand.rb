@@ -8,14 +8,17 @@ class Group::DachverbandVorstand < Group::Vorstand
 
   class Praesidium < ::Role
     self.permissions = [:layer_read, :group_and_below_full, :contact_data]
+    self.two_factor_authentication_enforced = true
   end
 
   class Finanzverantwortlicher < ::Role
     self.permissions = [:layer_read, :finance, :financials, :contact_data]
+    self.two_factor_authentication_enforced = true
   end
 
   class Mitglied < ::Role
     self.permissions = [:layer_read, :contact_data]
+    self.two_factor_authentication_enforced = true
   end
 
   roles Praesidium,
