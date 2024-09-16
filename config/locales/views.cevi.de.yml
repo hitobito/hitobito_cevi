@@ -10,6 +10,12 @@ de:
     tabs:
       population: Bestand
       statistic: Statistik
+    self_registration:
+      form:
+        privacy_policy_caption: 'Ich nehme die folgenden Datenschutzerklärungen zur Kenntnis:'
+      create:
+        flash:
+          privacy_policy_not_accepted: Um die Registrierung abzuschliessen, muss die Datenschutzerklärung zur Kenntnis genommen werden.
 
   censuses:
     form:
@@ -71,6 +77,10 @@ de:
         placeholder: z.B. CH
     log:
       no_changes: Es wurden keine Änderung in den letzten 3 Monaten aufgezeichnet.
+    privacy_policy_acceptance_field:
+      acceptance_caption:
+        for_self: 'Ich nehme die folgenden Datenschutzerklärungen zur Kenntnis:'
+        for_someone_else: 'Ich bestätige, dass diese Person oder ihre Erziehungsberechtigten über die Datenschutzerklärungen informiert wurde.'
 
   population:
     index:
