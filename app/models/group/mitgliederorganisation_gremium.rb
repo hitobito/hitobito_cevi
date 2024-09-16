@@ -5,27 +5,33 @@
 
 class Group::MitgliederorganisationGremium < Group::Gremium
   children Group::MitgliederorganisationGremium
+  children Group::MitgliederorganisationExterne
 
   ### ROLES
 
   class Leitung < ::Role
     self.permissions = [:layer_and_below_read, :group_and_below_full, :contact_data]
+    self.two_factor_authentication_enforced = true
   end
 
   class Mitglied < ::Role
     self.permissions = [:layer_and_below_read]
+    self.two_factor_authentication_enforced = true
   end
 
   class AktiverKursleiter < ::Role
     self.permissions = [:layer_and_below_read]
+    self.two_factor_authentication_enforced = true
   end
 
   class Ausbildungsmitglied < ::Role
     self.permissions = [:layer_and_below_read]
+    self.two_factor_authentication_enforced = true
   end
 
   class Kassier < ::Role
     self.permissions = [:layer_and_below_read, :finance]
+    self.two_factor_authentication_enforced = true
   end
 
   roles Leitung,

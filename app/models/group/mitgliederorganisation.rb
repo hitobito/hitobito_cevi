@@ -23,6 +23,7 @@ class Group::Mitgliederorganisation < Group
 
   class Administrator < ::Role
     self.permissions = [:layer_and_below_full]
+    self.two_factor_authentication_enforced = true
   end
 
   roles Administrator

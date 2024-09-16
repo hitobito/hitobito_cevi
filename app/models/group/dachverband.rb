@@ -20,6 +20,7 @@ class Group::Dachverband < Group
 
   class Administrator < ::Role
     self.permissions = [:admin, :layer_and_below_full, :impersonation]
+    self.two_factor_authentication_enforced = true
   end
 
   roles Administrator
