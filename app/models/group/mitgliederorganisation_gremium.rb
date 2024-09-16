@@ -4,8 +4,7 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 class Group::MitgliederorganisationGremium < Group::Gremium
-  children Group::MitgliederorganisationGremium
-  children Group::MitgliederorganisationExterne
+  children Group::MitgliederorganisationGremium, Group::MitgliederorganisationExterne
 
   ### ROLES
 

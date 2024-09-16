@@ -4,8 +4,7 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 class Group::DachverbandGremium < Group::Gremium
-  children Group::DachverbandGremium
-  children Group::DachverbandExterne
+  children Group::DachverbandGremium, Group::DachverbandExterne
 
   ### ROLES
 
