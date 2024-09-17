@@ -6,29 +6,14 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 # if we want to change the wording of the question, we can do this with a
-# data-migration alongside the same update here. choices and other attributes
-# are updated on every db:seed
-[
-  {
+# data-migration alongside the same update here.
+
+Event::Question.seed_global({
     event_id: nil, # global question
+    event_type: Event::Course.sti_name, # only for courses
+    disclosure: :optional,
     question: 'Ich habe Interesse an einer Mitarbeit im Leiterteam in einer der folgenden Rollen',
     choices: ['Gruppenleiter/-in', 'Küche', 'andere Funktion'].join(','),
+    customize_derived: true,
     multiple_choices: true
-  },
-].each do |attrs|
-  eq = Event::Question.find_or_initialize_by(
-    event_id: attrs.delete(:event_id),
-    question: attrs.delete(:question),
-  )
-  eq.attributes = attrs
-
-  if eq.save
-    puts "<Event::Question '#{eq.question}' -- '#{eq.choices}'> saved."
-  else
-    raise <<~ERRORMESSAGE
-      Error while saving: <Event::Question '#{eq.question}' -- '#{eq.choices}'>.
-
-      #{eq.errors.full_messages.to_sentence}
-    ERRORMESSAGE
-  end
-end
+  })
