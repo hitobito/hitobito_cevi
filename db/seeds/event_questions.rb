@@ -9,11 +9,11 @@
 # data-migration alongside the same update here.
 
 Event::Question.seed_global({
-    event_id: nil, # global question
-    event_type: Event::Course.sti_name, # only for courses
-    disclosure: :optional,
-    question: 'Ich habe Interesse an einer Mitarbeit im Leiterteam in einer der folgenden Rollen',
-    choices: ['Gruppenleiter/-in', 'Küche', 'andere Funktion'].join(','),
-    customize_derived: true,
-    multiple_choices: true
-  })
+  event_id: nil, # global question
+  event_type: Event::Course.sti_name, # only for courses
+  disclosure: :optional,
+  question: 'Ich habe Interesse an einer Mitarbeit im Leiterteam in einer der folgenden Rollen',
+  choices: ['Gruppenleiter/-in', 'Küche', 'andere Funktion'].join(','),
+  customize_derived: true,
+  multiple_choices: true
+})
