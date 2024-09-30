@@ -14,6 +14,5 @@ Event::Question.seed_global({
   disclosure: :optional,
   question: 'Ich habe Interesse an einer Mitarbeit im Leiterteam in einer der folgenden Rollen',
   choices: ['Gruppenleiter/-in', 'Küche', 'andere Funktion'].join(','),
-  customize_derived: true,
   multiple_choices: true
 })
