@@ -114,6 +114,7 @@ module HitobitoCevi
 
       # helpers
       Sheet::Group.include Cevi::Sheet::Group
+      EventParticipationsHelper.prepend Cevi::EventParticipationsHelper
 
       # decorators
       PaperTrail::VersionDecorator.include Cevi::PaperTrail::VersionDecorator
