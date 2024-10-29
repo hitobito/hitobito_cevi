@@ -3,7 +3,7 @@
 -#  or later. See the COPYING file at the top-level directory or at
 -#  https://github.com/hitobito/hitobito_cevi.
 
-- table.col(table.sort_header(:ortsgruppe, Person.human_attribute_name(:ortsgruppe))) do |p|
+- table.col(Person.human_attribute_name(:ortsgruppe)) do |p|
   - format_ortsgruppe(p)
 - if can?(:update, @event)
   - table.attr(:internal_comment)

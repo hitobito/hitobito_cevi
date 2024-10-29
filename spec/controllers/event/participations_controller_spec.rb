@@ -105,6 +105,8 @@ describe Event::ParticipationsController do
         end
 
         it 'may sort by ortsgruppe' do
+          skip "disabled because of sorting changes, see https://github.com/hitobito/hitobito/commit/31625073069fb93ed70e1b4290984fc9a1e926fd"
+
           Fabricate(:event_role,
                     type: course.participant_types.first.name,
                     participation: Fabricate(:event_participation,
