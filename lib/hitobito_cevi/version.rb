@@ -4,5 +4,5 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 module HitobitoCevi
-  VERSION = "2.2.0"
+  VERSION = "2.3.5"
 end
