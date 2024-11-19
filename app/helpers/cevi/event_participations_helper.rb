@@ -4,7 +4,7 @@
 #  https://github.com/hitobito/hitobito_cevi.
 
 module Cevi::EventParticipationsHelper
-  def event_participation_table_options(t, event)
+  def event_participation_table_options(t, event:, group:)
     t.col(Person.human_attribute_name(:ortsgruppe)) do |p|
       format_ortsgruppe(p)
     end
