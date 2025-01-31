@@ -12,6 +12,7 @@ describe Export::EventParticipationsExportJob do
   subject { Export::EventParticipationsExportJob.new(format,
                                                      user.id,
                                                      event_participation_filter,
+                                                     group.id,
                                                      params.merge(filename: filename)) }
 
   let(:group) { groups(:dachverband) }
