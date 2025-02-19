@@ -54,7 +54,8 @@ class MemberCountsController < ApplicationController
   def update_member_counts
     counts = []
     if params[:member_count]
-      counts = member_counts.update(params[:member_count].keys, params[:member_count].values)
+      values = params[:member_count].values.map { |v| v.permit(:person_f, :person_m) }
+      counts = member_counts.update(params[:member_count].keys, values)
     end
 
     additional_member_counts = create_additional_member_counts
