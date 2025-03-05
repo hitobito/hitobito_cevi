@@ -61,7 +61,8 @@ reg_agsoluzg, alpin, extkurse, reg_be, reg_ws, reg_zh = seed_group(Group::Mitgli
 {
   name: 'Region Bern',
   short_name: 'Region Bern',
-  address: 'Rabbentalstrasse 69',
+  street: 'Rabbentalstrasse',
+  housenumber:  69,
   zip_code: 3013,
   town: 'Bern',
   country: 'Schweiz',
@@ -70,7 +71,8 @@ reg_agsoluzg, alpin, extkurse, reg_be, reg_ws, reg_zh = seed_group(Group::Mitgli
 {
   name: 'RV Winterthur-Schaffhausen',
   short_name: 'Region WS',
-  address: 'Stadthausstrasse 103',
+  street: 'Stadthausstrasse',
+  housenumber: 103,
   zip_code: 8400,
   town: 'Winterthur',
   parent_id: dachverband.id
@@ -78,7 +80,8 @@ reg_agsoluzg, alpin, extkurse, reg_be, reg_ws, reg_zh = seed_group(Group::Mitgli
 {
   name: 'Region Zürich',
   short_name: 'Region Zürich',
-  address: 'Sihlstrasse 33',
+  street: 'Sihlstrasse',
+  housenumber: 33,
   zip_code: 8021,
   town: 'Zürich',
   country: 'Schweiz',
