@@ -807,7 +807,6 @@ de:
         application_contact_id: Anmeldung an
 
       event/participation:
-        ahv_number: AHV-Nummer
         internal_comment: Interne Bemerkung
         j_s_number: J+S-Nummer
         nationality_j_s: Nationalität gemäss J+S
@@ -827,8 +826,6 @@ de:
 
       person:
         age: Alter
-        ahv_number: AHV-Nummer
-        ahv_number_old: AHV-Nummer alt
         canton: Kanton
         confession: Konfession
         confessions:
