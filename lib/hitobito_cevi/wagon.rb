@@ -64,7 +64,6 @@ module HitobitoCevi
 
       whitelisted_person_attrs = [
         :additional_information,
-        :ahv_number_old,
         :canton,
         :confession,
         :correspondence_language,
@@ -88,7 +87,7 @@ module HitobitoCevi
         Event::Participation,
         TableDisplays::Event::Participations::ShowFullOrEventLeaderColumn,
         (whitelisted_person_attrs + [
-          :ahv_number, :j_s_number, :nationality_j_s
+          :j_s_number, :nationality_j_s
         ]).map { |col| "person.#{col}" }
       )
 

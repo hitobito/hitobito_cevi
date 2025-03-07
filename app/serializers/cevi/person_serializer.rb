@@ -18,7 +18,6 @@ module Cevi::PersonSerializer
       map_properties :title,
         :profession,
         :joined,
-        :ahv_number_old,
         :member_card_number,
         :nationality,
         :salutation,

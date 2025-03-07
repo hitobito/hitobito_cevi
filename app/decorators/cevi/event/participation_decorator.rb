@@ -9,6 +9,6 @@ module Cevi::Event::ParticipationDecorator
   extend ActiveSupport::Concern
 
   included do
-    delegate :ahv_number, :j_s_number, :nationality_j_s, to: :person
+    delegate :j_s_number, :nationality_j_s, to: :person
   end
 end

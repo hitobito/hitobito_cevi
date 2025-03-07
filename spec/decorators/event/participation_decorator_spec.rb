@@ -9,16 +9,10 @@ require 'spec_helper'
 
 describe Event::ParticipationDecorator, :draper_with_helpers do
 
-  let(:person) { Fabricate(:person, first_name: 'John', last_name: 'Doe', nickname: nil, ahv_number: '756.1234.5678.97', j_s_number: '1234123', nationality_j_s: 'CH') }
+  let(:person) { Fabricate(:person, first_name: 'John', last_name: 'Doe', nickname: nil, j_s_number: '1234123', nationality_j_s: 'CH') }
   let(:state) { 'applied' }
   let(:participation) { Event::Participation.new(state: state, person: person, event: events(:top_course)) }
   let(:decorator) { Event::ParticipationDecorator.new(participation) }
-
-  describe '#ahv_number' do
-    it 'delegates to person' do
-      expect(decorator.ahv_number).to eq(person.ahv_number)
-    end
-  end
 
   describe '#j_s_number' do
     it 'delegates to person' do
