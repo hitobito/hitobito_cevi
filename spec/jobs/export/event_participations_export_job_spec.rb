@@ -11,7 +11,7 @@ describe Export::EventParticipationsExportJob do
 
   subject { Export::EventParticipationsExportJob.new(format,
                                                      user.id,
-                                                     event_participation_filter,
+                                                     course.id,
                                                      group.id,
                                                      params.merge(filename: filename)) }
 
@@ -27,7 +27,6 @@ describe Export::EventParticipationsExportJob do
   end
   let(:event_role)    { Fabricate(:event_role, type: Event::Role::Leader.sti_name) }
   let(:participation) { Fabricate(:event_participation, event: course, person: person, roles: [event_role]) }
-  let(:event_participation_filter) { Event::ParticipationFilter.new(course, user, params) }
   let(:filename) { AsyncDownloadFile.create_name('event_participation_export', user.id) }
   let(:file) { AsyncDownloadFile.from_filename(filename, format) }
 
