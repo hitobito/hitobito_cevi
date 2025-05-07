@@ -25,6 +25,9 @@ describe EventsController do
 
         post :create, params: {
           event: {  group_ids: [group.id],
+                    visible_contact_attributes: {
+                      name: "1"
+                    },
                     name: 'foo',
                     kind_id: event_kind_id,
                     dates_attributes: [date],
@@ -47,6 +50,9 @@ describe EventsController do
       it 'creates new event course without contact' do
         post :create, params: {
           event: {  group_ids: [group.id],
+                    visible_contact_attributes: {
+                      name: "1"
+                    },
                     name: 'foo',
                     kind_id: event_kind_id,
                     contact_id: '',
@@ -66,6 +72,9 @@ describe EventsController do
       it 'should set application contact if only one is available' do
         post :create, params: {
           event: {  group_ids: [group.id],
+                    visible_contact_attributes: {
+                      name: "1"
+                    },
                     name: 'foo',
                     kind_id: event_kind_id,
                     dates_attributes: [date],
@@ -78,7 +87,6 @@ describe EventsController do
         expect(event.application_contact).to eq event.possible_contact_groups.first
         expect(event).to be_persisted
       end
-
     end
   end
 
@@ -116,5 +124,4 @@ describe EventsController do
       end
     end
   end
-
 end
