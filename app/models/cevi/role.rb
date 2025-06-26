@@ -10,7 +10,7 @@ module Cevi::Role
     after_create :reset_person_ortsgruppe!, if: :ortsgruppe_id_column_available?
 
     def touch_person
-      person.touch if self.type.constantize != Group::Spender::Spender
+      person.touch if type.constantize != Group::Spender::Spender
     end
   end
 
