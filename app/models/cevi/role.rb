@@ -8,6 +8,10 @@ module Cevi::Role
 
   included do
     after_create :reset_person_ortsgruppe!, if: :ortsgruppe_id_column_available?
+
+    def touch_person
+      person.paper_trail.save_with_version if type.constantize != Group::Spender::Spender
+    end
   end
 
   private
