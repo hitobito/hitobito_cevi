@@ -4,19 +4,13 @@
 #  https://github.com/hitobito/hitobito_youth.
 
 module Cevi::Export::EventParticipationsExportJob
-  extend ActiveSupport::Concern
-
-  included do
-    alias_method_chain :exporter, :check
-  end
-
   private
 
-  def exporter_with_check
-    if @options[:details] && ability.can?(:update, entries.first)
+  def exporter
+    if @options[:details] && ability.can?(:update, entries.build)
       Export::Tabular::People::ParticipationsComplete
     else
-      exporter_without_check
+      super
     end
   end
 end

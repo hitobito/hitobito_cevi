@@ -109,7 +109,7 @@ module HitobitoCevi
       ServiceTokensController.include Cevi::ServiceTokensController
 
       # jobs
-      Export::EventParticipationsExportJob.include Cevi::Export::EventParticipationsExportJob
+      Export::EventParticipationsExportJob.prepend Cevi::Export::EventParticipationsExportJob
 
       # helpers
       Sheet::Group.include Cevi::Sheet::Group
