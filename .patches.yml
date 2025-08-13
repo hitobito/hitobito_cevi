@@ -41,6 +41,12 @@
   :source_file: hitobito/app/domain/events/filtered_list.rb
   :patch_file: hitobito_youth/app/domain/youth/events/filtered_list.rb
   :patch_file_line: 9
+- :method: :exporter
+  :constant: Export::EventParticipationsExportJob
+  :wagon: cevi
+  :source_file: hitobito/app/jobs/export/event_participations_export_job.rb
+  :patch_file: hitobito_cevi/app/jobs/cevi/export/event_participations_export_job.rb
+  :patch_file_line: 9
 - :method: :version_conditions
   :constant: Person::LogController
   :wagon: cevi
