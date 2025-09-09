@@ -8,7 +8,7 @@ module Cevi::EventParticipationsHelper
     t.col(Person.human_attribute_name(:ortsgruppe)) do |p|
       format_ortsgruppe(p)
     end
-    if can?(:update, event)
+    if can?(:index_full_participations, event)
       t.attr(:internal_comment)
       t.sortable_attr(:payed)
     end
