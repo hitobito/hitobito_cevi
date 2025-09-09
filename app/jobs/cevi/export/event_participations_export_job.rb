@@ -13,7 +13,7 @@ module Cevi::Export::EventParticipationsExportJob
   private
 
   def exporter_with_check
-    if @options[:details] && ability.can?(:update, entries.first)
+    if @options[:details] && ability.can?(:index_full_participations, event)
       Export::Tabular::People::ParticipationsComplete
     else
       exporter_without_check
