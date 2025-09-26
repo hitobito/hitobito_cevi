@@ -73,7 +73,7 @@ describe PersonAbility do
 
             is_expected.not_to be_able_to(:update, person.reload)
 
-            Fabricate(:event_participation, event: event, person: person)
+            Fabricate(:event_participation, event: event, participant: person)
             is_expected.to be_able_to(:update, person.reload)
           end
         end
@@ -87,7 +87,7 @@ describe PersonAbility do
 
             is_expected.not_to be_able_to(:update, person.reload)
 
-            Fabricate(:event_participation, event: event, person: person)
+            Fabricate(:event_participation, event: event, participant: person)
             is_expected.to be_able_to(:update, person.reload)
           end
         end
@@ -101,7 +101,7 @@ describe PersonAbility do
 
             is_expected.not_to be_able_to(:update, person.reload)
 
-            Fabricate(:event_participation, event: event, person: person)
+            Fabricate(:event_participation, event: event, participant: person)
             is_expected.to be_able_to(:update, person.reload)
           end
         end
@@ -116,14 +116,14 @@ describe PersonAbility do
 
           is_expected.not_to be_able_to(:update, person.reload)
 
-          Fabricate(:event_participation, event: event, person: person)
+          Fabricate(:event_participation, event: event, participant: person)
           is_expected.to be_able_to(:update, person.reload)
         end
 
         it 'may not update people participating in other events' do
           event = Fabricate(:event, groups: [groups(:jungschar_burgd_paprika)])
           person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
-          Fabricate(:event_participation, event: event, person: person)
+          Fabricate(:event_participation, event: event, participant: person)
           # user also has a non-permitting role in organizing group
           Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika), person: role.person)
 
@@ -138,11 +138,11 @@ describe PersonAbility do
       it 'may update people participating in leaded events' do
         event = Fabricate(:event, groups: [groups(:zuerich)])
         person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
-        Fabricate(:event_participation, event: event, person: person)
+        Fabricate(:event_participation, event: event, participant: person)
 
         is_expected.not_to be_able_to(:update, person.reload)
 
-        participation = Fabricate(:event_participation, event: event, person: role.person)
+        participation = Fabricate(:event_participation, event: event, participant: role.person)
         Fabricate(Event::Role::Leader.name, participation: participation)
 
         expect(Ability.new(role.person.reload)).to be_able_to(:update, person.reload)
@@ -152,9 +152,9 @@ describe PersonAbility do
         event1 = Fabricate(:event, groups: [groups(:zuerich)])
         event2 = Fabricate(:event, groups: [groups(:zuerich)])
         person = Fabricate(Group::Stufe::Teilnehmer.name, group: groups(:jungschar_burgd_paprika)).person
-        Fabricate(:event_participation, event: event1, person: person)
+        Fabricate(:event_participation, event: event1, participant: person)
 
-        participation = Fabricate(:event_participation, event: event2, person: role.person)
+        participation = Fabricate(:event_participation, event: event2, participant: role.person)
         Fabricate(Event::Role::Leader.name, participation: participation)
         role.person.reload
 

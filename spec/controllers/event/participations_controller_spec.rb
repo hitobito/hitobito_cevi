@@ -64,7 +64,7 @@ describe Event::ParticipationsController do
 
   context 'custom attributes' do
     let(:custom_attrs) { { internal_comment: 'test', payed: '1' } }
-    let(:participation) { Fabricate(:event_participation, event: course, person: person) }
+    let(:participation) { Fabricate(:event_participation, event: course, participant: person) }
 
     before do
       course.update_attribute(:state, :application_open)
@@ -111,19 +111,19 @@ describe Event::ParticipationsController do
                     type: course.participant_types.first.name,
                     participation: Fabricate(:event_participation,
                                              event: course,
-                                             person: Fabricate(:person,
+                                             participant: Fabricate(:person,
                                                                ortsgruppe: groups(:stadtzh))))
           Fabricate(:event_role,
                     type: course.participant_types.first.name,
                     participation: Fabricate(:event_participation,
                                              event: course,
-                                             person: Fabricate(:person,
+                                             participant: Fabricate(:person,
                                                                ortsgruppe: groups(:jona))))
           Fabricate(:event_role,
                     type: course.participant_types.first.name,
                     participation: Fabricate(:event_participation,
                                              event: course,
-                                             person: Fabricate(:person,
+                                             participant: Fabricate(:person,
                                                                ortsgruppe: groups(:burgdorf))))
 
           get :index, params: { group_id: group.id, event_id: course.id, sort: :ortsgruppe }

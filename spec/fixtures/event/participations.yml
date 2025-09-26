@@ -5,10 +5,12 @@
 
 top_leader:
   event: top_course
-  person: bulei
+  participant: bulei
+  participant_type: Person
   active: true
 
 top_participant:
   event: top_course
-  person: al_zh10
+  participant: al_zh10
+  participant_type: Person
   active: true
