@@ -88,7 +88,7 @@ module HitobitoCevi
         TableDisplays::Event::Participations::ShowFullOrEventLeaderColumn,
         (whitelisted_person_attrs + [
           :j_s_number, :nationality_j_s
-        ]).map { |col| "person.#{col}" }
+        ]).map { |col| "participant.#{col}" }
       )
 
       # serializers
@@ -96,6 +96,10 @@ module HitobitoCevi
       PeopleSerializer.include Cevi::PeopleSerializer
       GroupSerializer.include Cevi::GroupSerializer
       EventParticipationSerializer.include Cevi::EventParticipationSerializer
+
+      # Wizards
+      Wizards::Steps::NewEventGuestParticipationForm.attribute :internal_comment, :string
+      Wizards::Steps::NewEventGuestParticipationForm.attribute :payed, :boolean
 
       # controllers
       EventsController.include Cevi::EventsController

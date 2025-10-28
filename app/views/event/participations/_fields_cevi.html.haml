@@ -5,4 +5,6 @@
 
 - if can?(:update, entry)
   = field_set_tag do
-    = f.labeled_input_fields :internal_comment, :payed
+    = f.labeled_text_area :internal_comment
+    = f.indented do
+      = f.boolean_field(:payed, caption: entry.class.human_attribute_name(:payed))
