@@ -49,11 +49,6 @@ module HitobitoCevi
       AbilityDsl::UserContext::GROUP_PERMISSIONS << :financials
 
       # domain
-      Event::ParticipationFilter.load_entries_includes.each do |incl|
-        if incl.is_a?(Hash) && incl.key?(:person)
-          incl[:person].prepend :ortsgruppe
-        end
-      end
       Export::Tabular::Groups::List::EXCLUDED_ATTRS << :member_count
       Export::Tabular::People::PersonRow.include Cevi::Export::Tabular::People::PersonRow
       Export::Tabular::People::PeopleAddress.include Cevi::Export::Tabular::People::PeopleAddress
