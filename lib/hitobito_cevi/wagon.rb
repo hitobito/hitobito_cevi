@@ -49,11 +49,6 @@ module HitobitoCevi
       AbilityDsl::UserContext::GROUP_PERMISSIONS << :financials
 
       # domain
-      Event::ParticipationFilter.load_entries_includes.each do |incl|
-        if incl.is_a?(Hash) && incl.key?(:person)
-          incl[:person].prepend :ortsgruppe
-        end
-      end
       Export::Tabular::Groups::List::EXCLUDED_ATTRS << :member_count
       Export::Tabular::People::PersonRow.include Cevi::Export::Tabular::People::PersonRow
       Export::Tabular::People::PeopleAddress.include Cevi::Export::Tabular::People::PeopleAddress
@@ -88,7 +83,7 @@ module HitobitoCevi
         TableDisplays::Event::Participations::ShowFullOrEventLeaderColumn,
         (whitelisted_person_attrs + [
           :j_s_number, :nationality_j_s
-        ]).map { |col| "person.#{col}" }
+        ]).map { |col| "participant.#{col}" }
       )
 
       # serializers
@@ -96,6 +91,10 @@ module HitobitoCevi
       PeopleSerializer.include Cevi::PeopleSerializer
       GroupSerializer.include Cevi::GroupSerializer
       EventParticipationSerializer.include Cevi::EventParticipationSerializer
+
+      # Wizards
+      Wizards::Steps::NewEventGuestParticipationForm.attribute :internal_comment, :string
+      Wizards::Steps::NewEventGuestParticipationForm.attribute :payed, :boolean
 
       # controllers
       EventsController.include Cevi::EventsController

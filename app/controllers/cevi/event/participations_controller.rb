@@ -15,6 +15,8 @@ module Cevi
         #   "(COALESCE(groups.short_name, '') || groups.name)"
 
         alias_method_chain :assign_attributes, :check
+
+        self.additional_participant_includes += [:ortsgruppe]
       end
 
       private
