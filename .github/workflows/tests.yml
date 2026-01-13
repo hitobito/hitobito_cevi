@@ -2,6 +2,9 @@ name: 'Lint and test'
 
 on:
   push:
+    branches:
+      - master
+      - stable
     paths-ignore:
       - 'doc/**'
       - '**.md'
