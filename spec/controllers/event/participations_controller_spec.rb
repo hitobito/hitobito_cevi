@@ -37,12 +37,12 @@ describe Event::ParticipationsController do
     end
 
     it 'lists only leader_group' do
-      get :index, params: { group_id: group.id, event_id: course.id, filter: :teamers }
+      get :index, params: { group_id: group.id, event_id: course.id, filters: {participant_type: :teamers} }
       expect(assigns(:participations)).to eq [@leader]
     end
 
     it 'lists only participant_group' do
-      get :index, params: { group_id: group.id, event_id: course.id, filter: :participants }
+      get :index, params: { group_id: group.id, event_id: course.id, filters: {participant_type: :participants} }
       expect(assigns(:participations)).to eq [@participant]
     end
 
@@ -97,7 +97,7 @@ describe Event::ParticipationsController do
         before { activate_participation }
 
         it "includes columns in index page" do
-          get :index, params: { group_id: group.id, event_id: course.id, filter: :participants }
+          get :index, params: { group_id: group.id, event_id: course.id, filters: {participant_type: :participants} }
           html = Capybara::Node::Simple.new(response.body)
           expect(html).to have_content 'Ortsgruppe'
           expect(html).to have_content 'Bezahlt'
@@ -169,7 +169,7 @@ describe Event::ParticipationsController do
         before { activate_participation }
 
         it "does not include columns on index page" do
-          get :index, params: { group_id: group.id, event_id: course.id, filter: :participants }
+          get :index, params: { group_id: group.id, event_id: course.id, filter: {participant_type: :participants} }
         end
 
         it "does not include attributes on show" do
