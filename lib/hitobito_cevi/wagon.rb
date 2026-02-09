@@ -101,6 +101,8 @@ module HitobitoCevi
       Event::KindsController.permitted_attrs << :j_s_label
       Event::ParticipationsController.include Cevi::Event::ParticipationsController
 
+      Group::PersonAddRequestsController.prepend Cevi::Group::PersonAddRequestsController
+
       PeopleController.include Cevi::PeopleController
 
       Person::LogController.prepend Cevi::Person::LogController
