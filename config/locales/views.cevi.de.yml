@@ -94,3 +94,7 @@ de:
       unlock_instructions:
         body:
           footer: 'Dieses E-Mail wurde von der CeviDB gesendet.'
+
+  second_factor_authentication:
+    new:
+      hint_registered_html: "Bitte gib den angezeigten Code aus deiner Authenticator-App an, um deine Identität zu bestätigen.<br>Falls du deinen Zugang zur Authenticator-App verloren hast, kann ein AL oder Adressverwalter deiner Ortsgruppe oder die Geschäftsstelle deiner Region die Zwei-Faktor-Authentifizierung für dich zurücksetzen."
