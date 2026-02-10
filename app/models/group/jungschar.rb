@@ -29,7 +29,7 @@ class Group::Jungschar < Group
   end
 
   class Aktuar < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class Busverwalter < ::Role
@@ -37,7 +37,7 @@ class Group::Jungschar < Group
   end
 
   class FreierMitarbeiter < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class Hausverantwortlicher < ::Role
@@ -45,7 +45,7 @@ class Group::Jungschar < Group
   end
 
   class Input < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class Laedeliverantwortlicher < ::Role
@@ -53,19 +53,19 @@ class Group::Jungschar < Group
   end
 
   class Redaktor < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class Regionaltreffenvertreter < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class Webmaster < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class Werbung < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class Materialverantwortlicher < ::Role
@@ -73,7 +73,7 @@ class Group::Jungschar < Group
   end
 
   class KontaktRegionalzeitschrift < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = []
   end
 
   class VerantwortlicherPSA < ::Role
