@@ -6,19 +6,19 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
 
     * Dachverband
       * Dachverband
-        * Administrator/-in: [:admin, :layer_and_below_full, :impersonation]
+        * Administrator/-in: 2FA [:admin, :layer_and_below_full, :impersonation]
       * Vorstand
-        * Präsidium: [:layer_read, :group_and_below_full, :contact_data]
-        * Finanzverantwortliche/-r: [:layer_read, :finance, :financials, :contact_data]
-        * Mitglied: [:layer_read, :contact_data]
+        * Präsidium: 2FA [:layer_read, :group_and_below_full, :contact_data]
+        * Finanzverantwortliche/-r: 2FA [:layer_read, :finance, :financials, :contact_data]
+        * Mitglied: 2FA [:layer_read, :contact_data]
       * Geschäftsstelle
-        * Geschäftsleiter/-in: [:layer_full, :contact_data, :finance]
-        * Angestellte/-r: [:layer_full, :contact_data, :finance]
-        * Finanzverantwortliche/-r: [:layer_full, :finance, :financials, :contact_data]
+        * Geschäftsleiter/-in: 2FA [:layer_full, :contact_data, :finance]
+        * Angestellte/-r: 2FA [:layer_full, :contact_data, :finance]
+        * Finanzverantwortliche/-r: 2FA [:layer_full, :finance, :financials, :contact_data]
       * Gremium
-        * Leitung: [:layer_read, :group_and_below_full, :contact_data]
-        * Mitglied: [:layer_read, :group_and_below_full]
-        * Kassier: [:layer_read, :group_and_below_full, :finance]
+        * Leitung: 2FA [:layer_read, :group_and_below_full, :contact_data]
+        * Mitglied: 2FA [:layer_read, :group_and_below_full]
+        * Kassier: 2FA [:layer_read, :group_and_below_full, :finance]
       * Mitglieder
         * Adressverwalter/-in: [:group_and_below_full]
         * Mitglied: []
@@ -28,24 +28,24 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
       * Spender
         * Spender/-in: []
         * Spendenverwalter/-in: [:group_and_below_full]
-    * Mitgliederorganisation
+    * Mitgliederorganisation < Dachverband
       * Mitgliederorganisation
-        * Administrator/-in: [:layer_and_below_full]
+        * Administrator/-in: 2FA [:layer_and_below_full]
       * Vorstand
-        * Präsidium: [:layer_and_below_read, :group_and_below_full, :contact_data]
-        * Finanzverantwortliche-/r: [:layer_and_below_read, :finance, :financials, :contact_data]
-        * Mitglied: [:layer_and_below_read, :contact_data]
+        * Präsidium: 2FA [:layer_and_below_read, :group_and_below_full, :contact_data]
+        * Finanzverantwortliche-/r: 2FA [:layer_and_below_read, :finance, :financials, :contact_data]
+        * Mitglied: 2FA [:layer_and_below_read, :contact_data]
       * Geschäftsstelle
-        * Geschäftsleiter/-in: [:layer_and_below_full, :contact_data, :finance]
-        * Angestellte/-r: [:layer_and_below_full, :contact_data, :finance]
-        * Finanzverantwortliche/-r: [:layer_and_below_full, :finance, :financials, :contact_data]
-        * Administrator/-in Ortsgruppen: [:layer_and_below_full, :see_invisible_from_above, :finance]
+        * Geschäftsleiter/-in: 2FA [:layer_and_below_full, :contact_data, :finance]
+        * Angestellte/-r: 2FA [:layer_and_below_full, :contact_data, :finance]
+        * Finanzverantwortliche/-r: 2FA [:layer_and_below_full, :finance, :financials, :contact_data]
+        * Administrator/-in Ortsgruppen: 2FA [:layer_and_below_full, :see_invisible_from_above, :finance]
       * Gremium
-        * Leitung: [:layer_and_below_read, :group_and_below_full, :contact_data]
-        * Mitglied: [:layer_and_below_read]
-        * Aktive/-r Kursleiter/-in: [:layer_and_below_read]
-        * Ausbildungsmitglied: [:layer_and_below_read]
-        * Kassier: [:layer_and_below_read, :finance]
+        * Leitung: 2FA [:layer_and_below_read, :group_and_below_full, :contact_data]
+        * Mitglied: 2FA [:layer_and_below_read]
+        * Aktive/-r Kursleiter/-in: 2FA [:layer_and_below_read]
+        * Ausbildungsmitglied: 2FA [:layer_and_below_read]
+        * Kassier: 2FA [:layer_and_below_read, :finance]
       * Mitglieder
         * Adressverwalter/-in: [:group_and_below_full]
         * Mitglied: []
@@ -55,31 +55,31 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
       * Spender
         * Spender/-in: []
         * Spendenverwalter/-in: [:group_and_below_full]
-    * Sektion
+    * Sektion < Mitgliederorganisation
       * Sektion
-        * Administrator/-in: [:layer_and_below_full, :contact_data]
-    * Ortsgruppe
+        * Administrator/-in: 2FA [:layer_and_below_full, :contact_data]
+    * Ortsgruppe < Sektion, Mitgliederorganisation
       * Ortsgruppe
         * Administrator/-in Cevi DB: [:layer_and_below_full, :see_invisible_from_above]
         * Kassier: [:layer_and_below_read, :finance]
-    * Jungschar
+    * Jungschar < Ortsgruppe
       * Jungschar
         * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
         * Coach: [:layer_and_below_full, :approve_applications]
         * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
         * Adressverwalter/-in: [:layer_and_below_full]
-        * Aktuar/-in: [:layer_and_below_read]
+        * Aktuar/-in: []
         * Busverwalter/-in: [:layer_and_below_read, :contact_data]
-        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+        * Freie/-r Mitarbeiter/-in: []
         * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
-        * Input: [:layer_and_below_read]
+        * Input: []
         * Lädeliverantwortliche/-r: [:layer_and_below_read]
-        * Redaktor/-in: [:layer_and_below_read]
-        * Regionaltreffenvertreter/-in: [:layer_and_below_read]
-        * Webmaster/-in: [:layer_and_below_read]
-        * Werbung: [:layer_and_below_read]
+        * Redaktor/-in: []
+        * Regionaltreffenvertreter/-in: []
+        * Webmaster/-in: []
+        * Werbung: []
         * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
-        * Kontakt Regionalzeitschrift: [:layer_and_below_read]
+        * Kontakt Regionalzeitschrift: []
         * Verantwortliche/-r PSA: [:layer_and_below_read]
         * Jugendarbeiter/-in: [:layer_and_below_read]
       * Externe
@@ -95,31 +95,31 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
         * Stufenleiter/-in: [:layer_and_below_read, :group_and_below_full]
         * Mini-Chef: [:layer_and_below_read, :group_and_below_full]
         * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-        * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-        * Helfer/-in: [:layer_and_below_read]
+        * Minigruppenleiter/-in: [:group_and_below_full]
+        * Helfer/-in: [:group_and_below_read]
         * Teilnehmer/-in: [:group_read]
       * Untergruppe
         * Gruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-        * Minigruppenleiter/-in: [:layer_and_below_read, :group_and_below_full]
-        * Helfer/-in: [:layer_and_below_read]
+        * Minigruppenleiter/-in: [:group_and_below_full]
+        * Helfer/-in: [:group_and_below_read]
         * Teilnehmer/-in: [:group_read]
       * Team
         * Abteilungsleiter/-in: [:layer_and_below_full, :contact_data]
         * Coach: [:layer_and_below_full, :approve_applications]
         * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
         * Adressverwalter/-in: [:layer_and_below_full]
-        * Aktuar/-in: [:layer_and_below_read]
+        * Aktuar/-in: [:group_read]
         * Busverwalter/-in: [:layer_and_below_read, :contact_data]
-        * Freie/-r Mitarbeiter/-in: [:layer_and_below_read]
+        * Freie/-r Mitarbeiter/-in: [:group_read]
         * Hausverantwortliche/-r: [:layer_and_below_read, :contact_data]
-        * Input: [:layer_and_below_read]
+        * Input: [:group_read]
         * Lädeliverantwortliche/-r: [:layer_and_below_read]
-        * Redaktor/-in: [:layer_and_below_read]
-        * Regionaltreffenvertreter/-in: [:layer_and_below_read]
-        * Webmaster/-in: [:layer_and_below_read]
-        * Werbung: [:layer_and_below_read]
+        * Redaktor/-in: [:group_read]
+        * Regionaltreffenvertreter/-in: [:group_read]
+        * Webmaster/-in: [:group_read]
+        * Werbung: [:group_read]
         * Materialverantwortliche/-r: [:layer_and_below_read, :contact_data]
-        * Kontakt Regionalzeitschrift: [:layer_and_below_read]
+        * Kontakt Regionalzeitschrift: [:group_read]
         * Verantwortliche/-r PSA: [:layer_and_below_read]
         * Jugendarbeiter/-in: [:layer_and_below_read]
         * Leitung: [:group_and_below_full]
@@ -127,7 +127,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
       * Spender
         * Spender/-in: []
         * Spendenverwalter/-in: [:group_and_below_full]
-    * Verein
+    * Verein < Ortsgruppe
       * Verein
         * Adressverantwortlicher: [:layer_and_below_full]
         * Mitglied: [:group_read]
@@ -146,7 +146,8 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
       * Spender
         * Spender/-in: []
         * Spendenverwalter/-in: [:group_and_below_full]
-    * Ten-Sing
+    * Ten-Sing < Ortsgruppe
+      * Ten-Sing
       * Team/Gruppe
         * Adressverantwortliche/-r: [:group_and_below_full]
       * Externe
@@ -156,7 +157,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
       * Spender
         * Spender/-in: []
         * Spendenverwalter/-in: [:group_and_below_full]
-    * Sport
+    * Sport < Ortsgruppe
       * Sport
         * Adressverantwortliche-/r: [:layer_and_below_full]
         * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
@@ -174,7 +175,7 @@ This hitobito wagon defines the organization hierarchy with groups and roles of 
       * Spender
         * Spender/-in: []
         * Spendenverwalter/-in: [:group_and_below_full]
-    * Weiteres Arbeitsgebiet
+    * Weiteres Arbeitsgebiet < Ortsgruppe
       * Weiteres Arbeitsgebiet
         * Adressverantwortliche/-r: [:layer_and_below_full]
         * Finanzverantwortliche/-r: [:layer_and_below_read, :finance, :financials]
