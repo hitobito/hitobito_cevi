@@ -12,10 +12,13 @@ describe Export::Tabular::People do
 
   let(:person) { people(:bulei) }
   let(:simple_headers) do
-    ['Vorname', 'Nachname', 'Ceviname', 'Firmenname', 'Firma', 'Haupt-E-Mail',
-     'zusätzliche Adresszeile', 'Strasse', 'Hausnummer', 'Postfach', 'PLZ',
-     'Ort', 'Land', 'Hauptebene', 'Rollen', 'Anrede Eltern',
-     'Name Eltern', 'Ortsgruppe']
+    ["Vorname", "Nachname", "Ceviname", "Firmenname", "Firma", "Haupt-E-Mail",
+     "zusätzliche Adresszeile", "Strasse", "Hausnummer", "Postfach", "PLZ", "Ort", "Land",
+     "Hauptebene", "Rollen", "Anrede Eltern", "Name Eltern", "Ortsgruppe", "Weitere E-Mail Privat",
+     "Weitere E-Mail Arbeit", "Weitere E-Mail Vater", "Weitere E-Mail Mutter",
+     "Weitere E-Mail Andere", "Weitere E-Mails Freitext", "Telefonnummer Privat",
+     "Telefonnummer Mobil", "Telefonnummer Arbeit", "Telefonnummer Vater", "Telefonnummer Mutter",
+     "Telefonnummer Fax", "Telefonnummer Andere"]
   end
 
   let(:list) { [person] }
