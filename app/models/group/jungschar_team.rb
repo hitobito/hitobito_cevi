@@ -22,29 +22,45 @@ class Group::JungscharTeam < Group
 
   class Adressverwalter < Group::Jungschar::Adressverwalter; end
 
-  class Aktuar < Group::Jungschar::Aktuar; end
+  class Aktuar < Group::Jungschar::Aktuar
+    self.permissions = [:group_read]
+  end
 
   class Busverwalter < Group::Jungschar::Busverwalter; end
 
-  class FreierMitarbeiter < Group::Jungschar::FreierMitarbeiter; end
+  class FreierMitarbeiter < Group::Jungschar::FreierMitarbeiter
+    self.permissions = [:group_read]
+  end
 
   class Hausverantwortlicher < Group::Jungschar::Hausverantwortlicher; end
 
-  class Input < Group::Jungschar::Input; end
+  class Input < Group::Jungschar::Input
+    self.permissions = [:group_read]
+  end
 
   class Laedeliverantwortlicher < Group::Jungschar::Laedeliverantwortlicher; end
 
-  class Redaktor < Group::Jungschar::Redaktor; end
+  class Redaktor < Group::Jungschar::Redaktor
+    self.permissions = [:group_read]
+  end
 
-  class Regionaltreffenvertreter < Group::Jungschar::Regionaltreffenvertreter; end
+  class Regionaltreffenvertreter < Group::Jungschar::Regionaltreffenvertreter
+    self.permissions = [:group_read]
+  end
 
-  class Webmaster < Group::Jungschar::Webmaster; end
+  class Webmaster < Group::Jungschar::Webmaster
+    self.permissions = [:group_read]
+  end
 
-  class Werbung < Group::Jungschar::Werbung; end
+  class Werbung < Group::Jungschar::Werbung
+    self.permissions = [:group_read]
+  end
 
   class Materialverantwortlicher < Group::Jungschar::Materialverantwortlicher; end
 
-  class KontaktRegionalzeitschrift < Group::Jungschar::KontaktRegionalzeitschrift; end
+  class KontaktRegionalzeitschrift < Group::Jungschar::KontaktRegionalzeitschrift
+    self.permissions = [:group_read]
+  end
 
   class VerantwortlicherPSA < Group::Jungschar::VerantwortlicherPSA; end
 
