@@ -22,4 +22,10 @@ module Cevi::Group
     current_census = Census.current
     current_census && !MemberCounter.new(current_census.year, self).exists?
   end
+
+  def require_person_add_requests
+    true
+  end
+
+  alias_method :require_person_add_requests?, :require_person_add_requests
 end
