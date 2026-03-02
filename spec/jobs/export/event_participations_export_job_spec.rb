@@ -47,7 +47,7 @@ describe Export::EventParticipationsExportJob do
 
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(Regexp.new("^#{Export::Csv::UTF8_BOM}Vorname;Nachname"))
-      expect(lines[0].split(';').count).to match(18)
+      expect(lines[0].split(';').count).to match(31)
     end
   end
 
@@ -62,7 +62,7 @@ describe Export::EventParticipationsExportJob do
 
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(Regexp.new("^#{Export::Csv::UTF8_BOM}Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$"))
-      expect(lines[0].split(';').count).to match(42)
+      expect(lines[0].split(';').count).to match(62)
     end
   end
 end
