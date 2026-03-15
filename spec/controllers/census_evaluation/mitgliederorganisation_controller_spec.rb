@@ -57,4 +57,23 @@ describe CensusEvaluation::MitgliederorganisationController do
     end
   end
 
+  context 'authorization' do
+    it 'denies access for unauthorized user' do
+      sign_in(people(:al_altst))
+      expect { get :index, params: { id: zhshgl.id } }.to raise_error(CanCan::AccessDenied)
+    end
+  end
+
+  context 'with year parameter' do
+    it 'assigns counts for previous year' do
+      get :index, params: { id: zhshgl.id, year: TESTYEAR - 1 }
+      expect(assigns(:group_counts)).to be_empty
+    end
+
+    it 'assigns nil total for past year without census' do
+      get :index, params: { id: zhshgl.id, year: TESTYEAR - 1 }
+      expect(assigns(:total)).to be_nil
+    end
+  end
+
 end

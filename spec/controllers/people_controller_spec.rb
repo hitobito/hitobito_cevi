@@ -9,6 +9,31 @@ require 'spec_helper'
 
 describe PeopleController do
 
+  context 'cevi-specific permitted attributes' do
+    let(:person) { Fabricate(Group::Ortsgruppe::AdministratorCeviDB.name, group: groups(:stadtzh)).person }
+    let(:actor) do
+      Fabricate(Group::MitgliederorganisationGeschaeftsstelle::Geschaeftsleiter.name,
+                group: groups(:zhshgl_gs)).person
+    end
+
+    before { sign_in(actor) }
+
+    it 'allows updating nationality' do
+      put :update, params: { group_id: person.groups.first.id, id: person.id, person: { nationality: 'DE' } }
+      expect(person.reload.nationality).to eq('DE')
+    end
+
+    it 'allows updating j_s_number' do
+      put :update, params: { group_id: person.groups.first.id, id: person.id, person: { j_s_number: '12345' } }
+      expect(person.reload.j_s_number).to eq('12345')
+    end
+
+    it 'allows updating salutation' do
+      put :update, params: { group_id: person.groups.first.id, id: person.id, person: { salutation: 'formal' } }
+      expect(person.reload.salutation).to eq('formal')
+    end
+  end
+
   context 'old_data' do
     let(:person) { Fabricate(Group::Ortsgruppe::AdministratorCeviDB.name, group: groups(:stadtzh)).person }
 
