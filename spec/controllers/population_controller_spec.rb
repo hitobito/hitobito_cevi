@@ -63,4 +63,26 @@ describe PopulationController do
 
     it { is_expected.not_to include aranda }
   end
+
+  describe 'authorization' do
+    it 'denies access for user without show_population permission' do
+      unauthorized = Fabricate(Group::Froeschli::Teilnehmer.name.to_sym, group: froeschli).person
+      sign_in(unauthorized)
+      expect { get :index, params: { id: jungschar.id } }.to raise_error(CanCan::AccessDenied)
+    end
+  end
+
+  describe 'people_data_complete' do
+    context 'when all people have gender' do
+      before do
+        # Give all people in the population a gender
+        Person.update_all(gender: 'w')
+        get :index, params: { id: jungschar.id }
+      end
+
+      subject { assigns(:people_data_complete) }
+
+      it { is_expected.to be_truthy }
+    end
+  end
 end

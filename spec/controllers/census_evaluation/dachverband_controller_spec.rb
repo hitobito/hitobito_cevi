@@ -93,6 +93,25 @@ describe CensusEvaluation::DachverbandController do
         expect(CSV.parse(response.body, headers: true)).to have(3).rows
       end
     end
+
+    context 'with non-current census year' do
+      it 'does not assign group confirmation ratios' do
+        get :index, params: { id: ch.id, year: TESTYEAR + 2 }
+        expect(assigns(:groups)).to be_nil
+      end
+
+      it 'does not assign a total' do
+        get :index, params: { id: ch.id, year: TESTYEAR + 2 }
+        expect(assigns(:total)).to be_nil
+      end
+    end
+
+    context 'authorization' do
+      it 'denies access for unauthorized user' do
+        sign_in(people(:al_altst))
+        expect { get :index, params: { id: ch.id } }.to raise_error(CanCan::AccessDenied)
+      end
+    end
   end
 
 end

@@ -91,6 +91,26 @@ describe EventsController do
   end
 
 
+  context 'regular event (not course)' do
+    let(:group) { groups(:dachverband) }
+
+    before { sign_in(people(:bulei)) }
+
+    it 'creates regular event without setting application_contact' do
+      post :create, params: {
+        event: { group_ids: [group.id],
+                 name: 'Regular Event',
+                 dates_attributes: [{ label: 'foo', start_at_date: Date.today, finish_at_date: Date.today }],
+                 type: 'Event' },
+        group_id: group.id
+      }
+
+      event = assigns(:event)
+      expect(event).to be_persisted
+      expect(event).to be_a(Event)
+    end
+  end
+
   context '#index filters based on type' do
     require_relative '../support/fabrication.rb'
     before { sign_in(people(:bulei)) }

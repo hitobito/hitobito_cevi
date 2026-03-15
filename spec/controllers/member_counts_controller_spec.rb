@@ -164,6 +164,32 @@ describe MemberCountsController do
       is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR))
       expect(flash[:notice]).to be_present
     end
+
+    context 'as abteilungsleiter' do
+      it 'denies access' do
+        leiter = Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym, group: group).person
+        sign_in(leiter)
+        expect { delete :destroy, params: { group_id: group.id } }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+  end
+
+  describe 'without current census' do
+    before { Census.destroy_all }
+
+    it 'raises RecordNotFound on edit' do
+      expect { get :edit, params: { group_id: group.id } }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'raises RecordNotFound on update' do
+      expect do
+        put :update, params: { group_id: group.id, member_count: {} }
+      end.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'raises RecordNotFound on destroy' do
+      expect { delete :destroy, params: { group_id: group.id } }.to raise_error(ActiveRecord::RecordNotFound)
+    end
   end
 
   def assert_member_counts(count, person_f, person_m)
