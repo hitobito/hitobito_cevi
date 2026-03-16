@@ -3,7 +3,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-module Cevi::PaperTrail::VersionDecorator
+module Cevi::PaperTrail::VersionChangesetPresenter
   extend ActiveSupport::Concern
 
   included do
