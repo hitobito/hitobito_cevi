@@ -20,12 +20,6 @@ class Group::DachverbandGremium < Group::Gremium
   end
 
   # get the group_and_below_full permission as they should also be able to create events
-  class AktiverKursleiter < ::Role
-    self.permissions = [:layer_read, :group_and_below_full]
-    self.two_factor_authentication_enforced = true
-  end
-
-  # get the group_and_below_full permission as they should also be able to create events
   class Kassier < ::Role
     self.permissions = [:layer_read, :group_and_below_full, :finance]
     self.two_factor_authentication_enforced = true
@@ -33,6 +27,5 @@ class Group::DachverbandGremium < Group::Gremium
 
   roles Leitung,
     Mitglied,
-    AktiverKursleiter,
     Kassier
 end
