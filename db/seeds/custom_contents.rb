@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
 
-# CustomContent.seed_once(:key,
+# CustomContent.seed(:key,
 #   { key: Event::ParticipationMailer::CONTENT_LEADER_INTEREST,
 #     placeholders_required: 'participant-name, application-url',
 #     placeholders_optional: 'course-name, recipient-name' },
