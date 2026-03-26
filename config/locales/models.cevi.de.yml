@@ -794,9 +794,6 @@ de:
         one: Anrede
         other: Anreden
     attributes:
-      event/course:
-        participation_states:
-          applied: Vorangemeldet
       census:
         year: Jahr
         start_at: Ab
@@ -807,6 +804,8 @@ de:
         application_contact_id: Anmeldung an
 
       event/participation:
+        states:
+          applied: Vorangemeldet
         internal_comment: Interne Bemerkung
         j_s_number: J+S-Nummer
         nationality_j_s: Nationalität gemäss J+S
