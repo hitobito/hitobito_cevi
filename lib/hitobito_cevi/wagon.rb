@@ -115,7 +115,7 @@ module HitobitoCevi
       EventParticipationsHelper.prepend Cevi::EventParticipationsHelper
 
       # decorators
-      PaperTrail::VersionDecorator.include Cevi::PaperTrail::VersionDecorator
+      PaperTrail::VersionChangesetPresenter.include Cevi::PaperTrail::VersionChangesetPresenter
       PersonDecorator.include Cevi::PersonDecorator
       Event::ParticipationDecorator.include Cevi::Event::ParticipationDecorator
     end
