@@ -3,5 +3,7 @@
 - # or later. See the COPYING file at the top-level directory or at
 - # https://github.com/hitobito/hitobito_cevi.
 
+- (ServiceToken.possible_scopes - ["show_donors"]).each do |scope|
+  = f.boolean_field(scope.to_sym, caption: model_class.human_attribute_name(scope.to_sym))
 - if can?(:show_donors, parent)
-  = f.boolean_field(:show_donors, caption: model_class.human_attribute_name(:show_donors)) 
+  = f.boolean_field(:show_donors, caption: model_class.human_attribute_name(:show_donors))

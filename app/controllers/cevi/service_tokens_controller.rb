@@ -10,7 +10,7 @@ module Cevi::ServiceTokensController
 
   def permitted_attrs
     permitted = self.class.permitted_attrs.dup
-    permitted << :show_donors if can?(:show_donors, group)
+    permitted -= [:show_donors] unless can?(:show_donors, group)
     permitted
   end
 end
