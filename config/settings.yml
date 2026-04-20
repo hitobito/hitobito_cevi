@@ -51,3 +51,8 @@ csv:
 groups:
   statistics:
     enabled: false
+
+event:
+  participations:
+    delete_additional_information_after_months: 6
+    delete_answers_after_months: 6
