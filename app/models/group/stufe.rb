@@ -19,11 +19,11 @@ class Group::Stufe < Group
   end
 
   class Minigruppenleiter < ::Role
-    self.permissions = [:layer_and_below_read, :group_and_below_full]
+    self.permissions = [:group_and_below_full]
   end
 
   class Helfer < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:group_and_below_read]
   end
 
   class Teilnehmer < ::Role
