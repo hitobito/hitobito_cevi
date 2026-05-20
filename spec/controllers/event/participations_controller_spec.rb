@@ -49,7 +49,9 @@ describe Event::ParticipationsController do
     it 'exports csv' do
       expect do
         get :index, params: { group_id: group.id, event_id: course.id }, format: :csv
-        expect(flash[:notice]).to match(/Export wird im Hintergrund gestartet und nach Fertigstellung heruntergeladen./)
+        expect(flash[:notice]).to match(
+          /Export wird im Hintergrund gestartet und kann nach Fertigstellung auf der Jobübersicht/
+        )
       end.to change(Delayed::Job, :count).by(1)
     end
 
