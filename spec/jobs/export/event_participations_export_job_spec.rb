@@ -28,7 +28,7 @@ describe Export::EventParticipationsExportJob do
   let(:participation) {
     Fabricate(:event_participation, event: course, person: person, roles: [event_role])
   }
-  let(:file) { subject.user_job_result }
+  let(:file) { subject.job_observation }
 
   before do
     SeedFu.quiet = true
