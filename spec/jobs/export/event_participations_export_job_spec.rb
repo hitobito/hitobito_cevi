@@ -6,6 +6,8 @@
 require "spec_helper"
 
 describe Export::EventParticipationsExportJob do
+  include JobObservationSpecHelper
+
   subject {
     Export::EventParticipationsExportJob.new(format,
       user.id,
@@ -44,7 +46,7 @@ describe Export::EventParticipationsExportJob do
     let(:params) { {details: false} }
 
     it "dilligently" do
-      lines = file.read.lines
+      lines = read_data_from_generated_file(file).lines
 
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(Regexp.new("^#{Export::Csv::UTF8_BOM}Vorname;Nachname"))
@@ -57,7 +59,7 @@ describe Export::EventParticipationsExportJob do
     let(:params) { {details: true} }
 
     it "dilligently" do
-      lines = file.read.lines
+      lines = read_data_from_generated_file(file).lines
 
       expect(lines.size).to eq(2)
       expect(lines[0]).to match(Regexp.new("^#{Export::Csv::UTF8_BOM}Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$"))
