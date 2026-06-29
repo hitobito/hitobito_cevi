@@ -74,7 +74,7 @@ describe Export::Tabular::MemberCount do
     it 'has group attributes attributes set' do
       expect(entry.name).to eq 'Jungschar Burgdorf'
       expect(entry.address).to eq 'Dorfplatz 1'
-      expect(entry.zip_code).to eq 3455
+      expect(entry.zip_code).to eq "3455"
       expect(entry.town).to eq 'Burgdorf'
     end
 
