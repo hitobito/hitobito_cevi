@@ -20,3 +20,6 @@ Fabricator(:cevi_course, from: :course) do
 
   end
 end
+
+# Cevi::Event requires contact
+Fabrication.manager[:event].append_or_update_attribute(:contact, nil) {  Fabricate(:person) }

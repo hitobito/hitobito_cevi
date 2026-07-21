@@ -866,5 +866,7 @@ de:
 
     errors:
       models:
+        event:
+          contact_email_missing: Kontaktperson mit gültiger E-Mail-Adresse muss vorhanden sein, da E-Mails zum Anlass an diese Adresse gesendet werden.
         event/course:
           geschaeftsstelle_missing: Geschäftsstelle muss vorhanden sein da Anmeldungen an diese Adresse erfolgen.
