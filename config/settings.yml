@@ -53,6 +53,8 @@ groups:
     enabled: false
 
 event:
+  # Use the event's contact email as the Reply-To address on event/participation mails.
+  use_contact_as_reply_to: true
   participations:
     delete_additional_information_after_months: 6
     delete_answers_after_months: 6

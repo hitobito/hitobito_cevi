@@ -11,7 +11,7 @@ describe :event_guest, js: true do
   subject { page }
 
   let(:person) { people(:bulei) }
-  let(:event) { Fabricate(:event, application_opening_at: 5.days.ago, groups: [group], guest_limit: 3) }
+  let(:event) { Fabricate(:event, contact: person, application_opening_at: 5.days.ago, groups: [group], guest_limit: 3) }
   let(:group) { groups(:dachverband) }
   let!(:participation) do
     Event::Participation.create!(event:, person:).tap do |p|
