@@ -26,6 +26,7 @@ module HitobitoCevi
       Person.include Cevi::Person
       Role.include Cevi::Role
 
+      Event.include Cevi::Event
       Event::Kind.include Cevi::Event::Kind
       Event::Course.include Cevi::Event::Course
       Event::Role::AssistantLeader.permissions = [:participations_read]
