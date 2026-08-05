@@ -53,6 +53,7 @@ groups:
     enabled: false
 
 event:
+  use_contact_as_reply_to: true
   participations:
     delete_additional_information_after_months: 6
     delete_answers_after_months: 6

@@ -8,20 +8,17 @@
 require 'spec_helper'
 
 describe EventsController do
+  let(:contact) { Person.first }
 
   context 'event_course' do
-
     let(:group) { groups(:dachverband) }
     let(:date)  {{ label: 'foo', start_at_date: Date.today, finish_at_date: Date.today }}
     let(:event_kind_id) { Event::Kind.where(short_name: 'SLK').first.id }
 
     before { sign_in(people(:bulei)) }
 
-
     context 'POST#create' do
-
       it 'creates new event course with dates and contact' do
-        contact = Person.first
 
         post :create, params: {
           event: {  group_ids: [group.id],
@@ -47,28 +44,6 @@ describe EventsController do
         expect(event.contact).to eq contact
       end
 
-      it 'creates new event course without contact' do
-        post :create, params: {
-          event: {  group_ids: [group.id],
-                    visible_contact_attributes: {
-                      name: "1"
-                    },
-                    name: 'foo',
-                    kind_id: event_kind_id,
-                    contact_id: '',
-                    dates_attributes: [date],
-                    type: 'Event::Course' },
-          group_id: group.id
-        }
-
-        event = assigns(:event)
-
-        is_expected.to redirect_to(group_event_path(group, event))
-        expect(event).to be_persisted
-      end
-
-
-
       it 'should set application contact if only one is available' do
         post :create, params: {
           event: {  group_ids: [group.id],
@@ -77,6 +52,7 @@ describe EventsController do
                     },
                     name: 'foo',
                     kind_id: event_kind_id,
+                    contact_id: contact.id,
                     dates_attributes: [date],
                     type: 'Event::Course' },
           group_id: group.id
@@ -99,6 +75,7 @@ describe EventsController do
     it 'creates regular event without setting application_contact' do
       post :create, params: {
         event: { group_ids: [group.id],
+                 contact_id: contact.id,
                  name: 'Regular Event',
                  dates_attributes: [{ label: 'foo', start_at_date: Date.today, finish_at_date: Date.today }],
                  type: 'Event' },
