@@ -12,14 +12,14 @@ describe Cevi::Event do
     it "is invalid without contact" do
       event = Fabricate.build(:event, groups: [groups(:dachverband)], contact: nil)
       expect(event).not_to be_valid
-      expect(event.errors[:base]).to include("Kontaktperson mit gültiger E-Mail-Adresse muss vorhanden sein, da E-Mails zum Anlass an diese Adresse gesendet werden.")
+      expect(event.errors[:base]).to include("Kontaktperson mit gültiger E-Mail-Adresse muss vorhanden sein, da Antworten auf E-Mails zum Anlass an diese Adresse gesendet werden.")
     end
 
     it "is invalid if contact has no email" do
       contact = Fabricate(:person, email: nil)
       event = Fabricate.build(:event, groups: [groups(:dachverband)], contact: contact)
       expect(event).not_to be_valid
-      expect(event.errors[:base]).to include("Kontaktperson mit gültiger E-Mail-Adresse muss vorhanden sein, da E-Mails zum Anlass an diese Adresse gesendet werden.")
+      expect(event.errors[:base]).to include("Kontaktperson mit gültiger E-Mail-Adresse muss vorhanden sein, da Antworten auf E-Mails zum Anlass an diese Adresse gesendet werden.")
     end
 
     it "is valid with contact with valid email" do
@@ -30,7 +30,7 @@ describe Cevi::Event do
     it "applies the same validation to Event::Course" do
       course = Fabricate.build(:cevi_course, groups: [groups(:zhshgl)], contact: nil)
       expect(course).not_to be_valid
-      expect(course.errors[:base]).to include("Kontaktperson mit gültiger E-Mail-Adresse muss vorhanden sein, da E-Mails zum Anlass an diese Adresse gesendet werden.")
+      expect(course.errors[:base]).to include("Kontaktperson mit gültiger E-Mail-Adresse muss vorhanden sein, da Antworten auf E-Mails zum Anlass an diese Adresse gesendet werden.")
     end
   end
 end
