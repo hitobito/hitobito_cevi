@@ -10,10 +10,6 @@ module Cevi::Event::ParticipationAbility
 
   included do
     on(Event::Participation) do
-      permission(:see_invisible_from_above)
-        .may(:create_tentative)
-        .person_in_same_layer_or_below
-
       permission(:layer_and_below_read)
         .may(:show)
         .in_same_layer_or_below_if_ausbildungsmitglied
@@ -37,8 +33,13 @@ module Cevi::Event::ParticipationAbility
     permission_in_event?(:manage_attendances) || her_own_if_application_possible
   end
 
-  def person_in_same_layer_or_below
-    person.nil? || permission_in_layers?(person.groups_hierarchy_ids)
+  def person_in_same_layer_or_visible_below
+    super ||
+      (permission_in_layers?(person.groups_hierarchy_ids) && can_see_invisible_in_layer_or_above)
+  end
+
+  def can_see_invisible_in_layer_or_above
+    contains_any?(person.groups_hierarchy_ids, user_see_invisible_layer_ids)
   end
 
   def in_same_layer_or_below_if_ausbildungsmitglied
