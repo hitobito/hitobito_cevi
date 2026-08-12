@@ -32,16 +32,15 @@ module HitobitoCevi
       Event::Role::Leader.permissions << :manage_attendances
 
       # :financials may edit all people in a Group::Spender group.
-      # :see_invisible_from_above may edit below people even when they
-      # have visible_from_above = false.
-      #   This only makes sense with :layer_and_below_full.
+      # :see_invisible_from_above may see below people even when they
+      # have visible_from_above = false. Editing them requires
+      # :layer_and_below_full in addition.
       Role::Permissions << :financials << :see_invisible_from_above
 
       # abilities
       EventAbility.include Cevi::EventAbility
       GroupAbility.include Cevi::GroupAbility
       PersonAbility.include Cevi::PersonAbility
-      RoleAbility.include Cevi::RoleAbility
       VariousAbility.include Cevi::VariousAbility
       Event::ParticipationAbility.include Cevi::Event::ParticipationAbility
       PersonReadables.prepend Cevi::PersonReadables
