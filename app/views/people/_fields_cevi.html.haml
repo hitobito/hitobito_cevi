@@ -13,8 +13,7 @@
   = f.labeled_collection_select :salutation, possible_person_salutations,
                                 :id,
                                 :to_s,
-                                { include_blank: "" },
-                                class: 'form-select form-select-sm'
+                                { include_blank: "" }
 
   = f.labeled_input_field :correspondence_language,
                           placeholder: t('.correspondence_language.placeholder'),
@@ -27,7 +26,6 @@
                             :id,
                             :to_s,
                             { include_blank: "" },
-                            class: 'form-select form-select-sm',
                             data: { placeholder: ' ',
                                     chosen_no_results: t('global.chosen_no_results') }
 
@@ -35,8 +33,7 @@
                                 possible_person_confessions,
                                 :id,
                                 :to_s,
-                                { include_blank: "" },
-                                class: 'form-select form-select-sm'
+                                { include_blank: "" }
 
   = f.labeled_input_field :old_data if can?(:update_old_data, entry)
 
@@ -47,6 +44,5 @@
                             :id,
                             :to_s,
                             { include_blank: "" },
-                            class: 'form-select form-select-sm',
                             data: { placeholder: ' ',
                                     chosen_no_results: t('global.chosen_no_results') }
