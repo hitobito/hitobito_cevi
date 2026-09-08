@@ -1,0 +1,14 @@
+-#  Copyright (c) 2012-2026, CEVI Schweiz. This file is part of
+-#  hitobito_cevi and licensed under the Affero General Public License version 3
+-#  or later. See the COPYING file at the top-level directory or at
+-#  https://github.com/hitobito/hitobito_cevi.
+
+%tr.fields
+  %td
+    - if f.object.new_record?
+      = f.input_field :born_in, class: 'span1'
+    - else
+      = f.hidden_field :id
+      %span.pe-2= format_member_count_born_in(f.object)
+  %td= f.input_field :person_f
+  %td= f.input_field :person_m

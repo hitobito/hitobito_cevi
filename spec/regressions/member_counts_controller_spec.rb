@@ -11,7 +11,7 @@ describe MemberCountsController, type: :controller do
 
   render_views
 
-  let(:group) { groups(:zhshgl) }
+  let(:group) { groups(:jungschar_zh10) }
 
   before { sign_in(people(:bulei)) }
 
