@@ -7,6 +7,8 @@ class MemberCount < ActiveRecord::Base
   belongs_to :group
   belongs_to :mitgliederorganisation, class_name: "Group::Mitgliederorganisation"
 
+  before_validation :assign_mitgliederorganisation, on: :create
+
   validates_by_schema
   validates :born_in, uniqueness: {scope: [:group_id, :year]}
   validates :person_f, :person_m,
@@ -73,5 +75,11 @@ class MemberCount < ActiveRecord::Base
 
   def m
     person_m.to_i
+  end
+
+  private
+
+  def assign_mitgliederorganisation
+    self.mitgliederorganisation ||= group.try(:mitgliederorganisation)
   end
 end
