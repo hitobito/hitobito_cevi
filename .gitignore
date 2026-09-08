@@ -25,3 +25,5 @@ rubocop-results.xml
 
 db/schema.rb
 db/schema.rb.diff
+
+coverage

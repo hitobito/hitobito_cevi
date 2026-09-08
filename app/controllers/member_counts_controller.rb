@@ -21,18 +21,18 @@ class MemberCountsController < ApplicationController
 
   def edit
     authorize!(:update_member_counts, group)
-    member_counts
+    year
   end
 
   def update
     authorize!(:update_member_counts, group)
-    with_errors = update_member_counts
+    year # fail fast without a current census, before touching any params
 
-    if with_errors.blank?
-      flash[:notice] = "Die Mitgliederzahlen für #{year} wurden erfolgreich gespeichert"
-      redirect_to census_group_group_path(group, year: year)
+    if group.update(permitted_params)
+      redirect_to census_group_group_path(group, year: year),
+        notice: "Die Mitgliederzahlen für #{year} wurden erfolgreich gespeichert"
     else
-      flash.now[:alert] = faulty_counts_message(with_errors)
+      flash.now[:alert] = faulty_counts_message
       render "edit"
     end
   end
@@ -40,44 +40,20 @@ class MemberCountsController < ApplicationController
   def destroy
     authorize!(:delete_member_counts, group)
 
-    member_counts.destroy_all
+    group.current_member_counts.destroy_all
     redirect_to census_group_group_path(group, year: year),
       notice: translate(".deleted_data_for_year", year: year)
   end
 
   private
 
-  def member_counts
-    @member_counts ||= group.member_counts.where(year: year).order(:born_in)
-  end
-
-  def update_member_counts
-    counts = []
-    if params[:member_count]
-      values = params[:member_count].values.map { |v| v.permit(:person_f, :person_m) }
-      counts = member_counts.update(params[:member_count].keys, values)
-    end
-
-    additional_member_counts = create_additional_member_counts
-    (counts + additional_member_counts).select { |c| c.errors.present? }
-  end
-
-  def faulty_counts_message(with_errors)
-    messages = with_errors.collect do |e|
-      "#{e.born_in || "unbekannt"}: #{e.errors.full_messages.join(", ")}"
+  def faulty_counts_message
+    messages = group.current_member_counts.select { |c| c.errors.present? }.collect do |c|
+      "#{c.born_in || "unbekannt"}: #{c.errors.full_messages.join(", ")}"
     end
 
     "Nicht alle Jahrgänge konnten gespeichert werden. " \
     "Bitte überprüfen Sie Ihre Angaben. (#{messages.join("; ")})"
-  end
-
-  def create_additional_member_counts
-    permitted = params.permit(additional_member_counts: [:born_in, :person_f, :person_m])
-    additionals = permitted[:additional_member_counts] || []
-    additionals.map do |attrs|
-      @group.member_counts.create(attrs.merge(mitgliederorganisation: group.mitgliederorganisation,
-        year: year))
-    end
   end
 
   def group
@@ -90,6 +66,7 @@ class MemberCountsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:member_count).permit(MemberCount::COUNT_COLUMNS)
+    params.require(:group)
+      .permit(current_member_counts_attributes: [:id, :born_in, :person_f, :person_m])
   end
 end
