@@ -14,7 +14,7 @@ describe Export::Tabular::People do
   let(:simple_headers) do
     [
       "Vorname", "Nachname", "Ceviname", "Firmenname", "Firma", "Haupt-E-Mail",
-      "zusätzliche Adresszeile", "Strasse", "Hausnummer", "Postfach", "PLZ", "Ort", "Land",
+      "c/o-Adresse", "Strasse", "Hausnummer", "Postfach", "PLZ", "Ort", "Land",
       "Hauptebene", "Rollen", "Anrede Eltern", "Name Eltern", "Ortsgruppe",
       "Weitere E-Mail Mutter", "Weitere E-Mail Vater", "Weitere E-Mail Eltern",
       "Weitere E-Mail Privat", "Weitere E-Mail Arbeit", "Weitere E-Mail Rechnungsadresse", "Weitere E-Mail Andere",
