@@ -10,12 +10,6 @@ module PeopleCeviHelper
     person.canton_label
   end
 
-  def possible_person_cantons
-    Cantons.labels.map do |key, value|
-      IdLabel.new(key, value)
-    end
-  end
-
   def format_person_confession(person)
     person.confession_label
   end

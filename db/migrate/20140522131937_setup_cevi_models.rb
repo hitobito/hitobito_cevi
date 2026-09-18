@@ -22,7 +22,9 @@ class SetupCeviModels < ActiveRecord::Migration[4.2]
     add_column :people, :member_card_number, :integer
 
     add_column :people, :salutation, :string
-    add_column :people, :canton, :string
+    unless column_exists?(:people, :canton)
+      add_column :people, :canton, :string
+    end
     add_column :people, :confession, :string
     add_column :people, :correspondence_language, :string
 

@@ -9,7 +9,7 @@ module Cevi::PeopleController
   included do
     self.permitted_attrs += [:title, :profession, :j_s_number, :joined, :nationality,
       :salutation_parents, :name_parents, :member_card_number, :salutation,
-      :canton, :confession, :correspondence_language, :ortsgruppe_id]
+      :confession, :correspondence_language, :ortsgruppe_id]
 
     alias_method_chain :permitted_attrs, :old_data
   end

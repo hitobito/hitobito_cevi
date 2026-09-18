@@ -24,14 +24,6 @@ module Cevi::Person
     i18n_setter :salutation, SALUTATIONS
   end
 
-  def canton
-    self[:canton]
-  end
-
-  def canton_label
-    Cantons.full_name(canton)
-  end
-
   def ortsgruppe_label
     ortsgruppe && (ortsgruppe.short_name.presence || ortsgruppe.name.presence)
   end
