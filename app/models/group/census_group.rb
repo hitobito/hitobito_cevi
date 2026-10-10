@@ -8,6 +8,11 @@ module Group::CensusGroup
 
   included do
     has_many :member_counts, foreign_key: "group_id", dependent: nil, inverse_of: :group
+
+    has_many :current_member_counts, -> { where(year: Census.current&.year).order(:born_in) },
+      class_name: "MemberCount", foreign_key: "group_id", dependent: nil, inverse_of: :group
+
+    accepts_nested_attributes_for :current_member_counts, reject_if: :all_blank
   end
 
   def mitgliederorganisation

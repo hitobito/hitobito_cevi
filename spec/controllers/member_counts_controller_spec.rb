@@ -17,7 +17,7 @@ describe MemberCountsController do
       before { get :edit, params: { group_id: group.id } }
 
       it 'assigns counts' do
-       expect(assigns(:member_counts)).to have(3).items
+       expect(assigns(:group).current_member_counts).to have(3).items
        expect(assigns(:group)).to eq group
       end
     end
@@ -27,11 +27,12 @@ describe MemberCountsController do
     context 'as administrator dachverband' do
 
       it 'updates counts' do
-        put :update, params: { group_id: group.id, year: TESTYEAR, member_count:
-          { member_counts(:jungschar_zh10_jg_1999).id => { person_f: 4, person_m: '1'},
-            member_counts(:jungschar_zh10_jg_1997).id => { person_f: 2, person_m: ''},
-            member_counts(:jungschar_zh10_jg_1988).id => { person_f: nil, person_m: 0},
-          } }
+        put :update, params: { group_id: group.id, year: TESTYEAR, group: {
+          current_member_counts_attributes: {
+            '0' => { id: member_counts(:jungschar_zh10_jg_1999).id, person_f: 4, person_m: '1' },
+            '1' => { id: member_counts(:jungschar_zh10_jg_1997).id, person_f: 2, person_m: '' },
+            '2' => { id: member_counts(:jungschar_zh10_jg_1988).id, person_f: nil, person_m: 0 },
+          } } }
 
         assert_member_counts(member_counts(:jungschar_zh10_jg_1999).reload, 4, 1)
         assert_member_counts(member_counts(:jungschar_zh10_jg_1997).reload, 2, nil)
@@ -42,42 +43,60 @@ describe MemberCountsController do
 
       it "saves additional member counts" do
         expect do
-           put :update,
-               params: {
-                 group_id: group.id,
-                 additional_member_counts: [ { born_in: 2001,
-                                               person_f: 1,
-                                               person_m: "" } ]
-               }
+          put :update, params: { group_id: group.id,
+                                 group: { current_member_counts_attributes: {
+                                   '1699999999' => { born_in: 2001,
+                                                     person_f: 1,
+                                                     person_m: "" } } } }
         end.to change { group.reload.member_counts.count }.by(1)
+
+        count = group.member_counts.find_by(born_in: 2001)
+        expect(count.year).to eq TESTYEAR
+        expect(count.mitgliederorganisation).to eq groups(:zhshgl)
+
+        is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR))
+      end
+
+      it "ignores blank additional member counts" do
+        expect do
+          put :update, params: { group_id: group.id,
+                                 group: { current_member_counts_attributes: {
+                                   '1699999999' => { born_in: "",
+                                                     person_f: "",
+                                                     person_m: "" } } } }
+        end.not_to change { group.reload.member_counts.count }
 
         is_expected.to redirect_to(census_group_group_path(group, year: TESTYEAR))
       end
 
       it "renders flash for invalid additional count" do
         expect do
-          put :update,
-              params: {
-                group_id: group.id,
-                additional_member_counts: [ { born_in: 'asdf',
-                                              person_f: 1,
-                                              person_m: "" } ]
-              }
+          put :update, params: { group_id: group.id,
+                                 group: { current_member_counts_attributes: {
+                                   '1699999999' => { born_in: 'asdf',
+                                                     person_f: 1,
+                                                     person_m: "" } } } }
         end.not_to change { group.reload.member_counts.count }
         expect(flash[:alert]).to be_present
       end
 
       it "renders flash for additional count of existing year" do
         expect do
-           put :update,
-               params: {
-                 group_id: group.id,
-                 additional_member_counts: [ { born_in: 1999,
-                                               person_f: 1,
-                                               person_m: "" } ]
-               }
+          put :update, params: { group_id: group.id,
+                                 group: { current_member_counts_attributes: {
+                                   '1699999999' => { born_in: 1999,
+                                                     person_f: 1,
+                                                     person_m: "" } } } }
         end.not_to change { group.reload.member_counts.count }
         expect(flash[:alert]).to be_present
+      end
+
+      it "refuses counts of another group" do
+        expect do
+          put :update, params: { group_id: group.id, group: {
+            current_member_counts_attributes: {
+              '0' => { id: member_counts(:jungschar_altst_jg_1997).id, person_f: 4 } } } }
+        end.to raise_error(ActiveRecord::RecordNotFound)
       end
 
     end
@@ -86,7 +105,7 @@ describe MemberCountsController do
       it 'denies access' do
         leiter = Fabricate(Group::Jungschar::Abteilungsleiter.name.to_sym, group: group).person
         sign_in(leiter)
-        expect { put :update, params: {group_id: group.id, year: TESTYEAR, member_count: {}} }.to raise_error(CanCan::AccessDenied)
+        expect { put :update, params: {group_id: group.id, year: TESTYEAR, group: {}} }.to raise_error(CanCan::AccessDenied)
       end
     end
   end
@@ -183,7 +202,7 @@ describe MemberCountsController do
 
     it 'raises RecordNotFound on update' do
       expect do
-        put :update, params: { group_id: group.id, member_count: {} }
+        put :update, params: { group_id: group.id, group: {} }
       end.to raise_error(ActiveRecord::RecordNotFound)
     end
 
