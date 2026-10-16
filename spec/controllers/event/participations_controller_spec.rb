@@ -106,32 +106,6 @@ describe Event::ParticipationsController do
           expect(html).to have_content 'Interne Bemerkung'
         end
 
-        it 'may sort by ortsgruppe' do
-          skip "disabled because of sorting changes, see https://github.com/hitobito/hitobito/commit/31625073069fb93ed70e1b4290984fc9a1e926fd"
-
-          Fabricate(:event_role,
-                    type: course.participant_types.first.name,
-                    participation: Fabricate(:event_participation,
-                                             event: course,
-                                             participant: Fabricate(:person,
-                                                               ortsgruppe: groups(:stadtzh))))
-          Fabricate(:event_role,
-                    type: course.participant_types.first.name,
-                    participation: Fabricate(:event_participation,
-                                             event: course,
-                                             participant: Fabricate(:person,
-                                                               ortsgruppe: groups(:jona))))
-          Fabricate(:event_role,
-                    type: course.participant_types.first.name,
-                    participation: Fabricate(:event_participation,
-                                             event: course,
-                                             participant: Fabricate(:person,
-                                                               ortsgruppe: groups(:burgdorf))))
-
-          get :index, params: { group_id: group.id, event_id: course.id, sort: :ortsgruppe }
-          expect(assigns(:participations).map { |p| p.person.ortsgruppe_label }).to eq(['Burgdorf', 'Jona', 'StZH', nil])
-        end
-
         it "includes attributes on show" do
           get :show, params: { group_id: group.id, event_id: course.id, id: participation.id }
           html = Capybara::Node::Simple.new(response.body)
