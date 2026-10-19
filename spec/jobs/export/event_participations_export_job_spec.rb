@@ -1,4 +1,4 @@
-#  Copyright (c) 2018-2024, Jungwacht Blauring Schweiz. This file is part of
+#  Copyright (c) 2018-2026, Jungwacht Blauring Schweiz. This file is part of
 #  hitobito and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito.
@@ -62,8 +62,8 @@ describe Export::EventParticipationsExportJob do
       lines = read_data_from_generated_file(file).lines
 
       expect(lines.size).to eq(2)
-      expect(lines[0]).to match(Regexp.new("^#{Export::Csv::UTF8_BOM}Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$"))
-      expect(lines[0].split(";").count).to match(62)
+      expect(lines[0]).to match(Regexp.new("^#{Export::Csv::UTF8_BOM}Personennummer;Vorname;Nachname;.+;Bezahlt;Interne Bemerkung$"))
+      expect(lines[0].split(";").count).to match(63)
     end
   end
 end
