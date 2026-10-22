@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2026, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -34,7 +34,7 @@ describe Event::Course do
     end
 
     context 'with opening date in the past' do
-      before { subject.application_opening_at = Date.today - 1 }
+      before { subject.application_opening_at = Date.current - 1 }
       it { is_expected.to be_application_possible }
 
       context 'in other state' do
@@ -44,17 +44,17 @@ describe Event::Course do
     end
 
     context 'with ng date today' do
-      before { subject.application_opening_at = Date.today }
+      before { subject.application_opening_at = Date.current }
       it { is_expected.to be_application_possible }
     end
 
     context 'with opening date in the future' do
-      before { subject.application_opening_at = Date.today + 1 }
+      before { subject.application_opening_at = Date.current + 1 }
       it { is_expected.not_to be_application_possible }
     end
 
     context 'with closing date in the past' do
-      before { subject.application_closing_at = Date.today - 1 }
+      before { subject.application_closing_at = Date.current - 1 }
       it { is_expected.to be_application_possible } # yep, we do not care about the closing date
     end
 
