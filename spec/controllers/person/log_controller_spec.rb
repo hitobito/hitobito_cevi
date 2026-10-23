@@ -31,8 +31,8 @@ describe Person::LogController do
       end
 
       it 'shows 10 versions if 10 are present for the person' do
-        10.times do
-          person.nickname = Faker::Superhero.name
+        10.times do |i|
+          person.nickname = "Nick #{i}"
           person.save!
         end
         expect(PaperTrail::Version.where(main_type: Person.sti_name).count).to eq 10
@@ -44,7 +44,7 @@ describe Person::LogController do
 
       it 'shows entries of the last 3 months' do
         10.times do |i|
-          person.nickname = Faker::Superhero.name
+          person.nickname = "Nick #{i}"
           travel_to (i.months + 1.week).ago # a little more than n month ago
           person.save!
         end
@@ -61,7 +61,7 @@ describe Person::LogController do
 
       it 'shows all entries if no setting is present' do
         10.times do |i|
-          person.nickname = Faker::Superhero.name
+          person.nickname = "Nick #{i}"
           travel_to (i.months + 1.week).ago # a little more than n month ago
           person.save!
         end
