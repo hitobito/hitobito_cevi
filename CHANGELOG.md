@@ -1,6 +1,6 @@
 # Hitobito Changelog
 
-## unreleased
+## Version 2.11
 
 * Anlässe und Kurse benötigen neu eine Kontaktperson mit gültiger E-Mail-Adresse (für Reply-to in E-Mails) (hitobito/hitobito#2881)
 
