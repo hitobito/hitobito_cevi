@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-#  Copyright (c) 2012-2014, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2026, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -14,7 +14,7 @@ describe Export::Tabular::People do
   let(:simple_headers) do
     [
       "Vorname", "Nachname", "Ceviname", "Firmenname", "Firma", "Haupt-E-Mail",
-      "c/o-Adresse", "Strasse", "Hausnummer", "Postfach", "PLZ", "Ort", "Land",
+      "c/o-Adresse", "Adresszusatz", "Strasse", "Hausnummer", "Postfach", "PLZ", "Ort", "Land",
       "Hauptebene", "Rollen", "Anrede Eltern", "Name Eltern", "Ortsgruppe",
       "Weitere E-Mail Mutter", "Weitere E-Mail Vater", "Weitere E-Mail Eltern",
       "Weitere E-Mail Privat", "Weitere E-Mail Arbeit", "Weitere E-Mail Rechnungsadresse", "Weitere E-Mail Andere",
