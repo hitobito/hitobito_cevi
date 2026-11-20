@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2024, CEVI Regionalverband ZH-SH-GL. This file is part of
+#  Copyright (c) 2012-2026, CEVI Regionalverband ZH-SH-GL. This file is part of
 #  hitobito_cevi and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_cevi.
@@ -50,7 +50,7 @@ module HitobitoCevi
 
       # domain
       Export::Tabular::Groups::List::EXCLUDED_ATTRS << :member_count
-      Export::Tabular::People::PersonRow.include Cevi::Export::Tabular::People::PersonRow
+      Export::Tabular::People::PersonRow.prepend Cevi::Export::Tabular::People::PersonRow
       Export::Tabular::People::PeopleAddress.include Cevi::Export::Tabular::People::PeopleAddress
       Export::Tabular::People::ParticipationNdsRow.include(
         Cevi::Export::Tabular::People::ParticipationNdsRow
